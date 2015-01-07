@@ -1,0 +1,42 @@
+@startuml
+
+participant CAtConfAgent
+participant CMCServiceMgr
+participant CMCPUDMgr
+participant CMCPrivilegeMgr
+participant CAtUser
+participant CAtConfManager
+participant CSmDocViewSessionMgr
+participant CMCQuickStartSessionMgr
+participant CMCRecordSessionMgr
+participant CSmRecordSessionMgr
+
+
+[-> CAtConfAgent : on_message_indication
+CAtConfAgent -> CMCServiceMgr : OnDataIndication
+CMCServiceMgr -> CMCPUDMgr : OnDataIndication
+CMCPUDMgr -> CMCPUDMgr : HandlePrivilegeChange
+CMCPUDMgr -> CMCPrivilegeMgr : OnPrivilegeChange
+CMCPrivilegeMgr -> CAtUser : SetAttendeePrivilege
+CMCPrivilegeMgr -> CAtConfManager : SetAttendeePrivilege
+CMCPrivilegeMgr -> CAtConfManager : ReEnroll
+
+CMCPrivilegeMgr -> CMCPrivilegeMgr : ApplyPrivilege
+activate CMCPrivilegeMgr
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetChatPrivileges
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetParticipantListPrivilege
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetDocviewPrivilege
+CMCPrivilegeMgr -> CSmDocViewSessionMgr : SetDocPrivilege
+CSmDocViewSessionMgr -> CSmDocViewSessionMgr : CheckQSStatus
+CSmDocViewSessionMgr -> CMCQuickStartSessionMgr : CheckQSStatus
+CMCQuickStartSessionMgr -> CMCRecordSessionMgr : CloseRecordFileDlg
+note over CMCQuickStartSessionMgr, CMCRecordSessionMgr: Close "Save Recorded Meeting As" dialog
+
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetTeleOptionPrivilege
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetRecordOptionPrivilege
+CMCPrivilegeMgr -> CSmRecordSessionMgr : SetShowRecordOption
+
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetAppShareOptionPrivilege
+deactivate CMCPrivilegeMgr
+
+@enduml
