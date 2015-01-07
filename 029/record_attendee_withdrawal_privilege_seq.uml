@@ -11,7 +11,7 @@ participant CMCQuickStartSessionMgr
 participant CMCRecordSessionMgr
 participant CSmRecordSessionMgr
 
-
+title Attendee receive a "withdrawal the recording privalege" message
 [-> CAtConfAgent : on_message_indication
 CAtConfAgent -> CMCServiceMgr : OnDataIndication
 CMCServiceMgr -> CMCPUDMgr : OnDataIndication
@@ -38,5 +38,7 @@ CMCPrivilegeMgr -> CSmRecordSessionMgr : SetShowRecordOption
 
 CMCPrivilegeMgr -> CMCPrivilegeMgr : SetAppShareOptionPrivilege
 deactivate CMCPrivilegeMgr
+
+
 
 @enduml
