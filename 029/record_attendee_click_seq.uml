@@ -11,6 +11,7 @@ CMCUIMgr -> CSmRecordSessionMgr::StartRecord
 CSmRecordSessionMgr -> CSmRecordSessionMgr : GetWebExRecordFileName
 CSmRecordSessionMgr -> CSmRecordSessionMgr : GetRecordTitleFromService
 CSmRecordSessionMgr -> CWBXFileDlg : DoMoal
+
 note over CSmRecordSessionMgr, CWBXFileDlg : Show "Save Recorded Meeting As" dialog
 
 @enduml

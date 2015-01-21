@@ -1,0 +1,28 @@
+@startuml
+
+box "WebExMgr"
+participant "CTCQuickStartDialog"
+participant "CTCQuickStartSessionMgr"
+participant "CTCUIMgr"
+participant "CTCBOUIMgr"
+participant "CTCServiceMgr"
+participant "CTCBOSessionMgr"
+participant "CTCAppShareSessionMgr"
+end box
+
+box "ServiceMgr"
+participant "CSmAppShareSessionMgr"
+end box
+
+[-> "CTCQuickStartDialog" : OnShareDesktop
+note over "CTCQuickStartDialog" : "Click Quick Start : Share Application \n(IDC_SHARE_DESKTOP)"
+"CTCQuickStartDialog" -> "CTCQuickStartSessionMgr" : OnQSAction
+note over "CTCQuickStartDialog", "CTCQuickStartSessionMgr" : SendMessage(NEWQSID_SHAREAPPLICATION)
+"CTCQuickStartSessionMgr" -> "CTCUIMgr" : OnBOMenuHandle
+note over "CTCUIMgr" : SendMessage(ID_TC_SHARE_APPLICATION_BO) 
+"CTCUIMgr" -> "CTCBOUIMgr" : OnBOMenuHandle
+"CTCBOUIMgr" -> "CTCBOUIMgr" : OnApplicationBO
+"CTCBOUIMgr" -> "CTCBOSessionMgr" : CreateBOShareSession
+"CTCBOSessionMgr" -> "CSmAppShareSessionMgr" : ShowRunningAppDialog
+note over "CTCAppShareSessionMgr", "CSmAppShareSessionMgr" : CTCAppShareSessionMgr public CSmAppShareSessionMgr
+@enduml
