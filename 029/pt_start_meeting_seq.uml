@@ -1,0 +1,88 @@
+@startuml
+
+participant CPTMgr
+participant CPTMeeting
+participant CAccountInfo
+participant CAtURLCtrl
+participant CHelpMainMsgWnd
+participant CHttpGet
+
+participant CPtXMLParser
+participant CExeMeeting
+participant ieatgpc
+
+
+[-> CPTMgr : StartOCMeeting
+CPTMgr -> CPTMeeting : StartOCMeeting
+activate CPTMeeting
+CPTMeeting --> CPTMeeting : StartPTMeeting
+CPTMeeting --> CAccountInfo : GetCanChangeTopicFlag
+CPTMeeting --> CAccountInfo : GetCanChangeMPasswordFlag
+CPTMeeting --> CPTMeeting : StartInstantMeeting
+activate CPTMeeting
+CPTMeeting --> CPTMeeting : InitConnectCtrl
+activate CPTMeeting
+CPTMeeting --> CAtURLCtrl : SetUnicodeSite
+CPTMeeting --> CAtURLCtrl : SetEnableR2SecurityFlag
+CPTMeeting --> CHelpMainMsgWnd : m_hWnd
+CPTMeeting --> CAtURLCtrl : SetParent
+deactivate CPTMeeting
+CPTMeeting --> CHelpMainMsgWnd : StartTimer
+deactivate CPTMeeting
+CPTMeeting --> CAtURLCtrl : GetTicketEx
+CAtURLCtrl --> CAtURLCtrl : AddOneHttpGet
+CAtURLCtrl --> CHttpGet : Open
+note over CAtURLCtrl, CHttpGet : https://t1web.qa.webex/WBXService/XMLService
+CAtURLCtrl --> CHttpGet : SetParent
+CAtURLCtrl --> CHttpGet : SetType
+CAtURLCtrl --> CHttpGet : SetParam
+CAtURLCtrl --> CAtURLCtrl : AddHttpGet
+deactivate CPTMeeting
+
+CHttpGet --> CAtURLCtrl : OnOpened
+note over CAtURLCtrl, CHttpGet : return data https://t1web.qa.webex/WBXService/XMLService
+CAtURLCtrl --> CHelpMainMsgWnd : OnURLResponse
+note over CHelpMainMsgWnd : WM_URLRESPONSE 
+CHelpMainMsgWnd -> CPTMeeting : OnUrlResponse
+CPTMeeting --> CAtURLCtrl : PTStart
+CAtURLCtrl --> CAtURLCtrl : AddOneHttpGet
+CAtURLCtrl --> CHttpGet : Open
+note over CAtURLCtrl, CHttpGet : https://t1web.qa.webex/t1t30/pt.php
+CHttpGet --> CAtURLCtrl : OnOpened
+note over CAtURLCtrl, CHttpGet : return data https://t1web.qa.webex/t1t30/pt.php
+CAtURLCtrl --> CHelpMainMsgWnd : OnURLResponse
+note over CHelpMainMsgWnd : WM_URLRESPONSE , retrieve meeting data from pt.php
+CHelpMainMsgWnd -> CPTMeeting : OnUrlResponse
+CPTMeeting --> CPTMeeting : ParseMeetingData
+note over CPTMeeting : PT_1CLK_GET_STARTMEETDATA
+activate CPTMeeting
+CPTMeeting --> CPtXMLParser : LoadFromString
+CPTMeeting --> CPtXMLParser : GetNode("MeetingData", "MeetingInfo")
+CPTMeeting --> CPTMeeting : SaveMeetingInfo
+note over CPTMeeting : generate webex.ini
+
+CPTMeeting --> CExeMeeting : Init
+CPTMeeting --> CExeMeeting : Start
+CExeMeeting --> CExeMeeting : DownloadBaseBinary
+activate CExeMeeting
+CExeMeeting --> CExeMeeting : UnInitGPC
+CExeMeeting --> CExeMeeting : InitGPC
+note over CExeMeeting : load ieatgpc.dll
+CExeMeeting --> CExeMeeting : GetGpcIni
+note over CExeMeeting : download gpc.php
+activate CExeMeeting
+CExeMeeting --> CHttpGet : Open
+CExeMeeting --> CHttpGet : Write
+CExeMeeting --> CHttpGet : Read
+deactivate CExeMeeting
+CExeMeeting --> ieatgpc : GpcStdDownload
+note over CExeMeeting, ieatgpc : gpc.php, download PT_Base
+deactivate CExeMeeting
+deactivate CPTMeeting
+
+ieatgpc --> CExeMeeting : OnGpcDownload
+CExeMeeting --> CExeMeeting : LaunchMeetingClient
+CExeMeeting --> CExeMeeting : StdStartExeMeeting
+note over CExeMeeting : CreateProcess
+
+@enduml

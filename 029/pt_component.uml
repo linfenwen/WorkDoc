@@ -1,0 +1,65 @@
+@startuml
+
+package "ptUpdate" {
+() "/CheckVersion" --> [CCheckForUpdateFileNew] : StartCheckForUpdate
+() "/DownloadFile" --> [CCheckForUpdateFileDown] : StartDownloadFile
+() "/CopyFileNormalXP" --> [CCheckForUpdateFileCopy] : StartNormalCopyFileXP
+() "/CopyFileAdmin" --> [CCheckForUpdateFileCopy] : StartAdminCopyFile
+() "/CopyFileNormal" --> [CCheckForUpdateFileCopy] : StartNormalCopyFile
+
+[CCheckForUpdateFileNew] --> [CCommItem] : GetAccount
+[CCheckForUpdateFileNew] --> [CPTUpdStart] : DownloadFile
+
+[CPTUpdStart] --> () "/DownloadFile" : LaunchPTUpdateProcess, \nShellExecuteEx
+
+[CCheckForUpdateFileDown] --> [CPTUpdDownUI] : StartDownloadFile
+}
+
+package "ptONIUI" {
+() "IPTSettingModule"
+}
+
+[ieatgpc]
+
+package "ptFunc" {
+() "IPTMgr"
+() "IPTSetting"
+() "IPTMeeting"
+() "IPTUpdate"
+
+() "IPTSetting" --> [CPTSetting]
+[CPTSetting] --> () "IPTSettingModule"
+
+() "IPTUpdate" --> [CPTUpdate]
+
+() "IPTMeeting" --> [CPTMeeting]
+[CPTMeeting] --> [CExeMeeting] : Start
+
+[CExeMeeting] --> [ieatgpc] : GpcStdDownload
+[ieatgpc] --> [CExeMeeting] : OnGpcDownload download gpcini file
+
+[CPTUpdate] --> () "/CheckVersion"
+}
+
+package "ptService" {
+() "ISetting"
+[CUpdate]
+}
+
+() "ISetting" --> () "IPTSetting" : GeneralCall_Setting
+
+package "ptWBXOIURL" {
+() "CWbxOI3URLObject"
+() "IWbxOI3URLSink"
+() "CWbxOI3FileObject"
+note bottom of "CWbxOI3FileObject" : use WinInet to download file
+}
+
+[CCheckForUpdateFileNew] --> () "CWbxOI3URLObject" : use Get
+() "IWbxOI3URLSink" --> [CCheckForUpdateFileNew] : URLReturn
+
+[CCommItem] --> () "ISetting" : GeneralCall
+
+[CPTUpdDownUI] --> () "CWbxOI3FileObject" : Download
+() "IWbxOI3URLSink" --> [CPTUpdDownUI] : URLReturn
+@enduml

@@ -1,0 +1,34 @@
+@startuml
+
+actor User
+
+box "CiscoWebExStart"
+
+participant CiscoWebExStartMain
+participant CWSApp
+participant CMainFrame
+participant CWSGPCWrapper
+
+end box
+
+== Create IO Thread ==
+
+User-> CMainFrame : Create
+Win32 -> CMainFrame : OnCreate
+activate CMainFrame
+CMainFrame --> CWSApp : CreateStdIOThread
+CWSApp --> CWSApp : StartStdIORead
+CWSApp --> Win32 : CreateThread
+note over CWSApp, Win32 : ReadStdIOThread
+deactivate CMainFrame
+
+== Read data from channel ==
+
+Win32 --> CWSApp : ReadStdIOThread
+CWSApp --> CWSApp : ReadStdIO
+activate CWSApp
+CWSApp --> Win32 : GetStdHandle(STD_INPUT_HANDLE)
+
+deactivate CWSApp
+
+@enduml

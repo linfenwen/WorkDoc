@@ -1,0 +1,30 @@
+@startuml
+
+class CClientReleaseInfo {
++ CClientReleaseInfo()
++ CClientReleaseInfo(const string& strBuildNumber, const string& strVersion, const string& strReleaseOrder, const string& tstrDownloadUrl)
++ CClientReleaseInfo(const CClientReleaseInfo& other)
++ CClientReleaseInfo& operator=(const CClientReleaseInfo& other)
+
++ string GetBuildeNumber()
++ string GetVersion()
++ string GetReleaseOrder()
++ string GetDownloadUrl()
+
+# string m_strBuildNumber
+# string m_strVersion
+# string m_strReleaseOrder
+# string m_strDownloadURL
+}
+
+class CCompatibleClients {
++ bool Parse(string strJson)
++ void GetClientReleaseInfo(vector& vec)
+
+# vector m_vecClientReleaseInfo
+}
+
+CCompatibleClients --> "JSON::Reader"
+CCompatibleClients "1" *-- "N" CClientReleaseInfo
+
+@enduml
