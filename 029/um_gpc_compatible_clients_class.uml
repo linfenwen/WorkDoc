@@ -2,29 +2,85 @@
 
 class CClientReleaseInfo {
 + CClientReleaseInfo()
-+ CClientReleaseInfo(const string& strBuildNumber, const string& strVersion, const string& strReleaseOrder, const string& tstrDownloadUrl)
++ CClientReleaseInfo(const string& strBuildNumber, const string& strDisplayVersion, const string& strVersion, const string& strReleaseOrder, const string& tstrDownloadUrl)
 + CClientReleaseInfo(const CClientReleaseInfo& other)
 + CClientReleaseInfo& operator=(const CClientReleaseInfo& other)
 
 + string GetBuildeNumber()
++ string GetDisplayVersion()
 + string GetVersion()
 + string GetReleaseOrder()
 + string GetDownloadUrl()
 
 # string m_strBuildNumber
+# string m_strDisplayVersion
 # string m_strVersion
 # string m_strReleaseOrder
 # string m_strDownloadURL
 }
 
-class CCompatibleClients {
+class CGpcCompatibleClientsDecode {
 + bool Parse(string strJson)
 + void GetClientReleaseInfo(vector& vec)
 
 # vector m_vecClientReleaseInfo
 }
 
-CCompatibleClients --> "JSON::Reader"
-CCompatibleClients "1" *-- "N" CClientReleaseInfo
+CGpcCompatibleClientsDecode ..> "JSON::Reader"
+CGpcCompatibleClientsDecode "1" *-- "N" CClientReleaseInfo
+
+
+enum eCompatibleStatus {
+	E_COMPATIBLE_STATUS_ERROR = 0,
+	E_RUN_DIRECT_WITHOUT_UPGRADE,
+	E_RUN_DIRECT_WITH_BACKGROUND_UPGRADE,
+	E_LOCAL_UPGRADE_WITHOUT_UPGRADE,
+	E_LOCAL_UPGRADE_WITH_BACKGROUND_UPGRADE,
+
+}
+
+class CProductVersionHelp {
+
++ CProductVersionHelp(const string& strVersion)
++ int operator>= (const CProductVersionHelp& version)
++ bool SetStringVersion(const string& strVersion)
+
+# bool	m_bVersionFormatError;
+# int	m_nVersionField0;
+# int	m_nVersionField1;
+# int	m_nVersionField2;
+# int	m_nVersionField3;
+}
+
+class CGpcCompatibleClients {
++ void SetGpcUpgradeManagement(bool bUpgrade)
++ bool SetGpcCompatibleClients(const string& strJson)
++ bool SetLocalDisplayVersion(const string& strFirstVersion, const string& strSecondVersion)
++ bool SetLocalFirstDisplayVersion(const string& strVersion)
++ bool SetLocalSecondDisplayVersion(const string& strVersion)
+
++ int GetCompatibleStatus()
++ string GetDownloadLink()
++ string GetCompatibleDownloadLink()
+
+# bool HandleGpcCompatibleClients(const string& strJson)
+# bool IsVersionCompatible(const CProductVersionHelp& version)
+# void HandleCompatibleStatus()
+
+# bool							m_bGpcUpgradeManagement;
+# eCompatibleStatus				m_eCompatibleStatus;
+# string						m_strCompatibleDownloadLink;
+
+# CProductVersionHelp			m_LocalFirstDisplayVersion;
+# CProductVersionHelp			m_LocalSecondDisplayVersion;
+
+# CClientReleaseInfo			m_newestClientReleaseInfo;
+# vecClientReleaseInfo			m_vecClientReleaseInfo;
+}
+
+CGpcCompatibleClients ..> CGpcCompatibleClientsDecode
+CGpcCompatibleClients  *-->  eCompatibleStatus
+CGpcCompatibleClients *--> CClientReleaseInfo
+CGpcCompatibleClients *--> CProductVersionHelp
 
 @enduml

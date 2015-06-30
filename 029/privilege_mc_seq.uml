@@ -1,0 +1,77 @@
+@startuml
+
+
+actor atarm
+
+
+box "WebExMgr"
+
+participant CMCServiceMgr
+participant CMCPDUMgr
+participant CMCPrivilegeMgr
+participant CMCDocViewSessionMgr
+end box
+
+box "UIFrame"
+
+participant "CPfwMainFrame"
+
+end box
+
+box "ServiceMgr"
+
+participant "CSmDocViewSessionMgr"
+
+end box
+
+box "AtConfLib"
+
+participant CAtConfAgent 
+
+end box
+
+box "componentmgr"
+
+participant CPcmDocViewMgr
+participant CPcmPdTabCtrlEx
+
+end box
+
+box "UILib"
+
+participant CWbxTabCtrlPD
+
+end box
+
+atarm -> CAtConfAgent : on_message_indication
+CAtConfAgent -> CMCServiceMgr : OnDataIndication
+CMCServiceMgr -> CMCPDUMgr : OnDataIndication
+activate CMCPDUMgr
+CMCPDUMgr -> CMCPDUMgr : HandlePrivilegeChangePDU
+
+CMCServiceMgr -> CPfwMainFrame : EndMenuPanel
+CMCServiceMgr -> CMCPrivilegeMgr : OnPrivilegeChange
+deactivate CMCPDUMgr
+
+
+activate CMCPrivilegeMgr
+CMCPrivilegeMgr -> CMCPrivilegeMgr : ApplyPrivilege
+CMCPrivilegeMgr -> CMCPrivilegeMgr : SetDocviewPrivilege
+CMCServiceMgr -> CMCDocViewSessionMgr : SetDocviewPririlege
+CMCDocViewSessionMgr -> CSmDocViewSessionMgr : SetDocviewPrivilege
+deactivate CMCPrivilegeMgr
+
+CSmDocViewSessionMgr -> CPcmDocViewMgr : SetSessionCtrlInfo
+CSmDocViewSessionMgr -> CSmDocViewSessionMgr : CheckQSStatus
+activate CPcmDocViewMgr
+CPcmDocViewMgr -> CPcmDocViewMgr : OnPrivilegeChanged
+CPcmDocViewMgr -> CPcmDocViewMgr : UpdateToolbar
+activate CPcmDocViewMgr
+CPcmDocViewMgr -> CPcmDocViewMgr : NotifyToolbarUpdate
+deactivate CPcmDocViewMgr
+CPcmDocViewMgr -> CPcmPdTabCtrlEx : GetTabCtrl
+CPcmDocViewMgr -[#green]> CWbxTabCtrlPD : EnableCanClose
+deactivate CPcmDocViewMgr
+
+
+@enduml

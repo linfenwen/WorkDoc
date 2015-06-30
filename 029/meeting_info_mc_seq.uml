@@ -1,0 +1,57 @@
+@startuml
+
+
+actor atarm
+
+
+
+box "WebExMgr"
+
+participant CMCServiceMgr
+
+end box
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CSmDocViewSessionMgr
+
+end box
+
+box "UILib"
+
+participant "CWbxTabCtrlPD"
+
+end box
+
+box "UIFrame"
+
+participant CPfwTabCtrlPD
+
+end box
+
+box "cm"
+
+participant CPcmDocViewMgr
+participant CPcmPdTabCtrlEx
+
+end box
+
+box "AtConfLib"
+
+participant CAtConfAgent 
+
+end box
+
+atarm -> CAtConfAgent : on_conference_announce_presence_confirm
+CAtConfAgent -> CMCServiceMgr : OnConfJoinConfirm
+CMCServiceMgr -> CPfwServiceMgr : InitializeUI
+CPfwServiceMgr -> CSmDocViewSessionMgr : InitializeUI
+CSmDocViewSessionMgr -> CPcmDocViewMgr : CreateTabCtrl
+CPcmDocViewMgr -> CPcmPdTabCtrlEx : Create
+CPcmDocViewMgr -> CPcmDocViewMgr : AddInfoTab
+CPcmDocViewMgr -> CPcmPdTabCtrlEx : AddTabItem
+CPcmPdTabCtrlEx -> CPfwTabCtrlPD : AddTabItem
+CPfwTabCtrlPD -> CWbxTabCtrlPD : AddTabItem
+
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+
+actor atarm
+
+
+box "WebExMgr"
+
+participant CMCServiceMgr
+
+end box
+
+
+box "UIFrame"
+
+participant CPfwModelBase
+
+end box
+
+box "AtConfLib"
+
+participant CAtConfAgent 
+participant CAtConfManager
+participant CAtUser
+
+end box
+
+atarm -> CAtConfAgent : on_conference_roster_report_indication
+activate CAtConfAgent
+CAtConfAgent -> CAtConfAgent : AddUser
+activate CAtConfAgent
+CAtConfAgent -> CAtConfManager : AddUser
+CAtConfManager -> CMCServiceMgr : OnUserChangeIndication
+CMCServiceMgr -> CMCServiceMgr : OnUserChangeIndicationByService
+CMCServiceMgr -> CPfwModelBase : NotifyObservers(MC_MODEL_WPARAM_USER_ADD)
+deactivate CAtConfAgent
+CAtConfAgent -> CAtConfAgent : RemoveUser
+CAtConfAgent -> CAtConfAgent : ModifyUser
+deactivate CAtConfAgent
+
+
+@enduml

@@ -31,4 +31,5 @@ CWSApp --> Win32 : GetStdHandle(STD_INPUT_HANDLE)
 
 deactivate CWSApp
 
+
 @enduml

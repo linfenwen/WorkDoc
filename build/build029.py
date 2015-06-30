@@ -56,11 +56,9 @@ def GetUnCommitedFiles(strFiles) :
 		fileList = strFiles.split('\n')
 		for file in fileList :
 			f1 = file[3:]
-			if 0 > f1.rfind('.uml') :
-				continue
-			
-			f2 = strBaseDir + f1[3:]
-			retFileList.append(f2)
+			if (f1.rfind('.uml') >= 0 ) or (f1.rfind('.dot') >= 0) :
+				f2 = strBaseDir + f1[3:]
+				retFileList.append(f2)
 		
 		return retFileList
 	except Exception, e:
@@ -70,13 +68,21 @@ def GetUnCommitedFiles(strFiles) :
 
 def GenerateSvg(strUml) :
 	try:
-		cmd = 'java -jar /usr/bin/plantuml.jar -tsvg %s' %(strUml)
-		out = executeCmd(cmd)
 		
+		out = None
+		retSvg = strUml[0: (len(strUml)-4)] + '.svg'
+		
+		if (strUml.rfind('.dot') >= 0 ) :
+			cmd = 'dot %s -Tsvg -o %s' %(strUml, retSvg)
+		elif (strUml.rfind('.uml') >= 0 ) :
+			cmd = 'java -jar /usr/bin/plantuml.jar -tsvg %s' %(strUml)
+		else :
+			return None
+		
+		out = executeCmd(cmd)
 		if None == out :
 			return None
 		
-		retSvg = strUml[0: strUml.rfind('.uml')] + '.svg'
 		#print('GenerateSvg',retSvg, type(retSvg))
 		return retSvg
 	except Exception, e:

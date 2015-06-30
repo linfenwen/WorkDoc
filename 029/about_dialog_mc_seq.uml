@@ -1,0 +1,76 @@
+@startuml
+
+
+actor User
+actor atmgr
+
+
+box "WebExMgr"
+
+participant WebExMgrAPI
+participant CWebExMgrCtl
+participant CMCUIMgr
+participant CMCDocshowMgr
+participant CMCDocshowXmlParse
+participant CAbout
+participant CMCServiceMgr
+
+end box
+
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CConfContextMgr
+participant CContextMgrParamMgr
+participant CConfContextParam
+participant CCiscoWebExUpdateProxy
+
+end box
+
+== Docshow clientparam Update Client Version ==
+
+atmgr -> WebExMgrAPI : NameValue(clientparam)
+WebExMgrAPI -> CWebExMgrCtl : MC_NameValue
+CWebExMgrCtl -> CMCDocshowMgr : SetDocshowXmlString
+CMCDocshowMgr -> CMCDocshowXmlParse : SetDocshowXmlString
+CWebExMgrCtl -> CMCDocshowMgr : ProcessParameters
+activate CMCDocshowMgr
+CMCDocshowMgr -> CMCDocshowMgr : SetHardcodeParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessSiteParam
+CMCDocshowMgr -> CConfContextMgr : SetAboutDlgClientVersion($AboutDlgClientVersion)
+CMCDocshowMgr -> CMCDocshowMgr : ProcessMeetingParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessPDParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessASParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessUserParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessMeetingTypeParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessTelephonyParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessAudioVideoParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessNBRParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessSecurityParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessURLsParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessWebACDParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessNewJMAParam
+deactivate CMCDocshowMgr
+
+== Update Management update Client Version ==
+
+CPfwServiceMgr -> CPfwServiceMgr : InitializeUI
+CPfwServiceMgr -> CCiscoWebExUpdateProxy : Init
+CCiscoWebExUpdateProxy -> CCiscoWebExUpdateProxy : ReadCurrentClientVersion
+CPfwServiceMgr -> CConfContextMgr : SetAboutDlgClientVersion
+
+== User click menu **About Cisco WebEx Meeting Center**, popup about dialog ==
+
+User -> CMCUIMgr : OnHelpAbout
+CMCUIMgr -> CAbout : Create
+CAbout -> CAbout : OnInitDialog
+CAbout -> CAbout : InitializeVersionInfo
+CAbout -> CConfContextMgr : GetAboutDlgClientVersion($AboutDlgClientVersion)
+CConfContextMgr -> CContextMgrParamMgr : GetParamString
+CContextMgrParamMgr -> CContextMgrParamMgr : GetParam
+CContextMgrParamMgr -> CConfContextParam : GetValue
+CMCUIMgr -> CMCServiceMgr : ShowModelessDialog
+CMCServiceMgr -> CPfwServiceMgr : ShowModelessDialog
+
+@enduml
