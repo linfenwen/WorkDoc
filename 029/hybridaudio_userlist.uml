@@ -1,0 +1,136 @@
+@startuml
+
+box "WebexMgr"
+
+participant "CMCUserMgr"
+participant "CMCHybridAudioMgr"
+
+end box
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CPfwModelBase
+participant CSmDefUserMgr2
+participant CSmHybridAudioMgr
+
+end box
+
+box "HybridCli"
+
+participant IHybridClientSink
+participant CHybridClientMgr
+participant CHCCTelephoneService
+
+
+end box
+
+box "dtappcli"
+
+participant CDTAppClient
+participant IDTAppClientSink
+participant CDTAppPDU_Data_HyASNNTY
+participant CHCCApeRecord
+end box
+
+box "ARM"
+
+participant IArmApeSink
+
+end box
+
+== Receieve UserList From ARM ==
+IArmApeSink <-] : ApeRosterChanged
+IArmApeSink -> CDTAppClient : ApeRosterChanged
+CDTAppClient -> CDTAppClient : OnRostChange
+
+activate CDTAppClient
+
+alt "M"
+CDTAppClient -> CDTAppClient : InitializeUserList
+note left : m_pUserList manage user list ,include add, modify and remove
+CDTAppClient -> IDTAppClientSink : OnUpdateUserList
+IDTAppClientSink -> CHCCTelephoneService : OnUpdateUserList
+CHCCTelephoneService -> CHybridClientMgr : SetUserList
+note right : CHybridClientMgr just hold the point of m_pUserList
+else "L"
+CDTAppClient -> CDTAppClient : UpdateUserList
+note left : m_pUserList manage user list ,include add, modify and remove
+end
+deactivate CDTAppClient
+
+== Recieve ASN PDU ==
+
+IArmApeSink <-] : ApeDataIndication
+IArmApeSink -> CDTAppClient : ApeDataIndication
+
+alt "DTApp_Evt_HyASN"
+CDTAppClient -> CDTAppPDU_Data_HyASNNTY : Decode
+CDTAppClient -> IDTAppClientSink : OnASNReport
+IDTAppClientSink -> CHCCTelephoneService : OnASNReport
+activate CHCCTelephoneService
+
+alt "no user is talking (attendeeID1 == attendeeID2 == attendeeID3 == 0)"
+
+CHCCTelephoneService -> CHCCTelephoneService : StopASN
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHybridClientMgr : GetASNUserCount
+
+loop ASNUserCount
+CHCCTelephoneService -> CHCCTelephoneService : FlashUser
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCApeRecord : ~MASK_PRI_ASN
+CHCCTelephoneService -> CHCCTelephoneService : RosterToService
+CHCCTelephoneService -> IHybridClientSink : OnRosterChanged
+IHybridClientSink -> CMCHybridAudioMgr : OnRosterChanged
+
+activate CMCHybridAudioMgr
+CMCHybridAudioMgr -> CSmHybridAudioMgr : OnRosterChanged
+CSmHybridAudioMgr -> CMCHybridAudioMgr : OnAddUser
+CMCHybridAudioMgr -> CSmHybridAudioMgr : OnAddUser
+CSmHybridAudioMgr -> CSmHybridAudioMgr : OnAddVOIPUser
+CSmHybridAudioMgr -> CMCUserMgr : UpdateUser
+
+activate CMCUserMgr
+CMCUserMgr -> CSmDefUserMgr2 : UpdateUser
+CMCHybridAudioMgr -> CPfwModelBase : NotifyObservers
+note right : MC_MODEL_WPARAM_HYBRID_ROSTER_CHANGE
+deactivate CMCUserMgr
+
+deactivate CMCHybridAudioMgr
+
+deactivate CHCCTelephoneService
+end
+
+CHCCTelephoneService -> CHCCTelephoneService : HandleSVCASN
+CHCCTelephoneService -> IHybridClientSink : OnASNReport
+IHybridClientSink -> CSmHybridAudioMgr : OnASNReport
+CSmHybridAudioMgr -> CPfwServiceMgr : OnASNReport
+CPfwServiceMgr -> CPfwServiceMgr : ApplyNewActiveSpeaker
+deactivate CHCCTelephoneService
+
+else "some user is talking"
+CHCCTelephoneService -> CHCCTelephoneService : StartASN
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCTelephoneService : FlashUser(False)
+CHCCTelephoneService -> CMCHybridAudioMgr : OnRosterChanged
+CHCCTelephoneService -> CHCCTelephoneService : FlashUser(True)
+deactivate CHCCTelephoneService
+end
+
+CHCCTelephoneService -> CHCCTelephoneService : SaveASNUser
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHybridClientMgr : CleanASNUser
+
+loop "3 attendeeID and m_nVOIPASNCnt"
+CHCCTelephoneService -> CHybridClientMgr : AddASNUser
+end
+
+deactivate CHCCTelephoneService
+
+end
+
+@enduml

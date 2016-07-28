@@ -1,0 +1,65 @@
+@startuml
+box "ConferencMgr"
+
+participant IAtConfManagerSink
+participant CAtConfManager
+
+end box
+
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CSmCSIMgr
+participant CSmCacheMgr
+
+end box
+
+box "WebexMgr"
+
+participant CMCServiceMgr
+
+end box
+
+== Allocate Audio Cache ==
+
+[--> IAtConfManagerSink : OnConfJoinConfirm
+IAtConfManagerSink --> CPfwServiceMgr : OnConfJoinConfirm
+CPfwServiceMgr --> CMCServiceMgr : OnConfJoinConfirm
+CMCServiceMgr --> CSmCSIMgr : SetServiceMgr
+CMCServiceMgr --> CSmCSIMgr : OnConfJoinConfirm
+CSmCSIMgr --> CSmCacheMgr : OnConfJoinConfirm
+note right : eAllocCacheHandle, push to m_wkQueue
+
+[--> CPfwServiceMgr : OnIdle
+CPfwServiceMgr --> CSmCSIMgr : OnIdle
+CSmCSIMgr --> CSmCacheMgr : OnIdle
+CSmCacheMgr --> CSmCacheMgr : AllocCacheHandle
+note right : Allocate Audio Cache
+CSmCacheMgr --> CAtConfManager : NamehandleAllocateRequest
+
+[--> IAtConfManagerSink : OnNamehandleAllocateConfirm
+IAtConfManagerSink --> CMCServiceMgr : OnNamehandleAllocateConfirm
+CMCServiceMgr --> CPfwServiceMgr : OnNamehandleAllocateConfirm
+CPfwServiceMgr --> CSmCSIMgr : OnNamehandleAllocateConfirm
+CSmCSIMgr --> CSmCacheMgr : OnNamehandleAllocateConfirm
+note right : m_dwCacheHandle = pNameHandle->handle_value
+
+== Subscribe Audio Cache ==
+[--> CPfwServiceMgr : OnIdle
+CPfwServiceMgr --> CSmCSIMgr : OnIdle
+CSmCSIMgr --> CSmCSIMgr : SubscribeFiles
+CSmCSIMgr --> CSmCSIMgr : SubscribeCacheFile(CSITypeAudio)
+CSmCSIMgr --> CSmCacheMgr : Add(eSubscribe)
+note right : eSubscribe, push to m_wkQueue
+CSmCSIMgr --> CSmCacheMgr : OnIdle
+CSmCacheMgr --> CSmCacheMgr : Subscribe
+CSmCacheMgr --> CAtConfManager : CacheRetrieveRequestEx
+note right : send subscribe request out
+
+[--> IAtConfManagerSink : OnCacheRetrieveConfirmEx
+IAtConfManagerSink --> CMCServiceMgr : OnCacheRetrieveConfirmEx
+CMCServiceMgr --> CPfwServiceMgr : OnCacheRetrieveConfirmEx
+CPfwServiceMgr --> CSmCSIMgr : OnCacheRetrieveConfirmEx
+CSmCSIMgr --> CSmCacheMgr : OnCacheRetrieveConfirmEx
+@enduml

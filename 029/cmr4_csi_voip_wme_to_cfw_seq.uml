@@ -1,0 +1,78 @@
+@startuml
+
+box "ConferencMgr"
+
+participant CAtConfManager
+
+end box
+
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CSmHybridAudioMgr
+participant CSmCSIMgr
+participant CSmCacheMgr
+
+end box
+
+
+box "HybridCli"
+
+participant IHybridClientSink
+participant CHCCVoIPService
+
+
+end box
+
+box "mac.dll"
+
+participant CMMHybridClientSink
+
+end box
+
+CMMHybridClientSink <-] : OnSessionStatus
+CMMHybridClientSink -> CHCCVoIPService : OnSessionStatus
+note right : WEBEX_AUDIO_OWN_CSI_UPDATE
+CHCCVoIPService -> CHCCVoIPService : OnAudioNotify
+activate CHCCVoIPService
+CHCCVoIPService -> CHCCVoIPService : GetHybridSink
+note right : Get IHybridClientSink
+CHCCVoIPService -> IHybridClientSink : OnAudioNotify
+deactivate CHCCVoIPService
+
+IHybridClientSink -> CSmHybridAudioMgr : OnAudioNotify
+note right : WEBEX_AUDIO_OWN_CSI_UPDATE
+CSmHybridAudioMgr -> CPfwServiceMgr : UpdateMyselfCSI
+activate CPfwServiceMgr
+CPfwServiceMgr -> CAtConfManager : GetCurrentUser
+CPfwServiceMgr -> CPfwServiceMgr : UpdateMyselfCSI2Cache
+deactivate CPfwServiceMgr
+
+CPfwServiceMgr -> CSmCSIMgr : UploadMyCSIInfoToCB
+activate CSmCSIMgr
+CSmCSIMgr -> CSmCSIMgr : BackupMyCSIInfo
+note right : save to auCacheInfo
+CSmCSIMgr -> CSmCSIMgr : SendOutCacheInfoToCB
+deactivate CSmCSIMgr
+
+CSmCSIMgr -> CSmCacheMgr : Add
+note right : eSetCacheData, push to m_wkQueue
+
+== Send CSI to CB==
+[-> CSmCacheMgr : OnIdle
+note right : CSI_COMMON_CACHE_INFO
+CSmCacheMgr -> CSmCacheMgr : SetCacheData
+note right : eSetCacheData, pop from m_wkQueue
+activate CSmCacheMgr
+CSmCacheMgr -> CSmCacheMgr : PackCacheData
+CSmCacheMgr -> CSmCacheMgr : SendCacheData
+
+activate CSmCacheMgr
+CSmCacheMgr -> CPfwServiceMgr : GetConfMgr
+CSmCacheMgr -> CAtConfManager : CacheActionRequestEx
+deactivate CSmCacheMgr
+
+deactivate CSmCacheMgr
+
+@enduml

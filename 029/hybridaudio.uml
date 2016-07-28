@@ -1,0 +1,160 @@
+@startuml
+
+box "WebExMgr"
+
+participant CMCQuickStartSessionMgr
+participant CMCHybridAudioMgr
+
+end box
+
+box "ServiceMgr"
+
+participant CSmQuickStartSessionMgr
+participant CSmAudioStatusWrapper
+participant CSmAudioPhoneWrapper
+participant CSmHybridAudioMgr
+
+end box
+
+box "cm"
+
+participant CPcmComponentBase
+participant CPcmHybridAudioMgr
+participant HybridAudioExportedProc
+
+end box
+
+
+box "HybridCli"
+
+participant hybridaudioAPI
+participant CHybridClientCtrl
+participant CHybridClientMgr
+participant CHCCTelephoneService
+participant CHCCVoIPService
+participant CHCCFailoverAgent
+participant CHybridVoIPModule
+participant CJoinCommand
+
+end box
+
+box "dtappcli"
+
+participant CDTAppClient
+participant IDTAppClientSink
+
+end box
+
+box "ARM"
+
+participant IArmNodeController
+
+end box
+
+== Load hybridaudio.dll ==
+
+CSmHybridAudioMgr -> CSmHybridAudioMgr : SetDllName
+note left : HYBRIDAUDIO_MODULE_NAME
+
+activate CSmHybridAudioMgr
+[-> CSmHybridAudioMgr : Initialize
+create CPcmHybridAudioMgr
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : new
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : SetDllPath
+CSmHybridAudioMgr -> CPcmComponentBase : Initialize
+
+activate CPcmComponentBase
+CPcmComponentBase -> CPcmComponentBase : InstanceModule
+CPcmComponentBase -> CPcmHybridAudioMgr : HookExportedProc
+create HybridAudioExportedProc
+CPcmHybridAudioMgr -> HybridAudioExportedProc : new
+note left
+     ATNewInstance
+     ATDeleteInstance
+     HCC_Initialize
+     HCC_Command
+     HCC_SetParam
+     HCC_GetParam
+end note
+deactivate CPcmComponentBase
+
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : Instance
+CPcmHybridAudioMgr -> HybridAudioExportedProc : pfnATNewInstanceProce
+HybridAudioExportedProc -> hybridaudioAPI : ATNewInstance
+hybridaudioAPI -> CHybridClientCtrl : Instance
+
+create CHybridClientMgr
+CHybridClientCtrl -> CHybridClientMgr : new
+
+create CHCCTelephoneService
+CHybridClientMgr -> CHCCTelephoneService : new
+
+create CDTAppClient
+CHCCTelephoneService -> CDTAppClient : new
+
+create CHCCVoIPService
+CHybridClientMgr -> CHCCVoIPService : new
+
+create CHybridVoIPModule
+CHCCVoIPService -> CHybridVoIPModule : new
+
+create CHCCFailoverAgent
+CHybridClientMgr -> CHCCFailoverAgent : new
+
+deactivate CSmHybridAudioMgr
+
+
+== Initialize call HCC_Initialize ==
+
+CMCHybridAudioMgr -> CSmHybridAudioMgr : OnSessionCreateIndication
+CSmHybridAudioMgr -> CSmHybridAudioMgr : OnSessionCreateIndication
+CSmHybridAudioMgr -> CSmHybridAudioMgr : OnSessionCreateConfirm
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : EnrollControl
+CPcmHybridAudioMgr -> hybridaudioAPI : HCC_Initialize
+hybridaudioAPI -> CHybridClientCtrl : Initialize
+CHybridClientCtrl -> CHybridClientMgr : Initialize
+CHybridClientMgr -> CHCCTelephoneService : Initialize
+CHCCTelephoneService -> CDTAppClient : Initialize
+
+
+== Show Audio Connection Dialog ==
+[-> CMCQuickStartSessionMgr : OnQsAction
+CMCQuickStartSessionMgr -> CSmQuickStartSessionMgr : ShowJoinAudioDlg
+note left : NEWQSID_AUDIO_CONF
+CSmQuickStartSessionMgr -> CSmHybridAudioMgr : ShowHybridAudioSelectDlg
+CSmHybridAudioMgr -> CSmAudioStatusWrapper : ShowAudioDialog
+
+
+== Call me ==
+
+[-> CSmAudioStatusWrapper : CallPhone
+CSmAudioStatusWrapper -> CSmAudioPhoneWrapper : Call
+CSmAudioPhoneWrapper -> CSmHybridAudioMgr : Call 
+note left : By ITelephoneFunc
+CSmHybridAudioMgr -> CSmHybridAudioMgr : CallMeAtPhoneNumber
+CSmHybridAudioMgr -> CSmHybridAudioMgr : JoinWithTelephone
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : JoinConference
+CPcmHybridAudioMgr -> hybridaudioAPI : HCC_Command
+hybridaudioAPI -> CHybridClientCtrl : DispatchCommand
+CHybridClientCtrl -> CHybridClientMgr : DispatchCommand
+CHybridClientMgr -> CJoinCommand : Execute
+CJoinCommand -> CHCCTelephoneService : JoinSession
+CHCCTelephoneService -> CDTAppClient : ConnectRequest
+CDTAppClient -> CDTAppClient : SendData
+CDTAppClient -> IArmNodeController : ApeSendData
+
+== Recieve ASN PDU ==
+
+[-> CDTAppClient : ApeDataIndication
+CDTAppClient -> IDTAppClientSink : OnASNReport
+IDTAppClientSink -> CHCCTelephoneService : OnASNReport
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCTelephoneService : StartASN
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCTelephoneService : FlashUser(False)
+CHCCTelephoneService -> CMCHybridAudioMgr : OnRosterChanged
+CHCCTelephoneService -> CHCCTelephoneService : FlashUser(True)
+deactivate CHCCTelephoneService
+CHCCTelephoneService -> CHCCTelephoneService : SaveASNUser
+deactivate CHCCTelephoneService
+@enduml

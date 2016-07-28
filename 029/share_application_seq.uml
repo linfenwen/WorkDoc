@@ -1,0 +1,126 @@
+@startuml
+
+actor "User"
+
+box "WebExMgr"
+participant "CQuickStartDlgPresenter"
+participant "CMCQuickStartSessionMgr"
+participant "CMCServiceMgr"
+participant "CMCUIMgr"
+participant "CMCAppShareSessionMgr"
+end box
+
+
+box "ServiceMgr"
+participant "CSmDefUIMgr"
+participant "CSmAppShareSessionMgr"
+participant "CPfwServiceMgr"
+participant "CSmDocViewSessionMgr"
+end box
+
+box "AtConfLib"
+
+participant "CAtConfManager"
+participant "CAtConfAgent"
+
+end box
+
+
+box "UIFrame"
+
+participant "CPfwMainFrame"
+
+end box
+
+box "cm"
+
+participant "CPcmAppShareMgr"
+
+end box
+
+box "UnifiedAppSharing"
+
+participant "IRunningAppDialog"
+participant "IAppDialogSink"
+participant "IAppDialog"
+
+end box
+
+box "atasctrl"
+
+participant "ASAPI"
+participant "ServiceInfoProc"
+
+end box
+
+box "ARM"
+
+participant "GCCProvider"
+participant "GCC_Node_Controller_SAP_Sink"
+
+end box
+
+
+"User" -> "CQuickStartDlgPresenter" : OnShare
+"CQuickStartDlgPresenter" -> "CMCQuickStartSessionMgr" : OnQsAction [ style=dotted ]
+"CMCQuickStartSessionMgr" -> "CMCServiceMgr" : m_mcUiMgr
+"CMCQuickStartSessionMgr" -> "CMCUIMgr" : GetMainFrameWnd
+"CMCQuickStartSessionMgr" -> "CPfwMainFrame" : OnWindowsMsg
+"CPfwMainFrame" -> "CMCUIMgr" : OnWindowsMsg
+"CMCUIMgr" -> "CMCUIMgr" : OnShareApplication
+"CMCUIMgr" -> "CMCUIMgr" : LaunchApplicationShare
+"CMCUIMgr" -> "CMCServiceMgr" : m_mcAppShareMgr
+"CMCUIMgr" -> "CMCAppShareSessionMgr" : QuitShareSession
+"CMCUIMgr" -> "CMCAppShareSessionMgr" : ShowRunningAppDialog
+"CMCAppShareSessionMgr" -> "CPcmAppShareMgr" : ShowRunningAppDialog
+"CPcmAppShareMgr" -> "IRunningAppDialog" : ShowWindow
+
+"User" -> "IAppDialogSink" : Double Click App
+"IAppDialogSink" -> "CPcmAppShareMgr" : OnAppDialogEvent
+"CPcmAppShareMgr" -> "IAppDialog" : GetSelectedItem
+"CPcmAppShareMgr" -> "CPcmAppShareMgr" : SetCurrentSelectedHwnd
+
+... Timer ...
+
+[-> "CSmAppShareSessionMgr" : OnIdle
+"CSmAppShareSessionMgr" -> "CSmAppShareSessionMgr" : HandleAppDialogEvent
+"CSmAppShareSessionMgr" -> "CPcmAppShareMgr" : GetCurrentSelectedHwnd
+"CSmAppShareSessionMgr" -> "CPcmAppShareMgr" : DestroyRunningAppDialog
+"CSmAppShareSessionMgr" -> "CSmAppShareSessionMgr" : QuitShareSession
+"CSmAppShareSessionMgr" -> "CSmAppShareSessionMgr" : ShareApp
+"CSmAppShareSessionMgr" -> "CPfwServiceMgr" : CreateSession
+"CPfwServiceMgr" -> "CAtConfManager" : CreateSession
+"CAtConfManager" -> "CAtConfAgent" : SessionCreate
+"CAtConfAgent" -[#green]> "GCCProvider" : session_create_request
+
+== Receive session create confirm message from networw ==
+
+"GCC_Node_Controller_SAP_Sink" -[#green]> "CAtConfAgent" : on_session_create_confirm
+"CAtConfAgent" -> "CAtConfManager" : OnSessionCreateConfirmEx
+"CAtConfManager" -> "CMCServiceMgr" : OnSessionCreateConfirm
+"CMCServiceMgr" -> "CPfwServiceMgr" : OnSessionCreateConfirm
+"CPfwServiceMgr" -> "CPfwServiceMgr" : GetSessionMgr
+"CPfwServiceMgr" -> "CMCAppShareSessionMgr" : OnSessionCreateConfirm
+"CMCAppShareSessionMgr" -> "CSmAppShareSessionMgr" : OnSessionCreateConfirm
+"CSmAppShareSessionMgr" -> "CSmAppShareSessionMgr" : CheckSection
+"CSmAppShareSessionMgr" -> "CSmAppShareSessionMgr" : StartAppShare
+"CSmAppShareSessionMgr" -> "CPcmAppShareMgr" : DestoryRunningAppDialog
+"CSmAppShareSessionMgr" -> "CSmAppShareSessionMgr" : CreatePresenterContainer
+"CSmAppShareSessionMgr" -> "CMCAppShareSessionMgr" : EnrollAppShareSession
+"CMCAppShareSessionMgr" -> "CPcmAppShareMgr" : SetRosterOption
+"CPcmAppShareMgr" -> "ASAPI" : ASSetRosterOption
+"CMCAppShareSessionMgr" -> "CSmAppShareSessionMgr" : EnrollAppShareSession
+"CSmAppShareSessionMgr" -> "CPcmAppShareMgr" : EnrollControl
+"CPcmAppShareMgr" -> "CPcmAppShareMgr" : SwitchApplication
+"CPcmAppShareMgr" -> "ASAPI" : ApSwitchApplication
+"CPcmAppShareMgr" -> "CPcmAppShareMgr" : RegisterServiceInfo
+"CPcmAppShareMgr" -> "ASAPI" : AsRegisterServiceInfo
+"CPcmAppShareMgr" -> "ASAPI" : ApSessionEnroll2
+"CPcmAppShareMgr" -> "CPcmAppShareMgr" : SelectAnnoColorSet
+"CPcmAppShareMgr" -> "ASAPI" : ApSelectColorSet
+"CPcmAppShareMgr" -> "CPcmAppShareMgr" : SetCurrentAnnotationColor
+"CPcmAppShareMgr" -> "ASAPI" : AsSetCurrentAnnotationColor
+"CSmAppShareSessionMgr" -> "CSmDocViewSessionMgr" : StartAS
+"ServiceInfoProc" -> "CSmAppShareSessionMgr" : OnCmMessageProc
+
+@enduml

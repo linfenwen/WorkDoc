@@ -1,0 +1,88 @@
+@startuml
+box "ConferencMgr"
+
+participant IAtConfManagerSink
+
+end box
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CSmCacheMgr
+participant ISmCacheUpdateSink
+participant CSmCSIMgr
+participant CSmHybridAudioMgr
+
+end box
+
+box "WebExMgr"
+
+participant CMCServiceMgr
+
+end box
+
+
+box "cm"
+
+participant CPcmHybridAudioMgr
+
+end box
+
+
+box "HybridCli"
+
+participant hybridAPI
+participant CHybridClientCtrl
+participant CHybridClientMgr
+participant CHCCVoIPService
+participant CHybridVoIPModule
+participant AudioExportedProc
+
+end box
+
+box "mac.dll"
+
+participant "macAPI"
+
+end box
+
+[-> IAtConfManagerSink : OnCacheRetrieveConfirmEx
+IAtConfManagerSink -> CMCServiceMgr : OnCacheRetrieveConfirmEx
+CMCServiceMgr -> CPfwServiceMgr : OnCacheRetrieveConfirmEx
+CPfwServiceMgr -> CSmCSIMgr : OnCacheRetrieveConfirmEx
+
+CSmCSIMgr -> CSmCacheMgr : OnCacheRetrieveConfirmEx
+note right : CACHE_APPEND
+CSmCacheMgr -> CSmCacheMgr : HandleRetriveData
+note right : CSI_COMMON_CACHE_INFO
+activate CSmCacheMgr
+ 
+CSmCacheMgr -> CSmCacheMgr : ParseCSIInfoXml
+CSmCacheMgr -> CSmCacheMgr : SaveIntoLocalCache
+deactivate CSmCacheMgr
+CSmCacheMgr -> ISmCacheUpdateSink : OnCacheDataUpdated
+ISmCacheUpdateSink -> CSmCSIMgr : OnCacheDataUpdated
+CSmCSIMgr -> CPfwServiceMgr : OnReceieveCSI
+activate CPfwServiceMgr
+CPfwServiceMgr -> CPfwServiceMgr : CalculateCSINodeID
+CPfwServiceMgr -> CPfwServiceMgr : OnUserCSIIndication
+activate CPfwServiceMgr
+CPfwServiceMgr -> CPfwServiceMgr : PackCSIInfo
+CPfwServiceMgr -> CPfwServiceMgr : GetSessionMgr
+note right : Get CSmHybridAudioMgr
+CPfwServiceMgr -> CSmHybridAudioMgr : SendAudioCSIInfo
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : SetParam
+deactivate CPfwServiceMgr 
+deactivate CPfwServiceMgr 
+
+CPcmHybridAudioMgr -> hybridAPI : HCC_SetParam
+hybridAPI -> CHybridClientCtrl : SetParam
+CHybridClientCtrl -> CHybridClientMgr : SetParam
+note right : HCC_PARAM_SET_RECEIVE_CSIS
+CHybridClientMgr -> CHybridClientMgr : HandleRecievedCMR4CSI
+CHybridClientMgr -> CHybridClientMgr : SendCSIItemToWME
+CHybridClientMgr -> CHCCVoIPService : SetCMR4CSI
+CHCCVoIPService -> CHybridVoIPModule : SetCMR4CSI
+CHybridVoIPModule -> AudioExportedProc : SetCMR4CSI
+AudioExportedProc -> macAPI : MmHSetCMR4CSI
+@enduml
