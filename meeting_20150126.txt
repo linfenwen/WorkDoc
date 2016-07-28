@@ -1,0 +1,12 @@
+1. Admin
+2. CopyXP
+3. How CExeMeeting generate docshow parameters
+
+
+{
+"CompatibleDesktopClients" : { "Client" : [ 
+{ "BuildNumber" : "1" ,
+ "Version" : "T30LSP1" ,
+ "ReleaseOrder" : "30100" ,
+ "DownloadLink" : "https:\\dileepvm.eng.webex.com\\client\\"} ] }
+}

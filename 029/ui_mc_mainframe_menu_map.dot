@@ -1,6 +1,6 @@
 
 digraph Menu {
-rankdir=TB;
+rankdir=LR;
 subgraph clusterUI {
 
 style="striped"

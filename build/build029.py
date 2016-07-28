@@ -145,6 +145,7 @@ if __name__ == '__main__' :
 		args = sys.argv[1:]
 		ret = git(args)
 		
+		print("aa",ret)
 		fileList = GetUnCommitedFiles(ret)
 		#print(fileList)
 		BuildSvgs(fileList)
