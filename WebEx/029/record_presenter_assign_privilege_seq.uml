@@ -1,0 +1,50 @@
+@startuml
+
+participant CMCUIMgr
+participant CMCFeatureMgr
+participant CMCPrivilegeDlg
+participant CPfwServiceMgr
+participant CMCPrivilegeMgr
+participant CMCPDUMgr
+
+==Show Participant privilege dialog==
+[-> CMCUIMgr : OnParticipantPrivileges
+CMCUIMgr -> CMCUIMgr : ShowPrivilegeInfo
+CMCUIMgr -> CMCFeatureMgr : ShowPrivilegeInfo
+CMCFeatureMgr -> CMCPrivilegeDlg : Create
+CMCFeatureMgr -> CPfwServiceMgr : ShowModelessDialog
+
+==User checked "Record a meeting" and Click Assign button==
+
+[-> CMCPrivilegeDlg : OnCommand
+opt IDC_RECORD
+note over CMCPrivilegeDlg : PRI_ATT_RECORD
+
+[-> CMCPrivilegeDlg : OnOK
+activate CMCPrivilegeDlg
+CMCPrivilegeDlg -> CMCPrivilegeDlg : SaveAllAttendeePrivilege
+
+CMCPrivilegeDlg -> CMCPrivilegeMgr : CalcAllPrivilege
+alt CalcAllPrivilege return True
+CMCPrivilegeDlg -> CMCPrivilegeDlg : SaveAllNewJoinAttendeePri
+activate CMCPrivilegeDlg
+loop m_arrNewUser.GetSize()
+alt CanSetUserPrivilege return True
+CMCPrivilegeDlg -> CMCPrivilegeMgr : SetAttendeePrivilege
+CMCPrivilegeMgr -> CMCPDUMgr : SendPrivilegeChangePDU
+note over CMCPrivilegeMgr, CMCPDUMgr : PDU_PRIVILEGE_CHANGE
+CMCPDUMgr -> CAtConfManager::SendData
+end
+end
+deactivate CMCPrivilegeDlg
+CMCPrivilegeDlg -> CMCPrivilegeDlg : SetWeakClietPri
+CMCPrivilegeDlg -> CMCPrivilegeMgr : RefreshPresenterPrivilege
+else CalcAllPrivilege return False
+CMCPrivilegeDlg -> CMCPrivilegeDlg : SaveAllNewJoinAttendeePri
+CMCPrivilegeDlg -> CMCPrivilegeDlg : SetWeakClietPri
+CMCPrivilegeDlg -> CMCPrivilegeMgr : RefreshPresenterPrivilege
+end
+
+deactivate CMCPrivilegeDlg
+
+@enduml

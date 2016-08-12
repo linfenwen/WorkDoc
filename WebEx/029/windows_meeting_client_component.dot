@@ -1,0 +1,108 @@
+
+
+digraph wmcComponent {
+
+style="striped"
+bgcolor="#edf8e9"
+nodesep=.75;
+
+
+{
+node [shape=plaintext, fontsize=16, fontcolor=green];
+"WebEx Entry X" -> "Entry Module X" -> "Meeting Center X" [color=green] ;
+"Meeting Center X" -> "Non-Admin" -> "Admin"  [color=green] ;
+"Admin" -> "WebExMgr" [color=green] ;
+}
+
+node [shape=box];
+{ rank = same; "WebEx Entry X";  "IE"; "FireFox"; "Chrome"; }
+
+subgraph clusterPlugins {
+style=filled;
+color="green";
+label="Plugins";
+node [shape=plaintext, fontsize=16, fontcolor=red];
+"ieatgpc.dll"; 
+"ciscowebexstart.exe"; 
+"npatgpc.dll"; 
+}
+
+{ rank = same; "Entry Module X"; }
+
+{ rank = same; "Meeting Center X"; "atmccli.dll"; "ateccli.dll"; "wbxtccli.dll"; "atsc3cli.dll"; }
+
+{ rank = same; "Non-Admin" , "atinst.exe"; }
+
+{
+rank=same;
+"Admin";
+
+subgraph clusterXAtmgr {
+
+"mc-atmgr.exe" [ label="atmgr.exe"; ]; 
+"ec-atmgr.exe" [ label="atmgr.exe"; ]; 
+"tc-atmgr.exe" [ label="atmgr.exe"; ]; 
+"sc-atscmgr.exe" [ label="atscmgr.exe"; ]; 
+"scc-atscmgr.exe" [ label="atscmgr.exe"; ]; 
+}
+}
+
+{
+rank=same;
+"WebExMgr";
+
+subgraph clusterXAtmgr {
+
+"mc-webexmgr.dll" [ label="webexmgr.dll"; ]; 
+"ec-wbxmgrec.dll" [ label="wbxmgrec.dll"; ]; 
+"tc-wbxmgrtc.dll" [ label="wbxmgrtc.dll"; ]; 
+"sc-atsc3cli.dll" [ label="atsc3cli.dll"; ]; 
+"scc-atsccust.dll" [ label="atsccust.dll"; ]; 
+}
+}
+
+"IE" -> "ieatgpc.dll" ;
+"FireFox" -> "ciscowebexstart.exe" ;
+"Chrome" -> "npatgpc.dll";
+
+"ieatgpc.dll" -> "atmccli.dll";
+"ieatgpc.dll" -> "ateccli.dll"; 
+"ieatgpc.dll" -> "wbxtccli.dll"; 
+"ieatgpc.dll" -> "atsc3cli.dll"; 
+
+"ciscowebexstart.exe" -> "atmccli.dll";
+"ciscowebexstart.exe" -> "ateccli.dll"; 
+"ciscowebexstart.exe" -> "wbxtccli.dll"; 
+"ciscowebexstart.exe" -> "atsc3cli.dll"; 
+
+"npatgpc.dll" -> "atmccli.dll";
+"npatgpc.dll" -> "ateccli.dll"; 
+"npatgpc.dll" -> "wbxtccli.dll"; 
+"npatgpc.dll" -> "atsc3cli.dll"; 
+
+"atmccli.dll" ->  "atinst.exe" [ color=green ]  ;
+"ateccli.dll" ->  "atinst.exe"  [ color=green ]  ;
+"wbxtccli.dll" ->  "atinst.exe" [ color=green ]  ;
+"atsc3cli.dll" ->  "atinst.exe" [ color=green ]  ;
+
+"atinst.exe" ->  "mc-atmgr.exe" [ color=green ]  ;
+"atinst.exe" ->  "ec-atmgr.exe" [ color= green ]  ;
+"atinst.exe" ->  "tc-atmgr.exe" [ color= green ]  ;
+"atinst.exe" ->  "sc-atscmgr.exe" [ color= green ]  ;
+"atinst.exe" ->  "scc-atscmgr.exe" [ color= green ]  ;
+
+"atmccli.dll" ->  "mc-atmgr.exe";
+"ateccli.dll" ->  "ec-atmgr.exe";
+"wbxtccli.dll" ->  "tc-atmgr.exe";
+"atsc3cli.dll" ->  "sc-atscmgr.exe";
+"atsc3cli.dll" ->  "scc-atscmgr.exe";
+
+"mc-atmgr.exe" -> "mc-webexmgr.dll";
+"ec-atmgr.exe"-> "ec-wbxmgrec.dll" ;
+"tc-atmgr.exe" -> "tc-wbxmgrtc.dll" ;
+"sc-atscmgr.exe" -> "sc-atsc3cli.dll" ;
+"scc-atscmgr.exe" -> "scc-atsccust.dll" ;
+
+}
+
+ 

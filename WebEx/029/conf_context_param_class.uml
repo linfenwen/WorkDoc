@@ -1,0 +1,26 @@
+@startuml
+class CConfContextParam {
++ SetParam()
++ GetParam()
+# TCHAR[] m_szName
+# CCM_PARAM_TYPE
+}
+
+class CContextMgrParamMgr {
++ SetParam()
++ GetParam()
++ RemoveParam()
++ RemoveAllParam()
+- CSimpleValArray<CConfContextParam*> m_aItems
+}
+
+class CConfContextMgr {
+
+}
+
+
+CContextMgrParamMgr "1" --* "0,N" CConfContextParam
+CConfContextMgr --|> CContextMgrParamMgr
+CConfContextMgr --|> CWbxUISingleTonT
+
+@enduml

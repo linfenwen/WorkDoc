@@ -1,0 +1,71 @@
+digraph QuickStart {
+rankdir=LR;
+style="striped"
+bgcolor="#edf8e9"
+nodesep=.25;
+
+
+subgraph clusterUI {
+label="Buttons"
+style="filled"
+fillcolor="/accent3/1:/accent3/3"
+
+subgraph clusterItems {
+label=""
+
+"Record" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Lock Room" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Leave Room" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+
+}
+
+
+subgraph clusterAudio {
+label=""
+
+"Connect to Audio" [ shape="box", style=filled, fillcolor="#74c476" ] ;
+"Audio_More" [label = "More", shape="box" , style=filled, fillcolor="#74c476" ] ;
+}
+
+subgraph clusterShare {
+label=""
+
+"Share Application" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Share_More" [ label = "More" , shape="box" , style=filled, fillcolor="#74c476" ] ;
+}
+
+subgraph cluster_Invite {
+label=""
+
+"Invite & Remind" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Copy Meeting URL" [ shape="box", style=filled, fillcolor="#74c476" ] ;
+}
+}
+
+subgraph cluster_Code_QuickStart {
+
+label="CQuickStartDlgPresenter"
+style="filled"
+fillcolor="/accent3/1:/accent3/3"
+
+"OnShare" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnShareMore" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnRecord" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnAudioMore" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnAudio" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnLockRoom" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnLeaveRoom" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnInviteRemind" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnInviteRemindMore" [rank=same, shape="box" , style=filled, fillcolor="#74c476" ] ;
+}
+
+"Share Application" -> "OnShare" ;
+"Share_More" -> "OnShareMore" ;
+"Record" -> "OnRecord" ;
+"Audio_More" -> "OnAudioMore"  [shape="dashed"] ;
+"Connect to Audio" -> "OnAudio" ;
+"Lock Room" -> "OnLockRoom" ;
+"Leave Room" -> "OnLeaveRoom";
+"Invite & Remind" -> "OnInviteRemind";
+"Copy Meeting URL" -> "OnInviteRemindMore";
+}

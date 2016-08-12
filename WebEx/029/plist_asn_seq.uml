@@ -1,0 +1,62 @@
+@startuml
+
+box "WebExMgr"
+
+participant CMCQuickStartSessionMgr
+participant CMCHybridAudioMgr
+participant CMCPListActiveUIMgr
+participant CMCPListActiveTalkBar
+
+end box
+
+box "ServiceMgr"
+
+participant CSmQuickStartSessionMgr
+participant CSmAudioStatusWrapper
+participant CSmAudioPhoneWrapper
+participant CSmHybridAudioMgr
+
+end box
+
+box "cm"
+
+participant CPcmComponentBase
+participant CPcmHybridAudioMgr
+participant HybridAudioExportedProc
+
+end box
+
+
+box "HybridCli"
+
+participant hybridaudioAPI
+participant CHybridClientCtrl
+participant CHybridClientMgr
+participant CHCCTelephoneService
+participant CHCCVoIPService
+participant CHCCFailoverAgent
+participant CHybridVoIPModule
+participant CJoinCommand
+
+end box
+
+box "dtappcli"
+
+participant CDTAppClient
+participant IDTAppClientSink
+
+end box
+
+box "ARM"
+
+participant IArmNodeController
+
+end box
+
+== Load hybridaudio.dll ==
+
+create CMCPListActiveTalkBar 
+CMCPListActiveUIMgr -> CMCPListActiveTalkBar : new
+CMCPListActiveUIMgr -> CMCPListActiveTalkBar : Create
+
+@enduml

@@ -1,0 +1,138 @@
+@startuml
+
+box "WebExMgr"
+
+participant CMCHybridAudioMgr
+
+end box
+
+
+box "ServiceMgr"
+
+participant CSmAudioStatusWrapper
+participant CSmAudioVoIPWrapper
+participant CPfwServiceMgr
+participant CSmHybridAudioMgr
+
+end box
+
+box "cm"
+
+participant CPcmHybridAudioMgr
+
+end box
+
+
+box "HybridCli"
+
+participant hybridAPI
+participant IHybridClientSink
+participant CHybridClientCtrl
+participant CHybridClientMgr
+participant CHCCVoIPService
+participant CHybridVoIPModule
+participant CJoinCommand
+participant CHCCTelephoneService
+
+end box
+
+box "dtappcli"
+
+participant IDTAppClientSink
+
+end box
+
+box "mac.dll"
+
+participant "macAPI"
+participant CMMHybridClientSink
+
+end box
+
+== AUDIO_VOIP_DEVICE_MICOK ==
+[-> CSmAudioStatusWrapper : JoinVoIP
+CSmAudioStatusWrapper -> CSmAudioVoIPWrapper : JoinVoIP
+activate CSmAudioVoIPWrapper
+CSmAudioVoIPWrapper -> CPfwServiceMgr : GetHybridSessionMgr
+note right : CSmHybridAudioMgr
+CSmAudioVoIPWrapper -> CSmHybridAudioMgr : JoinVoIP
+
+CSmHybridAudioMgr -> CSmHybridAudioMgr : JoinWithVOIP
+activate CSmHybridAudioMgr
+CSmHybridAudioMgr -> CSmHybridAudioMgr : IsAudioDeviceNormal
+activate CSmHybridAudioMgr
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : IsAudioEquipmentNormal
+CPcmHybridAudioMgr -> hybridAPI : HCC_GetParam
+hybridAPI -> CHybridClientCtrl : GetParam
+CHybridClientCtrl -> CHybridClientMgr : GetParam
+CHybridClientMgr -> CHCCVoIPService : IsAudioEquipmentNormal
+CHCCVoIPService -> CHybridVoIPModule : IsAudioEquipmentNormal
+CHybridVoIPModule -> macAPI : MmHIsAudioEquipmentNormal
+note right : HCC_PARAM_DEVICE_STATUS
+deactivate CSmHybridAudioMgr
+
+CSmHybridAudioMgr -> CSmAudioVoIPWrapper : OnVoIPStatusChanged
+note right : AUDIO_VOIP_DEVICE_MICOK
+
+== AUDIO_VOIP_CONNECTING ==
+CSmHybridAudioMgr -> CSmHybridAudioMgr : ContinueJoinWithVOIP
+activate CSmHybridAudioMgr
+CSmHybridAudioMgr -> CSmHybridAudioMgr : GetHybridSession
+CSmHybridAudioMgr -> CSmHybridAudioMgr : InitVoipUserJoinData
+CSmHybridAudioMgr -> CPcmHybridAudioMgr : JoinConference
+CPcmHybridAudioMgr -> hybridAPI : HCC_Command
+hybridAPI -> CHybridClientCtrl : DispatchCommand
+CHybridClientCtrl -> CHybridClientMgr : DispatchCommand
+CHybridClientMgr -> CHybridClientMgr : CreateCommand
+note right : CJoinCommand
+CHybridClientMgr -> CJoinCommand : Execute
+CJoinCommand -> CHCCTelephoneService : JoinSession
+CHCCTelephoneService -> CHCCTelephoneService : GetSuccessor
+note right : Get CHCCVoIPService
+CHCCTelephoneService -> CHCCVoIPService : JoinSession
+CHCCVoIPService -> CHybridVoIPModule : EnrollSession
+CHybridVoIPModule -> CHybridVoIPModule : StartAudio
+CHybridVoIPModule -> macAPI : MmHStartAudio
+
+CSmHybridAudioMgr -> CSmAudioVoIPWrapper : OnVoIPStatusChanged
+note right : AUDIO_VOIP_CONNECTING, Show Connecting UI
+deactivate CSmHybridAudioMgr
+
+deactivate CSmHybridAudioMgr
+
+CSmAudioVoIPWrapper -> CSmHybridAudioMgr : UpdateQSStatus
+deactivate CSmAudioVoIPWrapper
+
+== AUDIO_VOIP_STARTED ==
+CMMHybridClientSink <-] : OnSessionStatus
+note right : WEBEX_AUDIO_SESSION_CONFIRM
+CMMHybridClientSink -> CHCCVoIPService : OnSessionStatus
+CHCCVoIPService -> CHCCVoIPService : OnVoIPUserEnrollConfirm
+CHCCVoIPService -> CHybridClientMgr : InfoToService
+CHybridClientMgr -> IHybridClientSink : OnInfoChangeIndication
+IHybridClientSink -> CSmHybridAudioMgr : OnInfoChangeIndication
+note right : HCC_INFO_VOIP_ENROLL_OK
+CSmHybridAudioMgr -> CSmAudioVoIPWrapper : OnVoIPStatusChanged
+
+== AUDIO_VOIP_CONNECTED ==
+
+IDTAppClientSink <-] : OnVoIPUserJoin
+IDTAppClientSink -> CHCCTelephoneService : OnVoIPUserJoin
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCTelephoneService : RosterToService
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCTelephoneService : GetHybridSink
+CHCCTelephoneService -> IHybridClientSink : OnRosterChanged
+IHybridClientSink -> CMCHybridAudioMgr : OnRosterChanged
+CMCHybridAudioMgr -> CSmHybridAudioMgr : OnRosterChanged
+CSmHybridAudioMgr -> CMCHybridAudioMgr : OnAddUser
+CMCHybridAudioMgr -> CSmHybridAudioMgr : OnAddUser
+CSmHybridAudioMgr -> CSmHybridAudioMgr : OnAddVOIPUser
+CSmHybridAudioMgr -> CSmAudioVoIPWrapper : OnVoIPStatusChanged
+note right : AUDIO_VOIP_CONNECTED
+deactivate CHCCTelephoneService
+
+CHCCTelephoneService -> CHCCTelephoneService : SynchToTelephone
+deactivate CHCCTelephoneService
+@enduml

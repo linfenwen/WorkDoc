@@ -1,0 +1,19 @@
+@startuml
+
+participant CDlgQuickstart
+participant CComUIConnectionPointContainer
+participant CQuickStartDlgPresenter
+participant CWCLReskin
+
+
+[-> CDlgQuickstart : OnShareMore
+note over CDlgQuickstart : Click IDC_QS_SHARE_MORE
+
+CDlgQuickstart -> CComUIConnectionPointContainer : Fire_OnShareMore
+CComUIConnectionPointContainer -> CQuickStartDlgPresenter : OnShareMore
+CQuickStartDlgPresenter -> CWCLReskin : ShowSharingMoreDlg
+note over CQuickStartDlgPresenter, CWCLReskin : Show Menu
+
+@enduml
+
+

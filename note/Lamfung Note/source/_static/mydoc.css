@@ -1,0 +1,5 @@
+@import url("default.css");
+
+.strike { text-decoration: line-through; }
+.strtt  {text-decoration:line-through; font-family:monospace; font-weight: bold; }
+.underline { text-decoration: underline; }

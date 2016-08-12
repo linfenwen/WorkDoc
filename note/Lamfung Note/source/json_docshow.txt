@@ -1,0 +1,33 @@
+“GpcCompatibleClients”: “
+{
+	”CompatibleDesktopClients":
+	{
+		"Client":
+		[ 
+			{
+				"BuildNumber":"1",
+				"Version":"T30LSP1",
+				"ReleaseOrder":"30100",
+				"DownloadLink":"https:\\dileepvm.eng.webex.com\\client\\WBXclient- T30LSP1-1\\mac\\intel\\webex\\self\"
+			}, 
+			{
+				"BuildNumber":"2",
+				"Version":"T30LSP2",
+				"ReleaseOrder":"30200",
+				"DownloadLink":"https:\\dileepvm.eng.webex.com\\client\\WBXclient- T30LSP1-1\\mac\\intel\\webex\\self\"
+			}, 
+			{
+				"BuildNumber":"3",
+				"Version":"T30LSP3",
+				"ReleaseOrder":"30300",
+				"DownloadLink":"https:\\dileepvm.eng.webex.com\\client\\WBXclient- T30LSP1-1\\mac\\intel\\webex\\self\"
+			},
+			{
+				"BuildNumber":"4",
+				"Version":"T30LSP4",
+				"ReleaseOrder":"30400",
+				"DownloadLink":"https:\\dileepvm.eng.webex.com\\client\\WBXclient- T30LSP1-1\\mac\\intel\\webex\\self\"
+			}
+		]
+	}
+}

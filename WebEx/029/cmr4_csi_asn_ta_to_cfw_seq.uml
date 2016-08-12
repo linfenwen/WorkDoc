@@ -1,0 +1,110 @@
+@startuml
+box "WebexMgr"
+
+participant "CMCUserMgr"
+participant "CMCHybridAudioMgr"
+
+end box
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CSmHybridAudioMgr
+
+end box
+
+box "HybridCli"
+
+participant IHybridClientSink
+participant CHybridClientMgr
+participant CHCCTelephoneService
+
+
+end box
+
+box "dtappcli"
+
+participant CDTAppClient
+participant IDTAppClientSink
+participant CDTAppPDU_Data_HyASNNTY
+participant CHCCApeRecord
+end box
+
+box "ARM"
+
+participant IArmApeSink
+
+end box
+
+
+== Recieve ASN PDU ==
+
+IArmApeSink <-] : ApeDataIndication
+IArmApeSink -> CDTAppClient : ApeDataIndication
+
+alt "DTApp_Evt_HyASN"
+CDTAppClient -> CDTAppPDU_Data_HyASNNTY : Decode
+CDTAppClient -> IDTAppClientSink : OnASNReport
+IDTAppClientSink -> CHCCTelephoneService : OnASNReport
+activate CHCCTelephoneService
+
+CHCCTelephoneService -> CHCCTelephoneService : HandleCMR4ASNReport
+
+alt "no user is speaking (attendeeID1 == attendeeID2 == attendeeID3 == 0)"
+
+CHCCTelephoneService -> CHCCTelephoneService : StopASN
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHybridClientMgr : GetASNUserCount
+
+loop ASNUserCount
+CHCCTelephoneService -> CHCCTelephoneService : FlashUser
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHCCApeRecord : ~MASK_PRI_ASN
+CHCCTelephoneService -> CHCCTelephoneService : RosterToService
+CHCCTelephoneService -> IHybridClientSink : OnRosterChanged
+IHybridClientSink -> CMCHybridAudioMgr : OnRosterChanged
+CMCHybridAudioMgr -> CSmHybridAudioMgr : OnRosterChanged
+
+deactivate CHCCTelephoneService
+end
+
+CHCCTelephoneService -> CHCCTelephoneService : HandleSVCASN
+activate CHCCTelephoneService
+CHCCTelephoneService -> IHybridClientSink : OnASNReport
+IHybridClientSink -> CSmHybridAudioMgr : OnASNReport
+CSmHybridAudioMgr -> CPfwServiceMgr : OnASNReport
+CPfwServiceMgr -> CPfwServiceMgr : ApplyNewActiveSpeaker
+deactivate CHCCTelephoneService
+deactivate CHCCTelephoneService
+
+else "some user is speaking"
+CHCCTelephoneService -> CHCCTelephoneService : StartASN
+activate CHCCTelephoneService
+loop m_pHybridMgr->GetASNUserCount
+
+ref over CHCCTelephoneService, CHCCTelephoneService : FlashUser(False)
+end
+
+loop aASNUser.GetCount
+ref over CHCCTelephoneService, CHCCTelephoneService : FlashUser(True)
+end
+
+ref over CHCCTelephoneService, CHCCTelephoneService : HandleSVCASN
+deactivate CHCCTelephoneService
+end
+
+CHCCTelephoneService -> CHCCTelephoneService : SaveASNUser
+
+activate CHCCTelephoneService
+CHCCTelephoneService -> CHybridClientMgr : CleanASNUser
+
+loop "3 attendeeID and m_nVOIPASNCnt"
+CHCCTelephoneService -> CHybridClientMgr : AddASNUser
+end
+
+deactivate CHCCTelephoneService
+
+end
+@enduml

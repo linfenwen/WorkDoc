@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Chrome NPAPI Replacement &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="CSCuq12455" href="security_cscuq12455.html" />
+    <link rel="prev" title="Upgrade Manage" href="upgrade_manage.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="security_cscuq12455.html" title="CSCuq12455"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="upgrade_manage.html" title="Upgrade Manage"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="chrome-npapi-replacement">
+<h1>Chrome NPAPI Replacement<a class="headerlink" href="#chrome-npapi-replacement" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="how-to-build-cisco-webex-add-on-exe">
+<h2>How to build <strong>Cisco_WebEx_Add-On.exe</strong><a class="headerlink" href="#how-to-build-cisco-webex-add-on-exe" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Locate at <em>&#8220;/020p/bin/release&#8221;</em> directory and add 3 files</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>&#8216;manifest.json&#8217;</li>
+<li>extaction.bin</li>
+<li>npapicfg</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Add 2 projects</li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li>&#8220;020p\src\windows\AtStart\bind\bind.vcproj&#8221;</li>
+<li>&#8220;020p\src\windows\AtStart\Setup\Setup.vcproj&#8221;</li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Output <strong>Cisco_WebEx_Add-On.exe</strong></li>
+</ol>
+<blockquote>
+<div><ul>
+<li><p class="first">Execute command as below:</p>
+<p>bind.exe npapicfg setup.exe Cisco_WebEx-Add-On.exe</p>
+</li>
+<li><p class="first">If <em>bind.exe</em> cannot be executed, rename <em>bind.exe</em> to <em>exebind.exe</em>, then execute below command:</p>
+<p>exebind.exe npapicfg setup.exe Cisco_WebEx-Add-On.exe</p>
+</li>
+</ul>
+</div></blockquote>
+<p>For a new release, you need send a mail to <em>Quick</em> ask to modify build script, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre>Please add the 2 projects below to T28L10NSP12 and T27L10NSP32.
+020p\src\windows\AtStart\bind\bind.vcproj
+020p\src\windows\AtStart\Setup\Setup.vcproj
+
+Excute command below after build successfully.
+bind.exe npapicfg setup.exe Cisco_WebEx_Add-On.exe
+
+For output, if bind.exe cannot be executed, please rename bind.exe to exebind.exe.
+And then excute below command:
+exebind.exe npapicfg setup.exe Cisco_WebEx_Add-On.exe
+</pre></div>
+</div>
+</div>
+<div class="section" id="config-files">
+<h2>3 config files<a class="headerlink" href="#config-files" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>mainfest.json</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+       <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;com.webex.meeting&quot;</span><span class="p">,</span>
+       <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;com.webex.meeting&quot;</span><span class="p">,</span>
+       <span class="s">&quot;path&quot;</span><span class="p">:</span> <span class="s">&quot;CiscoWebExStart.exe&quot;</span><span class="p">,</span>
+       <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;stdio&quot;</span><span class="p">,</span>
+       <span class="s">&quot;allowed_origins&quot;</span><span class="p">:</span> <span class="p">[</span>
+               <span class="s">&quot;chrome-extension://jlhmfgmfgeifomenelglieieghnjghma/&quot;</span>
+       <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>extaction.bin</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>Path=#currentappdata#\WebEx\ChromeNativeHost
+Excute=#Path#\CiscoWebExStart.exe
+Argument=/r
+runasadmin=0
+</pre></div>
+</div>
+<ul class="simple">
+<li>npapicfg</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">npatgpc</span><span class="o">.</span><span class="n">dll</span>
+<span class="n">manifest</span><span class="o">.</span><span class="n">json</span>
+<span class="n">CiscoWebExStart</span><span class="o">.</span><span class="n">exe</span>
+<span class="n">extaction</span><span class="o">.</span><span class="n">bin</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="when-update-ciscowebexstart-exe-version-need-to-sync-following-package-config-files">
+<h2>4 When update <strong>CiscoWebexStart.exe</strong> version, need to sync following package config files<a class="headerlink" href="#when-update-ciscowebexstart-exe-version-need-to-sync-following-package-config-files" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Locate to the repo <em>webex-cloudsapp-config</em></p>
+</li>
+<li><p class="first">Sync up <em>CiscoWebexStartVersion</em> field with <strong>CiscoWebexStart.exe</strong> version</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>GPC/package.event</li>
+<li>GPC/package.nbr</li>
+<li>GPC/package.nbr_orion</li>
+<li>GPC/package.ra</li>
+<li>GPC/package.smt</li>
+<li>GPC/package.support</li>
+<li>GPC/package.training</li>
+<li>GPC/package.webex</li>
+<li>GPC/package.webex_orion</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="ciscowebexstart-exe">
+<h2><strong>CiscoWebExStart.exe</strong><a class="headerlink" href="#ciscowebexstart-exe" title="Permalink to this headline">¶</a></h2>
+<p>CiscoWebExStart main task :</p>
+<ul class="simple">
+<li>Use standard IO to receive <em>DocShow Parameters</em> from chrome</li>
+<li>Implement download logic by using <em>urlmon.dll</em></li>
+<li>Use <em>atgpcext.dll</em> to start meeting by</li>
+<li>Download or Upgrade <em>atgpcdec.dll</em>, then load <em>atgpcdec.dll</em></li>
+<li>Download or Upgrade <em>atgpcext.dll</em>, then load <em>atgpcext.dll</em></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Chrome NPAPI Replacement</a><ul>
+<li><a class="reference internal" href="#how-to-build-cisco-webex-add-on-exe">How to build <strong>Cisco_WebEx_Add-On.exe</strong></a></li>
+<li><a class="reference internal" href="#config-files">3 config files</a></li>
+<li><a class="reference internal" href="#when-update-ciscowebexstart-exe-version-need-to-sync-following-package-config-files">4 When update <strong>CiscoWebexStart.exe</strong> version, need to sync following package config files</a></li>
+<li><a class="reference internal" href="#ciscowebexstart-exe"><strong>CiscoWebExStart.exe</strong></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="upgrade_manage.html"
+                        title="previous chapter">Upgrade Manage</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="security_cscuq12455.html"
+                        title="next chapter">CSCuq12455</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/npapi_replacement.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="security_cscuq12455.html" title="CSCuq12455"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="upgrade_manage.html" title="Upgrade Manage"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

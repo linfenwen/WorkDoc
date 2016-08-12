@@ -1,0 +1,332 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CSCuq12455 &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="Chrome NPAPI Replacement" href="npapi_replacement.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="npapi_replacement.html" title="Chrome NPAPI Replacement"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cscuq12455">
+<h1>CSCuq12455<a class="headerlink" href="#cscuq12455" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mmp-servers">
+<h2>MMP Servers<a class="headerlink" href="#mmp-servers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Scope</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>MC</li>
+<li>EC</li>
+<li>TC</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>MMP Session</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>VIOP only</li>
+<li>Hybrid VOIP</li>
+<li>AB(Audio Broadcast)</li>
+<li>Video</li>
+<li>SVS</li>
+<li>NBRPlayer</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>AtConfMgr pre-condition</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>SVN ready</li>
+<li>VSCM Test Env ready</li>
+<li>ARM, TP interface ready</li>
+<li>Team or Resource</li>
+<li>MMP SDK relevant interface ready</li>
+<li>Time currently less than 40 Days</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Windows Client</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Need cache mutile Certs</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>User Cases<ul>
+<li>Presenter<ul>
+<li>Cert Error, Mutile Session (Audio, Video etc..), same Cert, Just show one time Cert Error Window</li>
+<li>Cert Error, Mutile Session (Audio, Video etc..), different Cert, Show mutile times Cert Error Window</li>
+<li>Cert Error, Single Session (Audio or Video), Show Cert Error Window</li>
+<li>Cert Error, Cert Error Window showed, and User click <strong>Don&#8217;t Connect</strong></li>
+<li>Cert Error, Cert Error Window showed, and User click <strong>Connect Anyway</strong></li>
+</ul>
+</li>
+<li>Attendee<ul>
+<li>Cert Error, Mutile Session (Audio, Video etc..), same Cert, Just show one time Cert Error Window</li>
+<li>Cert Error, Mutile Session (Audio, Video etc..), different Cert, Show mutile times Cert Error Window</li>
+<li>Cert Error, Single Session (Audio or Video), Show Cert Error Window</li>
+<li>Cert Error, Cert Error Window showed, and User click <strong>Don&#8217;t Connect</strong></li>
+<li>Cert Error, Cert Error Window showed, and User click <strong>Connect Anyway</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span class="strike">Need UT?</span></li>
+<li><span class="strike">Need merge to other branch?</span></li>
+</ul>
+</div>
+<div class="section" id="interface-between-cc-and-service">
+<h2>Interface between <strong>CC</strong> and <strong>Service</strong><a class="headerlink" href="#interface-between-cc-and-service" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Video Windows</strong></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>typedef enum
+{
+        MMT_VIDEO_SESSION_JOIN_SUCCESS,
+        MMT_VIDEO_SESSION_JOIN_FAIL,
+        MMT_VIDEO_SESSION_LEAVE,
+        MMT_VIDEO_SESSION_PENDING_SSL_CERTIFICATE
+}MMT_VIDEO_SESSION_STATUS, *PMMT_VIDEO_SESSION_STATUS;
+
+typedef enum
+{
+        MMT_VIDEO_CERTIFICATION_TYPE_SSL = 0x00
+
+}MMT_VIDEO_CERTIFICATION_TYPE, *PMMT_VIDEO_CERTIFICATION_TYPE;
+
+typedef enum
+{
+        MMT_VIDEO_CERTIFICATION_ACTION_IGNORE = 0x00,
+        MMT_VIDEO_CERTIFICATION_ACTION_CANCEL = 0x01
+
+}MMT_VIDEO_CERTIFICATION_ACTION, *PMMT_VIDEO_CERTIFICATION_ACTION;
+
+//get/set SSL certification INFO/action
+virtual void GetCertificationInfo(unsigned char type, char* pCertificationInfo, unsigned long&amp; ulCertificationInfoLen) = 0;
+virtual void SetCertificationAction(unsigned char type, unsigned char action) = 0;
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>SVS Windows</strong></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>typedef enum
+{
+        MM_MEDIASTREAMING_SESSION_STATUS_JOIN_SUCCESS = 0,
+        MM_MEDIASTREAMING_SESSION_STATUS_JOIN_FAIL,
+        MM_MEDIASTREAMING_SESSION_STATUS_JOIN_RETRY,
+        MM_MEDIASTREAMING_SESSION_STATUS_LEAVE_OK,
+        MM_MEDIASTREAMING_SESSION_STATUS_RECONNECTING,
+        MM_MEDIASTREAMING_SESSION_STATUS_RECONNECT_SUCCESS,
+        MM_MEDIASTREAMING_SESSION_STATUS_RECONNECT_FAIL,
+        MM_MEDIASTREAMING_SESSION_STATUS_RECONNECT_NETWORK_ERROR,
+        MM_MEDIASTREAMING_SESSION_STATUS_PENDING_SSL_CERTIFICATE,
+
+        // if Attendee&#39;s number has reached to max count(1000 defined), pop up message for new attendee!
+        MM_MEDIASTREAMING_SESSION_STATUS_ATTENDEE_REACH_MAX_COUNT = 100,
+        // if SVC exists and presenter don&#39;t want stop SVC, so it need stop SVS.
+        MM_MEDIASTREAMING_SESSION_STATUS_STOP_SVS_FOR_SVC,
+        MM_MEDIASTREAMING_SESSION_STATUS_ALLOW_PLAY
+
+}MM_MEDIASTREAMING_SESSION_STATUS;
+
+typedef enum
+{
+        MM_MEDIASTREAMING_CERTIFICATION_TYPE_SSL = 0x00
+}MM_MEDIASTREAMING_CERTIFICATION_TYPE, *PMM_MEDIASTREAMING_CERTIFICATION_TYPE;
+
+typedef enum
+{
+        MM_MEDIASTREAMING_CERTIFICATION_ACTION_IGNORE = 0x00,
+        MM_MEDIASTREAMING_CERTIFICATION_ACTION_CANCEL = 0x01
+
+}MM_MEDIASTREAMING_CERTIFICATION_ACTION, *PMM_MEDIASTREAMING_CERTIFICATION_ACTION;
+
+//get/set SSL certification INFO/action
+virtual void GetCertificationInfo(unsigned char type, char* pCertificationInfo, unsigned long&amp; ulCertificationInfoLen) = 0;
+virtual void SetCertificationAction(unsigned char type, unsigned char action) = 0;
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>AB</strong></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>/****************************************************************************/
+/*Interface name: AudioSS_GetCertificationInfo                                                                     */
+/*                                 AudioSS_SetCertificationAction                                                                        */
+//Description: Set current AB Certification                                                                         */
+/*Parameters:                                                                                                                                                      */
+/*               type: value of AUDIOSS_CERTIFICATION_TYPE                          */
+/*      action: value of AUDIOSS_CERTIFICATION_ACTION                                                     */
+/****************************************************************************/
+void __stdcall AudioSS_GetCertificationInfo(unsigned char type, char* pCertificationInfo, unsigned long&amp; ulCertificationInfoLen) ;
+void __stdcall AudioSS_SetCertificationAction(unsigned char type, unsigned char action)  ;
+
+
+#define AUDIOSS_STATUS_CERTIFICATION 1009
+
+typedef enum
+{
+        AUDIOSS_CERTIFICATION_TYPE_SSL = 0x00
+
+}AUDIOSS_CERTIFICATION_TYPE, *PAUDIOSS_CERTIFICATION_TYPE;
+
+typedef enum
+{
+        AUDIOSS_CERTIFICATION_ACTIION_IGNORE = 0x00,
+        AUDIOSS_CERTIFICATION_ACTIION_CANCEL = 0x01
+
+}AUDIOSS_CERTIFICATION_ACTION, *PAUDIOSS_CERTIFICATION_ACTION;
+</pre></div>
+</div>
+<ul class="simple">
+<li><strong>Audio</strong></li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>typedef void (__stdcall* MmGetCertificationInfo)(unsigned char type, char* pCertificationInfo, unsigned long&amp; ulCertificationInfoLen) ;
+typedef void (__stdcall* MmSetCertificationAction)(unsigned char type, unsigned char action) ;
+
+typedef enum
+{
+        AUDIO_CERTIFICATION_TYPE_SSL = 0x00
+
+}AUDIO_CERTIFICATION_TYPE, *PAUDIO_CERTIFICATION_TYPE;
+
+typedef enum
+{
+        AUDIO_CERTIFICATION_ACTIION_IGNORE = 0x00,
+        AUDIO_CERTIFICATION_ACTIION_CANCEL = 0x01
+}AUDIO_CERTIFICATION_ACTION, *PAUDIO_CERTIFICATION_ACTION;
+
+const DWORD WEBEX_AUDIO_SESSION_CONFIRM                = 31016;//0：join success; 1：join or rejoin fail
+        const DWORD SESSION_JOIN_OK                               = 0;
+        const DWORD SESSION_JOIN_FAIL                            = 1;
+        const DWORD SESSION_JOIN_RETRY                        = 2;
+        const DWORD SESSION_CALLIN_FAIL                       = 3;
+        const DWORD SESSION_LEAVE_OK                            = 4;
+        const DWORD SESSION_CAPACITY_LIMIT               = 5;
+        const DWORD SESSION_CERTIFICATION                  = 6;
+
+When Get WEBEX_AUDIO_SESSION_CONFIRM with code SESSION_CERTIFICATION,
+Then call MmGetCertificationInfo
+Then MmSetCertificationAction
+</pre></div>
+</div>
+</div>
+<div class="section" id="common-resource">
+<h2>Common Resource<a class="headerlink" href="#common-resource" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Wiki<ul>
+<li><a class="reference external" href="http://wikicentral.cisco.com/display/CSGQAWIKI/Security+Bug+CSCuq12455+fixing">http://wikicentral.cisco.com/display/CSGQAWIKI/Security+Bug+CSCuq12455+fixing</a></li>
+</ul>
+</li>
+<li>SVN<ul>
+<li>Client<ul>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/XXXX/branches/T29L10NSP13">https://wwwin-svn-sjc-2.cisco.com/csg/XXXX/branches/T29L10NSP13</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mmp-servers">MMP Servers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CSCuq12455</a><ul>
+<li><a class="reference internal" href="#mmp-servers">MMP Servers</a></li>
+<li><a class="reference internal" href="#interface-between-cc-and-service">Interface between <strong>CC</strong> and <strong>Service</strong></a></li>
+<li><a class="reference internal" href="#common-resource">Common Resource</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="npapi_replacement.html"
+                        title="previous chapter">Chrome NPAPI Replacement</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/security_cscuq12455.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="npapi_replacement.html" title="Chrome NPAPI Replacement"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+@startuml
+
+class conCONNECTDATA << (S,#FF7700) >> {
++ conIUnknown* punk
++ ConUint32    dwCookie
+}
+
+interface conIUnknown {
++ {abstract} stdapi QueryInterface(conREFIID, void**)
++ {abstract} stdapi QueryInterfaceEx(const char*, const char*, void**)
++ {abstract} ULONG stdcall_convertion AddRef()
++ {abstract} ULONG stdcall_convertion Release()
+}
+
+interface conIEnumConnections {
++ {abstract} stdapi Next(ConUint32, LPCONNECTDATA, ConUint32*)
++ {abstract} stdapi Skip(ConUint32)
++ {abstract} stdapi Reset()
++ {abstract} stdapi Clone(conIEnumConnections**)
+}
+
+conIEnumConnections --|> conIUnknown
+
+interface conIEnumConnectionPoints {
++ {abstract} stdapi Next(ConUint32, LPCONNECTIONPOINT*, ConUint32*)
++ {abstract} stdapi Skip(ConUint32)
++ {abstract} stdapi Reset()
++ {abstract} stdapi Clone(conIEnumConnectionPoints*)
+}
+
+conIEnumConnectionPoints --|> conIUnknown
+
+interface conIConnectionPoint {
++ {abstract} stdapi GetConnectionInterface(conIID*)
++ {abstract} stdapi GetConnectionPointContainer(conIConnectionPointContainer**)
++ {abstract} stdapi Advise(conIUnknown*, ConUint32*)
++ {abstract} stdapi AdviseEx(conIUnknown*, ConUint32, ConUint32*)
++ {abstract} stdapi Unadvise(ConUint32)
++ {abstract} stdapi EnumConnections(conIEnumConnections**)
+}
+
+conIConnectionPoint --|> conIUnknown
+
+
+interface conIConnectionPointContainer {
++ {abstract} stdapi EnumConnectionPoints(conIEnumConnectionPoints**)
++ {abstract} stdapi FindConnectionPoint(conREFIID, conIConnectionPoint**)
+}
+
+conIConnectionPointContainer --|> conIUnknown
+
+interface conIClassFactory {
++ {abstract} stdapi CreateInstance(conIUnkown*, conREFIID, void**)
++ {abstract} stdapi LockServer(CONBOOL)
+}
+
+conIClassFactory --|> conIUnknown
+
+class ServiceInfo <<(S,#FF7700)>> {
++ ConString strServiceGroup
++ ConString strServiceName
++ conIID iid
+}
+
+class CClassFactory {
+# stdapi ModuleCreateInstance(conREFIID, void**)
+# stdapi ModuleCreateInstanceEx(const char*, const char*, void**)
+
+- ConInt32 m_lRefCount
+- conIUnknown* m_pOuter
+- vector<ServiceInfo> m_vServiceInfo
+}
+
+CClassFactory --|> conIClassFactory
+CClassFactory "1" *--> "N" ServiceInfo
+
+
+class CSmClassFactory {
+
+}
+
+CSmClassFactory --|> CClassFactory
+CSmClassFactory --> CInviteRemindWrapper
+CSmClassFactory --> CSmAudioPhoneWrapper
+CSmClassFactory --> CSmAudioVoIPWrapper
+CSmClassFactory --> CSmAudioStatusWrapper
+CSmClassFactory --> CSharingMoreWrapper
+CSmClassFactory --> CAudioTestWizardWrapper
+CSmClassFactory --> CSmConnectionPointContainer
+
+class CStaticUnknown << (T,#884400) >> {
++ ULONG stdcall_convertion AddRef()
++ ULONG stdcall_convertion Release()
++ stdapi QueryInterface(conREFIID, void**)
++ stdapi QueryInterfaceEx(const char*, const char*, void**)
+
+# {abstract} void ModuleAddRef()
+# {abstract} ConInt32 ModuleRelease()
+# {abstract} conIConnectionPointContainer* ModuleGetCPContainer()
+# {abstract} conIClassFactory* ModuleGetFactory()
+}
+
+class CUnknown << (T,#884400) >> {
+- ConInt32 m_lRefCount
+}
+
+CUnknown --|> CStaticUnknown
+
+class CConConnectionPoint {
+
+}
+
+class CConnectionPointContainer {
++ ConnectionPoint_Map m_mCP
+}
+
+CConnectionPointContainer --|> CUnknown
+CConnectionPointContainer --|> conIConnectionPointContainer
+
+@enduml

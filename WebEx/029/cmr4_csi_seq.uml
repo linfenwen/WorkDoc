@@ -1,0 +1,66 @@
+@startuml
+
+box "ConferenceMgr"
+participant IAtConfManagerSink
+participant CAtConfManager
+end box
+
+box "ServiceMgr"
+
+
+participant CSmCacheMgr
+participant ISmCacheUpdatedSink
+participant CSmCSIMgr
+participant CSmSvcVideoSessionMgr
+participant CPfwServiceMgr
+
+end box
+
+box "cm"
+participant CPcmSvcVideoMgr
+end box
+
+box "MMP_SDK"
+
+participant ISVideoClient
+participant ISVideoClientSink
+
+participant CMmSVideoClient
+
+end box
+
+== Receive CSI From Cache ==
+[-[#blue]> IAtConfManagerSink : OnCacheRetrieveConfirmEx
+IAtConfManagerSink -> CPfwServiceMgr : OnCacheRetrieveConfirmEx
+CPfwServiceMgr -> CSmCSIMgr : OnCacheRetrieveConfirmEx
+CSmCSIMgr -> CSmCacheMgr : OnCacheRetrieveConfirmEx
+CSmCacheMgr -> CSmCacheMgr : HandleRetrieveData
+CSmCacheMgr -> CSmCacheMgr : ParseCSIInfoXml
+CSmCacheMgr -> CSmCacheMgr : SaveIntoLocalCache
+CSmCacheMgr -> ISmCacheUpdatedSink : OnCacheDataUpdated
+ISmCacheUpdatedSink -> CSmCSIMgr : OnCacheDataUpdated
+CSmCSIMgr -> CPfwServiceMgr : OnReceiveCSI
+CPfwServiceMgr -> CPfwServiceMgr : OnUserCSIIndication
+CPfwServiceMgr -> CSmSvcVideoSessionMgr : GetVideoMgr
+CPfwServiceMgr -> CPcmSvcVideoMgr : GetSVideoClient
+CPfwServiceMgr -[#blue]> ISVideoClient : ReceiveCSI 
+ISVideoClient  -> CMmSVideoClient : ReceiveCSI
+CMmSVideoClient -> CMmSVideoClient : HandleCSIConflicated
+
+== CSI Conflicate ==
+CMmSVideoClient -> CMmSVideoClient : NotifyCSItoCFW
+CMmSVideoClient -> ISVideoClientSink : OnCMRNotification
+ISVideoClientSink -[#blue]> CSmSvcVideoSessionMgr : OnCMRNotification
+CSmSvcVideoSessionMgr -> CPfwServiceMgr : UpdateMyselfCSI
+CPfwServiceMgr -> CPfwServiceMgr : UpdateMyselfCSI2Cache
+CPfwServiceMgr -> CSmCSIMgr : UploadMyCSIInfoToCB
+CSmCSIMgr -> CSmCacheMgr : SetCacheData
+CSmCacheMgr -> CSmCacheMgr : PackCacheData
+CSmCacheMgr -> CSmCacheMgr : SendCacheData
+activate CSmCacheMgr
+CSmCacheMgr -> CPfwServiceMgr : GetConfMgr
+CSmCacheMgr -> CAtConfManager : CacheActionRequestEx
+deactivate CSmCacheMgr
+[<[#blue]- CAtConfManager : CacheActionRequestEx
+
+@enduml

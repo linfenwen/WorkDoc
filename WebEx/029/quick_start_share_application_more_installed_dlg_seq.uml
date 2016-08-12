@@ -1,0 +1,20 @@
+@startuml
+[-> CShareMoreDlg : OnBtnShareOtherApp
+note over CShareMoreDlg : User Click "Other Application"
+
+CShareMoreDlg -> CSharingMoreWrapper : ShareOtherApp
+CSharingMoreWrapper -> CPfwMainFrame : SendMessage
+note over CSharingMoreWrapper, CPfwMainFrame : PFW_QS_MENU_SHARE_OTHER_APP_ID
+CPfwMainFrame -> CPfwChainMessageMapT : PfwChainProcessWindowMessage
+CPfwChainMessageMapT -> CPfwMainFrame : ProcessWindowMessage
+CPfwMainFrame -> CMCUIMgr : OnWindowMsg
+CMCUIMgr -> CSmDefUIMgr : OnWindowMsg
+CSmDefUIMgr -> CSmDefUIMgr : ChainToMsgCenter
+CSmDefUIMgr -> CPfwMessageCenterAgent : SendMessage
+CPfwMessageCenterAgent -> CSmFITUIMgr::ProcessWindowMessage
+CSmFITUIMgr -> CMCFITUIMgr :OnCommand
+CMCFITUIMgr -> CSmFITUIMgr : OnCommand
+CSmFITUIMgr -> CSmAppShareSessionMgr : SelectANewApplication
+CSmAppShareSessionMgr -> CPcmAppShareMgr : ShowInstalledAppDialog
+
+@enduml

@@ -1,0 +1,158 @@
+@startuml
+
+actor User
+
+box "WebExMgr"
+
+participant WebExMgrAPI
+participant CMCServiceMgr
+participant CWebExMgrCtl
+participant CMCDocshowMgr
+participant CMCQuickStartSessionMgr
+participant CQuickStartDlgPresenter
+
+end box
+
+box "ServiceMgr"
+
+participant CPfwServiceMgr
+participant CConfContextMgr
+participant CSmDocViewSessionMgr
+participant CSmQuickStartSessionMgr
+participant CSmAgentWnd
+participant PfwCommFunctions
+
+end box
+
+box "AtConfLib"
+
+participant CAtConfAgent
+
+end box
+
+box "cm"
+
+participant CPcmDocViewMgr
+
+end box
+
+actor "ARM"
+
+User -> WebExMgrAPI : NameValue
+WebExMgrAPI -> CWebExMgrCtl : MC_NameValue
+CWebExMgrCtl -> CMCDocshowMgr : SetDocshowXmlString
+CWebExMgrCtl -> CMCDocshowMgr : ProcessParameters
+
+activate CMCDocshowMgr
+
+CMCDocshowMgr -> CMCDocshowMgr : SetHardcodeParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessSiteParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessMeetingParam
+CMCDocshowMgr -[#green]> CMCDocshowMgr : ProcessPDParam
+
+activate CMCDocshowMgr
+
+== process pd ucf ==
+
+CMCDocshowMgr -> CConfContextMgr : SetUCFBitEnable
+CMCDocshowMgr -> CMCDocshowMgr : HandleUCFLoadFlag
+CMCDocshowMgr -> CConfContextMgr : SetUCFFileSizeLimit
+
+== process pd qs ==
+
+CMCDocshowMgr -[#green]> CConfContextMgr : SetParam(MCCustomizeQS)
+CMCDocshowMgr -[#green]> CConfContextMgr : SetQuickStartURL
+
+== process pd autoplay ==
+
+CMCDocshowMgr -> CConfContextMgr : SetAutoPlayControl
+CMCDocshowMgr -> CConfContextMgr : SetAutoPlayInterval
+CMCDocshowMgr -> CConfContextMgr : SetAutoPlayUrl
+
+deactivate CMCDocshowMgr
+
+CMCDocshowMgr -> CMCDocshowMgr : ProcessASParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessUserParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessMeetingTypeParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessTelephonyParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessAudioVideoParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessNBRParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessSecurityParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessURLsParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessWebACDParam
+CMCDocshowMgr -> CMCDocshowMgr : ProcessNewJMAParam
+
+deactivate CMCDocshowMgr
+
+== FinishCall2 ==
+
+User -> WebExMgrAPI : FinishCall2
+WebExMgrAPI -> CWebExMgrCtl : MC_FinishCall
+CWebExMgrCtl -> CMCServiceMgr : Initialize
+
+activate CMCServiceMgr
+
+CMCServiceMgr -> CPfwServiceMgr : AddSessionMgr
+
+deactivate CMCServiceMgr
+
+...
+
+CMCServiceMgr -> CPfwServiceMgr : CheckPendingSession
+CPfwServiceMgr -> CMCServiceMgr : OnSessionCreateIndication
+CMCServiceMgr -> CPfwServiceMgr : OnSessionCreateIndication
+CPfwServiceMgr -> CSmDocViewSessionMgr : OnSessionCreateIndication
+
+activate CSmDocViewSessionMgr
+
+CSmDocViewSessionMgr -> CSmDocViewSessionMgr : EnrollSession
+CSmDocViewSessionMgr -> CSmDocViewSessionMgr : CheckTemplateDownload
+CSmDocViewSessionMgr -[#green]> CSmDocViewSessionMgr : CheckTemplateQSDownload
+
+activate CSmDocViewSessionMgr
+
+alt CSmDocViewSessionMgr -> CSmDocViewSessionMgr : CanShowNewQuickStart && CSmDocViewSessionMgr -> CSmDocViewSessionMgr : HasShowQuickStartPriviledge
+CSmDocViewSessionMgr -[#blue]> CPcmDocViewMgr : AddQuickStartEx
+
+else
+
+CSmDocViewSessionMgr -[#green]> CConfContextMgr : GetQuickStartURL
+CSmDocViewSessionMgr -> CConfContextMgr : GetServiceName
+CSmDocViewSessionMgr -[#green]> CPfwServiceMgr : DownloadUrl
+
+end
+
+deactivate CSmDocViewSessionMgr
+
+deactivate CSmDocViewSessionMgr
+
+== **WCL** mode **QuickStart** ==
+
+ARM -> CAtConfAgent : on_conference_announce_presence_confirm
+CAtConfAgent -> CMCServiceMgr : OnConfJoinConfirm
+CMCServiceMgr -> CPfwServiceMgr : InitializeUI
+CPfwServiceMgr -> CSmDocViewSessionMgr : InitializeUI
+CSmDocViewSessionMgr -> CSmQuickStartSessionMgr : OnPDNotify
+CSmQuickStartSessionMgr -[#blue]> CSmQuickStartSessionMgr : CreateContaionerWnd
+CSmQuickStartSessionMgr -[#blue]> CMCQuickStartSessionMgr :CreateQuickStartWnd
+CSmQuickStartSessionMgr -[#blue]> CQuickStartDlgPresenter : CreateQuickStartDlg
+...
+
+== **QuickStart** UCF Files download done event ==
+
+PfwCommFunctions -> CSmAgentWnd : OnDownloadNotify
+CSmAgentWnd -> CPfwServiceMgr : OnDownloadNotify
+CPfwServiceMgr -> CSmDocViewSessionMgr : OnDownloadFinished
+CSmDocViewSessionMgr -> CSmDocViewSessionMgr : OnTemplateQSDownloaded
+activate CSmDocViewSessionMgr
+
+CSmDocViewSessionMgr -[#green]> CSmDocViewSessionMgr : IsQuickStartForAttendeeSTE
+CSmDocViewSessionMgr -[#green]> CSmDocViewSessionMgr : GetEnableQSForAttendeeInMeeting
+CSmDocViewSessionMgr -[#green]> CSmDocViewSessionMgr : IsShowQSForQttendee
+CSmDocViewSessionMgr -[#green]> CPcmDocViewMgr : AddQuickStart
+CPcmDocViewMgr -> CPcmDocViewMgr : OpenDocument
+
+deactivate CSmDocViewSessionMgr
+
+
+@enduml

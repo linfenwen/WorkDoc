@@ -1,0 +1,52 @@
+
+digraph Menu {
+rankdir=LR;
+subgraph clusterUI {
+
+style="striped"
+bgcolor="#edf8e9"
+
+
+subgraph clusterMenu {
+label="Menu"
+style="filled"
+fillcolor="/accent3/1:/accent3/3"
+
+
+"File" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Edit" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Share" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"View" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Audio" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Participant" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Meeting" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"Help" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+}
+
+subgraph clusterCMCUIMgr {
+label="CMCUIMgr"
+style="filled"
+fillcolor="/accent3/1:/accent3/3"
+
+
+"OnFileMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnEditMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnShareMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnViewMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnAudioMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnParticipantNemuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnMeetingMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+"OnHelpMenuSelect" [ shape="box" , style=filled, fillcolor="#74c476" ] ;
+}
+
+
+"File" -> "OnFileMenuSelect" ;
+"Edit" -> "OnEditMenuSelect" ;
+"Share" -> "OnShareMenuSelect" ;
+"View" -> "OnViewMenuSelect" ;
+"Audio" -> "OnAudioMenuSelect" ;
+"Participant" -> "OnParticipantNemuSelect" ;
+"Meeting" -> "OnMeetingMenuSelect" ;
+"Help" -> "OnHelpMenuSelect" ;
+}
+}

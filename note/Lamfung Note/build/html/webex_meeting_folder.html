@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WebEx Meeting Folder &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Upgrade Manage" href="upgrade_manage.html" />
+    <link rel="prev" title="PT Introduce" href="pt.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="upgrade_manage.html" title="Upgrade Manage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pt.html" title="PT Introduce"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="webex-meeting-folder">
+<h1>WebEx Meeting Folder<a class="headerlink" href="#webex-meeting-folder" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="where-to-change-the-installation-folder">
+<h2>Where to change the installation folder<a class="headerlink" href="#where-to-change-the-installation-folder" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>For Windows<ul>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/client/allpackaging.xml">https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/client/allpackaging.xml</a></li>
+</ul>
+</li>
+<li>For Mac<ul>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/mac/allprojects.xml">https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/mac/allprojects.xml</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="t30-installation-folder-changes">
+<h2>T30 Installation folder changes<a class="headerlink" href="#t30-installation-folder-changes" title="Permalink to this headline">¶</a></h2>
+<p>We will change Cisco WebEx meeting folder name from digital number to string in T30 as following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Meeting Type</th>
+<th class="head">Folder Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Meeting Center</td>
+<td>T30_MC</td>
+</tr>
+<tr class="row-odd"><td>Event Center</td>
+<td>T30_EC</td>
+</tr>
+<tr class="row-even"><td>Training Center</td>
+<td>T30_TC</td>
+</tr>
+<tr class="row-odd"><td>Support Center (Start a support session)</td>
+<td>T30_SC</td>
+</tr>
+<tr class="row-even"><td>Support Center (Join a support session)</td>
+<td>T30_SCC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sc-folder-special-logic">
+<h2>SC folder special logic<a class="headerlink" href="#sc-folder-special-logic" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s use T29 as example:</p>
+<div class="highlight-python"><div class="highlight"><pre>Checked with Morgan Fang, SC use two folders, I will show you the details with T29 as example:
+   1. For &quot;Start a support session&quot; case, will use &quot;1530&quot; as work directory
+   2. For &quot;Join a support session&quot;case, will use &quot;1532&quot; as work directory
+
+   The issue is,  after we changed SC folder (from 1530 to T30_SC), all &quot;Start a support session&quot; and &quot;Join a support session&quot; will use &quot;T30_SC&quot; as work directory.
+   I had talked with Morgan, and he said there is a logic on the page:
+   1.  If the page found the meeting is SC and the type is &quot;Join a support session&quot;
+   2. Then it will add 2 (1530 + 2 = 1532) to generate &quot;Join a support session&quot; work directory
+
+  So we need the page team help to correct this logic, we suggest them use the below logic to distinguish &quot;Start a support session&quot; and &quot;Join a support session&quot;:
+  1. If the page found the meeting is SC and the type is &quot;Join a support session&quot;
+  2. Use &quot;Start a support session&quot; work directory add &quot;C&quot; to generate &quot;Join a support session&quot; work directory, use &quot;T30_SC&quot; as example,
+      the &quot;Join a support session&quot; work directory will be &quot;T30_SCC&quot;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">WebEx Meeting Folder</a><ul>
+<li><a class="reference internal" href="#where-to-change-the-installation-folder">Where to change the installation folder</a></li>
+<li><a class="reference internal" href="#t30-installation-folder-changes">T30 Installation folder changes</a></li>
+<li><a class="reference internal" href="#sc-folder-special-logic">SC folder special logic</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pt.html"
+                        title="previous chapter">PT Introduce</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="upgrade_manage.html"
+                        title="next chapter">Upgrade Manage</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/webex_meeting_folder.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="upgrade_manage.html" title="Upgrade Manage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pt.html" title="PT Introduce"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

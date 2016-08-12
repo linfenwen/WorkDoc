@@ -1,0 +1,111 @@
+
+@startuml
+package PList <<Folder>> {
+
+abstract class IUserListSink
+abstract class CSmDefUserMgr2
+
+class CPumUserList
+
+
+class CMCUserMgr
+class CMCPListUIMgr
+class CMCUserListSink
+
+
+class CPumListCtrl
+class CListViewCtrl2
+class CCustomPListCtrl
+
+class CMCPListActiveTalkBar
+class CMCPListVideoPanel
+class CMCPlistSelfBar
+class CMCPListThumbNailView
+
+}
+
+' PList
+
+CMCUserListSink -up-|> IUserListSink
+CMCUserListSink --* CMCUserMgr
+
+CMCUserMgr -up-|> CSmDefUserMgr2
+
+
+CPumUserList --* CSmDefUserMgr2
+CPumUserList *-up- CPumListCtrl
+CPumUserList --> IUserListSink
+CPumListCtrl o-right- IUserListSink
+CPumListCtrl -up-|> CListViewCtrl2
+CListViewCtrl2 *-up- CCustomPListCtrl
+
+
+CMCUserMgr *-right- CMCPListUIMgr
+
+CMCPListUIMgr *-up- CMCPListActiveTalkBar
+CMCPListUIMgr *-right- CMCPListVideoPanel
+CMCPListUIMgr *-- CMCPlistSelfBar
+CMCPListUIMgr *-up- CMCPListThumbNailView
+
+
+' VUI package
+
+package VUI <<Folder>> {
+abstract class IVideoUIMgr
+abstract class IVideoUIMgrSink
+
+class CVUIMgr
+class CVUIPanelListActiveMainVideoPort
+class CVUIFullScreenPanel
+class CVUIThumbnailContainer
+class CVUIWidgetPanel
+class CVUITheatreActiveMainVideoPort
+
+class CVUIActiveMainVideoPort
+class CVUIActiveMainSelfVideoPort
+class CVUIVideoPortView
+class CVUIVideoPort
+class CVUIThumbnailView
+class CVUIThumbnailVideoPortMgr
+class CVUIThumbnailVideoPort
+
+class CVUIWidgetVideoPort
+}
+
+' VUI
+
+CVUIVideoPort <|-- CVUIVideoPortView
+
+CVUIVideoPortView <|-- CVUIThumbnailVideoPort
+CVUIVideoPortView <|-- CVUIWidgetVideoPort
+CVUIVideoPortView <|-- CVUIActiveMainVideoPort
+CVUIVideoPortView <|-- CVUIActiveMainSelfVideoPort
+
+CVUIActiveMainVideoPort <|-- CVUIPanelListActiveMainVideoPort
+CVUIActiveMainVideoPort <|-- CVUITheatreActiveMainVideoPort
+
+CVUIActiveMainVideoPort *-right- CVUIActiveMainSelfVideoPort
+CVUIThumbnailVideoPort --* CVUIThumbnailVideoPortMgr
+CVUIWidgetVideoPort --* CVUIWidgetPanel
+CVUITheatreActiveMainVideoPort --* CVUIFullScreenPanel
+
+CVUIThumbnailVideoPortMgr --* CVUIThumbnailView
+CVUIThumbnailView --* CVUIThumbnailContainer
+
+CVUIPanelListActiveMainVideoPort --* CVUIMgr
+CVUIFullScreenPanel --* CVUIMgr
+CVUIThumbnailContainer --* CVUIMgr
+CVUIWidgetPanel --* CVUIMgr
+
+CVUIMgr --|> IVideoUIMgr
+CVUIMgr o-- IVideoUIMgrSink
+
+IVideoUIMgr --> IVideoUIMgrSink
+
+' PList & VUI
+
+
+IVideoUIMgr  --* CSmDefUserMgr2
+CSmDefUserMgr2 --|> IVideoUIMgrSink
+
+@enduml

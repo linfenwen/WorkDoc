@@ -1,0 +1,43 @@
+@startuml
+
+class CCiscoWebExUpdateProxy {
++ void SetCommandLine(const string& strCommand);
++ void SetCommunicationWND(const string& strWND);
++ void SetCommunicationWND(int nWND);
++ string GetExePath();
++ string GetIniPath();
++ int ExecuteCommand(const string& strCommand);
+
+
+# void ParseCommandLine(const string& strCommand);
+
+# BOOL   m_bUpdateLaunch;
+# string m_strExePath;
+# string m_strIniPath;
+
+# string m_strCommunicationWND;
+}
+
+class CCiscoWebExUpdateEnv {
++ tstring	GetAppPath();
++ tstring	GetCommandLine();
+
++ bool		ReadIniProfileString(const string& strSectionName, const string& strKey, const string& strDefaultValue, TCHAR* pszValue, int nValueSize, const string& strIniFilePath);
++ bool		WriteIniProfileString(const string& strSectionName, const string& strKey, const string& strValue, const string& strIniFilePath);
++ bool		RunProcess(const tstring& strAppPath, const tstring& strCmd);
+}
+
+class CCiscoWebExUpdateChannelSink {
++ void 
+}
+
+class CCiscoWebExUpdateChannel {
++ CCiscoWebExUpdateChannel(CCiscoWebExUpdateChannelSink* pChannelSink);
++ bool		Create();
++ void		Destroy();
++ HWND		GetHWND();
+
+# HWND		m_hWnd;
+}
+
+@enduml

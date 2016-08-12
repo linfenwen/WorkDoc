@@ -1,0 +1,47 @@
+@startuml
+
+participant CSmFITUIMgr
+participant CSmAppShareSessionMgr
+participant CPfwServiceMgr
+participant CAtConfManager
+participant CAtConfAgent
+
+participant arm
+
+==User click Share My Screen from FIT Menu==
+
+-> CSmFITUIMgr : OnCommand
+
+activate CSmFITUIMgr
+
+CSmFITUIMgr -> CSmAppShareSessionMgr : QuitShareSession
+activate CSmAppShareSessionMgr
+
+CSmAppShareSessionMgr -> CAtConfManager : CloseSession
+CAtConfManager -> CAtConfAgent : SessionClose
+CAtConfAgent -> arm : session_close_request
+deactivate CSmAppShareSessionMgr
+
+... CSmAppShareSessionMgr::QuitShareSession Sleep 300ms ...
+
+CSmFITUIMgr -> CSmAppShareSessionMgr : ShareApp
+activate CSmAppShareSessionMgr
+
+CSmAppShareSessionMgr -> CPfwServiceMgr : CreateSession
+CPfwServiceMgr -> CAtConfManager : CreateSession
+CAtConfManager -> CAtConfAgent : SessionCreate 
+CAtConfAgent -> arm : session_create_request
+
+deactivate CSmAppShareSessionMgr
+
+
+==receive session close indication from network==
+arm -> CAtConfAgent : on_session_close_indication
+
+==receive session create indication from network==
+arm -> CAtConfAgent : on_session_create_confirm
+
+
+deactivate CSmFITUIMgr
+
+@enduml

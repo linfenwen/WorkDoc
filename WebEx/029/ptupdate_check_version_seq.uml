@@ -1,0 +1,36 @@
+@startuml
+
+[-> ptUpdate : "ptUpdate.exe /CheckVersion"
+ptUpdate -> CCheckForUpdateFileNew : StartCheckForUpdate
+CCheckForUpdateFileNew -> CCommItem : CheckWritePrivilege
+activate CCommItem
+CCommItem -> CCommItem : GetOSVersion
+CCommItem -> CCommItem : GetPTInstallPath
+CCommItem -> CCommItem : GetPTInstallPathFromReg
+note over CCommItem : read register "SOFTWARE\\WebEx\\ProdTools"
+deactivate CCommItem
+
+alt CheckWritePrivilege return False
+
+ptUpdate -> ptUpdate : SkinUnLoad
+
+else return True
+
+CCheckForUpdateFileNew -> CCheckForUpdateFileNew : GetSiteSettingByXML
+activate CCheckForUpdateFileNew 
+CCheckForUpdateFileNew -> CCommItem : GetAccount
+note over CCheckForUpdateFileNew, CCommItem : get account by call ptsrv.exe (need ptInst.exe setting meeting info)
+deactivate CCheckForUpdateFileNew
+
+loop !m_bQuit
+CCheckForUpdateFileNew -> OS : TranslateMessage
+CCheckForUpdateFileNew -> OS : DispatchMessage
+end
+
+CCheckForUpdateFileNew -> CCheckForUpdateFileNew : BuildUpdatePackage
+note over CCheckForUpdateFileNew : Output Update Package file
+
+CCheckForUpdateFileNew -> CPTUpdStart : DownLoadFile
+CCheckForUpdateFileNew -> CCheckForUpdateFileNew : FreeDownloadItems
+end
+@enduml

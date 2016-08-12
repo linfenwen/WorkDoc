@@ -1,0 +1,56 @@
+@startuml
+
+actor User
+
+box "WebExMgr"
+
+participant CMCUIMgr
+participant CSmDefUIMgr
+participant CSmDocViewSessionMgr
+participant CPcmDocViewMgr
+participant CPcmDocViewContainer
+
+end box
+
+box "atpdmod"
+
+participant CPDApp
+
+end box
+
+box "dvsrc"
+
+participant CDvApp
+participant CDvRemoteView
+
+end box
+
+box "pdcore"
+
+participant CPDDocument
+
+end box
+
+== New Whiteboard ==
+
+User-> CMCUIMgr : Click **New Whiteboard**
+CMCUIMgr -> CMCUIMgr : OnShareWhiteboard
+CMCUIMgr -> CMCUIMgr : LaunchWhiteboardShare
+CMCUIMgr -> CSmDefUIMgr : OnMenuShareWhiteboard
+CSmDefUIMgr -> CSmDocViewSessionMgr : NewWhiteboard
+CSmDocViewSessionMgr -> CPcmDocViewMgr : NewWhiteboard
+CPcmDocViewMgr -> CPcmDocViewMgr : OpenDocument
+CPcmDocViewMgr -> CPDApp : ShareWhiteBoard
+CPDApp -> CDvApp : ShareWhiteBoard
+CDvApp -> CDvApp : CreateDocument
+CDvApp -> CPDDocument : OnSetAppType
+CDvApp -> CDvApp : GetRemoteView
+CDvApp -> CDvRemoteView : GetNodeID
+CDvApp -> CPDDocument : SetDocID
+CDvApp -> CPDDocument : NewPage
+
+CPDApp -> CPcmDocViewContainer : GlobalCallBack
+
+
+
+@enduml
