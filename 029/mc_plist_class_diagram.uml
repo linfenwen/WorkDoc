@@ -1,110 +1,111 @@
+
 @startuml
-box "WebexMgr"
+package PList <<Folder>> {
 
-participant "CMCUserMgr"
-participant "CMCHybridAudioMgr"
+abstract class IUserListSink
+abstract class CSmDefUserMgr2
 
-end box
-
-box "ServiceMgr"
-
-participant CPfwServiceMgr
-participant CSmHybridAudioMgr
-
-end box
-
-box "HybridCli"
-
-participant IHybridClientSink
-participant CHybridClientMgr
-participant CHCCTelephoneService
+class CPumUserList
 
 
-end box
-
-box "dtappcli"
-
-participant CDTAppClient
-participant IDTAppClientSink
-participant CDTAppPDU_Data_HyASNNTY
-participant CHCCApeRecord
-end box
-
-box "ARM"
-
-participant IArmApeSink
-
-end box
+class CMCUserMgr
+class CMCPListUIMgr
+class CMCUserListSink
 
 
-== Recieve ASN PDU ==
+class CPumListCtrl
+class CListViewCtrl2
+class CCustomPListCtrl
 
-IArmApeSink <-] : ApeDataIndication
-IArmApeSink -> CDTAppClient : ApeDataIndication
+class CMCPListActiveTalkBar
+class CMCPListVideoPanel
+class CMCPlistSelfBar
+class CMCPListThumbNailView
 
-alt "DTApp_Evt_HyASN"
-CDTAppClient -> CDTAppPDU_Data_HyASNNTY : Decode
-CDTAppClient -> IDTAppClientSink : OnASNReport
-IDTAppClientSink -> CHCCTelephoneService : OnASNReport
-activate CHCCTelephoneService
+}
 
-CHCCTelephoneService -> CHCCTelephoneService : HandleCMR4ASNReport
+' PList
 
-alt "no user is speaking (attendeeID1 == attendeeID2 == attendeeID3 == 0)"
+CMCUserListSink -up-|> IUserListSink
+CMCUserListSink --* CMCUserMgr
 
-CHCCTelephoneService -> CHCCTelephoneService : StopASN
+CMCUserMgr -up-|> CSmDefUserMgr2
 
-activate CHCCTelephoneService
-CHCCTelephoneService -> CHybridClientMgr : GetASNUserCount
 
-loop ASNUserCount
-CHCCTelephoneService -> CHCCTelephoneService : FlashUser
+CPumUserList --* CSmDefUserMgr2
+CPumUserList *-up- CPumListCtrl
+CPumUserList --> IUserListSink
+CPumListCtrl o-right- IUserListSink
+CPumListCtrl -up-|> CListViewCtrl2
+CListViewCtrl2 *-up- CCustomPListCtrl
 
-activate CHCCTelephoneService
-CHCCTelephoneService -> CHCCApeRecord : ~MASK_PRI_ASN
-CHCCTelephoneService -> CHCCTelephoneService : RosterToService
-CHCCTelephoneService -> IHybridClientSink : OnRosterChanged
-IHybridClientSink -> CMCHybridAudioMgr : OnRosterChanged
-CMCHybridAudioMgr -> CSmHybridAudioMgr : OnRosterChanged
 
-deactivate CHCCTelephoneService
-end
+CMCUserMgr *-right- CMCPListUIMgr
 
-CHCCTelephoneService -> CHCCTelephoneService : HandleSVCASN
-activate CHCCTelephoneService
-CHCCTelephoneService -> IHybridClientSink : OnASNReport
-IHybridClientSink -> CSmHybridAudioMgr : OnASNReport
-CSmHybridAudioMgr -> CPfwServiceMgr : OnASNReport
-CPfwServiceMgr -> CPfwServiceMgr : ApplyNewActiveSpeaker
-deactivate CHCCTelephoneService
-deactivate CHCCTelephoneService
+CMCPListUIMgr *-up- CMCPListActiveTalkBar
+CMCPListUIMgr *-right- CMCPListVideoPanel
+CMCPListUIMgr *-- CMCPlistSelfBar
+CMCPListUIMgr *-up- CMCPListThumbNailView
 
-else "some user is speaking"
-CHCCTelephoneService -> CHCCTelephoneService : StartASN
-activate CHCCTelephoneService
-loop m_pHybridMgr->GetASNUserCount
 
-ref over CHCCTelephoneService, CHCCTelephoneService : FlashUser(False)
-end
+' VUI package
 
-loop aASNUser.GetCount
-ref over CHCCTelephoneService, CHCCTelephoneService : FlashUser(True)
-end
+package VUI <<Folder>> {
+abstract class IVideoUIMgr
+abstract class IVideoUIMgrSink
 
-ref over CHCCTelephoneService, CHCCTelephoneService : HandleSVCASN
-deactivate CHCCTelephoneService
-end
+class CVUIMgr
+class CVUIPanelListActiveMainVideoPort
+class CVUIFullScreenPanel
+class CVUIThumbnailContainer
+class CVUIWidgetPanel
+class CVUITheatreActiveMainVideoPort
 
-CHCCTelephoneService -> CHCCTelephoneService : SaveASNUser
+class CVUIActiveMainVideoPort
+class CVUIActiveMainSelfVideoPort
+class CVUIVideoPortView
+class CVUIVideoPort
+class CVUIThumbnailView
+class CVUIThumbnailVideoPortMgr
+class CVUIThumbnailVideoPort
 
-activate CHCCTelephoneService
-CHCCTelephoneService -> CHybridClientMgr : CleanASNUser
+class CVUIWidgetVideoPort
+}
 
-loop "3 attendeeID and m_nVOIPASNCnt"
-CHCCTelephoneService -> CHybridClientMgr : AddASNUser
-end
+' VUI
 
-deactivate CHCCTelephoneService
+CVUIVideoPort <|-- CVUIVideoPortView
 
-end
+CVUIVideoPortView <|-- CVUIThumbnailVideoPort
+CVUIVideoPortView <|-- CVUIWidgetVideoPort
+CVUIVideoPortView <|-- CVUIActiveMainVideoPort
+CVUIVideoPortView <|-- CVUIActiveMainSelfVideoPort
+
+CVUIActiveMainVideoPort <|-- CVUIPanelListActiveMainVideoPort
+CVUIActiveMainVideoPort <|-- CVUITheatreActiveMainVideoPort
+
+CVUIActiveMainVideoPort *-right- CVUIActiveMainSelfVideoPort
+CVUIThumbnailVideoPort --* CVUIThumbnailVideoPortMgr
+CVUIWidgetVideoPort --* CVUIWidgetPanel
+CVUITheatreActiveMainVideoPort --* CVUIFullScreenPanel
+
+CVUIThumbnailVideoPortMgr --* CVUIThumbnailView
+CVUIThumbnailView --* CVUIThumbnailContainer
+
+CVUIPanelListActiveMainVideoPort --* CVUIMgr
+CVUIFullScreenPanel --* CVUIMgr
+CVUIThumbnailContainer --* CVUIMgr
+CVUIWidgetPanel --* CVUIMgr
+
+CVUIMgr --|> IVideoUIMgr
+CVUIMgr o-- IVideoUIMgrSink
+
+IVideoUIMgr --> IVideoUIMgrSink
+
+' PList & VUI
+
+
+IVideoUIMgr  --* CSmDefUserMgr2
+CSmDefUserMgr2 --|> IVideoUIMgrSink
+
 @enduml
