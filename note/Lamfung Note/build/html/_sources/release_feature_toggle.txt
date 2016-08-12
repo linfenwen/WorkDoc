@@ -232,6 +232,7 @@ Reference
 
 * http://martinfowler.com/articles/feature-toggles.html
 * http://martinfowler.com/bliki/FeatureToggle.html
+* https://www.draw.io/#G0B2Ykfab9ktB2Mkk3QkFkWUxMSnc
 
 
 Some thinking for win client
