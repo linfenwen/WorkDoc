@@ -36,7 +36,12 @@ Common Topic
 #. Lambdas VS Closures
 	http://scottmeyers.blogspot.com/2013/05/lambdas-vs-closures.html
 	http://www.aristeia.com/
-
+#. www.devarticles.com
+	http://www.devarticles.com/c/a/Cplusplus/C-plus-plus-In-Theory-The-Singleton-Pattern-Part-I/4/
+#. Which is fastest: read, fread, ifstream or mmap?
+	http://lemire.me/blog/2012/06/26/which-is-fastest-read-fread-ifstream-or-mmap/
+#. Displaying a Critical Section
+	https://msdn.microsoft.com/fr-fr/library/ff541979(v=vs.85).aspx
 Open Source
 -----------
 

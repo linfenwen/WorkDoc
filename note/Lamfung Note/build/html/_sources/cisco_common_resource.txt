@@ -67,6 +67,8 @@ WIKI
 	+ http://webexci.cisco.com/dashboard/index.html
 #. feature toggle
 	+ https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle
+#. T32 Technical Feature Design
+	+ https://cisco.app.box.com/s/q8swksr24h4gs1rkp207pj7rmk47dc5a
 
 CMR4.0 (Spark CCP) Training Session
 -----------------------------------

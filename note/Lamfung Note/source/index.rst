@@ -36,6 +36,8 @@ Contents:
    mvp_common_resource.rst
    cisco_common_resource.rst
    release_feature_toggle.rst
+   tigger_window_task.rst
+   tigger_windows_fqa_1.rst
    
 
 Indices and tables

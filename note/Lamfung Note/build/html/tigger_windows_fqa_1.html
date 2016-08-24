@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tigger Windows FQA 2016-08-23 &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="Tigger Windows Meeting Client Task" href="tigger_window_task.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tigger-windows-fqa-2016-08-23">
+<h1>Tigger Windows FQA 2016-08-23<a class="headerlink" href="#tigger-windows-fqa-2016-08-23" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>WO0000000182993, WO0000000207215</dt>
+<dd><ul class="first simple">
+<li>User gets to 99% and is unable to join meeting</li>
+<li>Which has bug CSCuz83890 fixed on T31.5.</li>
+<li>windowscodecs.dll &amp; WCLDll.dll</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>Trace info:
+1 CFW 02:45:26.227 07/26/16 [6316:8736]  CConfContextMgr::SetParam name=[$AboutDlgClientVersion] value=[31.4.0.44]
+2 CFW 02:45:26.227 07/26/16 [6316:8736] CConfContextMgr::SetParam name=[$SiteUrl] value=[https://nbcucmr.webex.com/nbcucmr]
+3 CFW 02:45:47.923 07/26/16 [6316:8736] [Performance]CSmDefUserMgr2::InitializeUI, end
+4 ComUI 02:45:48.095 07/26/16 [6316:8736] CDlgQuickstart::OnInitDialog Fire_OnDialogInited
+5 webexmgr.dll 02:45:48.095 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitLockBubble(), begin
+6 webexmgr.dll 02:45:48.111 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitLockBubble(), Initial
+7 webexmgr.dll 02:45:48.111 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitLockBubble(), end
+8 webexmgr.dll 02:45:48.111 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitInviteRemindButton CMCWebACDMgr = 0
+9 crashdle 02:45:48.126 07/26/16 [6316:8736] ===================================Crash Log Begin
+10 crashdle 02:45:48.220 07/26/16 [6316:8736] 77A7754B  001FB9D0  0001:0002754B 5708952E b5acac3b4a6c4515af416d60366399652  &quot;C:\Windows\SysWOW64\ntdll.dll&quot;
+11 crashdle 02:45:48.220 07/26/16 [6316:8736]  6787BF61  001FBCE4  0001:0010AF61 5706A236 e163ad932d9048ea8775ecac137fa63c1  &quot;C:\Windows\system32\windowscodecs.dll&quot;
+12 crashdle 02:45:48.220 07/26/16 [6316:8736] 0F1F9295  001FBD30  0001:00008295 56C7043F 48076cc64b1044b7b5600dd54af169752  &quot;C:\ProgramData\WebEx\WebEx\T31_UMC\WCLDll.dll&quot;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000206942, WO0000000196500</dt>
+<dd><ul class="first last simple">
+<li>Microphone not getting detected in webex meetings</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TAS000000024293, WO0000000198221</dt>
+<dd><ul class="first simple">
+<li>Host is getting disconnected from the meeting</li>
+<li>CSCux47573</li>
+<li>CreateWebcamDetectedPopup</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>1) please have the customer test with both registry values set to 0
+   HKEY_CURRENT_USER\Software\WebEx\Config\BUBBLE\allways_start_my_camera_when_join_meeting = 0
+   HKEY_CURRENT_USER\Software\WebEx\Config\BUBBLE\do_not_show_me_again_when_join_meeting_next_time = 0
+   Then check if issue can be resolved.
+2) If issue still cannot resolved, please let customer save a new webex client trace to us.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tigger_window_task.html"
+                        title="previous chapter">Tigger Windows Meeting Client Task</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tigger_windows_fqa_1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

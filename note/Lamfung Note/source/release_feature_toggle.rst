@@ -106,7 +106,7 @@ webex-windows-feature-toggle
 #. API
    ::
       
-      bool featureIsEnabled(char* pszFeatureName);
+      bool featureIsEnabled(char* pszFeatureName, bool bDefault);
       void clearFeatureToggle();
 
 #. Repo
@@ -216,6 +216,7 @@ How other project use feature toggle
 #. Add **webex-windows-feature-toggle** to your *dependencies.xml* file
 #. Add **featureToggle.lib** to your *project* 
 #. Add **featureToggleAPI.h** header file to your *project*
+#. Call **featureIsEnabled** where you want to use *feature toggle*
 
 
 Wiki

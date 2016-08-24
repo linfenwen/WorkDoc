@@ -24,6 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Tigger Windows Meeting Client Task" href="tigger_window_task.html" />
     <link rel="prev" title="Cisco Common Resource" href="cisco_common_resource.html" /> 
   </head>
   <body>
@@ -33,6 +34,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="cisco_common_resource.html" title="Cisco Common Resource"
              accesskey="P">previous</a> |</li>
@@ -185,7 +189,7 @@
 <h2>webex-windows-feature-toggle<a class="headerlink" href="#webex-windows-feature-toggle" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p class="first">API</p>
-<div class="highlight-python"><div class="highlight"><pre>bool featureIsEnabled(char* pszFeatureName);
+<div class="highlight-python"><div class="highlight"><pre>bool featureIsEnabled(char* pszFeatureName, bool bDefault);
 void clearFeatureToggle();
 </pre></div>
 </div>
@@ -328,6 +332,7 @@ TEST_F(CMCServiceMgrTest, Test1)
 <li>Add <strong>webex-windows-feature-toggle</strong> to your <em>dependencies.xml</em> file</li>
 <li>Add <strong>featureToggle.lib</strong> to your <em>project</em></li>
 <li>Add <strong>featureToggleAPI.h</strong> header file to your <em>project</em></li>
+<li>Call <strong>featureIsEnabled</strong> where you want to use <em>feature toggle</em></li>
 </ol>
 </div>
 <div class="section" id="wiki">
@@ -395,6 +400,9 @@ TEST_F(CMCServiceMgrTest, Test1)
   <h4>Previous topic</h4>
   <p class="topless"><a href="cisco_common_resource.html"
                         title="previous chapter">Cisco Common Resource</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tigger_window_task.html"
+                        title="next chapter">Tigger Windows Meeting Client Task</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/release_feature_toggle.txt"
@@ -423,6 +431,9 @@ TEST_F(CMCServiceMgrTest, Test1)
         <li class="right" style="margin-right: 10px">
           <a href="genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+             >next</a> |</li>
         <li class="right" >
           <a href="cisco_common_resource.html" title="Cisco Common Resource"
              >previous</a> |</li>
