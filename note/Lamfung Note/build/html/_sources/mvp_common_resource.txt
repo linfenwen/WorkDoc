@@ -20,6 +20,11 @@ Windows Topic
 	+ http://blog.csdn.net/kencaber/article/details/51525991
 #. learncpp
 	+ http://www.learncpp.com/cpp-tutorial/125-the-virtual-table/
+	
+#. Determining HResult Error Codes
+	+ https://support.microsoft.com/en-us/kb/178081
+#. Debugging LoadLibrary Failures
+	+ https://blogs.msdn.microsoft.com/junfeng/2006/11/20/debugging-loadlibrary-failures/
 
 Common Topic
 ------------
@@ -42,6 +47,16 @@ Common Topic
 	http://lemire.me/blog/2012/06/26/which-is-fastest-read-fread-ifstream-or-mmap/
 #. Displaying a Critical Section
 	https://msdn.microsoft.com/fr-fr/library/ff541979(v=vs.85).aspx
+#. Hacker Rank
+	https://www.hackerrank.com
+#. BFCP
+	https://tools.ietf.org/html/rfc4582#page-4
+#. WPAD, Web Proxy Auto-Discovery protocol
+	+ http://go.microsoft.com/fwlink/p/?linkid=392029
+	+ https://tools.ietf.org/html/draft-ietf-wrec-wpad-01
+#. Jenkins
+	https://jenkins.io/index.html
+
 Open Source
 -----------
 

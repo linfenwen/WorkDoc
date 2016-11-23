@@ -123,6 +123,8 @@ Code Example
 
   ::
     
+    #include "featureToggleAgent.h"
+    
     int CMCServiceMgr::OnConfJoinConfirm(short result, ARMConferenceHandle conf_handle, CAtUser* pUser)
     {
         ...
@@ -202,28 +204,36 @@ webex-windows-feature-toggle
 #. dependencies
 #. doc
 #. include
-	+ featureToggleAPI.h
+	+ featureToggleAgent.h
 #. output
 #. src
+	+ featuretoggle.rc
+	+ resource.h
+	+ featuretoggle.vcxproj
+	+ featureToggleAPI.h
 	+ featureToggleAPI.cpp
 	+ featureToggleImpl.h
 	+ featureToggleImpl.cpp
+	+ staticToggle.json
 #. test
 
 How other project use feature toggle
 ------------------------------------
 
 #. Add **webex-windows-feature-toggle** to your *dependencies.xml* file
-#. Add **featureToggle.lib** to your *project* 
-#. Add **featureToggleAPI.h** header file to your *project*
+#. Add **featureToggleAgent.h** header file to your *project*
 #. Call **featureIsEnabled** where you want to use *feature toggle*
 
 
 Wiki
 ----
 
-* https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram
-* https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&jobId=bcbb6915-5fa5-11e6-8406-005056af0148&diagCharEncoding=&resourceName=cctg-ci-win33&completed=0
+* Feature over view design
+	https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram
+* View build status
+	https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&jobId=bcbb6915-5fa5-11e6-8406-005056af0148&diagCharEncoding=&resourceName=cctg-ci-win33&completed=0
+* Download feature toggle **zip package**
+	https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle
 * https://wiki.cisco.com/display/wxclient/makefile.ec+detail
 * https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally
 

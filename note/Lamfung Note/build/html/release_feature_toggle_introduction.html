@@ -1,0 +1,441 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Release Toggle Introduction &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Tiger Windows Meeting Client Tickets Summary" href="tiger_window_ticket_summary_1.html" />
+    <link rel="prev" title="Release Feature Toggle" href="release_feature_toggle.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tiger_window_ticket_summary_1.html" title="Tiger Windows Meeting Client Tickets Summary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="release_feature_toggle.html" title="Release Feature Toggle"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="release-toggle-introduction">
+<h1>Release Toggle Introduction<a class="headerlink" href="#release-toggle-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overall-work-flow">
+<h2>Overall work flow<a class="headerlink" href="#overall-work-flow" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><img alt="_static/releaseToggle.png" src="_static/releaseToggle.png" />
+</div></blockquote>
+<dl class="docutils">
+<dt>urllink:</dt>
+<dd><a class="reference external" href="https://www.draw.io/?state=%7B%22ids%22:%5B%220B2Ykfab9ktB2Mkk3QkFkWUxMSnc%22%5D,%22action%22:%22open%22,%22userId%22:%22102822533125939981740%22%7D#G0B2Ykfab9ktB2Mkk3QkFkWUxMSnc">https://www.draw.io/?state=%7B%22ids%22:%5B%220B2Ykfab9ktB2Mkk3QkFkWUxMSnc%22%5D,%22action%22:%22open%22,%22userId%22:%22102822533125939981740%22%7D#G0B2Ykfab9ktB2Mkk3QkFkWUxMSnc</a></dd>
+</dl>
+</div>
+<div class="section" id="po-or-sa-or-sm-edit-configure-file">
+<h2>PO or SA or SM edit configure file<a class="headerlink" href="#po-or-sa-or-sm-edit-configure-file" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Feature Toggle Git Repo</p>
+<p><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-release-toggles/browse">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-release-toggles/browse</a></p>
+</li>
+<li><p class="first">features-config.json</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;features&quot;</span><span class="p">:</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s">&quot;key&quot;</span><span class="p">:</span> <span class="s">&quot;release-toggle-sample&quot;</span><span class="p">,</span>
+                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Release toggle sample&quot;</span><span class="p">,</span>
+                <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;this is a sample release toggle config for demo&quot;</span><span class="p">,</span>
+                <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;Admin Test&quot;</span><span class="p">,</span>
+                <span class="s">&quot;enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s">&quot;target-release&quot;</span><span class="p">:</span> <span class="s">&quot;T32&quot;</span><span class="p">,</span>
+                <span class="s">&quot;sub-flags&quot;</span><span class="p">:</span>
+                           <span class="p">{</span>
+                               <span class="s">&quot;flag&quot;</span><span class="p">:</span>
+                                     <span class="p">[</span>
+                                         <span class="p">{</span>
+                                             <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;j2ee_flag&quot;</span><span class="p">,</span>
+                                             <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span>
+                                         <span class="p">},</span>
+                                         <span class="p">{</span>
+                                             <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;cb_flag&quot;</span><span class="p">,</span>
+                                             <span class="s">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">false</span>
+                                         <span class="p">}</span>
+                                     <span class="p">]</span>
+                           <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s">&quot;key&quot;</span><span class="p">:</span> <span class="s">&quot;release-toggle-1&quot;</span><span class="p">,</span>
+                <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Release toggle 1&quot;</span><span class="p">,</span>
+                <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;this is a 1 feature toggle config for demo&quot;</span><span class="p">,</span>
+                <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;Admin Test&quot;</span><span class="p">,</span>
+                <span class="s">&quot;enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+                <span class="s">&quot;target-release&quot;</span><span class="p">:</span> <span class="s">&quot;T32&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">staticToggle.json (utf-8 format)</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+   <span class="s">&quot;features&quot;</span><span class="p">:</span>
+             <span class="p">[</span>
+                 <span class="p">{</span><span class="s">&quot;enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s">&quot;key&quot;</span><span class="p">:</span> <span class="s">&quot;release-toggle-sample&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s">&quot;enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s">&quot;key&quot;</span><span class="p">:</span> <span class="s">&quot;release-toggle-1&quot;</span><span class="p">}</span>
+             <span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="component-impact">
+<h2>Component Impact<a class="headerlink" href="#component-impact" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>webex-cloudsapp-config</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>gpcini.webex (MC)</dt>
+<dd><ul class="first last simple">
+<li>VistaBasic section</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">MSI</p>
+</li>
+</ul>
+</div>
+<div class="section" id="webex-windows-feature-toggle">
+<h2>webex-windows-feature-toggle<a class="headerlink" href="#webex-windows-feature-toggle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">API</p>
+<div class="highlight-python"><div class="highlight"><pre>bool releaseToggleIsEnable(char* pszFeatureName);
+</pre></div>
+</div>
+</li>
+<li><dl class="first docutils">
+<dt>Repo</dt>
+<dd><p class="first last"><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-windows-feature-toggle/browse">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-windows-feature-toggle/browse</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to download lib and header file ?</dt>
+<dd><p class="first last"><a class="reference external" href="http://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle/">http://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle/</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>T32.0</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://ccatg-build2.cisco.com/cirepo/webex_artifacts/client/webex-windows-release-toggle/32.0.0/">http://ccatg-build2.cisco.com/cirepo/webex_artifacts/client/webex-windows-release-toggle/32.0.0/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="two-mode">
+<h2>Two mode<a class="headerlink" href="#two-mode" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Release mode</dt>
+<dd><ul class="first last simple">
+<li>Undefine <em>RT_DEBUG_MODE</em></li>
+<li>Load <em>staticToggle.json</em> from <em>featuretoggle.dll</em></li>
+<li>For security consider, in binary level disalbe debug relevant code</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Debug mode</dt>
+<dd><ul class="first last simple">
+<li>Define <em>RT_DEBUG_MODE</em></li>
+<li>Load <em>staticToggle.json</em> from file which locate at the same directory of <em>featuretoggle.dll</em> first,
+else load <em>staticToggle.json</em> from <em>featuretoggle.dll</em></li>
+<li>Convenient for developer debug</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="how-other-project-use-feature-toggle">
+<h2>How other project use feature toggle<a class="headerlink" href="#how-other-project-use-feature-toggle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Add <strong>webex-windows-feature-toggle</strong> to your <em>dependencies.xml</em> file</li>
+<li>Add <strong>featureToggleAgent.h</strong> header file to your <em>project</em></li>
+<li>Call <strong>releaseToggleIsEnable</strong> where you want to use <em>release toggle</em></li>
+</ol>
+</div>
+<div class="section" id="code-example">
+<h2>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Example1</li>
+</ol>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>#include &quot;releaseToggleAgent.h&quot;
+
+int CMCServiceMgr::OnConfJoinConfirm(short result, ARMConferenceHandle conf_handle, CAtUser* pUser)
+{
+    ...
+
+    if( releaseToggleIsEnable(&quot;F1447&quot;) )
+    {
+        m_pCSIMgr = new CSmCSIMgr();
+        if(NULL != m_pCSIMgr)
+        {
+            m_pCSIMgr-&gt;SetServiceMgr(this);
+            m_pCSIMgr-&gt;OnConfJoinConfirm(result, conf_handle, pUser);
+        }
+    }
+
+    ...
+}
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="effect-on-ut">
+<h2>Effect on <strong>UT</strong><a class="headerlink" href="#effect-on-ut" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">UT for <strong>Example1</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>class CMCServiceMgrTest : public testing::Test
+{
+    public:
+
+        CMCServiceMgrTest()
+        {
+            m_pServiceMgr = NULL;
+        }
+
+        virtual void SetUP()
+        {
+            if(NULL == m_pServiceMgr)
+            {
+                m_pServiceMgr = new CMCServiceMgr;
+            }
+        }
+
+        virtual void TearDown()
+        {
+            if(NULL != m_pServiceMgr)
+            {
+                delete m_pServiceMgr;
+                m_pServiceMgr = NULL;
+            }
+        }
+
+    protected:
+        CMCServiceMgr*    m_pServiceMgr;
+};
+
+TEST_F(CMCServiceMgrTest, Test1)
+{
+    EXPECT_TRUE(NULL != m_pServiceMgr);
+
+    short result;
+    ARMConferenceHandle conf_handle;
+    CAtUser atUser;
+    m_pServiceMgr-&gt;OnConfJoinConfirm(result, conf_handle, &amp;atUser);
+
+    EXPECT_TRUE(NULL != m_pServiceMgr-&gt;GetCSIMgr());
+}
+</pre></div>
+</div>
+</li>
+<li><p class="first">The above UT will run failure for <strong>Release Feature Toggle</strong></p>
+</li>
+<li><p class="first">Solution</p>
+<blockquote>
+<div><ul class="simple">
+<li>Place <em>staticToggle.json</em> in the <em>UT execute file folder</em></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>webex-windows-feature-toggle<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">build</p>
+</li>
+<li><p class="first">dependencies</p>
+</li>
+<li><p class="first">doc</p>
+</li>
+<li><dl class="first docutils">
+<dt>include</dt>
+<dd><ul class="first last simple">
+<li>featureToggleAgent.h</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">output</p>
+</li>
+<li><dl class="first docutils">
+<dt>src</dt>
+<dd><ul class="first last simple">
+<li>featuretoggle.rc</li>
+<li>resource.h</li>
+<li>featuretoggle.vcxproj</li>
+<li>featureToggleAPI.h</li>
+<li>featureToggleAPI.cpp</li>
+<li>featureToggleImpl.h</li>
+<li>featureToggleImpl.cpp</li>
+<li>staticToggle.json</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">test</p>
+</li>
+</ol>
+</div>
+<div class="section" id="wiki">
+<h2>Wiki<a class="headerlink" href="#wiki" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>Feature over view design</dt>
+<dd><p class="first last"><a class="reference external" href="https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram">https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>View build status</dt>
+<dd><p class="first last"><a class="reference external" href="https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0">https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Download feature toggle <strong>zip package</strong></dt>
+<dd><p class="first last"><a class="reference external" href="https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle">https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle</a></p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/wxclient/makefile.ec+detail">https://wiki.cisco.com/display/wxclient/makefile.ec+detail</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally">https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://martinfowler.com/articles/feature-toggles.html">http://martinfowler.com/articles/feature-toggles.html</a></li>
+<li><a class="reference external" href="http://martinfowler.com/bliki/FeatureToggle.html">http://martinfowler.com/bliki/FeatureToggle.html</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Release Toggle Introduction</a><ul>
+<li><a class="reference internal" href="#overall-work-flow">Overall work flow</a></li>
+<li><a class="reference internal" href="#po-or-sa-or-sm-edit-configure-file">PO or SA or SM edit configure file</a></li>
+<li><a class="reference internal" href="#component-impact">Component Impact</a></li>
+<li><a class="reference internal" href="#webex-windows-feature-toggle">webex-windows-feature-toggle</a></li>
+<li><a class="reference internal" href="#two-mode">Two mode</a></li>
+<li><a class="reference internal" href="#how-other-project-use-feature-toggle">How other project use feature toggle</a></li>
+<li><a class="reference internal" href="#code-example">Code Example</a></li>
+<li><a class="reference internal" href="#effect-on-ut">Effect on <strong>UT</strong></a></li>
+<li><a class="reference internal" href="#id1">webex-windows-feature-toggle</a></li>
+<li><a class="reference internal" href="#wiki">Wiki</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="release_feature_toggle.html"
+                        title="previous chapter">Release Feature Toggle</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tiger_window_ticket_summary_1.html"
+                        title="next chapter">Tiger Windows Meeting Client Tickets Summary</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/release_feature_toggle_introduction.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tiger_window_ticket_summary_1.html" title="Tiger Windows Meeting Client Tickets Summary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="release_feature_toggle.html" title="Release Feature Toggle"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

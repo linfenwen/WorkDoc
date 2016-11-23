@@ -1,6 +1,31 @@
 Cisco Common Resource
 =====================
 
+Daily Use
+---------
+
+
+Build Info
+----------
+#. Through Application version to view build info
+	+ http://ccatg-build2.cisco.com/cirepo/Train_Client/31.8.0/build_history.client-packaging.31.8.0.txt
+#. Download zip file
+	+ ccatg-build2.cisco.com/cirepo/artifacts/31.8.0
+#. **CIREP** **T30L10NSP7**
+	http://ccatg-build2.cisco.com/cirepo/Train/T30L10NSP7/
+#. **CIREPO** **T31 R2 31.6.0**
+	http://ccatg-build2.cisco.com/cirepo/Train_Client/31.6.0/
+
+
+Architecture Review
+-------------------
+
+#. WiKi
+	+ https://wiki.cisco.com/x/J4nAAg
+#. Document
+	+ https://cisco.box.com/s/q8swksr24h4gs1rkp207pj7rmk47dc5a
+
+
 CDETS
 -----
 
@@ -32,8 +57,13 @@ REPO
 #. webex-mmp-sdk
 	+ https://stash-eng-chn-sjc1.cisco.com/stash/projects/CCTGFORK/repos/webex-mmp-sdk/browse
 
+
 WIKI
 ----
+#. CCATG Service Pack Homepage
+	https://wiki.cisco.com/display/WXTRAINSP/CCATG+Service+Pack+Homepage#CCATGServicePackHomepage-TrainRelease
+#. T31.8
+	https://wiki.cisco.com/display/WXTRAINSP/T31.8
 
 #. WebEx Unified WIKI
 	+ http://wikicentral.cisco.com/display/WebexWiki
@@ -44,10 +74,6 @@ WIKI
 	http://wikicentral.cisco.com/display/CSGQAWIKI/WebEx+Conferencing+Proxy+Supported 
 #. Coverity Tool
 	file://///10.224.188.12/csg-hgh-VSCM-Vanoris/parker/tools/coverity
-#. **CIREP** **T30L10NSP7**
-	http://ccatg-build2.cisco.com/cirepo/Train/T30L10NSP7/
-#. **CIREPO** **T31 R2 31.6.0**
-	http://ccatg-build2.cisco.com/cirepo/Train_Client/31.6.0/
 #. **CFW Analysis**
 	https://wiki.cisco.com/display/WXTRAINSP/CFD+Analysis
 #. **WebEx Document**
@@ -57,7 +83,8 @@ WIKI
 #. RPM Manage Console
 	http://rmc.webex.com/login.jsp
 #. Spark
-	https://wiki.cisco.com/display/PTEX/SS4+TOI
+	+ https://wiki.cisco.com/display/PTEX/SS4+TOI
+	+ https://web.ciscospark.com
 #. git-hub
 	+ https://sqbu-github.cisco.com/WebExSquared/stratos/issues/1120
 	+ https://sqbu-github.cisco.com/WebExSquared
@@ -69,6 +96,22 @@ WIKI
 	+ https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle
 #. T32 Technical Feature Design
 	+ https://cisco.app.box.com/s/q8swksr24h4gs1rkp207pj7rmk47dc5a
+#. UT code coverage report
+	+ http://tanfs.eng.webex.com/TestData/CodeCoverage/reportdata
+
+#. EMS
+	http://csgems.webex.com/
+
+#. TPGW
+	https://wiki.cisco.com/display/WX2/TPGW+API+2#TPGWAPI2-RESTAPIList
+	
+#. Cloud Service Check List
+	https://wiki.cisco.com/display/CSGMSO/Cloud+Services+check+list
+#. View TA & UT
+	http://ta.webex.com.cn/qd/dashboard/1770
+#. WebEx Audio config in super admin
+	https://wiki.cisco.com/display/CHINAPM/WebEx+Audio+config+in+super+admin
+
 
 CMR4.0 (Spark CCP) Training Session
 -----------------------------------

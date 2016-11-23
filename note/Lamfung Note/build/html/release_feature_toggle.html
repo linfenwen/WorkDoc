@@ -24,7 +24,7 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="reST 1 documentation" href="index.html" />
-    <link rel="next" title="Tigger Windows Meeting Client Task" href="tigger_window_task.html" />
+    <link rel="next" title="Release Toggle Introduction" href="release_feature_toggle_introduction.html" />
     <link rel="prev" title="Cisco Common Resource" href="cisco_common_resource.html" /> 
   </head>
   <body>
@@ -35,7 +35,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="cisco_common_resource.html" title="Cisco Common Resource"
@@ -214,7 +214,9 @@ void clearFeatureToggle();
 <li>Example1</li>
 </ol>
 <blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre>int CMCServiceMgr::OnConfJoinConfirm(short result, ARMConferenceHandle conf_handle, CAtUser* pUser)
+<div><div class="highlight-python"><div class="highlight"><pre>#include &quot;featureToggleAgent.h&quot;
+
+int CMCServiceMgr::OnConfJoinConfirm(short result, ARMConferenceHandle conf_handle, CAtUser* pUser)
 {
     ...
 
@@ -305,7 +307,7 @@ TEST_F(CMCServiceMgrTest, Test1)
 <li><dl class="first docutils">
 <dt>include</dt>
 <dd><ul class="first last simple">
-<li>featureToggleAPI.h</li>
+<li>featureToggleAgent.h</li>
 </ul>
 </dd>
 </dl>
@@ -315,9 +317,14 @@ TEST_F(CMCServiceMgrTest, Test1)
 <li><dl class="first docutils">
 <dt>src</dt>
 <dd><ul class="first last simple">
+<li>featuretoggle.rc</li>
+<li>resource.h</li>
+<li>featuretoggle.vcxproj</li>
+<li>featureToggleAPI.h</li>
 <li>featureToggleAPI.cpp</li>
 <li>featureToggleImpl.h</li>
 <li>featureToggleImpl.cpp</li>
+<li>staticToggle.json</li>
 </ul>
 </dd>
 </dl>
@@ -330,18 +337,35 @@ TEST_F(CMCServiceMgrTest, Test1)
 <h2>How other project use feature toggle<a class="headerlink" href="#how-other-project-use-feature-toggle" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Add <strong>webex-windows-feature-toggle</strong> to your <em>dependencies.xml</em> file</li>
-<li>Add <strong>featureToggle.lib</strong> to your <em>project</em></li>
-<li>Add <strong>featureToggleAPI.h</strong> header file to your <em>project</em></li>
+<li>Add <strong>featureToggleAgent.h</strong> header file to your <em>project</em></li>
 <li>Call <strong>featureIsEnabled</strong> where you want to use <em>feature toggle</em></li>
 </ol>
 </div>
 <div class="section" id="wiki">
 <h2>Wiki<a class="headerlink" href="#wiki" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><a class="reference external" href="https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram">https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram</a></li>
-<li><a class="reference external" href="https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0">https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0</a></li>
-<li><a class="reference external" href="https://wiki.cisco.com/display/wxclient/makefile.ec+detail">https://wiki.cisco.com/display/wxclient/makefile.ec+detail</a></li>
-<li><a class="reference external" href="https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally">https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally</a></li>
+<ul>
+<li><dl class="first docutils">
+<dt>Feature over view design</dt>
+<dd><p class="first last"><a class="reference external" href="https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram">https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>View build status</dt>
+<dd><p class="first last"><a class="reference external" href="https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0">https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Download feature toggle <strong>zip package</strong></dt>
+<dd><p class="first last"><a class="reference external" href="https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle">https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle</a></p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/wxclient/makefile.ec+detail">https://wiki.cisco.com/display/wxclient/makefile.ec+detail</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally">https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally</a></p>
+</li>
 </ul>
 </div>
 <div class="section" id="reference">
@@ -401,8 +425,8 @@ TEST_F(CMCServiceMgrTest, Test1)
   <p class="topless"><a href="cisco_common_resource.html"
                         title="previous chapter">Cisco Common Resource</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="tigger_window_task.html"
-                        title="next chapter">Tigger Windows Meeting Client Task</a></p>
+  <p class="topless"><a href="release_feature_toggle_introduction.html"
+                        title="next chapter">Release Toggle Introduction</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/release_feature_toggle.txt"
@@ -432,7 +456,7 @@ TEST_F(CMCServiceMgrTest, Test1)
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
              >next</a> |</li>
         <li class="right" >
           <a href="cisco_common_resource.html" title="Cisco Common Resource"

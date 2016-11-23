@@ -1,0 +1,13 @@
+Architecture Review
+===================
+
+#. CMR & Neo client lobby room (F2008)  architecutre review for AC2 deliver
+	+ Date
+		- Thursday, November 17, 2016
+	+ Recording
+		- https://go.webex.com/go/lsr.php?RCID=d4fd91fc39de45bb8b03a3376939e296
+	+ Document in Box
+		- https://cisco.box.com/s/eqxznx50zruok4aubvlsd1ymewmqh9q0
+
+
+
