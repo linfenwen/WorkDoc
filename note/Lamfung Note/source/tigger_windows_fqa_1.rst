@@ -1,6 +1,7 @@
 Tiger Windows FQA 
 ============================
 
+
 #. [P] WO0000000218922
 	+ Host is not able to see avatar picture in the Personal Meeting Room
 	+ CSCuz30267

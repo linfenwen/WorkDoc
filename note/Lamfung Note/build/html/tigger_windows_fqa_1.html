@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Tigger Windows FQA 2016-08-23 &mdash; reST 1 documentation</title>
+    <title>Tiger Windows FQA &mdash; reST 1 documentation</title>
     
     <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +24,8 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="top" title="reST 1 documentation" href="index.html" />
-    <link rel="prev" title="Tigger Windows Meeting Client Task" href="tigger_window_task.html" /> 
+    <link rel="next" title="Windbg" href="windbg_fqa.html" />
+    <link rel="prev" title="Tiger Windows FQA Analyze" href="tigger_windows_fqa_analyze.html" /> 
   </head>
   <body>
     <div class="related">
@@ -34,7 +35,10 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+          <a href="windbg_fqa.html" title="Windbg"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tigger_windows_fqa_analyze.html" title="Tiger Windows FQA Analyze"
              accesskey="P">previous</a> |</li>
         <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
       </ul>
@@ -45,9 +49,1089 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="tigger-windows-fqa-2016-08-23">
-<h1>Tigger Windows FQA 2016-08-23<a class="headerlink" href="#tigger-windows-fqa-2016-08-23" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tiger-windows-fqa">
+<h1>Tiger Windows FQA<a class="headerlink" href="#tiger-windows-fqa" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000218922</dt>
+<dd><ul class="first last">
+<li><p class="first">Host is not able to see avatar picture in the Personal Meeting Room</p>
+</li>
+<li><p class="first">CSCuz30267</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CSmAvatarMgr::CSmCacheMgr::SaveIntoLocalCache</li>
+<li>CSmConnectionPointContainer::Fire_OnUserAvatarURLRetrieved</li>
+<li>CWCLReskin::IsAvatarFromFile</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000223509</dt>
+<dd><ul class="first last simple">
+<li>T31.5.20 win10  Crash when sharging application or when changing presenter role between participants.</li>
+<li>Ask to schedule a trouble shooting.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvc15881</dt>
+<dd><ul class="first last simple">
+<li>T31R2 Flash client E Attendees and panelists are unable to hear the host</li>
+<li>Assign to Winter Yu</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000221501</dt>
+<dd><ul class="first simple">
+<li>WebEx application crashes when starting or join a meeting</li>
+<li>Seems the same as WO0000000216828</li>
+<li>Request dump file</li>
+<li>CSCuz52797</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>From Jun Ma:
+I have checked dump file that dump indicate the crash location is SensorsApi.dll.
+I think this crash same with surface pro case. you can add HP  Elite X2 to filter White-list. Thanks
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc17039</dt>
+<dd><ul class="first last simple">
+<li>T31.7 Share Multimedia YouTube Adobe Flash Player error</li>
+<li>Assgin to Morgan</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc17031</dt>
+<dd><ul class="first last simple">
+<li>cannot recover memory location</li>
+<li>Mail to Caroline Ye</li>
+<li>F1573</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCvc14491</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc14491">https://cdetsng.cisco.com/webui/#view=CSCvc14491</a></p>
+</li>
+<li><p class="first">Intercall</p>
+</li>
+<li><p class="first">From Alexander Fleck (afleck), send out mail request client log</p>
+</li>
+<li><p class="first">TSP server connect the third party server</p>
+</li>
+<li><p class="first">Dongong Peng From TSP server</p>
+</li>
+<li><p class="first">PO (ren bo), TL (Ty)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Super Admin =&gt; New Site =&gt; Security Options</dt>
+<dd><ul class="first last simple">
+<li>TSP partner is sending only SHA256 values in TSP API clienthashlist.(enabling this will stop checking for SHA1 hash values)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow parameters</dt>
+<dd><ul class="first last simple">
+<li>TSPHybridFlag</li>
+<li>THClientHashList</li>
+<li>CDTAppPDU_Evt_CreateTSPConference</li>
+<li>TSPHybridSecureAccess</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000227555</dt>
+<dd><ul class="first last simple">
+<li>VoIP audio connection issue</li>
+<li>Mail out, need trouble shooting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] Issue 317</dt>
+<dd><ul class="first simple">
+<li>same as WO0000000226507,WO0000000226423</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/issues/317">https://sqbu-github.cisco.com/CMR/support/issues/317</a></li>
+<li>This issue is in CMR 3.5 repo, CMR 3.5 plan to LA on 12/14, so need to fix it in this month, please take this as high priority.</li>
+<li>Waiting for client log</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>Turns out to be a RJ Cable faulty connecting Nexus GW to the UCS server with a lot of input errors
+
+The Cable was replaced, no errors
+
+Set up a basic WebEx bridge and registered a test phone on AM1 with dial back to the test extn
+
+We have tested the one test meeting of 45min+ (Jason/Pranith/Ravi) and none of the call got dropped after 30+ or so no drops
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="id1">
+<h2>2016-11-21<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000221097</dt>
+<dd><ul class="first simple">
+<li>crash</li>
+<li>Seems crashed at SensorApi module</li>
+<li>Jun Ma is checking</li>
+<li>Mail out, ask Jun for update, need more time to research</li>
+<li>SSE asked us to close this case</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>19  Id: 2700.12f4 Suspend: 0 Teb: 01042000 Unfrozen
+    ChildEBP RetAddr  Args to Child
+    1352ef5c 76ece221 00001210 00000000 00000000 ntdll_77d70000!ZwWaitForSingleObject+0xc (FPO: [3,0,0])
+    1352efd0 76ece182 00001210 ffffffff 00000000 KERNELBASE!WaitForSingleObjectEx+0x91 (FPO: [SEH])
+    1352efe4 5e265f05 00001210 ffffffff 00000000 KERNELBASE!WaitForSingleObject+0x12 (FPO: [Non-Fpo])
+    1352f014 76f5f4a2 1352f0d4 6e8d620d 00000000 webexmgr!Exception_Report+0x27c
+    1352f0a4 77e135ee 1352f0d4 77deb020 1352f908 KERNELBASE!UnhandledExceptionFilter+0x172 (FPO: [Non-Fpo])
+    1352f908 77dd5dae ffffffff 77dfb7d8 00000000 ntdll_77d70000!__RtlUserThreadStart+0x3d83a
+    1352f918 00000000 5b49d260 00000dfc 00000000 ntdll_77d70000!_RtlUserThreadStart+0x1b (FPO: [Non-Fpo])
+
+Exception content
+    1352f804 5b4ccb98 0c5ea948 5b494ccc 00000001 SensorsApi!CSensorV2::DataCallback+0x1cb
+    1352f818 5b49d5e9 014f6878 0c5ea948 57beb1f7 SensorsApi!CSensorV2::s_DataCallback+0x18
+    1352f8ac 769038f4 00000dfc 769038d0 858b2299 SensorsNativeApi_V2!NativeSensorCollectionNotifThread+0x389
+    1352f8c0 77dd5de3 00000dfc 8f9a3de4 00000000 kernel32!BaseThreadInitThunk+0x24
+    1352f908 77dd5dae ffffffff 77dfb7d8 00000000 ntdll_77d70000!__RtlUserThreadStart+0x2f
+    1352f918 00000000 5b49d260 00000dfc 00000000 ntdll_77d70000!_RtlUserThreadStart+0x1b
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCut59183, CFD S6</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCut59183">https://cdetsng.cisco.com/webui/#view=CSCut59183</a></li>
+<li>Confirmed with PM Selim Baygin (sbaygin)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[O] WO0000000226784</dt>
+<dd><ul class="first last simple">
+<li>Morgan , Wallis Tong (Mobile)</li>
+<li>Attendees are able to hear the panelists during breakout.</li>
+<li>Mobile client  don’t support practice session, mobile client users are always out of practice session, so if mobile user is the panelist, the attendee still  can hear mobile panelist.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000225244</dt>
+<dd><ul class="first last simple">
+<li>No speaker was detected! Make sure your device is connected correctly and test it again.</li>
+<li>TSP</li>
+<li>CSmAgentWnd::W2C_IsAudioDeviceNormal, end, lResult = 4</li>
+<li>Need SSE engineer to check further with TSP provider side</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000226507</dt>
+<dd><ul class="first last simple">
+<li>Waiting for client log for further investigation</li>
+<li>Wu Xi is checking (Mac OS)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000226765</dt>
+<dd><ul class="first last simple">
+<li>Connection taking too long to get connected to VoIP</li>
+<li>Gpc hadn&#8217;t callback caused the client hadn&#8217;t join VoIP</li>
+<li>File a bug</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc02236</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc02236">https://cdetsng.cisco.com/webui/#view=CSCvc02236</a></p>
+</li>
+<li><p class="first">OnSessionCreateConfirm, sRet[1]</p>
+</li>
+<li><dl class="first docutils">
+<dt>Analyze From Xu Bin</dt>
+<dd><ul class="first last simple">
+<li>Client failed to start hybrid session</li>
+<li>because Tahoe get invalid account info from TahoeDB (see below error log),</li>
+<li>so Tahoe respond the error to CB.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] 681199594</dt>
+<dd><ul class="first simple">
+<li>SR 681199594, DB SYSTEL GMBH, Whiteboard CWMS, BEMS517272</li>
+<li>whiteboard enable logic</li>
+<li>Document and presentation sharing</li>
+<li>To enable whiteboard feature, bit 10 of SessionTypeOptions should be 1</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>I’ve checked customer’s system and ITEMVALUE from WBXMEETINGTYPECONFIG table,
+where meetingtype=3 (default meeting session) and ITEMNAME=&#39;SupportPresentation&#39;value was “0” on both DCs (in both DBs).
+Changing it to “1” for both DCs, fixed the issue.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000211161</dt>
+<dd><ul class="first last simple">
+<li>Unable to join VOIP conference or use Webcam to share video in meetings.</li>
+<li>Loadlibrary failure, msvc.dll, mac.dll, tp.dll, gpsvc.dll</li>
+<li>Customer will re-install systom</li>
+<li>Test on customer site</li>
+<li>Ask for update [mail out]</li>
+<li>Got confirm from Chris Chen, Closed</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>2016-11-14<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000226423</dt>
+<dd><ul class="first last simple">
+<li>SVP Call Drop</li>
+<li>telephony audio was dropped every 30 minutes for two users</li>
+<li>Conference ID: 2886604324</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000224978</dt>
+<dd><ul class="first last">
+<li><p class="first">MC T30.6, Save File can&#8217;t work</p>
+</li>
+<li><p class="first">From SuZhou Eric Tang</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>Docshow: AllowSaveAndPrintInDocShring disable</li>
+<li>Site Admin &gt;&gt; Common Site Settings &gt;&gt; Allow Print / Save in Document</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCut59183, Action(confirm with PM - Selim Baygin)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Issue description</dt>
+<dd><ul class="first last simple">
+<li>Host buy two account</li>
+<li>Expectation : Just can start two meeting at the same time</li>
+<li>Actual : It can start the 3rd meeting in TP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CMR Hybrid solution, maintain</p>
+</li>
+<li><p class="first">Current use CMR4, without this issue</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb69543</dt>
+<dd><ul class="first last simple">
+<li>Had closed</li>
+<li>Confirmed with PM: Connie Tang and Engineer: Wilson Chen &amp; Wallice Wang, the conclusion is: the engineering team feels that opening the firewall for only the WebEx MMP servers is still a secure solution</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb71340, T31.8 (CC 2016.10.15)</dt>
+<dd><ul class="first last simple">
+<li>Update status to Bill Wu</li>
+<li>Need HF team help to reproduce, mail</li>
+<li>Confirmed with Paul, changed to U</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>2016-11-07<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] CMR issue 43</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/issues/43#issuecomment-213229">https://sqbu-github.cisco.com/CMR/support/issues/43#issuecomment-213229</a></li>
+<li>Need Send a mail to paul liu</li>
+<li>Request webex log</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000211492</dt>
+<dd><ul class="first last simple">
+<li>URGENT WO0000000211492: VoIP Issue HD0009165473</li>
+<li>Sunny Liao sugget rollback to T30</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb95846</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb95846&amp;vt=2">https://cdetsng.cisco.com/webui/#view=CSCvb95846&amp;vt=2</a></li>
+<li>Check the Mats, is the same like the plist , so seems not a bug, J</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000224259, add to pits</dt>
+<dd><ul class="first simple">
+<li>Webex client crashed on HP Elite x2 1012 G1</li>
+<li>ntdll encounter 0x80000003 error</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>This happens when you hit a breakpoint (int 3) instructionand there is no
+debugger connected.  Most often, this is a breakpoint in the storage
+allocator, usually hit when the rather simplistic tests done in the
+Release CRT discover heap damage, although that is not the only source of
+the error.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] ATS ISSUE: can&#8217;t record</dt>
+<dd><ul class="first last simple">
+<li>From Rudy Sheng</li>
+<li>Seems caused by the build</li>
+<li>EC crashed, WCLDll.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] Audio session is grayed out for some user</dt>
+<dd><ul class="first last simple">
+<li>From Daisy Zhang</li>
+<li>Need check hybird audio control flag</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/issues/150">https://sqbu-github.cisco.com/CMR/support/issues/150</a></li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/files/2141/wbxtra_10272016_184649.zip">https://sqbu-github.cisco.com/CMR/support/files/2141/wbxtra_10272016_184649.zip</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000223395, CSCvb92423</dt>
+<dd><ul class="first last simple">
+<li>Meeting Center client Help option is loading the generic page instead of redirecting to the PG customized page</li>
+<li>Docshow =&gt; URLs =&gt; QSHelpURL</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000221752</dt>
+<dd><ul class="first simple">
+<li>Client crash, wseclient.dll</li>
+<li>Assigned to WME (Karina Li)</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>The previous fix is about ticket HD0009185218/WO0000000210084 and cdets  https://cdetsng.cisco.com/webui/#view=CSCvb18905
+The code fix has submitted in T30.13, and already in T30.14.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>2016-10-31<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000216828</dt>
+<dd><ul class="first last simple">
+<li>Webex client crashes</li>
+<li><a class="reference external" href="https://cisco.box.com/s/n1odfzep4l0msktbdjxms1e20015kwke">https://cisco.box.com/s/n1odfzep4l0msktbdjxms1e20015kwke</a></li>
+<li>WME qiwei hao is checking</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000213144, No response from customer</dt>
+<dd><ul class="first simple">
+<li>Video dropped for all PC endpoints</li>
+<li>Pingru Cheng mailed to close for the customer hadn&#8217;t response</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>1      mac.dll [8412:11944]    MMP     23:22:52.606 10/12/16   [UTIL] INFO: [MAC] CMMAudioClientCtrl::OnQoEReport [WbxMQD] [MQD -&gt; MMP] SiteID=867872, ConfID=3906915798, NodeID=16818177, Mic Quality=(0.5591, 0.9093, 0.9405), Mic MOS=(3.3268, 3.5150, 3.5083), 0d=0.41050, 1d=0.57891, 2d=0.28477, 3d=-0.14279, 4d=-0.68760, 5d=-0.54891, 6d=0.53802, 7d=-0.35928, 8d=-0.11508, 9d=0.24854, 10d=0.67064, 11d=0.72355, 12d=0.47830, 13d=0.19600
+2      CFW     [8412:11944]    CFW     23:24:28.296 10/12/16   CSmDefUserMgr2::OnAddUser, NodeId[16826369], ClientOSType[0], Name[Trey Contello], TPUserType[0], AttendeeID[135973] LockStatus[0] TPVAID[0]
+3      atarm.dll [8412:11944]  EUREKA  23:58:20.908 10/12/16   GCC_Conference::on_session_close_indication,ION=0,conf_id=&quot;3906915798&quot;,prot_type=21,session_id=113,reason=128,
+4      CONFMGR [8412:11944]    ConfMgr 23:58:20.908 10/12/16   CAtConfAgent::on_session_close_indication,conference: 0xA1135AC Reason: 128session_key0x65ABBC0
+5      CONFMGR [8412:11944]    ConfMgr 23:58:20.908 10/12/16   RemoveSession:m_pSink-&gt;OnSessionCloseIndication(reason,pSession);
+6      webexmgr.dll    [8412:11944]    ServCom 23:58:20.908 10/12/16   CMCServiceMgr::OnSessionCloseIndication, pSession[a005e08], sessionType: 21, sessionName: APPSVR_SESSIONTYPE_MM_VIDEO
+7      CFW     [8412:11944]    CFW     23:58:20.908 10/12/16   CPfwServiceMgr::OnSessionCloseIndication, reason=128,Session type = 21
+8      CFW     [8412:11944]    CFW     23:58:20.908 10/12/16   CSmSvcVideoSessionMgr::OnSessionCloseIndication, start
+9      atarm.dll       [8412:11944]    EUREKA  00:10:17.865 10/13/16   GCC_Conference::on_session_close_indication,ION=0,conf_id=&quot;3906915798&quot;,prot_type=4,session_id=115,reason=128,
+10     CONFMGR [8412:11944]    ConfMgr 00:10:17.865 10/13/16   CAtConfAgent::on_session_close_indication,conference: 0xA1135AC Reason: 128session_key0x65ABBC0
+11     CONFMGR [8412:11944]    ConfMgr 00:10:17.865 10/13/16   RemoveSession:m_pSink-&gt;OnSessionCloseIndication(reason,pSession);
+12     webexmgr.dll    [8412:11944]    ServCom 00:10:17.865 10/13/16   CMCServiceMgr::OnSessionCloseIndication, pSession[162c5a80], sessionType: 8, sessionName: APPSVR_SESSIONTYPE_DESKTOP_SHARING
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000212478</dt>
+<dd><ul class="first simple">
+<li>3 users were disconnected almost at the same time</li>
+<li>Bhaskar Bhaumik had closed. Need check the ticket</li>
+<li>They find it odd that nothing would have changed yet all of a sudden it&#8217;s working again</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>https://cisco.box.com/s/ecdck4abgkqqojg0aghuswuqqot1bc90
+ConfID: 1870316351
+Impacted user: Guadalupe Larrieu
+Impacted User&#39;s Phone Number: +54 11 5777 2071
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000219862, CSCvb78192</dt>
+<dd><ul class="first last simple">
+<li>SC crash</li>
+<li>AppSharing load failure</li>
+<li>Fix in T31.8 &amp; T30.14</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb78192">https://cdetsng.cisco.com/webui/#view=CSCvb78192</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000223080, INC000000015580</dt>
+<dd><ul class="first last simple">
+<li>WebEx 11 , urgent</li>
+<li>VOIP can&#8217;t use</li>
+<li>root cause: SHA264 crypto method change, need page to fix</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb85985</dt>
+<dd><ul class="first last simple">
+<li>The page of Meeting info became blank screen on MC client with PPT info  template</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb85985">https://cdetsng.cisco.com/webui/#view=CSCvb85985</a></li>
+<li>From QA, Cellion Ye is checking</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>2016-10-24<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvb78958</dt>
+<dd><ul class="first last simple">
+<li>multi cameras support</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb78958&amp;vt=3">https://cdetsng.cisco.com/webui/#view=CSCvb78958&amp;vt=3</a></li>
+<li>assign to Ju Ma, wseshell.exe</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvb69936, T30.14 (CC 2016.10.15)</dt>
+<dd><ul class="first last">
+<li><p class="first">DNS, DHCP can config proxy url</p>
+</li>
+<li><p class="first">WPAD</p>
+</li>
+<li><p class="first">HD0009249582,HD0009243179</p>
+</li>
+<li><p class="first">It takes 1-3 minutes to connect to VoIP/Video for certain networks on WBS30.9 MC client.</p>
+</li>
+<li><p class="first">Downgrade sites to WBS30.6 or lower or Upgrade sites to WBS 31.</p>
+</li>
+<li><p class="first">CCmHttpProxyManager::InitGetterArray</p>
+</li>
+<li><dl class="first docutils">
+<dt>Configuring WPAD Entries</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://technet.microsoft.com/en-us/library/cc713344.aspx">https://technet.microsoft.com/en-us/library/cc713344.aspx</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000214739</dt>
+<dd><ul class="first last simple">
+<li>Meeting window crashes few seconds after joining the meeting.From logs, it crashed in tp.dll</li>
+<li>WME issue, Karina Li is checking</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000216265, Video option is not getting enabled while in session also hangs at connecting to audio</dt>
+<dd><ul class="first last simple">
+<li>CSmSvcVideoSessionMgr::OnVideoSessionStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>2016-10-15<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvb45367</dt>
+<dd><ul class="first last">
+<li><p class="first">T32 R2 client, received ping result 2, meeting exist but client still try to create meeting and it failed.</p>
+</li>
+<li><p class="first">Root cause: SetPingErrorTen hadn&#8217;t reset when start next ping</p>
+</li>
+<li><p class="first">Which introduced by CSCux45779</p>
+</li>
+<li><dl class="first docutils">
+<dt>CSCux45779</dt>
+<dd><ul class="first last simple">
+<li>After host crash, CB end meeting. But MZM will keep the meeting 4 minutes.</li>
+<li>In 4 minutes, attendee should send create conference request to MZM.</li>
+<li>It does not exist on 31.0.0.1304 client build.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000217451, INC800004982208</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>docshow parameters:</dt>
+<dd><ul class="first last simple">
+<li>AutoDisconnectFlag</li>
+<li>SingleDuration</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CMCDocshowMgr::ProcessMeetingParam</p>
+</li>
+<li><dl class="first docutils">
+<dt>some automatically end meeting scenarios</dt>
+<dd><ul class="first last simple">
+<li>Meeting reached to max meeting duration, which is configured in session type in Superadmin, controlled in CB</li>
+<li>Meeting reached to scheduled end time+1 hour when host hasn’t joined yet into meeting. Controlled in CB,  this is the case for pic in Lisa’s reply.</li>
+<li>When there is only one WebEx attendee in a meeting(all others left meeting), attendee side will leave meeting automatically, then CB will close meeting.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000209473</dt>
+<dd><ul class="first">
+<li><p class="first">Audio option not populating properly</p>
+</li>
+<li><p class="first">Our SSE is working with the customer to get the latest data [2016-09-21]</p>
+</li>
+<li><dl class="first docutils">
+<dt>Checklist</dt>
+<dd><ul class="first last simple">
+<li>CDlgQuickstart::EnableItem</li>
+<li>CSmAudioStatusWrapper</li>
+<li>CQuickStartDlgPresenter::OnAudioMore</li>
+<li>CSmHybridAudioMgr::StartHybrid</li>
+<li>CSmHybridAudioMgr::CheckDownloadGTC</li>
+<li>CSmHybridAudioMgr::OnTELEDownloadFinished</li>
+<li>CSmHybridAudioMgr::CheckDownloadGTCEx</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>From trace, when create audio session, will try to download global call in number use url: https://kpit.webex.com/url3000/getGlobalTelecon.do?siteurl=kpit&amp;confId=3239013003&amp;isLarge=1&amp;location=0&amp;needFilter=false&amp;tollFree=1  ,
+But there is no download finished notify, so audio session is not created.
+
+From recording, it can show audio dialog at 5:10, I think there is long network delay.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000213231 (The link provided by Fibin unavailable), Audio settings always reset</dt>
+<dd><ul class="first">
+<li><p class="first">REGKEY_VOIP_PATH</p>
+</li>
+<li><p class="first">CAudioTestDialog::CheckAudioDevice</p>
+</li>
+<li><p class="first">CSmHybridAudioMgr</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioTestDialog</dt>
+<dd><ul class="first last simple">
+<li>GetDeviceList</li>
+<li>CAudioTestWizardWrapper::SetSelDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">IAudioWizard</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioTestWizardWrapper</dt>
+<dd><ul class="first last simple">
+<li>GetSelDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CPcmAudioMgr::AW_CreateAudioWizardCtrl</dt>
+<dd><ul class="first last simple">
+<li>MMCreateAudioWizardCtrl</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CPcmAudioMgr::CopyDeviceInfo</p>
+</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>Audio settings always reset
+Audio settings of WebEx Meeting Client are reset after the client update from T31.4.2 to T31.5.1.
+This was reported by many NOKIA users, always after a site upgrade.
+https://app.box.com/s/wn23mszfurw993aim80hnxb6k3pigu66
+It has been done on two PCS, on Javier.oscuna.ext@nokia.com and Edwin.vega.ext@nokia.com
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000216726, WO0000000216198</dt>
+<dd><ul class="first last simple">
+<li>It takes up to 2 mins to the audio through  connect to call using computer.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvb47815</dt>
+<dd><ul class="first last">
+<li><p class="first">Can not start meeting from Firefox 49.0.1</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause :</dt>
+<dd><ul class="first last simple">
+<li>Code Issue which depend on parameter sequence</li>
+<li>Firefox Changed the parameters sequence</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CATGpcWindow::SetParameters</p>
+</li>
+<li><p class="first">CorrectSchemaofUrlRoot</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000206787</dt>
+<dd><ul class="first last simple">
+<li>Meeting screen is getting frozen</li>
+<li>Customer closed this case ,Perhaps , he resolved it by himself without more additional info.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h2>2016-10-08<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000214995</dt>
+<dd><ul class="first last simple">
+<li>7 minutes of audio missing in the NBR</li>
+<li>There is no client trace available.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb53084</dt>
+<dd><ul class="first simple">
+<li>Please take a look on this,  it should be a server side change.</li>
+<li>Just change in web side.</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>Description: Background:
+A user from an external company (called Everything Everywhere = EE) is joining a meeting on T-Systems WebEx.
+When this external user joins the meeting (successfully), excessive traffic towards T-Systems WebEx Nodes is generated.
+
+It is by design.
+Choose internal, only internal user can start/join meeting, it will only ping NODE MZM.
+Choose external, Both external/internal users can start/join meeting. all of them will ping DC/GDM and NODE MZM.
+
+But currently we do not have external only option. So it is one new requirement. I will file enhance bug and submit requirement to trace.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000197315</dt>
+<dd><ul class="first simple">
+<li>Randomly during an EC, Active video user&#8217;s webcam video turns off, when this happens, EC&#8217;s meeting option also becomes unchecked (Event -&gt; Option -&gt; &#8220;Video&#8221; has to be checked again to return Video capabilities for all attendees)</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>Typically when this happens, the option disables.
+This time the option did not disable, but passing presenter back and forth fixed the issue.
+
+Because presenter &quot;Valerie Arnold” have network problem around  08:03:23  to connect the MMP server,
+for this case presenter will try do reconnect, and tried 3 times the MMP reconnect still failed.
+So presenter will directly close meeting &quot;Video Session”.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h2>2016-09-26<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvb41280, CSCva66671</dt>
+<dd><ul class="first simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCva66671">https://cdetsng.cisco.com/webui/#view=CSCva66671</a></li>
+<li>Event Center crash</li>
+<li>The truth is the fixing is cross modules in atgpcext.dll and WebExMgr.dll</li>
+<li>GPC FuzzyWindow</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>1) Uninstall meeting client and restart computer
+2) Open IE and login cisco.webex.com, and start a EC
+3) Exit EC.
+4) Do not close IE, and create a new IE tab, start a EC on t31sp.qa.webex.com (lyn/P@ss123)
+5) Meeting will crash after meeting started.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>About Issue</dt>
+<dd><ul class="first last simple">
+<li>Check CMR4 video call-back</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000212996</dt>
+<dd><ul class="first last">
+<li><p class="first">check “default call in number” display logic in client</p>
+</li>
+<li><p class="first">Our customer encountered an issue, when set the default phone number format like this “+61 2-8293-5711”, the call in number will not be shown in client.</p>
+</li>
+<li><p class="first">We found a workaround, change the phone number format from “+61 2-8293-5711” to “+61(2-8293-5711)” , this number will be shown in client. But ,there is another problem for this workaround, the national flag cannot be displayed in client.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last simple">
+<li>CSmHybridAudioMgr::ReplaceWithPreferredGTCItem</li>
+<li>CSmHybridAudioMgr::CheckDownloadGTCEx</li>
+<li>CSmHybridAudioMgr::ParseGTCNumberItem</li>
+<li>CSmHybridAudioMgr::SaveNumber</li>
+<li>CSmHybridAudioMgr::SearchPreferredGTCNumber</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h2>2016-09-19<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>680669022, CSCvb30721, CSCvb19442</dt>
+<dd><ul class="first simple">
+<li>After updating the system to CWMS 2.7, ending the meeting generates error &#8220;Cisco WebEx Service has stopped working&#8221;. It happened only for meetings that were started from PT/Outlook, from Web worked fine.</li>
+<li>It’s caused by featured tracking function. When meeting end, not call kill work thread, so the work thread still work. But the main thread has exited, so meet crash.</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>I’ve talked with QA and the same issue is reproducible in our lab, too, with Outlook 2013.
+They can reproduce it both for meetings started from PT and Web and they opened CSCvb19442, that I pointed out yesterday.
+
+As the issue is reproducible in the lab, I’ve tried your scenario in the lab at the first,
+reproduced the issue and collected dump logs. You can find it on:
+https://cisco.box.com/s/vg56oyunfq8cvtwarrijbln7zbl7kxu8
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSCva66089, CSCva19645</dt>
+<dd><ul class="first last simple">
+<li>Cannot print OBTP mail body</li>
+<li>Printing Meeting invites from Outlook with telepresence devices enabled</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCva19645">https://cdetsng.cisco.com/webui/#view=CSCva19645</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211898 [Had looped Elton tang]</dt>
+<dd><ul class="first simple">
+<li>MMP session was started late</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>For TP meeting, the TPGW will not create MMP and CB video session,
+So the logic is the first client (MAC/Win/Linux)  will be responsible for that.
+
+In current architecture,  it always be MMP make sip call to TAS,
+And MMP get TAS ip address only when first user join meeting and create video session.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208302, [Henry Wang for Video, Xu Bin for Audio]</dt>
+<dd><ul class="first">
+<li><p class="first">Telepresence can&#8217;t hear WebEx audio</p>
+</li>
+<li><p class="first">WebEx can&#8217;t view Telepresence video and can&#8217;t hear Telepresence audio</p>
+</li>
+<li><dl class="first docutils">
+<dt>Checklist</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::OnASNPduFromCB Call pPfwAudioMgr-&gt;SetActiveSpeakerList</li>
+<li>CSmSvcVideoSessionMgr::OnVideoSourceStatus</li>
+<li>CPfwServiceMgr::OnASNPduFromCB</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>From trace, TP user video sending status is earlier than TP user data list,
+So webex cannot show TP user video for can&#39;t find the corresponding TP user.
+
+Tahoe disconnect cascading link since it does not get a final response to re-Invite in 10s
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211961, CSCvb26805</dt>
+<dd><ul class="first last simple">
+<li>Cluster B fail to connect RA/AA now</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h2>2016-09-12<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CTG Alpha Outage Notification: Outage in go.webex.com</dt>
+<dd><ul class="first last simple">
+<li>Multiple Webex hosts are intermittently unavailable and services in go.webex.com are impacted</li>
+<li><a class="reference external" href="https://remedy.cloudapps.cisco.com/fetchIncidentBasicInfo.do?case=INC800004825436">https://remedy.cloudapps.cisco.com/fetchIncidentBasicInfo.do?case=INC800004825436</a></li>
+<li>We will keep you posted on the progress</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208684</dt>
+<dd><ul class="first last">
+<li><p class="first">Default information tab template not working as intended</p>
+</li>
+<li><p class="first">No Access Code or Host Password</p>
+</li>
+<li><p class="first">No global link</p>
+</li>
+<li><dl class="first docutils">
+<dt>Check List</dt>
+<dd><ul class="first last simple">
+<li>Setinfo lpszCallinPhoneNo</li>
+<li>CMCDocVideoSessionMgr::SetInfo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>680795888 [Waiting for customer]</dt>
+<dd><ul class="first last simple">
+<li>WebEx always send atinst.exe</li>
+<li>For IE protected mode enable, we need use atinst.exe to register and elevate privilege, it only pop up the first time as below UAC Dialog</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSCvb19442 [Code done and verified]</dt>
+<dd><ul class="first last simple">
+<li>An Orion bug</li>
+<li>MC crash after End Meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211399</dt>
+<dd><ul class="first simple">
+<li>You cannot join the meeting because the meeting number you typed is incorrect</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>Currently we found the docshow to client is
+&lt;SupportSvrSecParams&gt;1&lt;/SupportSvrSecParams&gt;&lt;SecureSMAC4Node&gt;0&lt;/SecureSMAC4Node&gt;
+
+So currently it’s not use the new H256 s_mac, this site send CB with MD5 s_mac, and MD5 is no more support in our new Eureka.
+
+Loop in Jerry and please help check if is config issue or page/server is not in same release.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000187754, WO0000000187754</dt>
+<dd><ul class="first simple">
+<li>Citrix 6.5 Windows Server 2008 R2, Windows 7 Crash</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>So this customer maybe not support ActiveX Scripting Engines
+Please let customer enable it like https://www.manageengine.com/products/desktop-central/remote-control-enable-activex.html to see if issue can be resolved.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211492</dt>
+<dd><ul class="first simple">
+<li>VoIP Issue</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>I checked server log, the data transport disconnect about 2 minute then recover at first and second time,
+It’s cause Mark can’t  hear/speak,  in fact he didn’t leave audio session.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>680654847</dt>
+<dd><ul class="first simple">
+<li>20+ seconds to fully load meeting room</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>From trace, the long time happen on two places after show meeting window:
+One is when init video cc, take about 10 seconds;
+Second is when preview camera;
+
+9 CFW06:15:21.263 08/24/16[7000:7720]CSmSvcVideoSessionMgr::EnrollMMSession, begin
+10 wseclient.dll06:15:21.404 08/24/16[7000:7720]WSE Info: CBaseGraph::ReleaseGraph m_pGraph done.
+11 wseclient.dll06:15:31.412 08/24/16[7000:7720]WSE Info: CWseVideoCapEngine::CWseVideoCapEngine.this = 0x95df5a0
+12 CFW06:15:33.716 08/24/16[7000:7720]CSmSvcVideoSessionMgr::OnEnumerateCameras, ulDevHandle=254110920 end devName=World Facing Right
+13 CFW06:15:33.716 08/24/16[7000:7720]CSmSvcVideoSessionMgr::OnEnumerateCameras, ulDevHandle=254110360 end devName=HP Full HD Camera
+14 mutiltpd.dll06:15:33.796 08/24/16[7000:7720][MVC]:CMmSVideoClient::StartCameraPreview
+15 wseclient.dll06:15:33.846 08/24/16[7000:7720]WSE Info: CWseVideoCapEngine::Init format-&gt;width = 640,format-&gt;height = 360,format-&gt;frame_rate = 30.000000,format-&gt;video_type = 3
+16 ComUI06:15:43.866 08/24/16[7000:7720]CDlgQuickstart::PositionChanged -- begin:
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id11">
+<h2>2016-08-23<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>WO0000000206822</dt>
+<dd><ul class="first last simple">
+<li>ou cannot connect to audio or video because we cannot validate the security certificate</li>
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
 <li><dl class="first docutils">
 <dt>WO0000000182993, WO0000000207215</dt>
 <dd><ul class="first simple">
@@ -98,7 +1182,185 @@
 </dd>
 </dl>
 </li>
+<li><dl class="first docutils">
+<dt>BEMS Creation - P3, SR 680475454, EMPRESA DE TECNOLOGIA E INFORMACOES DA PREVIDENCIA, WebEx Meetings Application Freezing, BEMS499797, Clients</dt>
+<dd><ul class="first simple">
+<li>Customer noticed this issue with few users so far.</li>
+<li>The one user with the Microsoft LifeCam HD-3000 crashes every time</li>
+<li>Other users with Logitech cameras crash intermittently</li>
+<li>CSCvb09710 is filed to track this issue</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>According to MSDN, this thread is blocked.
+https://msdn.microsoft.com/fr-fr/library/ff541979(v=vs.85).aspx
+
+0:000:x86&gt; dt RTL_CRITICAL_SECTION 0b91c044
+atmgr!RTL_CRITICAL_SECTION
+  +0x000 DebugInfo        : 0x1472b7f0 _RTL_CRITICAL_SECTION_DEBUG
+  +0x004 LockCount        : 0n-6
+  +0x008 RecursionCount   : 0n5136
+  +0x00c OwningThread     : 0x00003970 Void
+  +0x010 LockSemaphore    : 0x00000f58 Void
+  +0x014 SpinCount        : 0
+0:000:x86&gt; ? 0x1 &amp; (-0n6)
+Evaluate expression: 0 = 00000000   // the first bit is 0 and therefore the critical section is locked.
+0:000:x86&gt; ? (0x2 &amp; (-0n6)) &gt;&gt; 1
+Evaluate expression: 1 = 00000001  // The second bit is 1, and so no thread has been woken for this lock.
+0:000:x86&gt; ? ((-1) - (-0n6)) &gt;&gt; 2
+Evaluate expression: 1 = 00000001 // The complement of the remaining bits is 5, and so there are five threads waiting for this lock.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000203046, TAS000000024547</dt>
+<dd><ul class="first simple">
+<li>MC client crashes on Lenovo ThinkPad X1 laptops when attempting to join PC audio (VoIP).</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>We found some strange log:
+5 time: 22:45:22 696 07/26/2016     DllName: mutiltpd.dll        Message: CWbxAeAudioCapturePlatformCoreAudio::GetDefaultFormat pfmt, wFormatTag:65534, cbSize:22, nAvgBytesPerSec:768000, nSamplesPerSec: 48000, nChannels:4, wBitsPerSample:32, wFormatTag:65534 this=0x75e4f28
+Level: info The default format is read from OS API. They give us channel is 4. But they are not more than 2  in our experiences.
+4144 time: 22:45:12 374 07/26/2016     DllName: mutiltpd.dll        Message: [AE AQE]  OnCaptureData()  Failed!, m_IsAQEStarted = 1, dwSize = 20, wFormatTag = 65534, nChannels = 4, nSamplesPerSec = 48000, nAvgBytesPerSec = 384000, nBlockAlign = 8, wBitsPerSample = 16,Data Len = 960 this=0x1982c828
+Level: warn Audio data length recorded by OS are 960 bytes witch is usually 2 channels data.   This thread ran for a while and crashed. But there was no any processing except print warning logs. We have not repro bug yet.
+Can you ask customer to upgrade audio device driver.  Recently, Lenovo  provides some update for audio device.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000206904, TAS000000024745</dt>
+<dd><ul class="first simple">
+<li>Uninvited attendee in meeting</li>
+<li>Please use command “%userprofile%/appdataLocalTemp” to open the tmp folder.</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>For client, we will save 5 counts wbxtrace to tmp folder.
+Maybe can ask customer provide it, we can check it according to confid.
+
+We saved last 5 meeting’s client logs in customer’s computer. We can ask customer to provide it.
+And according to the description, seems this user is a pure telephony attendee.
+Such attendee will not exist in attendee usage report. Maybe we can check how many telephony users in that meeting,
+and compare to the attendee usage report to check if there is any pure telephony user joined.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000200783</dt>
+<dd><ul class="first last simple">
+<li>camera not work well when sharing desktop</li>
+<li>The integration camera not be found when AppSharing has be launched. So video render module drawing always is fail.</li>
+<li>CFW       12:19:32.776 07/20/16    [2988:1212]                CSmSvcVideoSessionMgr::OnCameraModify begin, [Pull out]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208246, TAS000000024771</dt>
+<dd><ul class="first last simple">
+<li>Error while joining audio via Computer</li>
+<li>MMP call Tahoe fail</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000202437</dt>
+<dd><ul class="first simple">
+<li>Host receiving Garbled Noise for 10-15 sec,whenever he joins/start Audio portion</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>I check client log, and found client MOS is low at two point, could you help check it
+22:15:41.957 08/02/16   [5020:9584]        [AudioEngine] INFO: QoEM:[R1-106503424] R_net:-97,MOS_net:2.38125,R:-86,MOS:2.23721,bitrate:29kbps,pktRate:43,jitter:8ms,delay:300ms,pktDrop:38%,plcPktRate:0%,silentRate:38%
+22:45:40.958 08/02/16   [5020:9584]        [AudioEngine] INFO: QoEM:[R1-106503424] R_net:-128,MOS_net:2.38125,R:-114,MOS:2.23721,bitrate:24kbps,pktRate:35,jitter:5ms,delay:300ms,pktDrop:45%,plcPktRate:0%,silentRate:45%
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TAS000000024717, WO0000000206898</dt>
+<dd><ul class="first last simple">
+<li>join meeting failure from spark team cmrforsparktest.webex.com</li>
+<li>Client according to following docshow param to transfer new smac/ old smac: SupportSvrSecParams or SecureSMAC4Node</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208253, TAS000000024769</dt>
+<dd><ul class="first simple">
+<li>Not able to connect VOIP audio</li>
+</ul>
+<div class="last highlight-python"><div class="highlight"><pre>28           tp.dll      00:30:35.583 08/17/16   [2508:4880]        [UTIL] ERROR: CCmReactorNotifyPipe::OnInput, nRecv=-1 fd=0x7e0 err=10093 this=0x986229c[CmReactorNotifyPipe.cpp:79]
+29           tp.dll      00:30:35.583 08/17/16   [2508:4880]        [UTIL] ERROR: CCmReactorSelect::RunEventLoop, select() failed! nMaxFd=2016 err=10093 this=0x9861900[CmReactorSelect.cpp:80]
+30           tp.dll      00:30:35.583 08/17/16   [2508:5456]        [UTIL] ERROR: CCmReactorNotifyPipe::OnInput, nRecv=-1 fd=0x7cc err=10093 this=0x985f37c[CmReactorNotifyPipe.cpp:79]
+31           tp.dll      00:30:35.583 08/17/16   [2508:5456]        [UTIL] ERROR: CCmReactorSelect::RunEventLoop, select() failed! nMaxFd=1996 err=10093 this=0x985e9e0[CmReactorSelect.cpp:80]
+32           tp.dll      00:30:35.583 08/17/16   [2508:5532]        [UTIL] ERROR: CCmReactorNotifyPipe::OnInput, nRecv=-1 fd=0x5f8 err=10093 this=0x985e45c[CmReactorNotifyPipe.cpp:79]
+33           tp.dll      00:30:35.583 08/17/16   [2508:5532]        [UTIL] ERROR: CCmReactorSelect::RunEventLoop, select() failed! nMaxFd=1528 err=10093 this=0x985dac0[CmReactorSelect.cpp:80]
+Look like TP initialize fail, please help check it
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000207759, HD0009177484</dt>
+<dd><ul class="first last simple">
+<li>Trouble joining meetings after upgrade</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCux96839">https://cdetsng.cisco.com/webui/#view=CSCux96839</a></li>
+<li>didn’t update the DLL(mutiltpd.dll) client version, the version is same as T30.5</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000203748</dt>
+<dd><ul class="first last simple">
+<li>Unable to hear the Audio in the session hosted from ufred.webex.com</li>
+<li>The attendee is not able to join VoIP using training center, but able to join using the meeting center</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000203717</dt>
+<dd><ul class="first last">
+<li><p class="first">it is because the AAGC of microphone is enabled in R1, but in R2, it is disabled.</p>
+</li>
+<li><dl class="first docutils">
+<dt>From Mac</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre>I think case2 is caused by WME’s wrong recoredVolume, Mac client always get 200 volume when the Audio Setting dialog is opened.
+Mac codes could call kAudioWizardCommandId_GetRecordVolume to get current setting volume,but WME gave back a wrong value.
+And this bug didn’t exist on R2, is there any related codes was fixed in R2 but was ignored in SP?
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>From Windows</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre>Window is the same issue, when it always get 30 volume even set to 0 volume.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>From Audio Engine</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre><span class="c">#. Windows, Open wizard, uncheck “Automatic adjust volume”, this flag will set to the audio engine used in meeting. This logic is ok. But per Ross, audio CC has a logic to set minimal volume(30) when reload(closing wizard), so this is the root cause of why you can get 30 even you set to zero in Wizard.</span>
+<span class="c">#. Mac,  Open wizard, uncheck “Automatic adjust volume”, this flag will not set to the audio engine used in meeting.  So the volume always adjust by the audio engine using in meeting. Please help to check the Wizard logic Audio CC in MAC.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ol>
+</div>
 </div>
 
 
@@ -107,9 +1369,30 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tiger Windows FQA</a><ul>
+<li><a class="reference internal" href="#id1">2016-11-21</a></li>
+<li><a class="reference internal" href="#id2">2016-11-14</a></li>
+<li><a class="reference internal" href="#id3">2016-11-07</a></li>
+<li><a class="reference internal" href="#id4">2016-10-31</a></li>
+<li><a class="reference internal" href="#id5">2016-10-24</a></li>
+<li><a class="reference internal" href="#id6">2016-10-15</a></li>
+<li><a class="reference internal" href="#id7">2016-10-08</a></li>
+<li><a class="reference internal" href="#id8">2016-09-26</a></li>
+<li><a class="reference internal" href="#id9">2016-09-19</a></li>
+<li><a class="reference internal" href="#id10">2016-09-12</a></li>
+<li><a class="reference internal" href="#id11">2016-08-23</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="tigger_window_task.html"
-                        title="previous chapter">Tigger Windows Meeting Client Task</a></p>
+  <p class="topless"><a href="tigger_windows_fqa_analyze.html"
+                        title="previous chapter">Tiger Windows FQA Analyze</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="windbg_fqa.html"
+                        title="next chapter">Windbg</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="_sources/tigger_windows_fqa_1.txt"
@@ -139,7 +1422,10 @@
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="tigger_window_task.html" title="Tigger Windows Meeting Client Task"
+          <a href="windbg_fqa.html" title="Windbg"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tigger_windows_fqa_analyze.html" title="Tiger Windows FQA Analyze"
              >previous</a> |</li>
         <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
       </ul>

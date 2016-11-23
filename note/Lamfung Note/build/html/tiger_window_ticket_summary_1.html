@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tiger Windows Meeting Client Tickets Summary &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Tiger Windows Meeting Client Task" href="tigger_window_task.html" />
+    <link rel="prev" title="Release Toggle Introduction" href="release_feature_toggle_introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tiger Windows Meeting Client Task"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tiger-windows-meeting-client-tickets-summary">
+<h1>Tiger Windows Meeting Client Tickets Summary<a class="headerlink" href="#tiger-windows-meeting-client-tickets-summary" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cscvc14491-intercall-tsp-voip-client-cannot-be-verified">
+<h2>CSCvc14491, Intercall TSP VoIP Client cannot be verified<a class="headerlink" href="#cscvc14491-intercall-tsp-voip-client-cannot-be-verified" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="first docutils">
+<dt>CEDT Link</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc14491">https://cdetsng.cisco.com/webui/#view=CSCvc14491</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Docshow</dt>
+<dd><ul class="first last simple">
+<li>TSPHybridFlag</li>
+<li>THClientHashList</li>
+<li>CDTAppPDU_Evt_CreateTSPConference</li>
+<li>TSPHybridSecureAccess</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Super Admin =&gt; New Site =&gt; Security Options</dt>
+<dd><ul class="first last simple">
+<li>TSP partner is sending only SHA256 values in TSP API clienthashlist.(enabling this will stop checking for SHA1 hash values)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DEV 3W Analysis</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem?</dt>
+<dd><ul class="first last simple">
+<li>Intercall TSP VoIP Client cannot be verified</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>It&#8217;s caused by security option (docshow TSPHybridSecureAccess)</li>
+<li>Then windows client use SHA256 for security verify</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution?</dt>
+<dd><ul class="first last simple">
+<li>UnCheck <strong>TSPHybridSecureAccess</strong> from page</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lessons learned</dt>
+<dd><ul class="first last simple">
+<li>Developer / QA need know more case (TSP, Non-TSP)</li>
+<li>Document, page is too complicate</li>
+<li>Team building with Paul&#8217;s team (Tiger team)</li>
+<li>Work at the same page (Spark room)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h2>2016-11-22<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="cscvb19442-mc-crash-after-end-meeting">
+<h2>CSCvb19442, MC crash after End Meeting<a class="headerlink" href="#cscvb19442-mc-crash-after-end-meeting" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CDET Link</dt>
+<dd><p class="first last"><a class="reference external" href="https://cdetsng.cisco.com/webui/;jsessionid=E5D6B080A24B65796EBBFBE1A9EE24CC.webui-springtail#view=CSCvb19442">https://cdetsng.cisco.com/webui/;jsessionid=E5D6B080A24B65796EBBFBE1A9EE24CC.webui-springtail#view=CSCvb19442</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Docshow</dt>
+<dd><ul class="first last simple">
+<li>TeleMetryInfo</li>
+<li>MetricsEnable</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">GetMetricsEnable</p>
+</li>
+<li><p class="first">WbxMetricsInitialize() : In windows, create one thread to post metrics message</p>
+</li>
+<li><p class="first">WbxMetricsUnInitialize()</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DEV 3W Analysis</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem?</dt>
+<dd><ul class="first last simple">
+<li>MC crash after End Meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>It&#8217;s caused by featured tracking function.</li>
+<li>When meeting end, not call kill work thread, so the work thread still work.</li>
+<li>But the main thread has exited, so meet crash.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution?</dt>
+<dd><ul class="first last simple">
+<li>If not support feature tracking, do not need create work thread.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lessons learned</dt>
+<dd><ul class="first last simple">
+<li>Make sure <strong>WbxMetricsInitialize</strong> and <strong>WbxMetricsUnInitialize</strong> pairs correctly.</li>
+<li>Developer self test</li>
+<li>Make sure QA understood the feature</li>
+<li>Enable / Disable feature to test</li>
+<li>Code review</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="cscvb45367-t31r2-fail-to-join-meeting">
+<h2>CSCvb45367, T31R2 fail to join meeting<a class="headerlink" href="#cscvb45367-t31r2-fail-to-join-meeting" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CDET Link</dt>
+<dd><p class="first last"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb45367">https://cdetsng.cisco.com/webui/#view=CSCvb45367</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last simple">
+<li>After host crash, CB end meeting. But MZM will keep the meeting 4 minutes.</li>
+<li>In 4 minutes, attendee should send create conference request to MZM.</li>
+<li>It does not exist on 31.0.0.1304 client build.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key log</dt>
+<dd><div class="first last highlight-python"><div class="highlight"><pre>1      atmgr.exe       [320:3620]      ServCom 02:07:56.418 09/23/16   atmgr CommandLine[&quot;C:\ProgramData\WebEx\WebEx\T31_UMC\atmgr.exe&quot;  /mcstd C:\Users\user.rabbit-sjc-ta3\AppData\LocalLow\WebEx]
+2      atmgr.exe       [320:3620]      ServCom 02:07:56.454 09/23/16   ConfID: 40721322134735873
+3      atmgr.exe       [320:3620]      ServCom 02:07:56.454 09/23/16   SiteURL: https://pj1jut31.eng.webex.com/pj1jut31
+4      confmgr.dll     [320:3620]      UNKNOWN 02:07:56.631 09/23/16   ctx&gt;&gt;ClientBuildVersion=31.6.2.2
+5      confmgr.dll     [320:3620]      UNKNOWN 02:07:56.648 09/23/16   pingAgent&gt;&gt;doPing-enter
+6      confmgr.dll     [320:3620]      UNKNOWN 02:07:56.648 09/23/16   pingAgent&gt;&gt;doPing,create=0
+7      atarm.dll       [320:3620]      EUREKA  02:07:56.649 09/23/16   GCC_Ping_Mgr::ping_request_0,ION=0,create=0,secure=3,
+8      atarm.dll       [320:3620]      EUREKA  02:07:56.649 09/23/16   GCC_Ping_Mgr::ping_request,ION=0,conf_name=&quot;Client 3&#39;s Personal Room.40721322134735873&quot;,conf_key=&quot;640038044&quot;,conf_id=&quot;40721322134735873&quot;,site_id=3437,user_id=0xfff02147,est_num=10,num_of_ping_svrs=1,
+9      confmgr.dll     [320:3620]      UNKNOWN 02:07:56.649 09/23/16   pingAgent&gt;&gt;doPing, return=0
+10     confmgr.dll     [320:3620]      UNKNOWN 02:07:56.758 09/23/16   ctx&gt;&gt;VMRFlagID=2
+11     atarm.dll       [320:3620]      EUREKA  02:07:56.769 09/23/16   GCC_Ping_Mgr::notify_ping_confirm,ION=0,cb_address=&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;,gateway_address=&quot;https://epj1cb1101.eng.webex.com:80&quot;,top_cb_address=&quot;&quot;,result=10,zone_flag=1,last_top_cb_address=&quot;&quot;,last_result=10,
+12     confmgr.dll     [320:3620]      UNKNOWN 02:07:56.769 09/23/16   mph&gt;&gt;gccSink&gt;&gt;on_ping_confirm,result=10,create=0
+13     confmgr.dll     [320:3620]      UNKNOWN 02:07:56.769 09/23/16   mph&gt;&gt;conf&gt;&gt;pnigAgent&gt;&gt;on_ping_confirm, create=0, result=10, confid=40721322134735873
+14     CONFMGR         [320:3620]      ConfMgr 02:07:56.770 09/23/16   on_ping_confirm,to_create= 0,result=10, conf_ID=0x8D9A1C0
+15     CONFMGR         [320:3620]      ConfMgr 02:07:56.770 09/23/16   CAtConfManagerImpl::SetPingErrorTen,bErrorTen=1
+16     webexmgr.dll    [320:3620]      ServCom 02:07:56.770 09/23/16   mph&gt;&gt;CAtConfAgent::on_ping_confirm, __INTERNAL_PING_FAILED
+17     confmgr.dll     [320:3620]      UNKNOWN 02:08:15.474 09/23/16   pingAgent&gt;&gt;doPing-enter
+18     confmgr.dll     [320:3620]      UNKNOWN 02:08:15.474 09/23/16   pingAgent&gt;&gt;doPing,create=1
+19     atarm.dll       [320:3620]      EUREKA  02:08:15.474 09/23/16   GCC_Ping_Mgr::ping_request_0,ION=0,create=1,secure=3,
+20     atarm.dll       [320:3620]      EUREKA  02:08:15.474 09/23/16   GCC_Ping_Mgr::ping_request,ION=0,conf_name=&quot;Client 3&#39;s Personal Room.40721322134735873&quot;,conf_key=&quot;640038044&quot;,conf_id=&quot;40721322134735873&quot;,site_id=3437,user_id=0xfff02147,est_num=0,num_of_ping_svrs=1,
+21     confmgr.dll     [320:3620]      UNKNOWN 02:08:15.475 09/23/16   pingAgent&gt;&gt;doPing, return=0
+22     atarm.dll       [320:3620]      EUREKA  02:08:15.536 09/23/16   GCC_Ping_Mgr::notify_ping_confirm,ION=0,cb_address=&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;,gateway_address=&quot;https://epj1cb1101.eng.webex.com:80&quot;,top_cb_address=&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;,result=2,zone_flag=1,last_top_cb_address=&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;,last_result=2,
+23     confmgr.dll     [320:3620]      UNKNOWN 02:08:15.536 09/23/16   mph&gt;&gt;gccSink&gt;&gt;on_ping_confirm,result=2,create=1
+24     confmgr.dll     [320:3620]      UNKNOWN 02:08:15.536 09/23/16   mph&gt;&gt;conf&gt;&gt;pnigAgent&gt;&gt;on_ping_confirm, create=1, result=2, confid=40721322134735873
+25     confmgr.dll     [320:3620]      UNKNOWN 02:08:15.536 09/23/16   mph&gt;&gt;conf&gt;&gt;pnigAgent&gt;&gt;on_ping_confirm,PING_RESULT_CONFERENCE_ALREADY_EXIST
+26     webexmgr.dll    [320:3620]      ServCom 02:08:15.662 09/23/16   mph&gt;&gt;CAtConfAgent::TryAvailableCBSvr,bGrabHostToken=0,bGrabPresenterToken=0
+27     CONFMGR [       320:3620]       ConfMgr 02:08:15.662 09/23/16   IsJoinAsHost=1,m_pConfManager-&gt;GetHostType()=0,m_pConfManager-&gt;IsPingErrorTen()1
+28     CONFMGR         [320:3620]      ConfMgr 02:08:15.662 09/23/16   CAtConfManagerImpl::SetPingErrorTen,bErrorTen=0
+29     atmgr.exe       [320:3620]      ServCom 02:08:26.159 09/23/16   atmgr quit ok
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DEV 3W Analysis</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem?</dt>
+<dd><ul class="first last simple">
+<li>Can&#8217;t join meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>CAtConfManagerImpl::SetPingErrorTen hadn&#8217;t reset when start next ping</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution?</dt>
+<dd><ul class="first last simple">
+<li>CAtConfAgent::on_ping_confirm reset CAtConfManagerImpl::SetPingErrorTen</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lessons learned</dt>
+<dd><ul class="first last simple">
+<li>Code logic too complex to hard test</li>
+<li>Developer need more carefully when coding</li>
+<li>Make sure QA understood the feature</li>
+<li>Sync with Paul Liu Team how to test</li>
+<li>Code review</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tiger Windows Meeting Client Tickets Summary</a><ul>
+<li><a class="reference internal" href="#cscvc14491-intercall-tsp-voip-client-cannot-be-verified">CSCvc14491, Intercall TSP VoIP Client cannot be verified</a></li>
+<li><a class="reference internal" href="#id1">2016-11-22</a></li>
+<li><a class="reference internal" href="#cscvb19442-mc-crash-after-end-meeting">CSCvb19442, MC crash after End Meeting</a></li>
+<li><a class="reference internal" href="#cscvb45367-t31r2-fail-to-join-meeting">CSCvb45367, T31R2 fail to join meeting</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="release_feature_toggle_introduction.html"
+                        title="previous chapter">Release Toggle Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tigger_window_task.html"
+                        title="next chapter">Tiger Windows Meeting Client Task</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tiger_window_ticket_summary_1.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tiger Windows Meeting Client Task"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

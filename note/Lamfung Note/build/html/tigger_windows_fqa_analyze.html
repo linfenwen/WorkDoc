@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tiger Windows FQA Analyze &mdash; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Tiger Windows FQA" href="tigger_windows_fqa_1.html" />
+    <link rel="prev" title="Tiger Windows Meeting Client Task" href="tigger_window_task.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tigger_windows_fqa_1.html" title="Tiger Windows FQA"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tiger Windows Meeting Client Task"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tiger-windows-fqa-analyze">
+<h1>Tiger Windows FQA Analyze<a class="headerlink" href="#tiger-windows-fqa-analyze" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="gpc-parameter">
+<h2>GPC parameter<a class="headerlink" href="#gpc-parameter" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">MeetingID</p>
+</li>
+<li><p class="first">clientbuildversion</p>
+</li>
+<li><p class="first">productname</p>
+</li>
+<li><p class="first">GpcErrorPageUrl : get ConfID</p>
+</li>
+<li><p class="first">atmgr CommandLine</p>
+</li>
+<li><p class="first">WBXHybridFlag</p>
+</li>
+<li><dl class="first docutils">
+<dt>How to identify the wbxtrace.wbt</dt>
+<dd><ul class="first last simple">
+<li>GCC_Provider_Impl::conf_join_request</li>
+<li>CAtConfManager::SetNodeId</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PList info</dt>
+<dd><ul class="first last simple">
+<li>CSmDefUserMgr2::OnAddUser</li>
+<li>CSmDefUserMgr2::OnRemoveUser</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="asn-relevant-logic">
+<h2>ASN relevant logic<a class="headerlink" href="#asn-relevant-logic" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Who is ASN Selector</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::FindHybridASNSelector</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Attendee receive ASN from CB</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::OnASNPduFromCB</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Presenter receive ASN from TA</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::OnASNReport</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="active-video-logic">
+<h2>Active Video logic<a class="headerlink" href="#active-video-logic" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>CSmSvcVideoSessionMgr::SelectChiefSender</li>
+<li>CSmSvcVideoSessionMgr::VideoUI_AttachActiveUser</li>
+<li>ISVideoClient::ResetVideoReceivingStatus</li>
+</ol>
+</div>
+<div class="section" id="video-session-failure">
+<h2>Video Session Failure<a class="headerlink" href="#video-session-failure" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">CSmSvcVideoSessionMgr::OnSessionCreateIndication</p>
+</li>
+<li><p class="first">CSmSvcVideoSessionMgr::OnSessionCreateConfirm</p>
+</li>
+<li><p class="first">CSmSvcVideoSessionMgr::OnSessionCloseIndication</p>
+</li>
+<li><p class="first">CSmSvcVideoSessionMgr::OnSessionRestartIndication</p>
+</li>
+<li><dl class="first docutils">
+<dt>Freeze when initialise video module</dt>
+<dd><ul class="first last simple">
+<li>CsmSvcVideoSessionMgr::EnrollMMSession, begin</li>
+<li>CsmSvcVideoSessionMgr::EnrollMMSession, end</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="arm-keywords">
+<h2>ARM keywords<a class="headerlink" href="#arm-keywords" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>GCC_Ping_Mgr::ping_request</li>
+</ol>
+</div>
+<div class="section" id="pmr-or-cmr-lobby-room">
+<h2>PMR or CMR Lobby Room<a class="headerlink" href="#pmr-or-cmr-lobby-room" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>GPC parameters</dt>
+<dd><ul class="first last simple">
+<li>CMRExpiredLobbyTime</li>
+<li>PMRNotifyHostAPI</li>
+<li>PMRRefreshCaptchaAPI</li>
+<li>EnableNonLoginUserStayInLobby</li>
+<li>IsUserBlockedInLobby</li>
+<li>CMRMeetingFlag</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Inner control parameters</dt>
+<dd><ul class="first last simple">
+<li>CPfwMainFrame::m_bNeedShowOverlayViewPMR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Check Point</dt>
+<dd><ul class="first last simple">
+<li>CMCServiceMgr::OnConfJoinConfirm</li>
+<li>CMCServiceMgr::EnterVMRWaitingRoom</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="some-questions">
+<h2>Some questions<a class="headerlink" href="#some-questions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>IsMRICached</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tiger Windows FQA Analyze</a><ul>
+<li><a class="reference internal" href="#gpc-parameter">GPC parameter</a></li>
+<li><a class="reference internal" href="#asn-relevant-logic">ASN relevant logic</a></li>
+<li><a class="reference internal" href="#active-video-logic">Active Video logic</a></li>
+<li><a class="reference internal" href="#video-session-failure">Video Session Failure</a></li>
+<li><a class="reference internal" href="#arm-keywords">ARM keywords</a></li>
+<li><a class="reference internal" href="#pmr-or-cmr-lobby-room">PMR or CMR Lobby Room</a></li>
+<li><a class="reference internal" href="#some-questions">Some questions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tigger_window_task.html"
+                        title="previous chapter">Tiger Windows Meeting Client Task</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tigger_windows_fqa_1.html"
+                        title="next chapter">Tiger Windows FQA</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/tigger_windows_fqa_analyze.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tigger_windows_fqa_1.html" title="Tiger Windows FQA"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tiger Windows Meeting Client Task"
+             >previous</a> |</li>
+        <li><a href="index.html">reST 1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
