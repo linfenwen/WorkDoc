@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>F1447 Multi Stream Audio Introduction &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="MVP Common Resource" href="mvp_common_resource.html" />
+    <link rel="prev" title="CMR4" href="cmr4.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mvp_common_resource.html" title="MVP Common Resource"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cmr4.html" title="CMR4"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="f1447-multi-stream-audio-introduction">
+<h1>F1447 Multi Stream Audio Introduction<a class="headerlink" href="#f1447-multi-stream-audio-introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="capture-source-id-csi">
+<h2>Capture Source ID (CSI)<a class="headerlink" href="#capture-source-id-csi" title="Permalink to this headline">¶</a></h2>
+<p>A Capture Source ID (CSI) is used to uniquely identify a physical media capture source as
+a camer or microphones within an RTP session.</p>
+</div>
+<div class="section" id="win-client-interact-with-cb-memory-cache">
+<h2>Win Client interact with <strong>CB Memory Cache</strong><a class="headerlink" href="#win-client-interact-with-cb-memory-cache" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Win Client <strong>Allocate</strong> and <strong>Subscribe</strong> <em>CB Memory Cache</em></p>
+<blockquote>
+<div><img alt="_images/cmr4_csi_cache_seq.svg" src="_images/cmr4_csi_cache_seq.svg" /></div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>InitMyAudioCSIInfo</dt>
+<dd><ul class="first last simple">
+<li>CSmHybridAudioMgr::OnSessionCreateConfirm</li>
+<li>CSmHybridAudioMgr::OnSessionCreateIndication</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Win Client send <strong>VOIP CSI</strong> to <strong>CB Memory Cache</strong></p>
+<blockquote>
+<div><img alt="_images/cmr4_csi_voip_wme_to_cfw_seq.svg" src="_images/cmr4_csi_voip_wme_to_cfw_seq.svg" /></div></blockquote>
+</li>
+<li><p class="first">CSI Payload Format</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Format for Audio:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;CMR&gt;
+&lt;Version&gt;1.0&lt;/Version&gt;
+&lt;User&gt;
+        &lt;AttendeeID&gt;%d&lt;/AttendeeID&gt;
+        &lt;NodeID&gt;%d&lt;/NodeID&gt;
+        &lt;UserType&gt;%d&lt;/UserType&gt;
+&lt;/User&gt;
+&lt;CSIs&gt;
+        &lt;CSI type=&quot;audio&quot;&gt;%s&lt;/CSI&gt;
+&lt;/CSIs&gt;
+&lt;/CMR&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">Format for Video:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;CMR&gt;
+        &lt;Version&gt;1.0&lt;/Version&gt;
+        &lt;User&gt;
+                &lt;AttendeeID&gt;%d&lt;/AttendeeID&gt;
+                &lt;NodeID&gt;%d&lt;/NodeID&gt;
+                &lt;UserType&gt;%d&lt;/UserType&gt;
+        &lt;/User&gt;
+        &lt;CSIs&gt;
+                &lt;CSI type=&quot;video&quot;&gt;%s&lt;/CSI&gt; (ZERO mean: 0xff,ff,ff,ff)
+        &lt;/CSIs&gt;
+&lt;/CMR&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">Format for Sharing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;CMR&gt;
+        &lt;Version&gt;1.0&lt;/Version&gt;
+        &lt;User&gt;
+        &lt;AttendeeID&gt;%d&lt;/AttendeeID&gt;
+        &lt;NodeID&gt;%d&lt;/NodeID&gt;
+        &lt;UserType&gt;%d&lt;/UserType&gt;
+        &lt;/User&gt;
+        &lt;CSIs&gt;
+                &lt;CSI type=&quot;sharing&quot;&gt;%s&lt;/CSI&gt; (ZERO mean: 0xff,ff,ff,ff)
+        &lt;/CSIs&gt;
+&lt;/CMR&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+<ul>
+<li><p class="first">WebEx PC Client notify TS or TPGW its <strong>CMR Client Version</strong></p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">When PC Client notify TS or TPGW</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>CAtConfAgent::TryAvailableCBSvr</dt>
+<dd><ul class="first last simple">
+<li>IConferenceContext::GetULONG(<strong>CONF_CONTEXT_VMR_FLAG_ID</strong>)</li>
+<li>CConfRosterInfoPDU::GenerateXMLPDU</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CAtConfAgent::AgentEnroll</dt>
+<dd><ul class="first last simple">
+<li>IConferenceContext::GetULONG(<strong>CONF_CONTEXT_VMR_FLAG_ID</strong>)</li>
+<li>CConfRosterInfoPDU::GenerateXMLPDU</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">What&#8217;s the <strong>CMR Client Version</strong> format:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">CMgr</span> <span class="n">ver</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">UAID</span><span class="o">&gt;</span><span class="mi">521</span><span class="o">&lt;/</span><span class="n">UAID</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">CS</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">CS</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">FG</span><span class="o">&gt;</span><span class="mi">20</span><span class="o">&lt;/</span><span class="n">FG</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">EA</span><span class="o">&gt;</span><span class="n">ciscotp</span><span class="nd">@cisco</span><span class="o">.</span><span class="n">com</span><span class="o">&lt;/</span><span class="n">EA</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">PG</span><span class="o">&gt;</span><span class="mi">94976</span><span class="o">&lt;/</span><span class="n">PG</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">UT</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">UT</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">CLID</span><span class="o">&gt;</span><span class="mi">385</span><span class="o">&lt;/</span><span class="n">CLID</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">ASVideoBandwidth</span><span class="o">&gt;</span><span class="mi">768</span><span class="o">&lt;/</span><span class="n">ASVideoBandwidth</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">ASVideoProfileLevelId</span><span class="o">&gt;</span><span class="mi">4382733</span><span class="o">&lt;/</span><span class="n">ASVideoProfileLevelId</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">ASVideoMaxMbps</span><span class="o">&gt;</span><span class="mi">18000</span><span class="o">&lt;/</span><span class="n">ASVideoMaxMbps</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">ASVideoMaxFs</span><span class="o">&gt;</span><span class="mi">9000</span><span class="o">&lt;/</span><span class="n">ASVideoMaxFs</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="n">CMRClientVersion</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">CMRClientVersion</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">CMgr</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="receive-csi-from-cb-cache-then-pass-to-wme">
+<h2>Receive <strong>CSI</strong> from <strong>CB Cache</strong> then pass to <strong>WME</strong><a class="headerlink" href="#receive-csi-from-cb-cache-then-pass-to-wme" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/cmr4_csi_voip_cfw_to_wme_seq.svg" src="_images/cmr4_csi_voip_cfw_to_wme_seq.svg" /></div>
+<div class="section" id="receive-asn-from-ta-then-pass-to-cfw">
+<h2>Receive <strong>ASN</strong> from <strong>TA</strong> then pass to <strong>CFW</strong><a class="headerlink" href="#receive-asn-from-ta-then-pass-to-cfw" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/cmr4_csi_asn_ta_to_cfw_seq.svg" src="_images/cmr4_csi_asn_ta_to_cfw_seq.svg" /></div>
+<div class="section" id="presenter-broadcast-asn">
+<h2>Presenter broadcast <strong>ASN</strong><a class="headerlink" href="#presenter-broadcast-asn" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="attendee-receive-asn">
+<h2>Attendee receive <strong>ASN</strong><a class="headerlink" href="#attendee-receive-asn" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="plist-class-diagram">
+<h2>PList class diagram<a class="headerlink" href="#plist-class-diagram" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/mc_plist_class_diagram.svg" src="_images/mc_plist_class_diagram.svg" /></div>
+<div class="section" id="key-points">
+<h2>Key Points<a class="headerlink" href="#key-points" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>CPfwServiceMgr::ApplyNewActiveSpeaker</li>
+<li>CPfwServiceMgr::OnASNPduFromCB</li>
+<li>CPfwServiceMgr::BeASNSelector</li>
+<li>CPfwServiceMgr::BroadcastASNPDU</li>
+<li>CMCUserMgr::StartAnimateIcon</li>
+<li>CMCUserMgr::StartAnimate</li>
+<li>CMCUserListSink::StartAnimate</li>
+<li>CMCPListSelfBar::SyncDummyUserASNInfo</li>
+<li>CPfwAudioMgr::SetActiveSpeakerList</li>
+</ol>
+</div>
+<div class="section" id="repo">
+<h2>Repo<a class="headerlink" href="#repo" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>webex-conference-mgr</li>
+<li>webex-framework-reskin</li>
+<li>webex-windows-mc</li>
+<li>webex-audioclient</li>
+<li>webex-windows-hybridaudio</li>
+<li>webex-mmp-sdk</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">F1447 Multi Stream Audio Introduction</a><ul>
+<li><a class="reference internal" href="#capture-source-id-csi">Capture Source ID (CSI)</a></li>
+<li><a class="reference internal" href="#win-client-interact-with-cb-memory-cache">Win Client interact with <strong>CB Memory Cache</strong></a></li>
+<li><a class="reference internal" href="#receive-csi-from-cb-cache-then-pass-to-wme">Receive <strong>CSI</strong> from <strong>CB Cache</strong> then pass to <strong>WME</strong></a></li>
+<li><a class="reference internal" href="#receive-asn-from-ta-then-pass-to-cfw">Receive <strong>ASN</strong> from <strong>TA</strong> then pass to <strong>CFW</strong></a></li>
+<li><a class="reference internal" href="#presenter-broadcast-asn">Presenter broadcast <strong>ASN</strong></a></li>
+<li><a class="reference internal" href="#attendee-receive-asn">Attendee receive <strong>ASN</strong></a></li>
+<li><a class="reference internal" href="#plist-class-diagram">PList class diagram</a></li>
+<li><a class="reference internal" href="#key-points">Key Points</a></li>
+<li><a class="reference internal" href="#repo">Repo</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cmr4.html"
+                        title="previous chapter">CMR4</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mvp_common_resource.html"
+                        title="next chapter">MVP Common Resource</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/F1447_Introduction.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mvp_common_resource.html" title="MVP Common Resource"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cmr4.html" title="CMR4"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

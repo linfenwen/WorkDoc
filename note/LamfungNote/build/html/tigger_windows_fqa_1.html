@@ -1,0 +1,1468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tiger Windows FQA &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Windbg" href="windbg_fqa.html" />
+    <link rel="prev" title="Tiger Windows FQA Analyze" href="tigger_windows_fqa_analyze.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="windbg_fqa.html" title="Windbg"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tigger_windows_fqa_analyze.html" title="Tiger Windows FQA Analyze"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tiger-windows-fqa">
+<h1>Tiger Windows FQA<a class="headerlink" href="#tiger-windows-fqa" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000228604, CSCvb98202</dt>
+<dd><ul class="first last">
+<li><p class="first">Attendees have the privilege to record the meetings by the HOST but they are still unable to record the meetings.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow parameters</dt>
+<dd><ul class="first last simple">
+<li>NBRForceRecording</li>
+<li>NBRForceRecordingWithControl</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last simple">
+<li>CMCUIMgr::IsShowRecordBtn</li>
+<li>CMCQuickStartSessionMgr::CheckQSStatus</li>
+<li>ID_MEETING_START_RECORD</li>
+<li>OnQsRecordBtn</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000218922</dt>
+<dd><ul class="first last">
+<li><p class="first">Host is not able to see avatar picture in the Personal Meeting Room</p>
+</li>
+<li><p class="first">CSCuz30267</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CSmAvatarMgr::CSmCacheMgr::SaveIntoLocalCache</li>
+<li>CSmConnectionPointContainer::Fire_OnUserAvatarURLRetrieved</li>
+<li>CWCLReskin::IsAvatarFromFile</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000223509</dt>
+<dd><ul class="first last simple">
+<li>T31.5.20 win10  Crash when sharging application or when changing presenter role between participants.</li>
+<li>Ask to schedule a trouble shooting.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvc15881</dt>
+<dd><ul class="first last simple">
+<li>T31R2 Flash client E Attendees and panelists are unable to hear the host</li>
+<li>Assign to Winter Yu</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000221501</dt>
+<dd><ul class="first simple">
+<li>WebEx application crashes when starting or join a meeting</li>
+<li>Seems the same as WO0000000216828</li>
+<li>Request dump file</li>
+<li>CSCuz52797</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">Jun</span> <span class="n">Ma</span><span class="p">:</span>
+<span class="n">I</span> <span class="n">have</span> <span class="n">checked</span> <span class="n">dump</span> <span class="n">file</span> <span class="n">that</span> <span class="n">dump</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">crash</span> <span class="n">location</span> <span class="ow">is</span> <span class="n">SensorsApi</span><span class="o">.</span><span class="n">dll</span><span class="o">.</span>
+<span class="n">I</span> <span class="n">think</span> <span class="n">this</span> <span class="n">crash</span> <span class="n">same</span> <span class="k">with</span> <span class="n">surface</span> <span class="n">pro</span> <span class="n">case</span><span class="o">.</span> <span class="n">you</span> <span class="n">can</span> <span class="n">add</span> <span class="n">HP</span>  <span class="n">Elite</span> <span class="n">X2</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">White</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span> <span class="n">Thanks</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc17039</dt>
+<dd><ul class="first last simple">
+<li>T31.7 Share Multimedia YouTube Adobe Flash Player error</li>
+<li>Assgin to Morgan</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc17031</dt>
+<dd><ul class="first last simple">
+<li>cannot recover memory location</li>
+<li>Mail to Caroline Ye</li>
+<li>F1573</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCvc14491</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc14491">https://cdetsng.cisco.com/webui/#view=CSCvc14491</a></p>
+</li>
+<li><p class="first">Intercall</p>
+</li>
+<li><p class="first">From Alexander Fleck (afleck), send out mail request client log</p>
+</li>
+<li><p class="first">TSP server connect the third party server</p>
+</li>
+<li><p class="first">Dongong Peng From TSP server</p>
+</li>
+<li><p class="first">PO (ren bo), TL (Ty)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Super Admin =&gt; New Site =&gt; Security Options</dt>
+<dd><ul class="first last simple">
+<li>TSP partner is sending only SHA256 values in TSP API clienthashlist.(enabling this will stop checking for SHA1 hash values)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow parameters</dt>
+<dd><ul class="first last simple">
+<li>TSPHybridFlag</li>
+<li>THClientHashList</li>
+<li>CDTAppPDU_Evt_CreateTSPConference</li>
+<li>TSPHybridSecureAccess</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000227555</dt>
+<dd><ul class="first last simple">
+<li>VoIP audio connection issue</li>
+<li>Mail out, need trouble shooting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] Issue 317</dt>
+<dd><ul class="first simple">
+<li>same as WO0000000226507,WO0000000226423</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/issues/317">https://sqbu-github.cisco.com/CMR/support/issues/317</a></li>
+<li>This issue is in CMR 3.5 repo, CMR 3.5 plan to LA on 12/14, so need to fix it in this month, please take this as high priority.</li>
+<li>Waiting for client log</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Turns</span> <span class="n">out</span> <span class="n">to</span> <span class="n">be</span> <span class="n">a</span> <span class="n">RJ</span> <span class="n">Cable</span> <span class="n">faulty</span> <span class="n">connecting</span> <span class="n">Nexus</span> <span class="n">GW</span> <span class="n">to</span> <span class="n">the</span> <span class="n">UCS</span> <span class="n">server</span> <span class="k">with</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">of</span> <span class="nb">input</span> <span class="n">errors</span>
+
+<span class="n">The</span> <span class="n">Cable</span> <span class="n">was</span> <span class="n">replaced</span><span class="p">,</span> <span class="n">no</span> <span class="n">errors</span>
+
+<span class="n">Set</span> <span class="n">up</span> <span class="n">a</span> <span class="n">basic</span> <span class="n">WebEx</span> <span class="n">bridge</span> <span class="ow">and</span> <span class="n">registered</span> <span class="n">a</span> <span class="n">test</span> <span class="n">phone</span> <span class="n">on</span> <span class="n">AM1</span> <span class="k">with</span> <span class="n">dial</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">test</span> <span class="n">extn</span>
+
+<span class="n">We</span> <span class="n">have</span> <span class="n">tested</span> <span class="n">the</span> <span class="n">one</span> <span class="n">test</span> <span class="n">meeting</span> <span class="n">of</span> <span class="mi">45</span><span class="nb">min</span><span class="o">+</span> <span class="p">(</span><span class="n">Jason</span><span class="o">/</span><span class="n">Pranith</span><span class="o">/</span><span class="n">Ravi</span><span class="p">)</span> <span class="ow">and</span> <span class="n">none</span> <span class="n">of</span> <span class="n">the</span> <span class="n">call</span> <span class="n">got</span> <span class="n">dropped</span> <span class="n">after</span> <span class="mi">30</span><span class="o">+</span> <span class="ow">or</span> <span class="n">so</span> <span class="n">no</span> <span class="n">drops</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="id1">
+<h2>2016-11-21<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000221097</dt>
+<dd><ul class="first simple">
+<li>crash</li>
+<li>Seems crashed at SensorApi module</li>
+<li>Jun Ma is checking</li>
+<li>Mail out, ask Jun for update, need more time to research</li>
+<li>SSE asked us to close this case</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>19  Id: 2700.12f4 Suspend: 0 Teb: 01042000 Unfrozen
+    ChildEBP RetAddr  Args to Child
+    1352ef5c 76ece221 00001210 00000000 00000000 ntdll_77d70000!ZwWaitForSingleObject+0xc (FPO: [3,0,0])
+    1352efd0 76ece182 00001210 ffffffff 00000000 KERNELBASE!WaitForSingleObjectEx+0x91 (FPO: [SEH])
+    1352efe4 5e265f05 00001210 ffffffff 00000000 KERNELBASE!WaitForSingleObject+0x12 (FPO: [Non-Fpo])
+    1352f014 76f5f4a2 1352f0d4 6e8d620d 00000000 webexmgr!Exception_Report+0x27c
+    1352f0a4 77e135ee 1352f0d4 77deb020 1352f908 KERNELBASE!UnhandledExceptionFilter+0x172 (FPO: [Non-Fpo])
+    1352f908 77dd5dae ffffffff 77dfb7d8 00000000 ntdll_77d70000!__RtlUserThreadStart+0x3d83a
+    1352f918 00000000 5b49d260 00000dfc 00000000 ntdll_77d70000!_RtlUserThreadStart+0x1b (FPO: [Non-Fpo])
+
+Exception content
+    1352f804 5b4ccb98 0c5ea948 5b494ccc 00000001 SensorsApi!CSensorV2::DataCallback+0x1cb
+    1352f818 5b49d5e9 014f6878 0c5ea948 57beb1f7 SensorsApi!CSensorV2::s_DataCallback+0x18
+    1352f8ac 769038f4 00000dfc 769038d0 858b2299 SensorsNativeApi_V2!NativeSensorCollectionNotifThread+0x389
+    1352f8c0 77dd5de3 00000dfc 8f9a3de4 00000000 kernel32!BaseThreadInitThunk+0x24
+    1352f908 77dd5dae ffffffff 77dfb7d8 00000000 ntdll_77d70000!__RtlUserThreadStart+0x2f
+    1352f918 00000000 5b49d260 00000dfc 00000000 ntdll_77d70000!_RtlUserThreadStart+0x1b
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCut59183, CFD S6</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCut59183">https://cdetsng.cisco.com/webui/#view=CSCut59183</a></li>
+<li>Confirmed with PM Selim Baygin (sbaygin)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[O] WO0000000226784</dt>
+<dd><ul class="first last simple">
+<li>Morgan , Wallis Tong (Mobile)</li>
+<li>Attendees are able to hear the panelists during breakout.</li>
+<li>Mobile client  don’t support practice session, mobile client users are always out of practice session, so if mobile user is the panelist, the attendee still  can hear mobile panelist.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000225244</dt>
+<dd><ul class="first last simple">
+<li>No speaker was detected! Make sure your device is connected correctly and test it again.</li>
+<li>TSP</li>
+<li>CSmAgentWnd::W2C_IsAudioDeviceNormal, end, lResult = 4</li>
+<li>Need SSE engineer to check further with TSP provider side</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000226507</dt>
+<dd><ul class="first last simple">
+<li>Waiting for client log for further investigation</li>
+<li>Wu Xi is checking (Mac OS)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000226765</dt>
+<dd><ul class="first last simple">
+<li>Connection taking too long to get connected to VoIP</li>
+<li>Gpc hadn&#8217;t callback caused the client hadn&#8217;t join VoIP</li>
+<li>File a bug</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc02236</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc02236">https://cdetsng.cisco.com/webui/#view=CSCvc02236</a></p>
+</li>
+<li><p class="first">OnSessionCreateConfirm, sRet[1]</p>
+</li>
+<li><dl class="first docutils">
+<dt>Analyze From Xu Bin</dt>
+<dd><ul class="first last simple">
+<li>Client failed to start hybrid session</li>
+<li>because Tahoe get invalid account info from TahoeDB (see below error log),</li>
+<li>so Tahoe respond the error to CB.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] 681199594</dt>
+<dd><ul class="first simple">
+<li>SR 681199594, DB SYSTEL GMBH, Whiteboard CWMS, BEMS517272</li>
+<li>whiteboard enable logic</li>
+<li>Document and presentation sharing</li>
+<li>To enable whiteboard feature, bit 10 of SessionTypeOptions should be 1</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>I’ve checked customer’s system and ITEMVALUE from WBXMEETINGTYPECONFIG table,
+where meetingtype=3 (default meeting session) and ITEMNAME=&#39;SupportPresentation&#39;value was “0” on both DCs (in both DBs).
+Changing it to “1” for both DCs, fixed the issue.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000211161</dt>
+<dd><ul class="first last simple">
+<li>Unable to join VOIP conference or use Webcam to share video in meetings.</li>
+<li>Loadlibrary failure, msvc.dll, mac.dll, tp.dll, gpsvc.dll</li>
+<li>Customer will re-install systom</li>
+<li>Test on customer site</li>
+<li>Ask for update [mail out]</li>
+<li>Got confirm from Chris Chen, Closed</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>2016-11-14<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000226423</dt>
+<dd><ul class="first last simple">
+<li>SVP Call Drop</li>
+<li>telephony audio was dropped every 30 minutes for two users</li>
+<li>Conference ID: 2886604324</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000224978</dt>
+<dd><ul class="first last">
+<li><p class="first">MC T30.6, Save File can&#8217;t work</p>
+</li>
+<li><p class="first">From SuZhou Eric Tang</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>Docshow: AllowSaveAndPrintInDocShring disable</li>
+<li>Site Admin &gt;&gt; Common Site Settings &gt;&gt; Allow Print / Save in Document</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCut59183, Action(confirm with PM - Selim Baygin)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Issue description</dt>
+<dd><ul class="first last simple">
+<li>Host buy two account</li>
+<li>Expectation : Just can start two meeting at the same time</li>
+<li>Actual : It can start the 3rd meeting in TP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CMR Hybrid solution, maintain</p>
+</li>
+<li><p class="first">Current use CMR4, without this issue</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb69543</dt>
+<dd><ul class="first last simple">
+<li>Had closed</li>
+<li>Confirmed with PM: Connie Tang and Engineer: Wilson Chen &amp; Wallice Wang, the conclusion is: the engineering team feels that opening the firewall for only the WebEx MMP servers is still a secure solution</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb71340, T31.8 (CC 2016.10.15)</dt>
+<dd><ul class="first last simple">
+<li>Update status to Bill Wu</li>
+<li>Need HF team help to reproduce, mail</li>
+<li>Confirmed with Paul, changed to U</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2>2016-11-07<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] CMR issue 43</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/issues/43#issuecomment-213229">https://sqbu-github.cisco.com/CMR/support/issues/43#issuecomment-213229</a></li>
+<li>Need Send a mail to paul liu</li>
+<li>Request webex log</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000211492</dt>
+<dd><ul class="first last simple">
+<li>URGENT WO0000000211492: VoIP Issue HD0009165473</li>
+<li>Sunny Liao sugget rollback to T30</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb95846</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb95846&amp;vt=2">https://cdetsng.cisco.com/webui/#view=CSCvb95846&amp;vt=2</a></li>
+<li>Check the Mats, is the same like the plist , so seems not a bug, J</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000224259, add to pits</dt>
+<dd><ul class="first simple">
+<li>Webex client crashed on HP Elite x2 1012 G1</li>
+<li>ntdll encounter 0x80000003 error</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">happens</span> <span class="n">when</span> <span class="n">you</span> <span class="n">hit</span> <span class="n">a</span> <span class="n">breakpoint</span> <span class="p">(</span><span class="nb">int</span> <span class="mi">3</span><span class="p">)</span> <span class="n">instructionand</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span>
+<span class="n">debugger</span> <span class="n">connected</span><span class="o">.</span>  <span class="n">Most</span> <span class="n">often</span><span class="p">,</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">breakpoint</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">storage</span>
+<span class="n">allocator</span><span class="p">,</span> <span class="n">usually</span> <span class="n">hit</span> <span class="n">when</span> <span class="n">the</span> <span class="n">rather</span> <span class="n">simplistic</span> <span class="n">tests</span> <span class="n">done</span> <span class="ow">in</span> <span class="n">the</span>
+<span class="n">Release</span> <span class="n">CRT</span> <span class="n">discover</span> <span class="n">heap</span> <span class="n">damage</span><span class="p">,</span> <span class="n">although</span> <span class="n">that</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">the</span> <span class="n">only</span> <span class="n">source</span> <span class="n">of</span>
+<span class="n">the</span> <span class="n">error</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] ATS ISSUE: can&#8217;t record</dt>
+<dd><ul class="first last simple">
+<li>From Rudy Sheng</li>
+<li>Seems caused by the build</li>
+<li>EC crashed, WCLDll.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] Audio session is grayed out for some user</dt>
+<dd><ul class="first last simple">
+<li>From Daisy Zhang</li>
+<li>Need check hybird audio control flag</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/issues/150">https://sqbu-github.cisco.com/CMR/support/issues/150</a></li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/support/files/2141/wbxtra_10272016_184649.zip">https://sqbu-github.cisco.com/CMR/support/files/2141/wbxtra_10272016_184649.zip</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000223395, CSCvb92423</dt>
+<dd><ul class="first last simple">
+<li>Meeting Center client Help option is loading the generic page instead of redirecting to the PG customized page</li>
+<li>Docshow =&gt; URLs =&gt; QSHelpURL</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000221752</dt>
+<dd><ul class="first simple">
+<li>Client crash, wseclient.dll</li>
+<li>Assigned to WME (Karina Li)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">previous</span> <span class="n">fix</span> <span class="ow">is</span> <span class="n">about</span> <span class="n">ticket</span> <span class="n">HD0009185218</span><span class="o">/</span><span class="n">WO0000000210084</span> <span class="ow">and</span> <span class="n">cdets</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cdetsng</span><span class="o">.</span><span class="n">cisco</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">webui</span><span class="o">/</span><span class="c1">#view=CSCvb18905</span>
+<span class="n">The</span> <span class="n">code</span> <span class="n">fix</span> <span class="n">has</span> <span class="n">submitted</span> <span class="ow">in</span> <span class="n">T30</span><span class="o">.</span><span class="mi">13</span><span class="p">,</span> <span class="ow">and</span> <span class="n">already</span> <span class="ow">in</span> <span class="n">T30</span><span class="o">.</span><span class="mf">14.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>2016-10-31<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000216828</dt>
+<dd><ul class="first last simple">
+<li>Webex client crashes</li>
+<li><a class="reference external" href="https://cisco.box.com/s/n1odfzep4l0msktbdjxms1e20015kwke">https://cisco.box.com/s/n1odfzep4l0msktbdjxms1e20015kwke</a></li>
+<li>WME qiwei hao is checking</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000213144, No response from customer</dt>
+<dd><ul class="first simple">
+<li>Video dropped for all PC endpoints</li>
+<li>Pingru Cheng mailed to close for the customer hadn&#8217;t response</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span>      <span class="n">mac</span><span class="o">.</span><span class="n">dll</span> <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">MMP</span>     <span class="mi">23</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mf">52.606</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="p">[</span><span class="n">UTIL</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">MAC</span><span class="p">]</span> <span class="n">CMMAudioClientCtrl</span><span class="p">::</span><span class="n">OnQoEReport</span> <span class="p">[</span><span class="n">WbxMQD</span><span class="p">]</span> <span class="p">[</span><span class="n">MQD</span> <span class="o">-&gt;</span> <span class="n">MMP</span><span class="p">]</span> <span class="n">SiteID</span><span class="o">=</span><span class="mi">867872</span><span class="p">,</span> <span class="n">ConfID</span><span class="o">=</span><span class="mi">3906915798</span><span class="p">,</span> <span class="n">NodeID</span><span class="o">=</span><span class="mi">16818177</span><span class="p">,</span> <span class="n">Mic</span> <span class="n">Quality</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5591</span><span class="p">,</span> <span class="mf">0.9093</span><span class="p">,</span> <span class="mf">0.9405</span><span class="p">),</span> <span class="n">Mic</span> <span class="n">MOS</span><span class="o">=</span><span class="p">(</span><span class="mf">3.3268</span><span class="p">,</span> <span class="mf">3.5150</span><span class="p">,</span> <span class="mf">3.5083</span><span class="p">),</span> <span class="mi">0</span><span class="n">d</span><span class="o">=</span><span class="mf">0.41050</span><span class="p">,</span> <span class="mi">1</span><span class="n">d</span><span class="o">=</span><span class="mf">0.57891</span><span class="p">,</span> <span class="mi">2</span><span class="n">d</span><span class="o">=</span><span class="mf">0.28477</span><span class="p">,</span> <span class="mi">3</span><span class="n">d</span><span class="o">=-</span><span class="mf">0.14279</span><span class="p">,</span> <span class="mi">4</span><span class="n">d</span><span class="o">=-</span><span class="mf">0.68760</span><span class="p">,</span> <span class="mi">5</span><span class="n">d</span><span class="o">=-</span><span class="mf">0.54891</span><span class="p">,</span> <span class="mi">6</span><span class="n">d</span><span class="o">=</span><span class="mf">0.53802</span><span class="p">,</span> <span class="mi">7</span><span class="n">d</span><span class="o">=-</span><span class="mf">0.35928</span><span class="p">,</span> <span class="mi">8</span><span class="n">d</span><span class="o">=-</span><span class="mf">0.11508</span><span class="p">,</span> <span class="mi">9</span><span class="n">d</span><span class="o">=</span><span class="mf">0.24854</span><span class="p">,</span> <span class="mi">10</span><span class="n">d</span><span class="o">=</span><span class="mf">0.67064</span><span class="p">,</span> <span class="mi">11</span><span class="n">d</span><span class="o">=</span><span class="mf">0.72355</span><span class="p">,</span> <span class="mi">12</span><span class="n">d</span><span class="o">=</span><span class="mf">0.47830</span><span class="p">,</span> <span class="mi">13</span><span class="n">d</span><span class="o">=</span><span class="mf">0.19600</span>
+<span class="mi">2</span>      <span class="n">CFW</span>     <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">CFW</span>     <span class="mi">23</span><span class="p">:</span><span class="mi">24</span><span class="p">:</span><span class="mf">28.296</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CSmDefUserMgr2</span><span class="p">::</span><span class="n">OnAddUser</span><span class="p">,</span> <span class="n">NodeId</span><span class="p">[</span><span class="mi">16826369</span><span class="p">],</span> <span class="n">ClientOSType</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">Name</span><span class="p">[</span><span class="n">Trey</span> <span class="n">Contello</span><span class="p">],</span> <span class="n">TPUserType</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">AttendeeID</span><span class="p">[</span><span class="mi">135973</span><span class="p">]</span> <span class="n">LockStatus</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">TPVAID</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="mi">3</span>      <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span> <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>  <span class="n">EUREKA</span>  <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">20.908</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Conference</span><span class="p">::</span><span class="n">on_session_close_indication</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">conf_id</span><span class="o">=</span><span class="s2">&quot;3906915798&quot;</span><span class="p">,</span><span class="n">prot_type</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span><span class="n">session_id</span><span class="o">=</span><span class="mi">113</span><span class="p">,</span><span class="n">reason</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+<span class="mi">4</span>      <span class="n">CONFMGR</span> <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">ConfMgr</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">20.908</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CAtConfAgent</span><span class="p">::</span><span class="n">on_session_close_indication</span><span class="p">,</span><span class="n">conference</span><span class="p">:</span> <span class="mh">0xA1135AC</span> <span class="n">Reason</span><span class="p">:</span> <span class="mi">128</span><span class="n">session_key0x65ABBC0</span>
+<span class="mi">5</span>      <span class="n">CONFMGR</span> <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">ConfMgr</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">20.908</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">RemoveSession</span><span class="p">:</span><span class="n">m_pSink</span><span class="o">-&gt;</span><span class="n">OnSessionCloseIndication</span><span class="p">(</span><span class="n">reason</span><span class="p">,</span><span class="n">pSession</span><span class="p">);</span>
+<span class="mi">6</span>      <span class="n">webexmgr</span><span class="o">.</span><span class="n">dll</span>    <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">ServCom</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">20.908</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CMCServiceMgr</span><span class="p">::</span><span class="n">OnSessionCloseIndication</span><span class="p">,</span> <span class="n">pSession</span><span class="p">[</span><span class="n">a005e08</span><span class="p">],</span> <span class="n">sessionType</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="n">sessionName</span><span class="p">:</span> <span class="n">APPSVR_SESSIONTYPE_MM_VIDEO</span>
+<span class="mi">7</span>      <span class="n">CFW</span>     <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">CFW</span>     <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">20.908</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CPfwServiceMgr</span><span class="p">::</span><span class="n">OnSessionCloseIndication</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span><span class="n">Session</span> <span class="nb">type</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="mi">8</span>      <span class="n">CFW</span>     <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">CFW</span>     <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">20.908</span> <span class="mi">10</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CSmSvcVideoSessionMgr</span><span class="p">::</span><span class="n">OnSessionCloseIndication</span><span class="p">,</span> <span class="n">start</span>
+<span class="mi">9</span>      <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">EUREKA</span>  <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mf">17.865</span> <span class="mi">10</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Conference</span><span class="p">::</span><span class="n">on_session_close_indication</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">conf_id</span><span class="o">=</span><span class="s2">&quot;3906915798&quot;</span><span class="p">,</span><span class="n">prot_type</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">session_id</span><span class="o">=</span><span class="mi">115</span><span class="p">,</span><span class="n">reason</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+<span class="mi">10</span>     <span class="n">CONFMGR</span> <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">ConfMgr</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mf">17.865</span> <span class="mi">10</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CAtConfAgent</span><span class="p">::</span><span class="n">on_session_close_indication</span><span class="p">,</span><span class="n">conference</span><span class="p">:</span> <span class="mh">0xA1135AC</span> <span class="n">Reason</span><span class="p">:</span> <span class="mi">128</span><span class="n">session_key0x65ABBC0</span>
+<span class="mi">11</span>     <span class="n">CONFMGR</span> <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">ConfMgr</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mf">17.865</span> <span class="mi">10</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">16</span>   <span class="n">RemoveSession</span><span class="p">:</span><span class="n">m_pSink</span><span class="o">-&gt;</span><span class="n">OnSessionCloseIndication</span><span class="p">(</span><span class="n">reason</span><span class="p">,</span><span class="n">pSession</span><span class="p">);</span>
+<span class="mi">12</span>     <span class="n">webexmgr</span><span class="o">.</span><span class="n">dll</span>    <span class="p">[</span><span class="mi">8412</span><span class="p">:</span><span class="mi">11944</span><span class="p">]</span>    <span class="n">ServCom</span> <span class="mi">00</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mf">17.865</span> <span class="mi">10</span><span class="o">/</span><span class="mi">13</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CMCServiceMgr</span><span class="p">::</span><span class="n">OnSessionCloseIndication</span><span class="p">,</span> <span class="n">pSession</span><span class="p">[</span><span class="mi">162</span><span class="n">c5a80</span><span class="p">],</span> <span class="n">sessionType</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="n">sessionName</span><span class="p">:</span> <span class="n">APPSVR_SESSIONTYPE_DESKTOP_SHARING</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000212478</dt>
+<dd><ul class="first simple">
+<li>3 users were disconnected almost at the same time</li>
+<li>Bhaskar Bhaumik had closed. Need check the ticket</li>
+<li>They find it odd that nothing would have changed yet all of a sudden it&#8217;s working again</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cisco</span><span class="o">.</span><span class="n">box</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">ecdck4abgkqqojg0aghuswuqqot1bc90</span>
+<span class="n">ConfID</span><span class="p">:</span> <span class="mi">1870316351</span>
+<span class="n">Impacted</span> <span class="n">user</span><span class="p">:</span> <span class="n">Guadalupe</span> <span class="n">Larrieu</span>
+<span class="n">Impacted</span> <span class="n">User</span><span class="s1">&#39;s Phone Number: +54 11 5777 2071</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000219862, CSCvb78192</dt>
+<dd><ul class="first last simple">
+<li>SC crash</li>
+<li>AppSharing load failure</li>
+<li>Fix in T31.8 &amp; T30.14</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb78192">https://cdetsng.cisco.com/webui/#view=CSCvb78192</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000223080, INC000000015580</dt>
+<dd><ul class="first last simple">
+<li>WebEx 11 , urgent</li>
+<li>VOIP can&#8217;t use</li>
+<li>root cause: SHA264 crypto method change, need page to fix</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb85985</dt>
+<dd><ul class="first last simple">
+<li>The page of Meeting info became blank screen on MC client with PPT info  template</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb85985">https://cdetsng.cisco.com/webui/#view=CSCvb85985</a></li>
+<li>From QA, Cellion Ye is checking</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>2016-10-24<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvb78958</dt>
+<dd><ul class="first last simple">
+<li>multi cameras support</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb78958&amp;vt=3">https://cdetsng.cisco.com/webui/#view=CSCvb78958&amp;vt=3</a></li>
+<li>assign to Ju Ma, wseshell.exe</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvb69936, T30.14 (CC 2016.10.15)</dt>
+<dd><ul class="first last">
+<li><p class="first">DNS, DHCP can config proxy url</p>
+</li>
+<li><p class="first">WPAD</p>
+</li>
+<li><p class="first">HD0009249582,HD0009243179</p>
+</li>
+<li><p class="first">It takes 1-3 minutes to connect to VoIP/Video for certain networks on WBS30.9 MC client.</p>
+</li>
+<li><p class="first">Downgrade sites to WBS30.6 or lower or Upgrade sites to WBS 31.</p>
+</li>
+<li><p class="first">CCmHttpProxyManager::InitGetterArray</p>
+</li>
+<li><dl class="first docutils">
+<dt>Configuring WPAD Entries</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://technet.microsoft.com/en-us/library/cc713344.aspx">https://technet.microsoft.com/en-us/library/cc713344.aspx</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000214739</dt>
+<dd><ul class="first last simple">
+<li>Meeting window crashes few seconds after joining the meeting.From logs, it crashed in tp.dll</li>
+<li>WME issue, Karina Li is checking</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000216265, Video option is not getting enabled while in session also hangs at connecting to audio</dt>
+<dd><ul class="first last simple">
+<li>CSmSvcVideoSessionMgr::OnVideoSessionStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>2016-10-15<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvb45367</dt>
+<dd><ul class="first last">
+<li><p class="first">T32 R2 client, received ping result 2, meeting exist but client still try to create meeting and it failed.</p>
+</li>
+<li><p class="first">Root cause: SetPingErrorTen hadn&#8217;t reset when start next ping</p>
+</li>
+<li><p class="first">Which introduced by CSCux45779</p>
+</li>
+<li><dl class="first docutils">
+<dt>CSCux45779</dt>
+<dd><ul class="first last simple">
+<li>After host crash, CB end meeting. But MZM will keep the meeting 4 minutes.</li>
+<li>In 4 minutes, attendee should send create conference request to MZM.</li>
+<li>It does not exist on 31.0.0.1304 client build.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000217451, INC800004982208</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>docshow parameters:</dt>
+<dd><ul class="first last simple">
+<li>AutoDisconnectFlag</li>
+<li>SingleDuration</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CMCDocshowMgr::ProcessMeetingParam</p>
+</li>
+<li><dl class="first docutils">
+<dt>some automatically end meeting scenarios</dt>
+<dd><ul class="first last simple">
+<li>Meeting reached to max meeting duration, which is configured in session type in Superadmin, controlled in CB</li>
+<li>Meeting reached to scheduled end time+1 hour when host hasn’t joined yet into meeting. Controlled in CB,  this is the case for pic in Lisa’s reply.</li>
+<li>When there is only one WebEx attendee in a meeting(all others left meeting), attendee side will leave meeting automatically, then CB will close meeting.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000209473</dt>
+<dd><ul class="first">
+<li><p class="first">Audio option not populating properly</p>
+</li>
+<li><p class="first">Our SSE is working with the customer to get the latest data [2016-09-21]</p>
+</li>
+<li><dl class="first docutils">
+<dt>Checklist</dt>
+<dd><ul class="first last simple">
+<li>CDlgQuickstart::EnableItem</li>
+<li>CSmAudioStatusWrapper</li>
+<li>CQuickStartDlgPresenter::OnAudioMore</li>
+<li>CSmHybridAudioMgr::StartHybrid</li>
+<li>CSmHybridAudioMgr::CheckDownloadGTC</li>
+<li>CSmHybridAudioMgr::OnTELEDownloadFinished</li>
+<li>CSmHybridAudioMgr::CheckDownloadGTCEx</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>From trace, when create audio session, will try to download global call in number use url: https://kpit.webex.com/url3000/getGlobalTelecon.do?siteurl=kpit&amp;confId=3239013003&amp;isLarge=1&amp;location=0&amp;needFilter=false&amp;tollFree=1  ,
+But there is no download finished notify, so audio session is not created.
+
+From recording, it can show audio dialog at 5:10, I think there is long network delay.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000213231 (The link provided by Fibin unavailable), Audio settings always reset</dt>
+<dd><ul class="first">
+<li><p class="first">REGKEY_VOIP_PATH</p>
+</li>
+<li><p class="first">CAudioTestDialog::CheckAudioDevice</p>
+</li>
+<li><p class="first">CSmHybridAudioMgr</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioTestDialog</dt>
+<dd><ul class="first last simple">
+<li>GetDeviceList</li>
+<li>CAudioTestWizardWrapper::SetSelDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">IAudioWizard</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioTestWizardWrapper</dt>
+<dd><ul class="first last simple">
+<li>GetSelDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CPcmAudioMgr::AW_CreateAudioWizardCtrl</dt>
+<dd><ul class="first last simple">
+<li>MMCreateAudioWizardCtrl</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CPcmAudioMgr::CopyDeviceInfo</p>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Audio</span> <span class="n">settings</span> <span class="n">always</span> <span class="n">reset</span>
+<span class="n">Audio</span> <span class="n">settings</span> <span class="n">of</span> <span class="n">WebEx</span> <span class="n">Meeting</span> <span class="n">Client</span> <span class="n">are</span> <span class="n">reset</span> <span class="n">after</span> <span class="n">the</span> <span class="n">client</span> <span class="n">update</span> <span class="kn">from</span> <span class="nn">T31.</span><span class="mf">4.2</span> <span class="n">to</span> <span class="n">T31</span><span class="o">.</span><span class="mf">5.1</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">was</span> <span class="n">reported</span> <span class="n">by</span> <span class="n">many</span> <span class="n">NOKIA</span> <span class="n">users</span><span class="p">,</span> <span class="n">always</span> <span class="n">after</span> <span class="n">a</span> <span class="n">site</span> <span class="n">upgrade</span><span class="o">.</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">app</span><span class="o">.</span><span class="n">box</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">s</span><span class="o">/</span><span class="n">wn23mszfurw993aim80hnxb6k3pigu66</span>
+<span class="n">It</span> <span class="n">has</span> <span class="n">been</span> <span class="n">done</span> <span class="n">on</span> <span class="n">two</span> <span class="n">PCS</span><span class="p">,</span> <span class="n">on</span> <span class="n">Javier</span><span class="o">.</span><span class="n">oscuna</span><span class="o">.</span><span class="n">ext</span><span class="nd">@nokia</span><span class="o">.</span><span class="n">com</span> <span class="ow">and</span> <span class="n">Edwin</span><span class="o">.</span><span class="n">vega</span><span class="o">.</span><span class="n">ext</span><span class="nd">@nokia</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000216726, WO0000000216198</dt>
+<dd><ul class="first last simple">
+<li>It takes up to 2 mins to the audio through  connect to call using computer.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvb47815</dt>
+<dd><ul class="first last">
+<li><p class="first">Can not start meeting from Firefox 49.0.1</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause :</dt>
+<dd><ul class="first last simple">
+<li>Code Issue which depend on parameter sequence</li>
+<li>Firefox Changed the parameters sequence</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CATGpcWindow::SetParameters</p>
+</li>
+<li><p class="first">CorrectSchemaofUrlRoot</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000206787</dt>
+<dd><ul class="first last simple">
+<li>Meeting screen is getting frozen</li>
+<li>Customer closed this case ,Perhaps , he resolved it by himself without more additional info.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h2>2016-10-08<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000214995</dt>
+<dd><ul class="first last simple">
+<li>7 minutes of audio missing in the NBR</li>
+<li>There is no client trace available.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb53084</dt>
+<dd><ul class="first simple">
+<li>Please take a look on this,  it should be a server side change.</li>
+<li>Just change in web side.</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Description</span><span class="p">:</span> <span class="n">Background</span><span class="p">:</span>
+<span class="n">A</span> <span class="n">user</span> <span class="kn">from</span> <span class="nn">an</span> <span class="n">external</span> <span class="n">company</span> <span class="p">(</span><span class="n">called</span> <span class="n">Everything</span> <span class="n">Everywhere</span> <span class="o">=</span> <span class="n">EE</span><span class="p">)</span> <span class="ow">is</span> <span class="n">joining</span> <span class="n">a</span> <span class="n">meeting</span> <span class="n">on</span> <span class="n">T</span><span class="o">-</span><span class="n">Systems</span> <span class="n">WebEx</span><span class="o">.</span>
+<span class="n">When</span> <span class="n">this</span> <span class="n">external</span> <span class="n">user</span> <span class="n">joins</span> <span class="n">the</span> <span class="n">meeting</span> <span class="p">(</span><span class="n">successfully</span><span class="p">),</span> <span class="n">excessive</span> <span class="n">traffic</span> <span class="n">towards</span> <span class="n">T</span><span class="o">-</span><span class="n">Systems</span> <span class="n">WebEx</span> <span class="n">Nodes</span> <span class="ow">is</span> <span class="n">generated</span><span class="o">.</span>
+
+<span class="n">It</span> <span class="ow">is</span> <span class="n">by</span> <span class="n">design</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">internal</span><span class="p">,</span> <span class="n">only</span> <span class="n">internal</span> <span class="n">user</span> <span class="n">can</span> <span class="n">start</span><span class="o">/</span><span class="n">join</span> <span class="n">meeting</span><span class="p">,</span> <span class="n">it</span> <span class="n">will</span> <span class="n">only</span> <span class="n">ping</span> <span class="n">NODE</span> <span class="n">MZM</span><span class="o">.</span>
+<span class="n">Choose</span> <span class="n">external</span><span class="p">,</span> <span class="n">Both</span> <span class="n">external</span><span class="o">/</span><span class="n">internal</span> <span class="n">users</span> <span class="n">can</span> <span class="n">start</span><span class="o">/</span><span class="n">join</span> <span class="n">meeting</span><span class="o">.</span> <span class="nb">all</span> <span class="n">of</span> <span class="n">them</span> <span class="n">will</span> <span class="n">ping</span> <span class="n">DC</span><span class="o">/</span><span class="n">GDM</span> <span class="ow">and</span> <span class="n">NODE</span> <span class="n">MZM</span><span class="o">.</span>
+
+<span class="n">But</span> <span class="n">currently</span> <span class="n">we</span> <span class="n">do</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">external</span> <span class="n">only</span> <span class="n">option</span><span class="o">.</span> <span class="n">So</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">one</span> <span class="n">new</span> <span class="n">requirement</span><span class="o">.</span> <span class="n">I</span> <span class="n">will</span> <span class="n">file</span> <span class="n">enhance</span> <span class="n">bug</span> <span class="ow">and</span> <span class="n">submit</span> <span class="n">requirement</span> <span class="n">to</span> <span class="n">trace</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000197315</dt>
+<dd><ul class="first simple">
+<li>Randomly during an EC, Active video user&#8217;s webcam video turns off, when this happens, EC&#8217;s meeting option also becomes unchecked (Event -&gt; Option -&gt; &#8220;Video&#8221; has to be checked again to return Video capabilities for all attendees)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Typically</span> <span class="n">when</span> <span class="n">this</span> <span class="n">happens</span><span class="p">,</span> <span class="n">the</span> <span class="n">option</span> <span class="n">disables</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">time</span> <span class="n">the</span> <span class="n">option</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">disable</span><span class="p">,</span> <span class="n">but</span> <span class="n">passing</span> <span class="n">presenter</span> <span class="n">back</span> <span class="ow">and</span> <span class="n">forth</span> <span class="n">fixed</span> <span class="n">the</span> <span class="n">issue</span><span class="o">.</span>
+
+<span class="n">Because</span> <span class="n">presenter</span> <span class="s2">&quot;Valerie Arnold” have network problem around  08:03:23  to connect the MMP server,</span>
+<span class="k">for</span> <span class="n">this</span> <span class="n">case</span> <span class="n">presenter</span> <span class="n">will</span> <span class="k">try</span> <span class="n">do</span> <span class="n">reconnect</span><span class="p">,</span> <span class="ow">and</span> <span class="n">tried</span> <span class="mi">3</span> <span class="n">times</span> <span class="n">the</span> <span class="n">MMP</span> <span class="n">reconnect</span> <span class="n">still</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">So</span> <span class="n">presenter</span> <span class="n">will</span> <span class="n">directly</span> <span class="n">close</span> <span class="n">meeting</span> <span class="s2">&quot;Video Session”.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h2>2016-09-26<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvb41280, CSCva66671</dt>
+<dd><ul class="first simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCva66671">https://cdetsng.cisco.com/webui/#view=CSCva66671</a></li>
+<li>Event Center crash</li>
+<li>The truth is the fixing is cross modules in atgpcext.dll and WebExMgr.dll</li>
+<li>GPC FuzzyWindow</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">)</span> <span class="n">Uninstall</span> <span class="n">meeting</span> <span class="n">client</span> <span class="ow">and</span> <span class="n">restart</span> <span class="n">computer</span>
+<span class="mi">2</span><span class="p">)</span> <span class="n">Open</span> <span class="n">IE</span> <span class="ow">and</span> <span class="n">login</span> <span class="n">cisco</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="p">,</span> <span class="ow">and</span> <span class="n">start</span> <span class="n">a</span> <span class="n">EC</span>
+<span class="mi">3</span><span class="p">)</span> <span class="n">Exit</span> <span class="n">EC</span><span class="o">.</span>
+<span class="mi">4</span><span class="p">)</span> <span class="n">Do</span> <span class="ow">not</span> <span class="n">close</span> <span class="n">IE</span><span class="p">,</span> <span class="ow">and</span> <span class="n">create</span> <span class="n">a</span> <span class="n">new</span> <span class="n">IE</span> <span class="n">tab</span><span class="p">,</span> <span class="n">start</span> <span class="n">a</span> <span class="n">EC</span> <span class="n">on</span> <span class="n">t31sp</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span> <span class="p">(</span><span class="n">lyn</span><span class="o">/</span><span class="n">P</span><span class="nd">@ss123</span><span class="p">)</span>
+<span class="mi">5</span><span class="p">)</span> <span class="n">Meeting</span> <span class="n">will</span> <span class="n">crash</span> <span class="n">after</span> <span class="n">meeting</span> <span class="n">started</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>About Issue</dt>
+<dd><ul class="first last simple">
+<li>Check CMR4 video call-back</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000212996</dt>
+<dd><ul class="first last">
+<li><p class="first">check “default call in number” display logic in client</p>
+</li>
+<li><p class="first">Our customer encountered an issue, when set the default phone number format like this “+61 2-8293-5711”, the call in number will not be shown in client.</p>
+</li>
+<li><p class="first">We found a workaround, change the phone number format from “+61 2-8293-5711” to “+61(2-8293-5711)” , this number will be shown in client. But ,there is another problem for this workaround, the national flag cannot be displayed in client.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last simple">
+<li>CSmHybridAudioMgr::ReplaceWithPreferredGTCItem</li>
+<li>CSmHybridAudioMgr::CheckDownloadGTCEx</li>
+<li>CSmHybridAudioMgr::ParseGTCNumberItem</li>
+<li>CSmHybridAudioMgr::SaveNumber</li>
+<li>CSmHybridAudioMgr::SearchPreferredGTCNumber</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h2>2016-09-19<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>680669022, CSCvb30721, CSCvb19442</dt>
+<dd><ul class="first simple">
+<li>After updating the system to CWMS 2.7, ending the meeting generates error &#8220;Cisco WebEx Service has stopped working&#8221;. It happened only for meetings that were started from PT/Outlook, from Web worked fine.</li>
+<li>It’s caused by featured tracking function. When meeting end, not call kill work thread, so the work thread still work. But the main thread has exited, so meet crash.</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>I’ve talked with QA and the same issue is reproducible in our lab, too, with Outlook 2013.
+They can reproduce it both for meetings started from PT and Web and they opened CSCvb19442, that I pointed out yesterday.
+
+As the issue is reproducible in the lab, I’ve tried your scenario in the lab at the first,
+reproduced the issue and collected dump logs. You can find it on:
+https://cisco.box.com/s/vg56oyunfq8cvtwarrijbln7zbl7kxu8
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSCva66089, CSCva19645</dt>
+<dd><ul class="first last simple">
+<li>Cannot print OBTP mail body</li>
+<li>Printing Meeting invites from Outlook with telepresence devices enabled</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCva19645">https://cdetsng.cisco.com/webui/#view=CSCva19645</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211898 [Had looped Elton tang]</dt>
+<dd><ul class="first simple">
+<li>MMP session was started late</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">For</span> <span class="n">TP</span> <span class="n">meeting</span><span class="p">,</span> <span class="n">the</span> <span class="n">TPGW</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">create</span> <span class="n">MMP</span> <span class="ow">and</span> <span class="n">CB</span> <span class="n">video</span> <span class="n">session</span><span class="p">,</span>
+<span class="n">So</span> <span class="n">the</span> <span class="n">logic</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">first</span> <span class="n">client</span> <span class="p">(</span><span class="n">MAC</span><span class="o">/</span><span class="n">Win</span><span class="o">/</span><span class="n">Linux</span><span class="p">)</span>  <span class="n">will</span> <span class="n">be</span> <span class="n">responsible</span> <span class="k">for</span> <span class="n">that</span><span class="o">.</span>
+
+<span class="n">In</span> <span class="n">current</span> <span class="n">architecture</span><span class="p">,</span>  <span class="n">it</span> <span class="n">always</span> <span class="n">be</span> <span class="n">MMP</span> <span class="n">make</span> <span class="n">sip</span> <span class="n">call</span> <span class="n">to</span> <span class="n">TAS</span><span class="p">,</span>
+<span class="n">And</span> <span class="n">MMP</span> <span class="n">get</span> <span class="n">TAS</span> <span class="n">ip</span> <span class="n">address</span> <span class="n">only</span> <span class="n">when</span> <span class="n">first</span> <span class="n">user</span> <span class="n">join</span> <span class="n">meeting</span> <span class="ow">and</span> <span class="n">create</span> <span class="n">video</span> <span class="n">session</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208302, [Henry Wang for Video, Xu Bin for Audio]</dt>
+<dd><ul class="first">
+<li><p class="first">Telepresence can&#8217;t hear WebEx audio</p>
+</li>
+<li><p class="first">WebEx can&#8217;t view Telepresence video and can&#8217;t hear Telepresence audio</p>
+</li>
+<li><dl class="first docutils">
+<dt>Checklist</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::OnASNPduFromCB Call pPfwAudioMgr-&gt;SetActiveSpeakerList</li>
+<li>CSmSvcVideoSessionMgr::OnVideoSourceStatus</li>
+<li>CPfwServiceMgr::OnASNPduFromCB</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">trace</span><span class="p">,</span> <span class="n">TP</span> <span class="n">user</span> <span class="n">video</span> <span class="n">sending</span> <span class="n">status</span> <span class="ow">is</span> <span class="n">earlier</span> <span class="n">than</span> <span class="n">TP</span> <span class="n">user</span> <span class="n">data</span> <span class="nb">list</span><span class="p">,</span>
+<span class="n">So</span> <span class="n">webex</span> <span class="n">cannot</span> <span class="n">show</span> <span class="n">TP</span> <span class="n">user</span> <span class="n">video</span> <span class="k">for</span> <span class="n">can</span><span class="s1">&#39;t find the corresponding TP user.</span>
+
+<span class="n">Tahoe</span> <span class="n">disconnect</span> <span class="n">cascading</span> <span class="n">link</span> <span class="n">since</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">a</span> <span class="n">final</span> <span class="n">response</span> <span class="n">to</span> <span class="n">re</span><span class="o">-</span><span class="n">Invite</span> <span class="ow">in</span> <span class="mi">10</span><span class="n">s</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211961, CSCvb26805</dt>
+<dd><ul class="first last simple">
+<li>Cluster B fail to connect RA/AA now</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h2>2016-09-12<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CTG Alpha Outage Notification: Outage in go.webex.com</dt>
+<dd><ul class="first last simple">
+<li>Multiple Webex hosts are intermittently unavailable and services in go.webex.com are impacted</li>
+<li><a class="reference external" href="https://remedy.cloudapps.cisco.com/fetchIncidentBasicInfo.do?case=INC800004825436">https://remedy.cloudapps.cisco.com/fetchIncidentBasicInfo.do?case=INC800004825436</a></li>
+<li>We will keep you posted on the progress</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208684</dt>
+<dd><ul class="first last">
+<li><p class="first">Default information tab template not working as intended</p>
+</li>
+<li><p class="first">No Access Code or Host Password</p>
+</li>
+<li><p class="first">No global link</p>
+</li>
+<li><dl class="first docutils">
+<dt>Check List</dt>
+<dd><ul class="first last simple">
+<li>Setinfo lpszCallinPhoneNo</li>
+<li>CMCDocVideoSessionMgr::SetInfo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>680795888 [Waiting for customer]</dt>
+<dd><ul class="first last simple">
+<li>WebEx always send atinst.exe</li>
+<li>For IE protected mode enable, we need use atinst.exe to register and elevate privilege, it only pop up the first time as below UAC Dialog</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSCvb19442 [Code done and verified]</dt>
+<dd><ul class="first last simple">
+<li>An Orion bug</li>
+<li>MC crash after End Meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211399</dt>
+<dd><ul class="first simple">
+<li>You cannot join the meeting because the meeting number you typed is incorrect</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>Currently we found the docshow to client is
+&lt;SupportSvrSecParams&gt;1&lt;/SupportSvrSecParams&gt;&lt;SecureSMAC4Node&gt;0&lt;/SecureSMAC4Node&gt;
+
+So currently it’s not use the new H256 s_mac, this site send CB with MD5 s_mac, and MD5 is no more support in our new Eureka.
+
+Loop in Jerry and please help check if is config issue or page/server is not in same release.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000187754, WO0000000187754</dt>
+<dd><ul class="first simple">
+<li>Citrix 6.5 Windows Server 2008 R2, Windows 7 Crash</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">So</span> <span class="n">this</span> <span class="n">customer</span> <span class="n">maybe</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">ActiveX</span> <span class="n">Scripting</span> <span class="n">Engines</span>
+<span class="n">Please</span> <span class="n">let</span> <span class="n">customer</span> <span class="n">enable</span> <span class="n">it</span> <span class="n">like</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">manageengine</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">products</span><span class="o">/</span><span class="n">desktop</span><span class="o">-</span><span class="n">central</span><span class="o">/</span><span class="n">remote</span><span class="o">-</span><span class="n">control</span><span class="o">-</span><span class="n">enable</span><span class="o">-</span><span class="n">activex</span><span class="o">.</span><span class="n">html</span> <span class="n">to</span> <span class="n">see</span> <span class="k">if</span> <span class="n">issue</span> <span class="n">can</span> <span class="n">be</span> <span class="n">resolved</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000211492</dt>
+<dd><ul class="first simple">
+<li>VoIP Issue</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>I checked server log, the data transport disconnect about 2 minute then recover at first and second time,
+It’s cause Mark can’t  hear/speak,  in fact he didn’t leave audio session.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>680654847</dt>
+<dd><ul class="first simple">
+<li>20+ seconds to fully load meeting room</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">trace</span><span class="p">,</span> <span class="n">the</span> <span class="n">long</span> <span class="n">time</span> <span class="n">happen</span> <span class="n">on</span> <span class="n">two</span> <span class="n">places</span> <span class="n">after</span> <span class="n">show</span> <span class="n">meeting</span> <span class="n">window</span><span class="p">:</span>
+<span class="n">One</span> <span class="ow">is</span> <span class="n">when</span> <span class="n">init</span> <span class="n">video</span> <span class="n">cc</span><span class="p">,</span> <span class="n">take</span> <span class="n">about</span> <span class="mi">10</span> <span class="n">seconds</span><span class="p">;</span>
+<span class="n">Second</span> <span class="ow">is</span> <span class="n">when</span> <span class="n">preview</span> <span class="n">camera</span><span class="p">;</span>
+
+<span class="mi">9</span> <span class="n">CFW06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">21.263</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">CSmSvcVideoSessionMgr</span><span class="p">::</span><span class="n">EnrollMMSession</span><span class="p">,</span> <span class="n">begin</span>
+<span class="mi">10</span> <span class="n">wseclient</span><span class="o">.</span><span class="n">dll06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">21.404</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">WSE</span> <span class="n">Info</span><span class="p">:</span> <span class="n">CBaseGraph</span><span class="p">::</span><span class="n">ReleaseGraph</span> <span class="n">m_pGraph</span> <span class="n">done</span><span class="o">.</span>
+<span class="mi">11</span> <span class="n">wseclient</span><span class="o">.</span><span class="n">dll06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">31.412</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">WSE</span> <span class="n">Info</span><span class="p">:</span> <span class="n">CWseVideoCapEngine</span><span class="p">::</span><span class="n">CWseVideoCapEngine</span><span class="o">.</span><span class="n">this</span> <span class="o">=</span> <span class="mh">0x95df5a0</span>
+<span class="mi">12</span> <span class="n">CFW06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">33.716</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">CSmSvcVideoSessionMgr</span><span class="p">::</span><span class="n">OnEnumerateCameras</span><span class="p">,</span> <span class="n">ulDevHandle</span><span class="o">=</span><span class="mi">254110920</span> <span class="n">end</span> <span class="n">devName</span><span class="o">=</span><span class="n">World</span> <span class="n">Facing</span> <span class="n">Right</span>
+<span class="mi">13</span> <span class="n">CFW06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">33.716</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">CSmSvcVideoSessionMgr</span><span class="p">::</span><span class="n">OnEnumerateCameras</span><span class="p">,</span> <span class="n">ulDevHandle</span><span class="o">=</span><span class="mi">254110360</span> <span class="n">end</span> <span class="n">devName</span><span class="o">=</span><span class="n">HP</span> <span class="n">Full</span> <span class="n">HD</span> <span class="n">Camera</span>
+<span class="mi">14</span> <span class="n">mutiltpd</span><span class="o">.</span><span class="n">dll06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">33.796</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">][</span><span class="n">MVC</span><span class="p">]:</span><span class="n">CMmSVideoClient</span><span class="p">::</span><span class="n">StartCameraPreview</span>
+<span class="mi">15</span> <span class="n">wseclient</span><span class="o">.</span><span class="n">dll06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">33.846</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">WSE</span> <span class="n">Info</span><span class="p">:</span> <span class="n">CWseVideoCapEngine</span><span class="p">::</span><span class="n">Init</span> <span class="nb">format</span><span class="o">-&gt;</span><span class="n">width</span> <span class="o">=</span> <span class="mi">640</span><span class="p">,</span><span class="nb">format</span><span class="o">-&gt;</span><span class="n">height</span> <span class="o">=</span> <span class="mi">360</span><span class="p">,</span><span class="nb">format</span><span class="o">-&gt;</span><span class="n">frame_rate</span> <span class="o">=</span> <span class="mf">30.000000</span><span class="p">,</span><span class="nb">format</span><span class="o">-&gt;</span><span class="n">video_type</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="mi">16</span> <span class="n">ComUI06</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">43.866</span> <span class="mi">08</span><span class="o">/</span><span class="mi">24</span><span class="o">/</span><span class="mi">16</span><span class="p">[</span><span class="mi">7000</span><span class="p">:</span><span class="mi">7720</span><span class="p">]</span><span class="n">CDlgQuickstart</span><span class="p">::</span><span class="n">PositionChanged</span> <span class="o">--</span> <span class="n">begin</span><span class="p">:</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id11">
+<h2>2016-08-23<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>WO0000000206822</dt>
+<dd><ul class="first last simple">
+<li>ou cannot connect to audio or video because we cannot validate the security certificate</li>
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000182993, WO0000000207215</dt>
+<dd><ul class="first simple">
+<li>User gets to 99% and is unable to join meeting</li>
+<li>Which has bug CSCuz83890 fixed on T31.5.</li>
+<li>windowscodecs.dll &amp; WCLDll.dll</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>Trace info:
+1 CFW 02:45:26.227 07/26/16 [6316:8736]  CConfContextMgr::SetParam name=[$AboutDlgClientVersion] value=[31.4.0.44]
+2 CFW 02:45:26.227 07/26/16 [6316:8736] CConfContextMgr::SetParam name=[$SiteUrl] value=[https://nbcucmr.webex.com/nbcucmr]
+3 CFW 02:45:47.923 07/26/16 [6316:8736] [Performance]CSmDefUserMgr2::InitializeUI, end
+4 ComUI 02:45:48.095 07/26/16 [6316:8736] CDlgQuickstart::OnInitDialog Fire_OnDialogInited
+5 webexmgr.dll 02:45:48.095 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitLockBubble(), begin
+6 webexmgr.dll 02:45:48.111 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitLockBubble(), Initial
+7 webexmgr.dll 02:45:48.111 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitLockBubble(), end
+8 webexmgr.dll 02:45:48.111 07/26/16 [6316:8736] CQuickStartDlgPresenter::InitInviteRemindButton CMCWebACDMgr = 0
+9 crashdle 02:45:48.126 07/26/16 [6316:8736] ===================================Crash Log Begin
+10 crashdle 02:45:48.220 07/26/16 [6316:8736] 77A7754B  001FB9D0  0001:0002754B 5708952E b5acac3b4a6c4515af416d60366399652  &quot;C:\Windows\SysWOW64\ntdll.dll&quot;
+11 crashdle 02:45:48.220 07/26/16 [6316:8736]  6787BF61  001FBCE4  0001:0010AF61 5706A236 e163ad932d9048ea8775ecac137fa63c1  &quot;C:\Windows\system32\windowscodecs.dll&quot;
+12 crashdle 02:45:48.220 07/26/16 [6316:8736] 0F1F9295  001FBD30  0001:00008295 56C7043F 48076cc64b1044b7b5600dd54af169752  &quot;C:\ProgramData\WebEx\WebEx\T31_UMC\WCLDll.dll&quot;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000206942, WO0000000196500</dt>
+<dd><ul class="first last simple">
+<li>Microphone not getting detected in webex meetings</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TAS000000024293, WO0000000198221</dt>
+<dd><ul class="first simple">
+<li>Host is getting disconnected from the meeting</li>
+<li>CSCux47573</li>
+<li>CreateWebcamDetectedPopup</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">)</span> <span class="n">please</span> <span class="n">have</span> <span class="n">the</span> <span class="n">customer</span> <span class="n">test</span> <span class="k">with</span> <span class="n">both</span> <span class="n">registry</span> <span class="n">values</span> <span class="nb">set</span> <span class="n">to</span> <span class="mi">0</span>
+   <span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">WebEx</span>\<span class="n">Config</span>\<span class="n">BUBBLE</span>\<span class="n">allways_start_my_camera_when_join_meeting</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="n">HKEY_CURRENT_USER</span>\<span class="n">Software</span>\<span class="n">WebEx</span>\<span class="n">Config</span>\<span class="n">BUBBLE</span>\<span class="n">do_not_show_me_again_when_join_meeting_next_time</span> <span class="o">=</span> <span class="mi">0</span>
+   <span class="n">Then</span> <span class="n">check</span> <span class="k">if</span> <span class="n">issue</span> <span class="n">can</span> <span class="n">be</span> <span class="n">resolved</span><span class="o">.</span>
+<span class="mi">2</span><span class="p">)</span> <span class="n">If</span> <span class="n">issue</span> <span class="n">still</span> <span class="n">cannot</span> <span class="n">resolved</span><span class="p">,</span> <span class="n">please</span> <span class="n">let</span> <span class="n">customer</span> <span class="n">save</span> <span class="n">a</span> <span class="n">new</span> <span class="n">webex</span> <span class="n">client</span> <span class="n">trace</span> <span class="n">to</span> <span class="n">us</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>BEMS Creation - P3, SR 680475454, EMPRESA DE TECNOLOGIA E INFORMACOES DA PREVIDENCIA, WebEx Meetings Application Freezing, BEMS499797, Clients</dt>
+<dd><ul class="first simple">
+<li>Customer noticed this issue with few users so far.</li>
+<li>The one user with the Microsoft LifeCam HD-3000 crashes every time</li>
+<li>Other users with Logitech cameras crash intermittently</li>
+<li>CSCvb09710 is filed to track this issue</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>According to MSDN, this thread is blocked.
+https://msdn.microsoft.com/fr-fr/library/ff541979(v=vs.85).aspx
+
+0:000:x86&gt; dt RTL_CRITICAL_SECTION 0b91c044
+atmgr!RTL_CRITICAL_SECTION
+  +0x000 DebugInfo        : 0x1472b7f0 _RTL_CRITICAL_SECTION_DEBUG
+  +0x004 LockCount        : 0n-6
+  +0x008 RecursionCount   : 0n5136
+  +0x00c OwningThread     : 0x00003970 Void
+  +0x010 LockSemaphore    : 0x00000f58 Void
+  +0x014 SpinCount        : 0
+0:000:x86&gt; ? 0x1 &amp; (-0n6)
+Evaluate expression: 0 = 00000000   // the first bit is 0 and therefore the critical section is locked.
+0:000:x86&gt; ? (0x2 &amp; (-0n6)) &gt;&gt; 1
+Evaluate expression: 1 = 00000001  // The second bit is 1, and so no thread has been woken for this lock.
+0:000:x86&gt; ? ((-1) - (-0n6)) &gt;&gt; 2
+Evaluate expression: 1 = 00000001 // The complement of the remaining bits is 5, and so there are five threads waiting for this lock.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000203046, TAS000000024547</dt>
+<dd><ul class="first simple">
+<li>MC client crashes on Lenovo ThinkPad X1 laptops when attempting to join PC audio (VoIP).</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>We found some strange log:
+5 time: 22:45:22 696 07/26/2016     DllName: mutiltpd.dll        Message: CWbxAeAudioCapturePlatformCoreAudio::GetDefaultFormat pfmt, wFormatTag:65534, cbSize:22, nAvgBytesPerSec:768000, nSamplesPerSec: 48000, nChannels:4, wBitsPerSample:32, wFormatTag:65534 this=0x75e4f28
+Level: info The default format is read from OS API. They give us channel is 4. But they are not more than 2  in our experiences.
+4144 time: 22:45:12 374 07/26/2016     DllName: mutiltpd.dll        Message: [AE AQE]  OnCaptureData()  Failed!, m_IsAQEStarted = 1, dwSize = 20, wFormatTag = 65534, nChannels = 4, nSamplesPerSec = 48000, nAvgBytesPerSec = 384000, nBlockAlign = 8, wBitsPerSample = 16,Data Len = 960 this=0x1982c828
+Level: warn Audio data length recorded by OS are 960 bytes witch is usually 2 channels data.   This thread ran for a while and crashed. But there was no any processing except print warning logs. We have not repro bug yet.
+Can you ask customer to upgrade audio device driver.  Recently, Lenovo  provides some update for audio device.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000206904, TAS000000024745</dt>
+<dd><ul class="first simple">
+<li>Uninvited attendee in meeting</li>
+<li>Please use command “%userprofile%/appdataLocalTemp” to open the tmp folder.</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>For client, we will save 5 counts wbxtrace to tmp folder.
+Maybe can ask customer provide it, we can check it according to confid.
+
+We saved last 5 meeting’s client logs in customer’s computer. We can ask customer to provide it.
+And according to the description, seems this user is a pure telephony attendee.
+Such attendee will not exist in attendee usage report. Maybe we can check how many telephony users in that meeting,
+and compare to the attendee usage report to check if there is any pure telephony user joined.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000200783</dt>
+<dd><ul class="first last simple">
+<li>camera not work well when sharing desktop</li>
+<li>The integration camera not be found when AppSharing has be launched. So video render module drawing always is fail.</li>
+<li>CFW       12:19:32.776 07/20/16    [2988:1212]                CSmSvcVideoSessionMgr::OnCameraModify begin, [Pull out]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208246, TAS000000024771</dt>
+<dd><ul class="first last simple">
+<li>Error while joining audio via Computer</li>
+<li>MMP call Tahoe fail</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000202437</dt>
+<dd><ul class="first simple">
+<li>Host receiving Garbled Noise for 10-15 sec,whenever he joins/start Audio portion</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="n">check</span> <span class="n">client</span> <span class="n">log</span><span class="p">,</span> <span class="ow">and</span> <span class="n">found</span> <span class="n">client</span> <span class="n">MOS</span> <span class="ow">is</span> <span class="n">low</span> <span class="n">at</span> <span class="n">two</span> <span class="n">point</span><span class="p">,</span> <span class="n">could</span> <span class="n">you</span> <span class="n">help</span> <span class="n">check</span> <span class="n">it</span>
+<span class="mi">22</span><span class="p">:</span><span class="mi">15</span><span class="p">:</span><span class="mf">41.957</span> <span class="mi">08</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">16</span>   <span class="p">[</span><span class="mi">5020</span><span class="p">:</span><span class="mi">9584</span><span class="p">]</span>        <span class="p">[</span><span class="n">AudioEngine</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">QoEM</span><span class="p">:[</span><span class="n">R1</span><span class="o">-</span><span class="mi">106503424</span><span class="p">]</span> <span class="n">R_net</span><span class="p">:</span><span class="o">-</span><span class="mi">97</span><span class="p">,</span><span class="n">MOS_net</span><span class="p">:</span><span class="mf">2.38125</span><span class="p">,</span><span class="n">R</span><span class="p">:</span><span class="o">-</span><span class="mi">86</span><span class="p">,</span><span class="n">MOS</span><span class="p">:</span><span class="mf">2.23721</span><span class="p">,</span><span class="n">bitrate</span><span class="p">:</span><span class="mi">29</span><span class="n">kbps</span><span class="p">,</span><span class="n">pktRate</span><span class="p">:</span><span class="mi">43</span><span class="p">,</span><span class="n">jitter</span><span class="p">:</span><span class="mi">8</span><span class="n">ms</span><span class="p">,</span><span class="n">delay</span><span class="p">:</span><span class="mi">300</span><span class="n">ms</span><span class="p">,</span><span class="n">pktDrop</span><span class="p">:</span><span class="mi">38</span><span class="o">%</span><span class="p">,</span><span class="n">plcPktRate</span><span class="p">:</span><span class="mi">0</span><span class="o">%</span><span class="p">,</span><span class="n">silentRate</span><span class="p">:</span><span class="mi">38</span><span class="o">%</span>
+<span class="mi">22</span><span class="p">:</span><span class="mi">45</span><span class="p">:</span><span class="mf">40.958</span> <span class="mi">08</span><span class="o">/</span><span class="mi">02</span><span class="o">/</span><span class="mi">16</span>   <span class="p">[</span><span class="mi">5020</span><span class="p">:</span><span class="mi">9584</span><span class="p">]</span>        <span class="p">[</span><span class="n">AudioEngine</span><span class="p">]</span> <span class="n">INFO</span><span class="p">:</span> <span class="n">QoEM</span><span class="p">:[</span><span class="n">R1</span><span class="o">-</span><span class="mi">106503424</span><span class="p">]</span> <span class="n">R_net</span><span class="p">:</span><span class="o">-</span><span class="mi">128</span><span class="p">,</span><span class="n">MOS_net</span><span class="p">:</span><span class="mf">2.38125</span><span class="p">,</span><span class="n">R</span><span class="p">:</span><span class="o">-</span><span class="mi">114</span><span class="p">,</span><span class="n">MOS</span><span class="p">:</span><span class="mf">2.23721</span><span class="p">,</span><span class="n">bitrate</span><span class="p">:</span><span class="mi">24</span><span class="n">kbps</span><span class="p">,</span><span class="n">pktRate</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="n">jitter</span><span class="p">:</span><span class="mi">5</span><span class="n">ms</span><span class="p">,</span><span class="n">delay</span><span class="p">:</span><span class="mi">300</span><span class="n">ms</span><span class="p">,</span><span class="n">pktDrop</span><span class="p">:</span><span class="mi">45</span><span class="o">%</span><span class="p">,</span><span class="n">plcPktRate</span><span class="p">:</span><span class="mi">0</span><span class="o">%</span><span class="p">,</span><span class="n">silentRate</span><span class="p">:</span><span class="mi">45</span><span class="o">%</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TAS000000024717, WO0000000206898</dt>
+<dd><ul class="first last simple">
+<li>join meeting failure from spark team cmrforsparktest.webex.com</li>
+<li>Client according to following docshow param to transfer new smac/ old smac: SupportSvrSecParams or SecureSMAC4Node</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000208253, TAS000000024769</dt>
+<dd><ul class="first simple">
+<li>Not able to connect VOIP audio</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>28           tp.dll      00:30:35.583 08/17/16   [2508:4880]        [UTIL] ERROR: CCmReactorNotifyPipe::OnInput, nRecv=-1 fd=0x7e0 err=10093 this=0x986229c[CmReactorNotifyPipe.cpp:79]
+29           tp.dll      00:30:35.583 08/17/16   [2508:4880]        [UTIL] ERROR: CCmReactorSelect::RunEventLoop, select() failed! nMaxFd=2016 err=10093 this=0x9861900[CmReactorSelect.cpp:80]
+30           tp.dll      00:30:35.583 08/17/16   [2508:5456]        [UTIL] ERROR: CCmReactorNotifyPipe::OnInput, nRecv=-1 fd=0x7cc err=10093 this=0x985f37c[CmReactorNotifyPipe.cpp:79]
+31           tp.dll      00:30:35.583 08/17/16   [2508:5456]        [UTIL] ERROR: CCmReactorSelect::RunEventLoop, select() failed! nMaxFd=1996 err=10093 this=0x985e9e0[CmReactorSelect.cpp:80]
+32           tp.dll      00:30:35.583 08/17/16   [2508:5532]        [UTIL] ERROR: CCmReactorNotifyPipe::OnInput, nRecv=-1 fd=0x5f8 err=10093 this=0x985e45c[CmReactorNotifyPipe.cpp:79]
+33           tp.dll      00:30:35.583 08/17/16   [2508:5532]        [UTIL] ERROR: CCmReactorSelect::RunEventLoop, select() failed! nMaxFd=1528 err=10093 this=0x985dac0[CmReactorSelect.cpp:80]
+Look like TP initialize fail, please help check it
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000207759, HD0009177484</dt>
+<dd><ul class="first last simple">
+<li>Trouble joining meetings after upgrade</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCux96839">https://cdetsng.cisco.com/webui/#view=CSCux96839</a></li>
+<li>didn’t update the DLL(mutiltpd.dll) client version, the version is same as T30.5</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000203748</dt>
+<dd><ul class="first last simple">
+<li>Unable to hear the Audio in the session hosted from ufred.webex.com</li>
+<li>The attendee is not able to join VoIP using training center, but able to join using the meeting center</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WO0000000203717</dt>
+<dd><ul class="first last">
+<li><p class="first">it is because the AAGC of microphone is enabled in R1, but in R2, it is disabled.</p>
+</li>
+<li><dl class="first docutils">
+<dt>From Mac</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span>I think case2 is caused by WME’s wrong recoredVolume, Mac client always get 200 volume when the Audio Setting dialog is opened.
+Mac codes could call kAudioWizardCommandId_GetRecordVolume to get current setting volume,but WME gave back a wrong value.
+And this bug didn’t exist on R2, is there any related codes was fixed in R2 but was ignored in SP?
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>From Windows</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">Window</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">same</span> <span class="n">issue</span><span class="p">,</span> <span class="n">when</span> <span class="n">it</span> <span class="n">always</span> <span class="n">get</span> <span class="mi">30</span> <span class="n">volume</span> <span class="n">even</span> <span class="nb">set</span> <span class="n">to</span> <span class="mi">0</span> <span class="n">volume</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>From Audio Engine</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="c1">#. Windows, Open wizard, uncheck “Automatic adjust volume”, this flag will set to the audio engine used in meeting. This logic is ok. But per Ross, audio CC has a logic to set minimal volume(30) when reload(closing wizard), so this is the root cause of why you can get 30 even you set to zero in Wizard.</span>
+<span class="c1">#. Mac,  Open wizard, uncheck “Automatic adjust volume”, this flag will not set to the audio engine used in meeting.  So the volume always adjust by the audio engine using in meeting. Please help to check the Wizard logic Audio CC in MAC.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tiger Windows FQA</a><ul>
+<li><a class="reference internal" href="#id1">2016-11-21</a></li>
+<li><a class="reference internal" href="#id2">2016-11-14</a></li>
+<li><a class="reference internal" href="#id3">2016-11-07</a></li>
+<li><a class="reference internal" href="#id4">2016-10-31</a></li>
+<li><a class="reference internal" href="#id5">2016-10-24</a></li>
+<li><a class="reference internal" href="#id6">2016-10-15</a></li>
+<li><a class="reference internal" href="#id7">2016-10-08</a></li>
+<li><a class="reference internal" href="#id8">2016-09-26</a></li>
+<li><a class="reference internal" href="#id9">2016-09-19</a></li>
+<li><a class="reference internal" href="#id10">2016-09-12</a></li>
+<li><a class="reference internal" href="#id11">2016-08-23</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tigger_windows_fqa_analyze.html"
+                        title="previous chapter">Tiger Windows FQA Analyze</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="windbg_fqa.html"
+                        title="next chapter">Windbg</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tigger_windows_fqa_1.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="windbg_fqa.html" title="Windbg"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tigger_windows_fqa_analyze.html" title="Tiger Windows FQA Analyze"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

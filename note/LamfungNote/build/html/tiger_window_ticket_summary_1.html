@@ -1,0 +1,387 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Tiger Windows Meeting Client Tickets Summary &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Tiger Windows Meeting Client Task" href="tigger_window_task.html" />
+    <link rel="prev" title="Release Toggle Introduction" href="release_feature_toggle_introduction.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tiger Windows Meeting Client Task"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tiger-windows-meeting-client-tickets-summary">
+<h1>Tiger Windows Meeting Client Tickets Summary<a class="headerlink" href="#tiger-windows-meeting-client-tickets-summary" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cscvc14491-intercall-tsp-voip-client-cannot-be-verified">
+<h2>CSCvc14491, Intercall TSP VoIP Client cannot be verified<a class="headerlink" href="#cscvc14491-intercall-tsp-voip-client-cannot-be-verified" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ol class="arabic">
+<li><dl class="first docutils">
+<dt>CEDT Link</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc14491">https://cdetsng.cisco.com/webui/#view=CSCvc14491</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Docshow</dt>
+<dd><ul class="first last simple">
+<li>TSPHybridFlag</li>
+<li>THClientHashList</li>
+<li>CDTAppPDU_Evt_CreateTSPConference</li>
+<li>TSPHybridSecureAccess</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Super Admin =&gt; New Site =&gt; Security Options</dt>
+<dd><ul class="first last simple">
+<li>TSP partner is sending only SHA256 values in TSP API clienthashlist.(enabling this will stop checking for SHA1 hash values)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DEV 3W Analysis</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem?</dt>
+<dd><ul class="first last simple">
+<li>Intercall TSP VoIP Client cannot be verified</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>It&#8217;s caused by security option (docshow TSPHybridSecureAccess)</li>
+<li>Then windows client use SHA256 for security verify</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution?</dt>
+<dd><ul class="first last simple">
+<li>UnCheck <strong>TSPHybridSecureAccess</strong> from page</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lessons learned</dt>
+<dd><ul class="first last simple">
+<li>Developer / QA need know more case (TSP, Non-TSP)</li>
+<li>Document, page is too complicate</li>
+<li>Team building with Paul&#8217;s team (Tiger team)</li>
+<li>Work at the same page (Spark room)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="id1">
+<h2>2016-11-22<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="cscvb19442-mc-crash-after-end-meeting">
+<h2>CSCvb19442, MC crash after End Meeting<a class="headerlink" href="#cscvb19442-mc-crash-after-end-meeting" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CDET Link</dt>
+<dd><p class="first last"><a class="reference external" href="https://cdetsng.cisco.com/webui/;jsessionid=E5D6B080A24B65796EBBFBE1A9EE24CC.webui-springtail#view=CSCvb19442">https://cdetsng.cisco.com/webui/;jsessionid=E5D6B080A24B65796EBBFBE1A9EE24CC.webui-springtail#view=CSCvb19442</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Docshow</dt>
+<dd><ul class="first last simple">
+<li>TeleMetryInfo</li>
+<li>MetricsEnable</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">GetMetricsEnable</p>
+</li>
+<li><p class="first">WbxMetricsInitialize() : In windows, create one thread to post metrics message</p>
+</li>
+<li><p class="first">WbxMetricsUnInitialize()</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DEV 3W Analysis</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem?</dt>
+<dd><ul class="first last simple">
+<li>MC crash after End Meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>It&#8217;s caused by featured tracking function.</li>
+<li>When meeting end, not call kill work thread, so the work thread still work.</li>
+<li>But the main thread has exited, so meet crash.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution?</dt>
+<dd><ul class="first last simple">
+<li>If not support feature tracking, do not need create work thread.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lessons learned</dt>
+<dd><ul class="first last simple">
+<li>Make sure <strong>WbxMetricsInitialize</strong> and <strong>WbxMetricsUnInitialize</strong> pairs correctly.</li>
+<li>Developer self test</li>
+<li>Make sure QA understood the feature</li>
+<li>Enable / Disable feature to test</li>
+<li>Code review</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="cscvb45367-t31r2-fail-to-join-meeting">
+<h2>CSCvb45367, T31R2 fail to join meeting<a class="headerlink" href="#cscvb45367-t31r2-fail-to-join-meeting" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CDET Link</dt>
+<dd><p class="first last"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb45367">https://cdetsng.cisco.com/webui/#view=CSCvb45367</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keynotes</dt>
+<dd><ul class="first last simple">
+<li>After host crash, CB end meeting. But MZM will keep the meeting 4 minutes.</li>
+<li>In 4 minutes, attendee should send create conference request to MZM.</li>
+<li>It does not exist on 31.0.0.1304 client build.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key log</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span>      <span class="n">atmgr</span><span class="o">.</span><span class="n">exe</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ServCom</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.418</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">atmgr</span> <span class="n">CommandLine</span><span class="p">[</span><span class="s2">&quot;C:\ProgramData\WebEx\WebEx\T31_UMC</span><span class="se">\a</span><span class="s2">tmgr.exe&quot;</span>  <span class="o">/</span><span class="n">mcstd</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">user</span><span class="o">.</span><span class="n">rabbit</span><span class="o">-</span><span class="n">sjc</span><span class="o">-</span><span class="n">ta3</span>\<span class="n">AppData</span>\<span class="n">LocalLow</span>\<span class="n">WebEx</span><span class="p">]</span>
+<span class="mi">2</span>      <span class="n">atmgr</span><span class="o">.</span><span class="n">exe</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ServCom</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.454</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">ConfID</span><span class="p">:</span> <span class="mi">40721322134735873</span>
+<span class="mi">3</span>      <span class="n">atmgr</span><span class="o">.</span><span class="n">exe</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ServCom</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.454</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">SiteURL</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">pj1jut31</span><span class="o">.</span><span class="n">eng</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">pj1jut31</span>
+<span class="mi">4</span>      <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.631</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">ctx</span><span class="o">&gt;&gt;</span><span class="n">ClientBuildVersion</span><span class="o">=</span><span class="mf">31.6</span><span class="o">.</span><span class="mf">2.2</span>
+<span class="mi">5</span>      <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.648</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">pingAgent</span><span class="o">&gt;&gt;</span><span class="n">doPing</span><span class="o">-</span><span class="n">enter</span>
+<span class="mi">6</span>      <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.648</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">pingAgent</span><span class="o">&gt;&gt;</span><span class="n">doPing</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">7</span>      <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">EUREKA</span>  <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.649</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Ping_Mgr</span><span class="p">::</span><span class="n">ping_request_0</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">secure</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="mi">8</span>      <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">EUREKA</span>  <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.649</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Ping_Mgr</span><span class="p">::</span><span class="n">ping_request</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">conf_name</span><span class="o">=</span><span class="s2">&quot;Client 3&#39;s Personal Room.40721322134735873&quot;</span><span class="p">,</span><span class="n">conf_key</span><span class="o">=</span><span class="s2">&quot;640038044&quot;</span><span class="p">,</span><span class="n">conf_id</span><span class="o">=</span><span class="s2">&quot;40721322134735873&quot;</span><span class="p">,</span><span class="n">site_id</span><span class="o">=</span><span class="mi">3437</span><span class="p">,</span><span class="n">user_id</span><span class="o">=</span><span class="mh">0xfff02147</span><span class="p">,</span><span class="n">est_num</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">num_of_ping_svrs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="mi">9</span>      <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.649</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">pingAgent</span><span class="o">&gt;&gt;</span><span class="n">doPing</span><span class="p">,</span> <span class="k">return</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">10</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.758</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">ctx</span><span class="o">&gt;&gt;</span><span class="n">VMRFlagID</span><span class="o">=</span><span class="mi">2</span>
+<span class="mi">11</span>     <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">EUREKA</span>  <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.769</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Ping_Mgr</span><span class="p">::</span><span class="n">notify_ping_confirm</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">cb_address</span><span class="o">=</span><span class="s2">&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;</span><span class="p">,</span><span class="n">gateway_address</span><span class="o">=</span><span class="s2">&quot;https://epj1cb1101.eng.webex.com:80&quot;</span><span class="p">,</span><span class="n">top_cb_address</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">zone_flag</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">last_top_cb_address</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="n">last_result</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="mi">12</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.769</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">gccSink</span><span class="o">&gt;&gt;</span><span class="n">on_ping_confirm</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">13</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.769</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">conf</span><span class="o">&gt;&gt;</span><span class="n">pnigAgent</span><span class="o">&gt;&gt;</span><span class="n">on_ping_confirm</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">confid</span><span class="o">=</span><span class="mi">40721322134735873</span>
+<span class="mi">14</span>     <span class="n">CONFMGR</span>         <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ConfMgr</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.770</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">on_ping_confirm</span><span class="p">,</span><span class="n">to_create</span><span class="o">=</span> <span class="mi">0</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">conf_ID</span><span class="o">=</span><span class="mh">0x8D9A1C0</span>
+<span class="mi">15</span>     <span class="n">CONFMGR</span>         <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ConfMgr</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.770</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CAtConfManagerImpl</span><span class="p">::</span><span class="n">SetPingErrorTen</span><span class="p">,</span><span class="n">bErrorTen</span><span class="o">=</span><span class="mi">1</span>
+<span class="mi">16</span>     <span class="n">webexmgr</span><span class="o">.</span><span class="n">dll</span>    <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ServCom</span> <span class="mi">02</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mf">56.770</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">CAtConfAgent</span><span class="p">::</span><span class="n">on_ping_confirm</span><span class="p">,</span> <span class="n">__INTERNAL_PING_FAILED</span>
+<span class="mi">17</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.474</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">pingAgent</span><span class="o">&gt;&gt;</span><span class="n">doPing</span><span class="o">-</span><span class="n">enter</span>
+<span class="mi">18</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.474</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">pingAgent</span><span class="o">&gt;&gt;</span><span class="n">doPing</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="mi">1</span>
+<span class="mi">19</span>     <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">EUREKA</span>  <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.474</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Ping_Mgr</span><span class="p">::</span><span class="n">ping_request_0</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">secure</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+<span class="mi">20</span>     <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">EUREKA</span>  <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.474</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Ping_Mgr</span><span class="p">::</span><span class="n">ping_request</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">conf_name</span><span class="o">=</span><span class="s2">&quot;Client 3&#39;s Personal Room.40721322134735873&quot;</span><span class="p">,</span><span class="n">conf_key</span><span class="o">=</span><span class="s2">&quot;640038044&quot;</span><span class="p">,</span><span class="n">conf_id</span><span class="o">=</span><span class="s2">&quot;40721322134735873&quot;</span><span class="p">,</span><span class="n">site_id</span><span class="o">=</span><span class="mi">3437</span><span class="p">,</span><span class="n">user_id</span><span class="o">=</span><span class="mh">0xfff02147</span><span class="p">,</span><span class="n">est_num</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">num_of_ping_svrs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="mi">21</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.475</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">pingAgent</span><span class="o">&gt;&gt;</span><span class="n">doPing</span><span class="p">,</span> <span class="k">return</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">22</span>     <span class="n">atarm</span><span class="o">.</span><span class="n">dll</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">EUREKA</span>  <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.536</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">GCC_Ping_Mgr</span><span class="p">::</span><span class="n">notify_ping_confirm</span><span class="p">,</span><span class="n">ION</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">cb_address</span><span class="o">=</span><span class="s2">&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;</span><span class="p">,</span><span class="n">gateway_address</span><span class="o">=</span><span class="s2">&quot;https://epj1cb1101.eng.webex.com:80&quot;</span><span class="p">,</span><span class="n">top_cb_address</span><span class="o">=</span><span class="s2">&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zone_flag</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">last_top_cb_address</span><span class="o">=</span><span class="s2">&quot;tcp://epj1cb1101.eng.webex.com:1270&quot;</span><span class="p">,</span><span class="n">last_result</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="mi">23</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.536</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">gccSink</span><span class="o">&gt;&gt;</span><span class="n">on_ping_confirm</span><span class="p">,</span><span class="n">result</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">create</span><span class="o">=</span><span class="mi">1</span>
+<span class="mi">24</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.536</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">conf</span><span class="o">&gt;&gt;</span><span class="n">pnigAgent</span><span class="o">&gt;&gt;</span><span class="n">on_ping_confirm</span><span class="p">,</span> <span class="n">create</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">result</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">confid</span><span class="o">=</span><span class="mi">40721322134735873</span>
+<span class="mi">25</span>     <span class="n">confmgr</span><span class="o">.</span><span class="n">dll</span>     <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">UNKNOWN</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.536</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">conf</span><span class="o">&gt;&gt;</span><span class="n">pnigAgent</span><span class="o">&gt;&gt;</span><span class="n">on_ping_confirm</span><span class="p">,</span><span class="n">PING_RESULT_CONFERENCE_ALREADY_EXIST</span>
+<span class="mi">26</span>     <span class="n">webexmgr</span><span class="o">.</span><span class="n">dll</span>    <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ServCom</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.662</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">mph</span><span class="o">&gt;&gt;</span><span class="n">CAtConfAgent</span><span class="p">::</span><span class="n">TryAvailableCBSvr</span><span class="p">,</span><span class="n">bGrabHostToken</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">bGrabPresenterToken</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">27</span>     <span class="n">CONFMGR</span> <span class="p">[</span>       <span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>       <span class="n">ConfMgr</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.662</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">IsJoinAsHost</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">m_pConfManager</span><span class="o">-&gt;</span><span class="n">GetHostType</span><span class="p">()</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">m_pConfManager</span><span class="o">-&gt;</span><span class="n">IsPingErrorTen</span><span class="p">()</span><span class="mi">1</span>
+<span class="mi">28</span>     <span class="n">CONFMGR</span>         <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ConfMgr</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">15.662</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">CAtConfManagerImpl</span><span class="p">::</span><span class="n">SetPingErrorTen</span><span class="p">,</span><span class="n">bErrorTen</span><span class="o">=</span><span class="mi">0</span>
+<span class="mi">29</span>     <span class="n">atmgr</span><span class="o">.</span><span class="n">exe</span>       <span class="p">[</span><span class="mi">320</span><span class="p">:</span><span class="mi">3620</span><span class="p">]</span>      <span class="n">ServCom</span> <span class="mi">02</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mf">26.159</span> <span class="mi">09</span><span class="o">/</span><span class="mi">23</span><span class="o">/</span><span class="mi">16</span>   <span class="n">atmgr</span> <span class="n">quit</span> <span class="n">ok</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DEV 3W Analysis</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem?</dt>
+<dd><ul class="first last simple">
+<li>Can&#8217;t join meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>CAtConfManagerImpl::SetPingErrorTen hadn&#8217;t reset when start next ping</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution?</dt>
+<dd><ul class="first last simple">
+<li>CAtConfAgent::on_ping_confirm reset CAtConfManagerImpl::SetPingErrorTen</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lessons learned</dt>
+<dd><ul class="first last simple">
+<li>Code logic too complex to hard test</li>
+<li>Developer need more carefully when coding</li>
+<li>Make sure QA understood the feature</li>
+<li>Sync with Paul Liu Team how to test</li>
+<li>Code review</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Tiger Windows Meeting Client Tickets Summary</a><ul>
+<li><a class="reference internal" href="#cscvc14491-intercall-tsp-voip-client-cannot-be-verified">CSCvc14491, Intercall TSP VoIP Client cannot be verified</a></li>
+<li><a class="reference internal" href="#id1">2016-11-22</a></li>
+<li><a class="reference internal" href="#cscvb19442-mc-crash-after-end-meeting">CSCvb19442, MC crash after End Meeting</a></li>
+<li><a class="reference internal" href="#cscvb45367-t31r2-fail-to-join-meeting">CSCvb45367, T31R2 fail to join meeting</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="release_feature_toggle_introduction.html"
+                        title="previous chapter">Release Toggle Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tigger_window_task.html"
+                        title="next chapter">Tiger Windows Meeting Client Task</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/tiger_window_ticket_summary_1.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tigger_window_task.html" title="Tiger Windows Meeting Client Task"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

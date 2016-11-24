@@ -45,19 +45,40 @@ def git(args) :
 
 
 # ?? ../029/anyone_can_share_action_state.svg
+# ' M "../../note/Lamfung Note/build/html/tigger_window_task.html"'
 def GetUnCommitedFiles(strFiles) :
 	try:
 		if None == strFiles :
 			print("GetUnCommitedFiles strFiles is None")
 			return None
 		
-		strBaseDir = '/Users/lamfungwen/workspace/WebEx/'
+		strBaseDir = '/Users/lamfungwen/WorkDoc/'
 		retFileList = []
+		#print(strFiles)
 		fileList = strFiles.split('\n')
 		for file in fileList :
-			f1 = file[3:]
-			if (f1.rfind('.uml') >= 0 ) or (f1.rfind('.dot') >= 0) :
-				f2 = strBaseDir + f1[3:]
+			# Remove First Three Chars
+			#print(0, file)
+			if len(file) > 3 :
+				f1 = file[3:]
+			
+			#print(len(f1), f1)
+			# Remove Double Quotation
+			nLen = len(f1)
+			if nLen > 2 :
+				if (f1[0] == '"') and (f1[nLen-1] == '"') :
+					f1 = f1[1:nLen-1]
+					#print(1,f1)
+			
+			# Remove ../
+			nLen2 = f1.rfind('../')
+			if nLen2 > 0 :
+				f1 = f1[nLen2+3:]
+				#print(2, f1)
+			
+			if (f1.rfind('.uml') >= 0 ) or (f1.rfind('.dot') >= 0) or (f1.rfind('.rst') >= 0):
+				f2 = strBaseDir + f1
+				print(f2)
 				retFileList.append(f2)
 		
 		return retFileList
@@ -106,12 +127,12 @@ def CopyFile(strSrcFile, strDestFolder) :
 def BuildSvgs(strFileList) :
 	try:
 		nCount = 0
-		strDestFolder = '%s' %("/Users/lamfungwen/workspace/note/Lamfung Note/source/_static")
+		strDestFolder = '%s' %("/Users/lamfungwen/WorkDoc/note/Lamfung Note/source/_static")
 		for file in strFileList :
 			strSvg = GenerateSvg(file)
 			nCount += CopyFile(strSvg, strDestFolder)
 		
-		print(nCount)
+		print('BuildSvgs', nCount)
 		return True
 	except Exception, e:
 		print("BuildSvgs Exception", e)
@@ -122,7 +143,7 @@ def BuildDocument() :
 	curWorkDir = os.getcwd()
 	try:
 		#print(curWorkDir)
-		newWorkDir = "/Users/lamfungwen/workspace/note/Lamfung Note"
+		newWorkDir = "/Users/lamfungwen/WorkDoc/note/Lamfung Note"
 		os.chdir(newWorkDir)
 		#print(os.getcwd())
 		ret = executeCmd('make html')
@@ -145,7 +166,7 @@ if __name__ == '__main__' :
 		args = sys.argv[1:]
 		ret = git(args)
 		
-		print("aa",ret)
+		#print("aa",ret)
 		fileList = GetUnCommitedFiles(ret)
 		#print(fileList)
 		BuildSvgs(fileList)

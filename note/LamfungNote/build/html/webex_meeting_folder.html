@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>WebEx Meeting Folder &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Upgrade Manage" href="upgrade_manage.html" />
+    <link rel="prev" title="PT Introduce" href="pt.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="upgrade_manage.html" title="Upgrade Manage"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pt.html" title="PT Introduce"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="webex-meeting-folder">
+<h1>WebEx Meeting Folder<a class="headerlink" href="#webex-meeting-folder" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="where-to-change-the-installation-folder">
+<h2>Where to change the installation folder<a class="headerlink" href="#where-to-change-the-installation-folder" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>For Windows<ul>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/client/allpackaging.xml">https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/client/allpackaging.xml</a></li>
+</ul>
+</li>
+<li>For Mac<ul>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/mac/allprojects.xml">https://wwwin-svn-sjc-2.cisco.com/csg/BuildTools/trunk/build/ec/train/pageclient/T30L10N/mac/allprojects.xml</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="t30-installation-folder-changes">
+<h2>T30 Installation folder changes<a class="headerlink" href="#t30-installation-folder-changes" title="Permalink to this headline">¶</a></h2>
+<p>We will change Cisco WebEx meeting folder name from digital number to string in T30 as following:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="33%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Meeting Type</th>
+<th class="head">Folder Name</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Meeting Center</td>
+<td>T30_MC</td>
+</tr>
+<tr class="row-odd"><td>Event Center</td>
+<td>T30_EC</td>
+</tr>
+<tr class="row-even"><td>Training Center</td>
+<td>T30_TC</td>
+</tr>
+<tr class="row-odd"><td>Support Center (Start a support session)</td>
+<td>T30_SC</td>
+</tr>
+<tr class="row-even"><td>Support Center (Join a support session)</td>
+<td>T30_SCC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sc-folder-special-logic">
+<h2>SC folder special logic<a class="headerlink" href="#sc-folder-special-logic" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s use T29 as example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Checked</span> <span class="k">with</span> <span class="n">Morgan</span> <span class="n">Fang</span><span class="p">,</span> <span class="n">SC</span> <span class="n">use</span> <span class="n">two</span> <span class="n">folders</span><span class="p">,</span> <span class="n">I</span> <span class="n">will</span> <span class="n">show</span> <span class="n">you</span> <span class="n">the</span> <span class="n">details</span> <span class="k">with</span> <span class="n">T29</span> <span class="k">as</span> <span class="n">example</span><span class="p">:</span>
+   <span class="mf">1.</span> <span class="n">For</span> <span class="s2">&quot;Start a support session&quot;</span> <span class="n">case</span><span class="p">,</span> <span class="n">will</span> <span class="n">use</span> <span class="s2">&quot;1530&quot;</span> <span class="k">as</span> <span class="n">work</span> <span class="n">directory</span>
+   <span class="mf">2.</span> <span class="n">For</span> <span class="s2">&quot;Join a support session&quot;</span><span class="n">case</span><span class="p">,</span> <span class="n">will</span> <span class="n">use</span> <span class="s2">&quot;1532&quot;</span> <span class="k">as</span> <span class="n">work</span> <span class="n">directory</span>
+
+   <span class="n">The</span> <span class="n">issue</span> <span class="ow">is</span><span class="p">,</span>  <span class="n">after</span> <span class="n">we</span> <span class="n">changed</span> <span class="n">SC</span> <span class="n">folder</span> <span class="p">(</span><span class="kn">from</span> <span class="mi">1530</span> <span class="n">to</span> <span class="n">T30_SC</span><span class="p">),</span> <span class="nb">all</span> <span class="s2">&quot;Start a support session&quot;</span> <span class="ow">and</span> <span class="s2">&quot;Join a support session&quot;</span> <span class="n">will</span> <span class="n">use</span> <span class="s2">&quot;T30_SC&quot;</span> <span class="k">as</span> <span class="n">work</span> <span class="n">directory</span><span class="o">.</span>
+   <span class="n">I</span> <span class="n">had</span> <span class="n">talked</span> <span class="k">with</span> <span class="n">Morgan</span><span class="p">,</span> <span class="ow">and</span> <span class="n">he</span> <span class="n">said</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">logic</span> <span class="n">on</span> <span class="n">the</span> <span class="n">page</span><span class="p">:</span>
+   <span class="mf">1.</span>  <span class="n">If</span> <span class="n">the</span> <span class="n">page</span> <span class="n">found</span> <span class="n">the</span> <span class="n">meeting</span> <span class="ow">is</span> <span class="n">SC</span> <span class="ow">and</span> <span class="n">the</span> <span class="nb">type</span> <span class="ow">is</span> <span class="s2">&quot;Join a support session&quot;</span>
+   <span class="mf">2.</span> <span class="n">Then</span> <span class="n">it</span> <span class="n">will</span> <span class="n">add</span> <span class="mi">2</span> <span class="p">(</span><span class="mi">1530</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">=</span> <span class="mi">1532</span><span class="p">)</span> <span class="n">to</span> <span class="n">generate</span> <span class="s2">&quot;Join a support session&quot;</span> <span class="n">work</span> <span class="n">directory</span>
+
+  <span class="n">So</span> <span class="n">we</span> <span class="n">need</span> <span class="n">the</span> <span class="n">page</span> <span class="n">team</span> <span class="n">help</span> <span class="n">to</span> <span class="n">correct</span> <span class="n">this</span> <span class="n">logic</span><span class="p">,</span> <span class="n">we</span> <span class="n">suggest</span> <span class="n">them</span> <span class="n">use</span> <span class="n">the</span> <span class="n">below</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">distinguish</span> <span class="s2">&quot;Start a support session&quot;</span> <span class="ow">and</span> <span class="s2">&quot;Join a support session&quot;</span><span class="p">:</span>
+  <span class="mf">1.</span> <span class="n">If</span> <span class="n">the</span> <span class="n">page</span> <span class="n">found</span> <span class="n">the</span> <span class="n">meeting</span> <span class="ow">is</span> <span class="n">SC</span> <span class="ow">and</span> <span class="n">the</span> <span class="nb">type</span> <span class="ow">is</span> <span class="s2">&quot;Join a support session&quot;</span>
+  <span class="mf">2.</span> <span class="n">Use</span> <span class="s2">&quot;Start a support session&quot;</span> <span class="n">work</span> <span class="n">directory</span> <span class="n">add</span> <span class="s2">&quot;C&quot;</span> <span class="n">to</span> <span class="n">generate</span> <span class="s2">&quot;Join a support session&quot;</span> <span class="n">work</span> <span class="n">directory</span><span class="p">,</span> <span class="n">use</span> <span class="s2">&quot;T30_SC&quot;</span> <span class="k">as</span> <span class="n">example</span><span class="p">,</span>
+      <span class="n">the</span> <span class="s2">&quot;Join a support session&quot;</span> <span class="n">work</span> <span class="n">directory</span> <span class="n">will</span> <span class="n">be</span> <span class="s2">&quot;T30_SCC&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">WebEx Meeting Folder</a><ul>
+<li><a class="reference internal" href="#where-to-change-the-installation-folder">Where to change the installation folder</a></li>
+<li><a class="reference internal" href="#t30-installation-folder-changes">T30 Installation folder changes</a></li>
+<li><a class="reference internal" href="#sc-folder-special-logic">SC folder special logic</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pt.html"
+                        title="previous chapter">PT Introduce</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="upgrade_manage.html"
+                        title="next chapter">Upgrade Manage</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/webex_meeting_folder.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="upgrade_manage.html" title="Upgrade Manage"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pt.html" title="PT Introduce"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

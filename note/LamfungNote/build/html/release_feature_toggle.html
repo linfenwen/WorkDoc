@@ -1,0 +1,473 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Release Feature Toggle &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Release Toggle Introduction" href="release_feature_toggle_introduction.html" />
+    <link rel="prev" title="Cisco Common Resource" href="cisco_common_resource.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cisco_common_resource.html" title="Cisco Common Resource"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="release-feature-toggle">
+<h1>Release Feature Toggle<a class="headerlink" href="#release-feature-toggle" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="user-case-diagram">
+<h2>User case diagram<a class="headerlink" href="#user-case-diagram" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><img alt="_static/featureToggle.png" src="_static/featureToggle.png" />
+</div></blockquote>
+</div>
+<div class="section" id="po-or-sa-or-sm-edit-configure-file">
+<h2>PO or SA or SM edit configure file<a class="headerlink" href="#po-or-sa-or-sm-edit-configure-file" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Feature Toggle Git Repo</p>
+<p><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-release-toggles/browse">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-release-toggles/browse</a></p>
+</li>
+<li><p class="first">features-config.json</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;features&quot;</span><span class="p">:</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;feature-toggle-sample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature toggle sample&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;this is a sample feature toggle config for demo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin Test&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;enable&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;target-release&quot;</span><span class="p">:</span> <span class="s2">&quot;T32&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;sub-flags&quot;</span><span class="p">:</span>
+                           <span class="p">{</span>
+                               <span class="s2">&quot;flag&quot;</span><span class="p">:</span>
+                                     <span class="p">[</span>
+                                         <span class="p">{</span>
+                                             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;j2ee_flag&quot;</span><span class="p">,</span>
+                                             <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span>
+                                         <span class="p">},</span>
+                                         <span class="p">{</span>
+                                             <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;cb_flag&quot;</span><span class="p">,</span>
+                                             <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
+                                         <span class="p">}</span>
+                                     <span class="p">]</span>
+                           <span class="p">}</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;feature-toggle-1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature toggle 1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;this is a 1 feature toggle config for demo&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;owner&quot;</span><span class="p">:</span> <span class="s2">&quot;Admin Test&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;enable&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;target-release&quot;</span><span class="p">:</span> <span class="s2">&quot;T32&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="how-to-provide-statictoggle-json">
+<h2>How to provide <strong>staticToggle.json</strong><a class="headerlink" href="#how-to-provide-statictoggle-json" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Solutions</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>Pack into install package</dt>
+<dd><ul class="first last simple">
+<li>MSI</li>
+<li>Firefox plugin</li>
+<li>Chrome plugin</li>
+<li><strong>IE plugin</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Download before start meeting</dt>
+<dd><ul class="first last simple">
+<li>Modify download configure file</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Pros and Cons</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>For <em>Pack into install package solution</em></dt>
+<dd><ul class="first last simple">
+<li><strong>IE plugin</strong> can&#8217;t support</li>
+<li>Exist client can&#8217;t support</li>
+<li>Hard to update <em>staticToggle.json</em></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For <em>Download before start meeting solution</em></dt>
+<dd><ul class="first last simple">
+<li>Need enhance <strong>GPC</strong> to support</li>
+<li>Hard to modify <em>staticToggle.json</em> in local</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="windows-local-feature-toggle-configure-file">
+<h2>Windows local feature toggle configure file<a class="headerlink" href="#windows-local-feature-toggle-configure-file" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Where to config to support download <em>staticToggle.json</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">webex</span><span class="o">-</span><span class="n">cloudsapp</span><span class="o">-</span><span class="n">config</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Where to place <em>staticToggle.json</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">programdata</span><span class="o">%/</span><span class="n">WebEx</span><span class="o">/</span><span class="n">WebEx</span><span class="o">/</span><span class="n">T31_UMC</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Static Toggle Json Format <em>staticToggle.json</em></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;features&quot;</span><span class="p">:</span>
+             <span class="p">[</span>
+                 <span class="p">{</span><span class="s2">&quot;enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;feature-toggle-sample&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s2">&quot;enable&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="s2">&quot;feature-toggle-1&quot;</span><span class="p">}</span>
+             <span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="webex-windows-feature-toggle">
+<h2>webex-windows-feature-toggle<a class="headerlink" href="#webex-windows-feature-toggle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">API</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nb">bool</span> <span class="n">featureIsEnabled</span><span class="p">(</span><span class="n">char</span><span class="o">*</span> <span class="n">pszFeatureName</span><span class="p">,</span> <span class="nb">bool</span> <span class="n">bDefault</span><span class="p">);</span>
+<span class="n">void</span> <span class="n">clearFeatureToggle</span><span class="p">();</span>
+</pre></div>
+</div>
+</li>
+<li><dl class="first docutils">
+<dt>Repo</dt>
+<dd><p class="first last"><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-windows-feature-toggle/browse">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-windows-feature-toggle/browse</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to download lib and header file ?</dt>
+<dd><p class="first last"><a class="reference external" href="http://ccatg-build2.cisco.com/cirepo/artifacts/31.6.0/webex-windows-feature-toggle/">http://ccatg-build2.cisco.com/cirepo/artifacts/31.6.0/webex-windows-feature-toggle/</a></p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="code-example">
+<h2>Code Example<a class="headerlink" href="#code-example" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Example1</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#include &quot;featureToggleAgent.h&quot;</span>
+
+<span class="nb">int</span> <span class="n">CMCServiceMgr</span><span class="p">::</span><span class="n">OnConfJoinConfirm</span><span class="p">(</span><span class="n">short</span> <span class="n">result</span><span class="p">,</span> <span class="n">ARMConferenceHandle</span> <span class="n">conf_handle</span><span class="p">,</span> <span class="n">CAtUser</span><span class="o">*</span> <span class="n">pUser</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="o">...</span>
+
+    <span class="k">if</span><span class="p">(</span> <span class="n">featureIsEnabled</span><span class="p">(</span><span class="n">_T</span><span class="p">(</span><span class="s2">&quot;F1447&quot;</span><span class="p">))</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">m_pCSIMgr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CSmCSIMgr</span><span class="p">();</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">NULL</span> <span class="o">!=</span> <span class="n">m_pCSIMgr</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">m_pCSIMgr</span><span class="o">-&gt;</span><span class="n">SetServiceMgr</span><span class="p">(</span><span class="n">this</span><span class="p">);</span>
+            <span class="n">m_pCSIMgr</span><span class="o">-&gt;</span><span class="n">OnConfJoinConfirm</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">conf_handle</span><span class="p">,</span> <span class="n">pUser</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="effect-on-ut">
+<h2>Effect on <strong>UT</strong><a class="headerlink" href="#effect-on-ut" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">UT for <strong>Example1</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CMCServiceMgrTest</span> <span class="p">:</span> <span class="n">public</span> <span class="n">testing</span><span class="p">::</span><span class="n">Test</span>
+<span class="p">{</span>
+    <span class="n">public</span><span class="p">:</span>
+
+        <span class="n">CMCServiceMgrTest</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">m_pServiceMgr</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="n">virtual</span> <span class="n">void</span> <span class="n">SetUP</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">NULL</span> <span class="o">==</span> <span class="n">m_pServiceMgr</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">m_pServiceMgr</span> <span class="o">=</span> <span class="n">new</span> <span class="n">CMCServiceMgr</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">virtual</span> <span class="n">void</span> <span class="n">TearDown</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">NULL</span> <span class="o">!=</span> <span class="n">m_pServiceMgr</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">delete</span> <span class="n">m_pServiceMgr</span><span class="p">;</span>
+                <span class="n">m_pServiceMgr</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+    <span class="n">protected</span><span class="p">:</span>
+        <span class="n">CMCServiceMgr</span><span class="o">*</span>    <span class="n">m_pServiceMgr</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">TEST_F</span><span class="p">(</span><span class="n">CMCServiceMgrTest</span><span class="p">,</span> <span class="n">Test1</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">EXPECT_TRUE</span><span class="p">(</span><span class="n">NULL</span> <span class="o">!=</span> <span class="n">m_pServiceMgr</span><span class="p">);</span>
+
+    <span class="n">short</span> <span class="n">result</span><span class="p">;</span>
+    <span class="n">ARMConferenceHandle</span> <span class="n">conf_handle</span><span class="p">;</span>
+    <span class="n">CAtUser</span> <span class="n">atUser</span><span class="p">;</span>
+    <span class="n">m_pServiceMgr</span><span class="o">-&gt;</span><span class="n">OnConfJoinConfirm</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">conf_handle</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">atUser</span><span class="p">);</span>
+
+    <span class="n">EXPECT_TRUE</span><span class="p">(</span><span class="n">NULL</span> <span class="o">!=</span> <span class="n">m_pServiceMgr</span><span class="o">-&gt;</span><span class="n">GetCSIMgr</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">The above UT will run failure for <strong>Release Feature Toggle</strong></p>
+</li>
+<li><p class="first">Solution</p>
+<blockquote>
+<div><ul class="simple">
+<li>Place <em>staticToggle.json</em> in the <em>UT execute file folder</em></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>webex-windows-feature-toggle<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">build</p>
+</li>
+<li><p class="first">dependencies</p>
+</li>
+<li><p class="first">doc</p>
+</li>
+<li><dl class="first docutils">
+<dt>include</dt>
+<dd><ul class="first last simple">
+<li>featureToggleAgent.h</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">output</p>
+</li>
+<li><dl class="first docutils">
+<dt>src</dt>
+<dd><ul class="first last simple">
+<li>featuretoggle.rc</li>
+<li>resource.h</li>
+<li>featuretoggle.vcxproj</li>
+<li>featureToggleAPI.h</li>
+<li>featureToggleAPI.cpp</li>
+<li>featureToggleImpl.h</li>
+<li>featureToggleImpl.cpp</li>
+<li>staticToggle.json</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">test</p>
+</li>
+</ol>
+</div>
+<div class="section" id="how-other-project-use-feature-toggle">
+<h2>How other project use feature toggle<a class="headerlink" href="#how-other-project-use-feature-toggle" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Add <strong>webex-windows-feature-toggle</strong> to your <em>dependencies.xml</em> file</li>
+<li>Add <strong>featureToggleAgent.h</strong> header file to your <em>project</em></li>
+<li>Call <strong>featureIsEnabled</strong> where you want to use <em>feature toggle</em></li>
+</ol>
+</div>
+<div class="section" id="wiki">
+<h2>Wiki<a class="headerlink" href="#wiki" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><dl class="first docutils">
+<dt>Feature over view design</dt>
+<dd><p class="first last"><a class="reference external" href="https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram">https://wiki.cisco.com/display/HFWEB/Release+Feature+Toggle#ReleaseFeatureToggle-4.1theflowdiagram</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>View build status</dt>
+<dd><p class="first last"><a class="reference external" href="https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0">https://cctg-ec2.cisco.com/commander/link/workspaceFile/workspaces/default?jobStepId=e217ec53-5fa5-11e6-9cbe-005056af0148&amp;fileName=build.e217ec53-5fa5-11e6-9cbe-005056af0148.log&amp;jobName=official_Train_Client_31.6.0_webex-windows-feature-toggle_1057900_201608110226&amp;jobId=bcbb6915-5fa5-11e6-8406-005056af0148&amp;diagCharEncoding=&amp;resourceName=cctg-ci-win33&amp;completed=0</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Download feature toggle <strong>zip package</strong></dt>
+<dd><p class="first last"><a class="reference external" href="https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle">https://ccatg-build2.cisco.com/cirepo/artifacts/32.0.0/webex-windows-feature-toggle</a></p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/wxclient/makefile.ec+detail">https://wiki.cisco.com/display/wxclient/makefile.ec+detail</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally">https://wiki.cisco.com/display/WEBEXCI/Build+Client+Component+Locally</a></p>
+</li>
+</ul>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://martinfowler.com/articles/feature-toggles.html">http://martinfowler.com/articles/feature-toggles.html</a></li>
+<li><a class="reference external" href="http://martinfowler.com/bliki/FeatureToggle.html">http://martinfowler.com/bliki/FeatureToggle.html</a></li>
+<li><a class="reference external" href="https://www.draw.io/#G0B2Ykfab9ktB2Mkk3QkFkWUxMSnc">https://www.draw.io/#G0B2Ykfab9ktB2Mkk3QkFkWUxMSnc</a></li>
+</ul>
+</div>
+<div class="section" id="some-thinking-for-win-client">
+<h2>Some thinking for win client<a class="headerlink" href="#some-thinking-for-win-client" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Effect on <strong>Chrome Plugin</strong></li>
+<li>Effect on <strong>Firefox Plugin</strong></li>
+<li>Effect on <strong>MSI</strong></li>
+<li>Effect on <strong>UT</strong></li>
+<li>Effect on <strong>TA</strong></li>
+<li>Effect on <strong>class member</strong></li>
+<li>Effect on <strong>header file</strong></li>
+<li>Effect on <strong>the exist and new project</strong></li>
+<li>When remove <strong>feature toggle</strong>, maybe will cause other feature can&#8217;t work</li>
+<li>Effect on <strong>coding habit</strong></li>
+<li>Where to place the header file or lib</li>
+<li>There too many places need <em>staticToggle.json</em> file</li>
+<li>Does <em>staticToggle.json</em> need support upgrad</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Release Feature Toggle</a><ul>
+<li><a class="reference internal" href="#user-case-diagram">User case diagram</a></li>
+<li><a class="reference internal" href="#po-or-sa-or-sm-edit-configure-file">PO or SA or SM edit configure file</a></li>
+<li><a class="reference internal" href="#how-to-provide-statictoggle-json">How to provide <strong>staticToggle.json</strong></a></li>
+<li><a class="reference internal" href="#windows-local-feature-toggle-configure-file">Windows local feature toggle configure file</a></li>
+<li><a class="reference internal" href="#webex-windows-feature-toggle">webex-windows-feature-toggle</a></li>
+<li><a class="reference internal" href="#code-example">Code Example</a></li>
+<li><a class="reference internal" href="#effect-on-ut">Effect on <strong>UT</strong></a></li>
+<li><a class="reference internal" href="#id1">webex-windows-feature-toggle</a></li>
+<li><a class="reference internal" href="#how-other-project-use-feature-toggle">How other project use feature toggle</a></li>
+<li><a class="reference internal" href="#wiki">Wiki</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+<li><a class="reference internal" href="#some-thinking-for-win-client">Some thinking for win client</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cisco_common_resource.html"
+                        title="previous chapter">Cisco Common Resource</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="release_feature_toggle_introduction.html"
+                        title="next chapter">Release Toggle Introduction</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/release_feature_toggle.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="release_feature_toggle_introduction.html" title="Release Toggle Introduction"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cisco_common_resource.html" title="Cisco Common Resource"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

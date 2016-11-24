@@ -1,0 +1,1015 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SC AS DS Introduce &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="TC AS DS Introduce" href="tc_as_ds.html" />
+    <link rel="prev" title="Privilege Logic" href="privilege.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tc_as_ds.html" title="TC AS DS Introduce"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="privilege.html" title="Privilege Logic"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sc-as-ds-introduce">
+<h1>SC AS DS Introduce<a class="headerlink" href="#sc-as-ds-introduce" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="where-is-the-sc">
+<h2>Where is the <em>SC</em><a class="headerlink" href="#where-is-the-sc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Source code directory : 029/src/windows/SC</li>
+<li>Project name : sc.sln</li>
+</ul>
+</div>
+<div class="section" id="sc-owner">
+<h2>SC Owner<a class="headerlink" href="#sc-owner" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Dev: Xiaolong Cao</li>
+<li>QA: Nick Zhang</li>
+</ol>
+</div>
+<div class="section" id="how-to-build-unifiedappshare">
+<h2>How to build unifiedAppShare<a class="headerlink" href="#how-to-build-unifiedappshare" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Enter <em>020p\src\windows\unifiedAppShare</em></li>
+<li>Run <em>OneClickBuild.bat</em></li>
+<li>Enter <em>bld</em> folder</li>
+</ol>
+</div>
+<div class="section" id="change-list">
+<h2>Change List<a class="headerlink" href="#change-list" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>add relevant dll to SC filelist</li>
+<li>update msi package</li>
+<li>update resource file</li>
+</ol>
+</div>
+<div class="section" id="file-change-list">
+<h2>File Change List<a class="headerlink" href="#file-change-list" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">include folder for FRAMEWORK</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\include\FRAMEWORK\AppSharingProxy.h</li>
+<li>029\include\FRAMEWORK\pcmappsharemgr.h</li>
+<li>029\include\FRAMEWORK\SmAppShareSessionMgr.h</li>
+<li>029\include\FRAMEWORK\SmDialogs.h</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">include folder for FRAMEWORK_Artemis</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\include\FRAMEWORK_Artemis\AppSharingProxy.h</li>
+<li>029\include\FRAMEWORK_Artemis\pcmappsharemgr.h</li>
+<li>029\include\FRAMEWORK_Artemis\SmAppShareSessionMgr.h</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">framework folder</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\src\windows\FRAMEWORK\ServiceMgr\ServiceMgr.vcxproj</li>
+<li>029\src\windows\FRAMEWORK\ServiceMgr\SmAppShareSessionMgr.cpp</li>
+<li>029\src\windows\FRAMEWORK\componentmgr\AppSharingProxy.cpp</li>
+<li>029\src\windows\FRAMEWORK\componentmgr\Pcm.h</li>
+<li>029\src\windows\FRAMEWORK\componentmgr\PcmAppShareMgr.cpp</li>
+<li>029\src\windows\FRAMEWORK\componentmgr\cm.vcxproj</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">framework_artemis folder</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\src\windows\FRAMEWORK_Artemis\ServiceMgr\ServiceMgr.vcxproj</li>
+<li>029\src\windows\FRAMEWORK_Artemis\ServiceMgr\SmAppShareSessionMgr.cpp</li>
+<li>029\src\windows\FRAMEWORK_Artemis\ServiceMgr\SmDefUIMgr.cpp</li>
+<li>029\src\windows\FRAMEWORK_Artemis\componentmgr\AppSharingProxy.cpp</li>
+<li>029\src\windows\FRAMEWORK_Artemis\componentmgr\PcmAppShareMgr.cpp</li>
+<li>029\src\windows\FRAMEWORK_Artemis\componentmgr\cm.vcxproj</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">tc folder</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\src\windows\TC\WebExMgr\TCBOSessionMgr.cpp</li>
+<li>029\src\windows\TC\WebExMgr\TCBOSessionMgr.h</li>
+<li>029\src\windows\TC\WebExMgr\TCBOUIMgr.cpp</li>
+<li>029\src\windows\TC\WebExMgr\TCUIMgr.cpp</li>
+<li>029\src\windows\TC\WebExMgr\webexmgr.vcxproj</li>
+<li>029\src\windows\TC\tcholmgr\tcholmgr.vcxproj</li>
+<li>029\src\windows\TC\WebExMgr\WebExMgr.rc</li>
+<li>029\src\windows\TC\tcholmgr\tcholmgr.rc</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">sc folder</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\src\windows\SC\atsccli\SCAppASMgr.cpp</li>
+<li>029\src\windows\SC\atsccli\SCAppASMgr.h</li>
+<li>029\src\windows\SC\atsccli\SCAppMgr.cpp</li>
+<li>029\src\windows\SC\atsccli\SCAppMgr.h</li>
+<li>029\src\windows\SC\atsccli\atsccli.vcxproj</li>
+<li>029\src\windows\SC\atsccli\scclicust.vcxproj</li>
+<li>029\src\windows\SC\atsccli\atsccli.rc</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">ST folder</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>029\src\windows\ST\RAMTMGR\ramtmgr.vcxproj</li>
+<li>029\src\windows\ST\RAMTMGR\ramtmgr.rc</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="file-change-list-for-t31-tc">
+<h2>File Change List for T31 TC<a class="headerlink" href="#file-change-list-for-t31-tc" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">webex-framework-artemis\src\cfw\componentmgr</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>AppSharingProxy.cpp</li>
+<li>PcmAppShareMgr.cpp (merge code and remove ActiveApp)</li>
+<li>cm.vcxproj</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">webex-framework-artemis\src\cfw\include</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>AppSharingProxy.h</li>
+<li>pcmappsharemgr.h</li>
+<li>SmAppShareSessionMgr.h</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">webex-framework-artmis\src\cfw\ServiceMgr</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>SmAppShareSessionMgr.cpp</li>
+<li>SmDefUIMgr.cpp</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">webex-framework-tc\src\TC\WebExMgr</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>TCBOSessionMgr.cpp</li>
+<li>TCBOSessionMgr.h</li>
+<li>TCBOUIMgr.cpp</li>
+<li>TCUIMgr.cpp</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="how-to-undecorate-name-from-decorated-name">
+<h2>How to undecorate name from decorated name?<a class="headerlink" href="#how-to-undecorate-name-from-decorated-name" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>undnmae.exe</li>
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms937379.aspx">https://msdn.microsoft.com/en-us/library/ms937379.aspx</a></li>
+<li><a class="reference external" href="http://stackoverflow.com/questions/9177591/how-to-undecorate-name-from-decorated-name">http://stackoverflow.com/questions/9177591/how-to-undecorate-name-from-decorated-name</a></li>
+<li><a class="reference external" href="https://code.google.com/p/pdbparse/source/browse/trunk/src/undname.c?r=97">https://code.google.com/p/pdbparse/source/browse/trunk/src/undname.c?r=97</a></li>
+<li><a class="reference external" href="https://github.com/moyix/pdbparse">https://github.com/moyix/pdbparse</a></li>
+</ul>
+</div>
+<div class="section" id="class">
+<h2>Class<a class="headerlink" href="#class" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">CAtCtl40EM</p>
+<blockquote>
+<div><ul>
+<li><p class="first">CSCMainController</p>
+<blockquote>
+<div><ul class="simple">
+<li>CDlgManager</li>
+<li>CSCModel</li>
+<li>CSCAppMgr</li>
+<li>CSCDownload</li>
+<li>CWndFITPanel</li>
+<li>CUIFactory</li>
+<li>CUIManager</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">CMSCMainFrame</p>
+<blockquote>
+<div><ul class="simple">
+<li>CMSCNS</li>
+<li>CMSCMainPanel</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="bug-list">
+<h2>Bug list<a class="headerlink" href="#bug-list" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">CSCuv84734</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCuv84734">https://cdetsng.cisco.com/webui/#view=CSCuv84734</a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">CSCuv84659</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCuv84659">https://cdetsng.cisco.com/webui/#view=CSCuv84659</a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">CSCuv84717</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCuv84717">https://cdetsng.cisco.com/webui/#view=CSCuv84717</a></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="known-issue">
+<h2>Known Issue<a class="headerlink" href="#known-issue" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">2015-09-23</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">SC <strong>Application Share</strong> dialog</p>
+<blockquote>
+<div><ul class="simple">
+<li>Shared App order</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">2015-09-16</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">SC <strong>Application Share</strong> dialog</p>
+<blockquote>
+<div><ul class="simple">
+<li>Stop Share button disable</li>
+<li>Mark <em>Checked status</em> for the shared app</li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p class="first">2015-09-14</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">? Click &#8220;Close&#8221; button will exit share session when the &#8220;Application View&#8221; dialog</p>
+</li>
+<li><p class="first">Shared application place in the front of the <em>Application View Dialog</em></p>
+</li>
+<li><p class="first">Conflict Type</p>
+<blockquote>
+<div><ul class="simple">
+<li>SHARE_WEBBROWSER</li>
+<li>SHARE_NONE</li>
+<li>SHARE_APP</li>
+<li>SHARE_DESKTOP</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">UI Issue</p>
+<blockquote>
+<div><ul class="simple">
+<li>Button layout issue</li>
+<li>Center Window</li>
+<li>Window Title</li>
+<li>Window Style</li>
+<li>?Mark Shared Window with Checked Status</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Add AS String resource</p>
+<blockquote>
+<div><ul class="simple">
+<li>IDS_SHARE_AS_TITLE &#8220;Application Share&#8221;</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Untitled Window</p>
+<blockquote>
+<div><p>Add IDS_DVAS_UNTITLED_WINDOW &#8220;Untitled Window %u&#8221;</p>
+</div></blockquote>
+</li>
+<li><p class="first">Accessibility Issue (ESC key for AS Running App Dialog)</p>
+<blockquote>
+<div><ul class="simple">
+<li>PUSHBUTTON &#8220;Exit Sharing&#8221; IDC_EXIT_SHARING =&gt; IDCANCEL</li>
+<li>atresb5.rc</li>
+<li>atresgb.rc</li>
+<li>atres.rc</li>
+<li>atrestsp.rc</li>
+<li>atresde.rc</li>
+<li>atreses.rc</li>
+<li>atresfr.rc</li>
+<li>atresit.rc</li>
+<li>atresjp.rc</li>
+<li>atresko.rc</li>
+<li>atresnl.rc</li>
+<li>atrespt.rc</li>
+<li>atresru.rc</li>
+<li>atressp.rc</li>
+<li>atressv.rc</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">SC</p>
+<blockquote>
+<div><ul class="simple">
+<li>AppSharing.dll</li>
+<li>AppSharingUI.dll</li>
+<li>aswin8helper.dll</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">SCC</p>
+<blockquote>
+<div><ul class="simple">
+<li>AppSharing.dll</li>
+<li>AppSharingUI.dll</li>
+<li>atwbxUI15.dll</li>
+<li>aswin8helper.dll</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Indicator difference</p>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="test-scope">
+<h2>Test Scope<a class="headerlink" href="#test-scope" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">OS</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Server 2008</p>
+<blockquote>
+<div><ul class="simple">
+<li>Icon Issue</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Win8.1</p>
+</li>
+<li><p class="first">Win7</p>
+<blockquote>
+<div><ul class="simple">
+<li>Avoid Regression Issue</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Win10</p>
+<blockquote>
+<div><ul class="simple">
+<li>Verify New Feature</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Session</p>
+<blockquote>
+<div><ul class="simple">
+<li>Old Console</li>
+<li>New Console</li>
+<li>Multi Session Client</li>
+<li><em>WebACD (can&#8217;t work in VSCM Env)</em></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Test Entry</p>
+<blockquote>
+<div><ul class="simple">
+<li>Main Menu</li>
+<li>Quick Start (UCF)</li>
+<li>Quick Start (Non-UCF)</li>
+<li>FIT Menu</li>
+<li>Indicator</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Presenter Change</li>
+<li>Show App Running Dialog from FIT &#8220;Select Application&#8221;</li>
+<li>Show App Running Dialog from Indicator</li>
+<li>Share multi app at the same time</li>
+<li>Show &#8220;Other Application Dialog&#8221;</li>
+<li>Accessibility test case</li>
+<li>Multi Language test case</li>
+<li>When the &#8220;App Running Dialog&#8221; or &#8220;Other Application&#8221; Dialog showing , Click &#8220;Stop Application Sharing&#8221;</li>
+<li>When the &#8220;App Running Dialog&#8221; or &#8220;Other Application&#8221; Dialog showing , Customer Leave</li>
+<li>When the &#8220;App Running Dialog&#8221; or &#8220;Other Application&#8221; Dialog showing , End SC Conference</li>
+</ul>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Win8.0</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">Old Console</th>
+<th class="head">&nbsp;</th>
+<th class="head">New Console</th>
+<th class="head">&nbsp;</th>
+<th class="head">Multi Session Client</th>
+<th class="head">&nbsp;</th>
+<th class="head">WebACD</th>
+<th class="head">&nbsp;</th>
+</tr>
+<tr class="row-even"><th class="head stub">&nbsp;</th>
+<th class="head">&nbsp;</th>
+<th class="head">CSRs</th>
+<th class="head">Customers</th>
+<th class="head">CSRs</th>
+<th class="head">Customers</th>
+<th class="head">CSRs</th>
+<th class="head">Customers</th>
+<th class="head">CSRs</th>
+<th class="head">Customers</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-odd"><th class="stub">Show Application View Dialog</th>
+<td>Main Menu: Share View</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Main Menu: Select Application</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Indicator: Select Application</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">Application View Dialog Action</th>
+<td>Exit Sharing</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Stop Sharing</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Share</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Double Click Running Application Item</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Close Button</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">Show Other Application Dialog</th>
+<td>Application View : Other Application</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">Other Application Action</th>
+<td>Share</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Cancel</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Close Button</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Double Click Item</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">Stop Sharing</th>
+<td>Main Menu</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Indicator: Stop Application Sharing</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Customer: Stop Application Sharing</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">Presenter Change</th>
+<td>Application View Dialog</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Other Application Dialog</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">&nbsp;</th>
+<td>Shared:Application View Dialog</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Shared:Other Application Dialog</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-odd"><th class="stub">End Session</th>
+<td>Application View Dialog</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+<tr class="row-even"><th class="stub">&nbsp;</th>
+<td>Other Application Dialog</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+<td>CP</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="test-env">
+<h2>Test Env<a class="headerlink" href="#test-env" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>T30.1 site In VSCM<ul>
+<li>Nick Zhang</li>
+<li><a class="reference external" href="http://t2web1.qa.webex.com/got2wdt30">http://t2web1.qa.webex.com/got2wdt30</a>  <a class="reference external" href="mailto:nick/P&#37;&#52;&#48;ss123">nick/P<span>&#64;</span>ss123</a></li>
+</ul>
+</li>
+<li>T30 Out of VSCM<ul>
+<li>Super Admin</li>
+<li><a class="reference external" href="https://hasuper.qa.webex.com/">https://hasuper.qa.webex.com/</a>  nick/nickpass</li>
+<li>Normal Site: nick30sp</li>
+<li><a class="reference external" href="http://nick30sp.qa.webex.com/">http://nick30sp.qa.webex.com/</a>  nick/pass, <a class="reference external" href="mailto:admin/P&#37;&#52;&#48;ss123">admin/P<span>&#64;</span>ss123</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="wiki">
+<h2>Wiki<a class="headerlink" href="#wiki" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="http://wikicentral.cisco.com/display/PROJECT/SC+Client+Knowledge+Transfer">http://wikicentral.cisco.com/display/PROJECT/SC+Client+Knowledge+Transfer</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://wikicentral.cisco.com/display/ASDS/WIN10-SC">http://wikicentral.cisco.com/display/ASDS/WIN10-SC</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://wikicentral.cisco.com/display/GROUP/T30.2">http://wikicentral.cisco.com/display/GROUP/T30.2</a></p>
+</li>
+<li><p class="first">From Morgan</p>
+<blockquote>
+<div><ul class="simple">
+<li><a class="reference external" href="http://wikicentral.cisco.com/display/HZMACTEAM/Mac+Develop+ENV+Set+up+Process">http://wikicentral.cisco.com/display/HZMACTEAM/Mac+Develop+ENV+Set+up+Process</a></li>
+<li><a class="reference external" href="http://wikicentral.cisco.com/display/PROJECT/SC+Client+Knowledge+Transfer">http://wikicentral.cisco.com/display/PROJECT/SC+Client+Knowledge+Transfer</a></li>
+<li><a class="reference external" href="http://wikicentral.cisco.com/display/HFNATIVE">http://wikicentral.cisco.com/display/HFNATIVE</a></li>
+<li><a class="reference external" href="http://wikicentral.cisco.com/display/HFCLIENT/Productivity+Tools">http://wikicentral.cisco.com/display/HFCLIENT/Productivity+Tools</a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">tims.cisco.com//frameset.cmd?proj=9=&amp;mode=b_</p>
+</li>
+</ol>
+</div>
+<div class="section" id="t30l10nsp2-headlib-location">
+<h2>T30L10NSP2 HeadLib Location<a class="headerlink" href="#t30l10nsp2-headlib-location" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>ccatg-build2.cisco.com/cirepo/Train/T30L10NSP2/client-T30L10NSP2.buildversion/delivery/headlib-T30L10NSP2-buildversion.zip</li>
+</ul>
+</div>
+<div class="section" id="svn">
+<h2>SVN<a class="headerlink" href="#svn" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/020p/branches/T30L10NSP2">https://wwwin-svn-sjc-2.cisco.com/csg/020p/branches/T30L10NSP2</a></li>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/027/branches/T30L10NSP2">https://wwwin-svn-sjc-2.cisco.com/csg/027/branches/T30L10NSP2</a></li>
+<li><a class="reference external" href="https://wwwin-svn-sjc-2.cisco.com/csg/029/branches/T30L10NSP2">https://wwwin-svn-sjc-2.cisco.com/csg/029/branches/T30L10NSP2</a></li>
+</ul>
+</div>
+<div class="section" id="git">
+<h2>GIT<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://stash-eng-chn-sjc1.cisco.com/stash/projects">https://stash-eng-chn-sjc1.cisco.com/stash/projects</a></li>
+</ul>
+</div>
+<div class="section" id="how-to-generate-document">
+<h2>How to generate document<a class="headerlink" href="#how-to-generate-document" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>python build029.py status -s</li>
+</ul>
+</div>
+<div class="section" id="recording">
+<h2>Recording<a class="headerlink" href="#recording" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://ha3web.qa.webex.com/nick30/ldr.php?RCID=8d2eb11b29f3c4c4704789def23c29fe">https://ha3web.qa.webex.com/nick30/ldr.php?RCID=8d2eb11b29f3c4c4704789def23c29fe</a></li>
+</ul>
+</div>
+<div class="section" id="rally">
+<h2>Rally<a class="headerlink" href="#rally" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Prepare Env &amp; Fix Build Issue : 6H</li>
+<li>Study SC Code : 6H</li>
+<li>Coding &amp; Debug : 12H</li>
+<li>New Console &#8220;Share View&#8221; Case : 4H</li>
+<li>New Console &#8220;Request View&#8221; Case : 4H</li>
+<li>Old Console &#8220;Share View&#8221; Case : 4H</li>
+<li>Old Console &#8220;Request View&#8221; Case : 4H</li>
+<li>Multi Session Client &#8220;Share View&#8221; Case : 4H</li>
+<li>Multi Session Client &#8220;Request View&#8221; Case : 4H</li>
+<li>WebACD &#8220;Share View&#8221; Case : 6H</li>
+<li>WebACD &#8220;Request View&#8221; Case : 6H</li>
+</ul>
+</div>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<p># WebACD</p>
+<blockquote>
+<div><ul>
+<li><p class="first">ACDInbox.exe</p>
+<blockquote>
+<div><ul class="simple">
+<li>attp.dll</li>
+<li>atWbxUI15.dll</li>
+<li>mcplugin.dll</li>
+<li>scplugin.dll</li>
+<li>ACDRes.dll</li>
+<li>WAPluginMgr.dll</li>
+<li>UILibRes.dll</li>
+<li>atAuth.dll</li>
+<li>scplgres.dll</li>
+<li>wbxtrace.dll</li>
+<li>raurl.dll</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">ACDManager.exe</p>
+<blockquote>
+<div><ul class="simple">
+<li>attp.dll</li>
+<li>atWbxUI15.dll</li>
+<li>ACDRes.dll</li>
+<li>UILibRes.dll</li>
+<li>atAuth.dll</li>
+<li>wbxtrace.dll</li>
+<li>raurl.dll</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">ACDMonitor.exe</p>
+<blockquote>
+<div><ul class="simple">
+<li>attp.dll</li>
+<li>atWbxUI15.dll</li>
+<li>ACDRes.dll</li>
+<li>UILibRes.dll</li>
+<li>atAuth.dll</li>
+<li>wbxtrace.dll</li>
+<li>raurl.dll</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">atscmgr.exe</p>
+<blockquote>
+<div><ul class="simple">
+<li>atasctrl.dll</li>
+<li>welsdec.dll</li>
+<li>atres.dll</li>
+<li>AppSharing.dll</li>
+<li>wbxaecodec.dll</li>
+<li>atdl2006.dll</li>
+<li>wbxaudioengine.dll</li>
+<li>mac.dll</li>
+<li>atres_lite.dll</li>
+<li>atpack.dll</li>
+<li>welsvp.dll</li>
+<li>MJPGDecoder.dll</li>
+<li>wsertp.dll</li>
+<li>mticket.dll</li>
+<li>mcsnew.dll</li>
+<li>wseclient.dll</li>
+<li>mutiltpd.dll</li>
+<li>msvc.dll</li>
+<li>atfilesp.dll</li>
+<li>atfilesr.dll</li>
+<li>atlchat.dll</li>
+<li>acdti.dll</li>
+<li>atacd.dll</li>
+<li>atocres.dll</li>
+<li>uilibres.dll</li>
+<li>mmssl32.dll</li>
+<li>wbxcrypt.dll</li>
+<li>atmemmgr.dll</li>
+<li>attp.dll</li>
+<li>atarm.dll</li>
+<li>atwbxui15.dll</li>
+<li>atsc3cli.dll</li>
+<li>atkbctrl.dll</li>
+<li>atcarmcl.dll</li>
+<li>atgpcext.dll</li>
+<li>atgpcdec.dll</li>
+<li>ieatgpc.dll</li>
+<li>wbxtrace.dll</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SC AS DS Introduce</a><ul>
+<li><a class="reference internal" href="#where-is-the-sc">Where is the <em>SC</em></a></li>
+<li><a class="reference internal" href="#sc-owner">SC Owner</a></li>
+<li><a class="reference internal" href="#how-to-build-unifiedappshare">How to build unifiedAppShare</a></li>
+<li><a class="reference internal" href="#change-list">Change List</a></li>
+<li><a class="reference internal" href="#file-change-list">File Change List</a></li>
+<li><a class="reference internal" href="#file-change-list-for-t31-tc">File Change List for T31 TC</a></li>
+<li><a class="reference internal" href="#how-to-undecorate-name-from-decorated-name">How to undecorate name from decorated name?</a></li>
+<li><a class="reference internal" href="#class">Class</a></li>
+<li><a class="reference internal" href="#bug-list">Bug list</a></li>
+<li><a class="reference internal" href="#known-issue">Known Issue</a></li>
+<li><a class="reference internal" href="#test-scope">Test Scope</a></li>
+<li><a class="reference internal" href="#test-case">Test Case</a></li>
+<li><a class="reference internal" href="#test-env">Test Env</a></li>
+<li><a class="reference internal" href="#wiki">Wiki</a></li>
+<li><a class="reference internal" href="#t30l10nsp2-headlib-location">T30L10NSP2 HeadLib Location</a></li>
+<li><a class="reference internal" href="#svn">SVN</a></li>
+<li><a class="reference internal" href="#git">GIT</a></li>
+<li><a class="reference internal" href="#how-to-generate-document">How to generate document</a></li>
+<li><a class="reference internal" href="#recording">Recording</a></li>
+<li><a class="reference internal" href="#rally">Rally</a></li>
+<li><a class="reference internal" href="#others">Others</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="privilege.html"
+                        title="previous chapter">Privilege Logic</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tc_as_ds.html"
+                        title="next chapter">TC AS DS Introduce</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/sc_as_ds.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tc_as_ds.html" title="TC AS DS Introduce"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="privilege.html" title="Privilege Logic"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>
