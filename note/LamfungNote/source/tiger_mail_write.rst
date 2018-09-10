@@ -61,7 +61,22 @@ Tiger Mail Write
 #. How many computers is this issue impacting?
 #. If customer could help us do online trouble shooting? I mean, we can build some private build for verification with them and collect system information. That could speed up the resolving of this puzzle.
 #. Please give us the impacted user list to check from our end
+#. As soon as there is any update, we will keep you posted.
+#. Normally we will fix this issue in T31SP10 release(Deadline on Dec 31), and can launch EP if the customer is very urgent for it.
+#. Loop in Sherry and Ananthu for this.  Please share your comments. 
+#. There is one issue will block meeting in some conditions, the customer is very urgent, we have know root cause and fixed this, so can we launch T31 EP to support it?
+#. Will update you more details if there is any progress.
+#. I am taking sick leave till next week yet our telephony-eng-support team will be standby
 
+Opening
+-------
+
+#. Thank you for your response.
+
+Ending
+------
+
+#. I’m anticipating your response to assist you further and help resolve the issue. 
 
 Issue Describe
 --------------

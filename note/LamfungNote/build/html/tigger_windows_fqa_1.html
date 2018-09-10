@@ -55,7 +55,3469 @@
 <h1>Tiger Windows FQA<a class="headerlink" href="#tiger-windows-fqa" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[D] WO0000000228604, CSCvb98202</dt>
+<dt>[D] WO0000000443473, (CFD::CSCvf64128)</dt>
+<dd><ul class="first last">
+<li><p class="first">Start a meeting , as soon as Audio and Video connection pops up. Click on call me immediately. We see call me trying to connect , however keeps spinning for a minute or so and disconnects with “ No answer”</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CSmTelephonyMgr::Connect</li>
+<li>CSmTelephonyMgr::InitializeConfirm</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000432420, MC client crashes for all users when screen is shared</dt>
+<dd><ul class="first last simple">
+<li>CPfwMainPanelsView::Layout_MovePanels</li>
+<li>CPfwMainPanelsView::LayoutPanels</li>
+<li><a class="reference external" href="https://wiki.cisco.com/display/ORIOLE/Walmart+RT+-+20170727">https://wiki.cisco.com/display/ORIOLE/Walmart+RT+-+20170727</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000436669, (CFD::CSCvf60288)</dt>
+<dd><ul class="first last">
+<li><p class="first">why Panelists are not able to sort the Attendee List by the &#8220;Company&#8221; column for an Event Center.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CDlgAttendeeList</li>
+<li>CDlgAttendeeList::LoadList</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="id1">
+<h2>2017-08-14<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000426487, (CFD::CSCvf56875)</dt>
+<dd><ul class="first last">
+<li><p class="first">customer said that there is a delay when the user end the meeting</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CMCServiceMgr::Initialize</li>
+<li>WbxFeatureTrackingInitialize</li>
+<li>SetTelemetryXML</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow Parameters</dt>
+<dd><ul class="first last simple">
+<li>TeleMetryInfo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id2">
+<h2>2017-08-08<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>2017-08-01<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] HD0009411511</dt>
+<dd><ul class="first last">
+<li><p class="first">Audio &amp; Video Statistics issue</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>MMT_SPECIAL_EVENT_RECORD_VIDEO_QUALITY</li>
+<li>PMMD_VIDEO_QUALITY_RECORD</li>
+<li>SaveVideoStatisticsInfoSend</li>
+<li>CSmHybridAudioMgr::OnAudioNotify</li>
+<li>WEBEX_AUDIO_SESSION_REPORT_INFO</li>
+<li>SaveAudioStatisticsInfo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000387183</dt>
+<dd><ul class="first last">
+<li><p class="first">TSP audio - NBR does not work  for one user</p>
+</li>
+<li><p class="first">The user can start the recording successfully, but after 30 seconds the recording is disconnected</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CNBRControlMgrWrapper::StartNbr</li>
+<li>CSmNBRSessionMgr2::OnRecorderPanelNotify</li>
+<li>CSmNBRSessionMgr2::LaunchWizard</li>
+<li>CSmNBRSessionMgr2::SetTeleRecType</li>
+<li>CSmHybridAudioMgr::OnSSREvent</li>
+<li>CSmNBRSessionMgr2::OnHybridNotify</li>
+<li>CSmNBRSessionMgr2::OnTelephonyNotify</li>
+<li>CSmNBRSessionMgr2::OnTelephonyNBREvent</li>
+<li>CSmNBRSessionMgr2::Start</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow Parameters</dt>
+<dd><ul class="first last simple">
+<li>SessionTypeOptions</li>
+<li>CMCDocshowMgr::HandleSessionTypeOptions</li>
+<li>SetSiteEnableOption</li>
+<li>SessionTypeOptionsExt</li>
+<li>HandleSessionTypeOptionsExt</li>
+<li>SetPicassoOptions</li>
+<li>CMCServiceMgr::Initialize</li>
+<li>CMCSiteConfigMgr::InitSiteConfig</li>
+<li>PICASSO_OPTION_TSPWITHOUTADAPTER, 0x40000</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Session Type</dt>
+<dd><ul class="first last simple">
+<li>APPSVR_SESSIONTYPE_TELEPHONY</li>
+<li>APPSVR_SESSIONTYPE_TELEPHONY_THIRD</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000392645</dt>
+<dd><ul class="first last">
+<li><p class="first">Host is not able to upload file and share the file inside the WebEx meeting</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CMCUIMgr::OnSharePresentation</li>
+<li>CMCUIMgr::LaunchPresentationShare</li>
+<li>CSmDefUIMgr::OnMenuShareDocument</li>
+<li>CSmDocViewSessionMgr::NewDocument</li>
+<li>CPcmDocViewMgr::NewDocument</li>
+<li>CWBXFileDlg::DoModal</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000407644</dt>
+<dd><ul class="first last">
+<li><p class="first">Meeting center hangs for about 10+ minutes</p>
+</li>
+<li><p class="first">Issue occurs when Hava Video device is installed</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CSmSvcVideoSessionMgr::OpenVideoOptionDialog</li>
+<li>CSVCVideoOptionDlg</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000407279, (CFD::CSCvf37008)</dt>
+<dd><ul class="first last">
+<li><p class="first">Meeting client crash when opening Call In teleconference d</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CCallInSubWindow::Initialize</li>
+<li>strLink.Format(strFmt, IDW_STATIC_8049, strTemp2.c_str())</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000394309</dt>
+<dd><ul class="first last">
+<li><p class="first">While joining the meeting headphone show unhook status</p>
+</li>
+<li><dl class="first docutils">
+<dt>Issue Device</dt>
+<dd><ul class="first last simple">
+<li>Jabra, LogiTech, Sennheiser, Plantronics</li>
+<li>The above device support mute/unmute sync feature</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Solution</dt>
+<dd><ul class="first last simple">
+<li>Check if there are skype process running</li>
+<li>If yes, disable mute/unmute sync feature</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCvf34460</dt>
+<dd><ul class="first last simple">
+<li>video, EC, practice session</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h2>2017-07-24<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000396195</dt>
+<dd><ul class="first last simple">
+<li>If a user configured their WebEx audio device to be the same USB headset that Microsoft Skype for Business was configured with, Skype would become the active window, and a dial tone would play in the user’s headset after the user connected to audio in Meeting Center.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000393960</dt>
+<dd><ul class="first last simple">
+<li>The host should be able to join the meeting after the alternate host and use the VoIP functionality</li>
+<li>CSmTelephonyMgr::C2W_OnConnectIndication, TSPSDK_CONNECT_VOIP_CONNECT_FAIL</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000394536</dt>
+<dd><ul class="first last simple">
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000384873</dt>
+<dd><ul class="first last">
+<li><p class="first">When customer is on WiFi, PMR and scheduled meetings as host or attendee are unable to join by video</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>APPSVR_SESSIONTYPE_MM_VIDEO</li>
+<li>CPfwServiceMgr::CheckDefaultSession</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000396708</dt>
+<dd><ul class="first last simple">
+<li>User is unable to initiate Call using computer having the Skype for Business opened</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000394730</dt>
+<dd><ul class="first last">
+<li></li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CWseMFSourceReaderSink::CloseDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>2017-07-17<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000371763</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>SESSION_TYPE_ENABLE_VOIP</li>
+<li>SESSION_TYPE_ENABLE_WBX_VIDEO</li>
+<li>CSmSvcVideoSessionMgr::OnVideoSessionStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow</dt>
+<dd><ul class="first last simple">
+<li>SessionTypeOptions</li>
+<li>HandleSessionTypeOptions</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000372715</dt>
+<dd><ul class="first last simple">
+<li>WebEx Meeting Center - Server Failure or Security Setting Error</li>
+<li>tp.dll dependency issue</li>
+<li><a class="reference external" href="https://blogs.msdn.microsoft.com/cesardelatorre/2011/03/27/the-application-has-failed-to-start-because-its-side-by-side-configuration-is-incorrect-error-related-to-mmc-exe-programs-and-weird-cause-simple-solution/">https://blogs.msdn.microsoft.com/cesardelatorre/2011/03/27/the-application-has-failed-to-start-because-its-side-by-side-configuration-is-incorrect-error-related-to-mmc-exe-programs-and-weird-cause-simple-solution/</a></li>
+<li><a class="reference external" href="https://www.microsoft.com/en-us/download/details.aspx?id=5582">https://www.microsoft.com/en-us/download/details.aspx?id=5582</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h2>2017-07-11<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000357861</dt>
+<dd><ul class="first last">
+<li><p class="first">When change back to practice mode, attendee can see video</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>CVUIThumbnailView::OnTimer</li>
+<li>CVUIThumbnailView::AttachVisiblePorts</li>
+<li>CVUIThumbnailView::SlideInOneUserItem</li>
+<li>CVUIThumbnailView::AttachUser</li>
+<li>CVUIThumbnailVideoPort::RequestSource</li>
+<li>CVUIVideoPort::RequestVideoSource</li>
+<li>CVUIVideoPort::RequestVideoSourceCMR3</li>
+<li>IRenderingController::RequestSourceVideo</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>IDS_EC_PS_TITLE_P</li>
+<li>CECDocViewSessionMgr::InitMeetingInfoPracticeSession</li>
+<li>m_bPracticeSessionStarted</li>
+<li>StartPracticeSession</li>
+<li>HandlePracticeSessionPDU</li>
+<li>EC_PDU_TYPE_PRACTICE_SESSION</li>
+<li>StopPracticeSession</li>
+<li>StartMainViewVideo</li>
+<li>SendPracticeSessionPDU</li>
+<li>SetPanelist</li>
+<li>GetPanelistsArray</li>
+<li>CheckPanelistStatusFromEnFlag</li>
+<li>OnPracticeSessionStarted</li>
+<li>PFW_MODEL_WPARAM_UI_EC_PS_UPDATE</li>
+<li>CWndPracticipantlistContainer::VideoStatusChanged</li>
+<li>CMCPListThumbNailView::StartVideoView</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PFWPANEL_MODE</dt>
+<dd><ul class="first last simple">
+<li>PFWPANEL_MODE_COLLAPSE</li>
+<li>PFWPANEL_MODE_EXPAND</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PFWPANEL_STATUS</dt>
+<dd><ul class="first last simple">
+<li>PFWPANEL_STATUS_FLOAT</li>
+<li>PFWPANEL_STATUS_IN_MM_MGR</li>
+<li>PFWPANEL_STATUS_IN_FIT_MGR</li>
+<li>PFWPANEL_STATUS_IN_MM_BAR</li>
+<li>PFWPANEL_STATUS_IN_FIT_BAR</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>panel style</dt>
+<dd><ul class="first last simple">
+<li>PFWPANEL_STYLE_CAN_RESIZE</li>
+<li>PFWPANEL_STYLE_FLASH_ALERT</li>
+<li>PFWPANEL_STYLE_DISABLE</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000367321</dt>
+<dd><ul class="first last simple">
+<li>crash at wseclient.dll</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/WebExSquared/wme/pull/6398/commits/87c12f128d5c8668344f7e23681d470a4af1afa3">https://sqbu-github.cisco.com/WebExSquared/wme/pull/6398/commits/87c12f128d5c8668344f7e23681d470a4af1afa3</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h2>2017-07-04<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] SR 682379022</dt>
+<dd><ul class="first last">
+<li><p class="first">AOZORA BANKLTD, CWMS Call-in number Japanese characters not displaying, BEMS652230, Clients</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CSmHybridAudioMgr::OnTELEDownloadFinishedEx</li>
+<li>m_szCallinNumFileEx</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvf06317</dt>
+<dd><ul class="first last simple">
+<li>Meeting client closes when started from Firefox</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000364461, (CFD::CSCve85325)</dt>
+<dd><ul class="first last">
+<li><p class="first">upgrade to T32.3.1.3 voip issue</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CAccessoryMgrWrapper::ConnectToDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] Alpha site does not show user&#8217;s cookied photo avatar</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://sqbu-github.cisco.com/CMR/ATS/issues/147">https://sqbu-github.cisco.com/CMR/ATS/issues/147</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CCComUIMgr::DrawAvatar</li>
+<li>OnUserAvatarURLRetrieved</li>
+<li>OnUserAvatarImageDownloaded</li>
+<li>GetPhotoURL</li>
+<li>OnGetPhotoURL</li>
+<li>CSmHttpCallMgr::ParseResult, e_reqtGetPhotoURL</li>
+<li>DownloadImageByURL</li>
+<li>AvatarSavePath, %appdata%webex</li>
+<li>CSmAvatarMgr::OnConfJoinConfirm, GetPhotoURL</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow Parameters</dt>
+<dd><ul class="first last simple">
+<li>GetPhotoURL</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] New enhancement hasn&#8217;t been functioning in F2F cluster</dt>
+<dd><ul class="first last">
+<li><p class="first">what if my country is not listed?</p>
+</li>
+<li><p class="first">Confirmed that this feature was implement in T31.13 and T32.1</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://wiki.cisco.com/display/WXTRAINSP/T32.1">https://wiki.cisco.com/display/WXTRAINSP/T32.1</a></li>
+<li><a class="reference external" href="https://wiki.cisco.com/display/WXTRAINSP/T31.13">https://wiki.cisco.com/display/WXTRAINSP/T31.13</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h2>2017-06-26<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] CSCve88570</dt>
+<dd><ul class="first last">
+<li><p class="first">Video call back &#8220;Could not connect to the video system. Check the video address and try again&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>HandleTPProfileInfo</li>
+<li>AddTPProfileNum</li>
+<li>m_arUserTPProfile</li>
+<li>GetTPProfileNumByIndex</li>
+<li>GetProfileTPNumberList</li>
+<li>GetRecentlyTPCallNumber</li>
+<li>GetRecentlyTPCallFromReg</li>
+<li>CallTP, m_strLastTPCallNumber = strVideoAddr</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow parameters</dt>
+<dd><ul class="first last simple">
+<li>VideoCallbackInfo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] MC Client package for CWMS 2.7MR3 and 2.8MR1</dt>
+<dd><ul class="first last simple">
+<li>MC Client package for CWMS 2.7MR3 and 2.8MR1</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCve94573</dt>
+<dd><ul class="first last simple">
+<li>T31 client freeze wseclienttr.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] HD0009592572</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>SessionTypeOptions=972779519</li>
+<li>SessionType[39fb6fff], PicassoOptions[3b347b]</li>
+<li>CMCSiteConfigMgr::InitSiteConfig | dwEverestOption: 972779519, dwPicassoOption: 3880059</li>
+<li>CSmSvcVideoSessionMgr call UIDataMgr&gt;&gt;CPfwVideoMgr::SetHDVideoEnable(1)</li>
+<li>CMCSvcVideoSessionMgr::Initialize bIsTPMeeting[0] bCanTPVideo[0] bCanWbxVideo[0] bHQ[1] bHD[1]</li>
+<li>CSmSvcVideoSessionMgr::ChangeSVCExpOption(1, 1) begin</li>
+<li>CMmSVideoClient::SetSVCExpMode, ulSVCExpMode = 2</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] TP Callback Issue</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CAudioMainDlg::TPCallBack</li>
+<li>CSmAudioStatusWrapper::CallTP</li>
+<li>CPfwServiceMgr::CallTP</li>
+<li>CAtConfManagerImpl::CallTPDeviceByCB</li>
+<li>CAtConfAgent::CallTPDeviceByCB</li>
+<li>send_parameter_request</li>
+<li>TPCallbackUser_Enter</li>
+<li>CAtConfAgent::on_conference_parameter_change_indication</li>
+<li>ENDPOINT_STATUS_RSC_ID, SetTPCallbackDeviceStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] ATS no video session</dt>
+<dd><ul class="first last simple">
+<li>The video panel on top of the participant list is missing</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/CMR/ATS/issues/118">https://sqbu-github.cisco.com/CMR/ATS/issues/118</a></li>
+<li>CSCve83045</li>
+<li>CPfwServiceMgr::CheckPendingSession</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000261159</dt>
+<dd><ul class="first last">
+<li><p class="first">When the customer tries to joint in at his WebEx 11 meeting on the ITalian numer not display on client.</p>
+</li>
+<li><p class="first">T30.19</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CCallInSubWindow</li>
+<li>MPMeeting, $MP_FLAG</li>
+<li>TeleConfParam</li>
+<li>InitAudioController</li>
+<li>OnCallInNumberChanged</li>
+<li>SaveNumber</li>
+<li>SetCallInConfig</li>
+<li>SetTeleCallInInfo</li>
+<li>CSmHybridAudioMgr::GetSessionParam</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000345405</dt>
+<dd><ul class="first last simple">
+<li>WebEx crashes seconds after share-screen application is started</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h2>2017-06-20<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000345890</dt>
+<dd><ul class="first last">
+<li><p class="first">Crestron Device compatibility issue</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Point</dt>
+<dd><ul class="first last simple">
+<li>CWclPlistSelfBar::FormatVoipToolTip</li>
+<li>_string_helper</li>
+<li>at_str_vprintf</li>
+<li>need WCL to fix</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">[P] WO0000000319087</p>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000337706, (::MMP Server)</dt>
+<dd><ul class="first last">
+<li><p class="first">WebEx - Audio quality issue reported by all Audio broadcast users</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CMSJitterDetect</li>
+<li>CAudioStreamingConference::OnDataIndication, AnalysePacket</li>
+<li>CHybridSIPConnection::on_data_indication, AnalysePacket</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Server log</dt>
+<dd><ul class="first last simple">
+<li>10.100.13.170</li>
+<li>guest/P!ss!3!7</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000342853</dt>
+<dd><ul class="first last simple">
+<li>Unable to click on the start Webcam button / Webcam video shows chopped up</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000336095</dt>
+<dd><ul class="first last simple">
+<li>walmart Crash after upgrade from T30 to T31</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h2>2017-06-12<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000272041</dt>
+<dd><ul class="first last">
+<li><p class="first">When the panelists started to drop and I was about to end the session, I saw 6 questions appear suddenly.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CPcmChatMgr</li>
+<li>atlchat.dll</li>
+<li>CSmQASessionMgr</li>
+<li>CPcmQAMgr</li>
+<li>qactrl30.dll</li>
+<li>CQaItemWindow</li>
+<li>CQaListViewWindow</li>
+<li>CWndQAContainer</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000321328</dt>
+<dd><ul class="first last simple">
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id11">
+<h2>2017-06-05<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] HD0009596358, (CFD::CSCve67635)</dt>
+<dd><ul class="first last">
+<li><p class="first">Meeting Client Can&#8217;t display Canada Flag</p>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow Parameters</dt>
+<dd><ul class="first last simple">
+<li>MajorCountryCode</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>Audio and Video Connection</li>
+<li>CAudioMainDlg</li>
+<li>CCallMeSubWindow</li>
+<li>CWndPhonenumber</li>
+<li>CWndCountryCode::InitData</li>
+<li>CSmAudioPhoneWrapper::GetAvailableCountryList</li>
+<li>PrepareCountryArray, g_CountryArray</li>
+<li>GetDefaultCallbackCountry</li>
+<li>GetCountryByID</li>
+<li>pfwres.dll</li>
+<li>IDB_BITMAP_COUNTRY_FLAGS, 575</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000297080, (CFD::CSCve64901)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>How to reproduce</dt>
+<dd><ul class="first last simple">
+<li>hasuper.qa.webex.com/superadmin/SuperAdmin.jsp</li>
+<li>/My WebEx/Preferences/Audio</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CAudioMainDlg</li>
+<li>CAudioMainDlg::CallIn</li>
+<li>CCallInSubWindow</li>
+<li>IDW_WINDOWS_AUDIO_CHILD_CALL_IN</li>
+<li>IDW_STATIC_8049</li>
+<li>SetCallInPhoneNo1</li>
+<li>SetCallInCaption1</li>
+<li>CheckDownloadGTCEx</li>
+<li>ParseGTCNumberItem</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id12">
+<h2>2017-05-31<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000296643</dt>
+<dd><ul class="first last simple">
+<li>WebEx 11 Services - Flag issue for Ireland Toll number</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000314760</dt>
+<dd><ul class="first last simple">
+<li>Customer is unable to convert the recording file</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000311149</dt>
+<dd><ul class="first last simple">
+<li>all the users have lost video</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCve53108, (CFD::CSCve53108)</dt>
+<dd><ul class="first last simple">
+<li>customer&#8217;s sound preferences are not saving in meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCve53113, (CFD::CSCve53113)</dt>
+<dd><ul class="first last simple">
+<li>customer&#8217;s sound preferences are not saving in meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000310774</dt>
+<dd><ul class="first last">
+<li><p class="first">symc.w.c - customer&#8217;s sound preferences are not saving in meeting</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>CMCPreferenceWrapper Initialize issue</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CMCPreferenceDlg</li>
+<li>conIOptionsDlgBase</li>
+<li>CMCUIMgr::OnEditPreference</li>
+<li>CMCPreferenceWrapper</li>
+<li>conIMCPreference</li>
+<li>CMCServiceMgr::OnUserChangeIndicationByService</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>DlgMeetingPreference.cpp</dt>
+<dd><ul class="first last simple">
+<li>CDlgMeetingPreference::OnOK</li>
+<li>CDlgMeetingPreference::OnApply</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>conIOptionsDlgBase</dt>
+<dd><ul class="first last simple">
+<li>conIOptionsMgr</li>
+<li>conITabPageBase</li>
+<li>DLG_MEETING_PREFERENCE</li>
+<li>CDlgMeetingPreference</li>
+<li>TAB_PAGE_MCPREFERENCE_CHAT</li>
+<li>CWndMeetingPreferenceChat</li>
+<li>TAB_PAGE_MCPREFERENCE_PARTICIPANTS</li>
+<li>CWndMeetingPreferenceParticipants</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id13">
+<h2>2017-05-22<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000305350</dt>
+<dd><ul class="first last simple">
+<li>&#8216;The WebEx application has encountered a problem and needs to close&#8217; during the meeting</li>
+<li>mutiltpd!CRlbConnTCPClient::OnTimer</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCve20228, (CFD::CSCve20228)</dt>
+<dd><ul class="first last">
+<li><p class="first">wrong user type for attenee in attandance report.</p>
+</li>
+<li><dl class="first docutils">
+<dt>After checked with team, we think it is Not A bug.</dt>
+<dd><ul class="first last simple">
+<li>Attendee detail report only treat the user as ?Panelist? when the user being invited as panelist in EC scheduler page, all other attendees will treat as ?Attendee?.</li>
+<li>Applicate don&#8217;t save the user type change status in meeting;</li>
+<li>Even if we can change code to save it, but If one user are changing from ?Attendee? to ?Panelist?, then to ?Attendee?, it is not easy to know what is the right user type for the user.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] P3-SR 682283032, (CFD::CSCvd97856)</dt>
+<dd><ul class="first last simple">
+<li>CWMS 2.7MR2 patch 4 client can&#8217;t input Japanese character directly on chat window, BEMS616773, Clients</li>
+<li>after upgrading to CWMS 2.7MR2 Patch 4, the transformation window is displayed on the left-upper side (not in the chat window, as it was on previous versions).</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCve36558</dt>
+<dd><ul class="first last">
+<li><p class="first">wrong flag Ireland</p>
+</li>
+<li><dl class="first docutils">
+<dt>Country Code ID</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://countryid.com/">http://countryid.com/</a></li>
+<li><a class="reference external" href="http://www.nationsonline.org/oneworld/international-calling-codes.htm">http://www.nationsonline.org/oneworld/international-calling-codes.htm</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>GTC number format</dt>
+<dd><ul class="first last simple">
+<li>% split TCALLINNUMBER item</li>
+<li>&#64; split, number, country name, country id, bTollFree</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CSmHybridAudioMgr::ParseGTCNumberItem</li>
+<li>Global Call-In Numbers for This Meeting</li>
+<li>IDD_MANAGE_GLOBAL_CALLIN</li>
+<li>CWCLReskin::ShowGlobalCallInDlg</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CGlobalCallInNumbersDlg</dt>
+<dd><ul class="first last simple">
+<li>ITelephoneFunc::GetCallinTeleInfo</li>
+<li>CSmAudioStatusWrapper::GetCallinTeleInfo</li>
+<li>CWndCustomlistview</li>
+<li>CWndListview</li>
+<li>CBitmapCountryFlag, pfwres.dll, IDB_BITMAP_COUNTRY_FLAGS, conutry_flags.bmp</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000279539</dt>
+<dd><ul class="first last">
+<li><p class="first">T30.4.4 capgroup.w.c  atmgr memory error when disconnecting from meetings</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>RestartAtMgrForUpdateIEPlugin</li>
+<li>GetServiceType</li>
+<li>CAtmgrUpdateIEPluginHelper::RunInUpdateIEPluginMode</li>
+<li>CMDLINE_UPDATE_IEPLUGIN, /UpdateIEPlugin</li>
+<li>CAtmgrUpdateIEPluginHelper::RunInStartUpdateIEPluginMode</li>
+<li>CMDLINE_START_UPDATE_IEPLUGIN, /StartUpdateIEPlugin</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000288837</dt>
+<dd><ul class="first last simple">
+<li>the client crash when the user join the meeting</li>
+<li>Deployment issue</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id14">
+<h2>2017-05-08<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000261105</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>ARM</dt>
+<dd><ul class="first last simple">
+<li>CAtConfAgent::TryAvailablePingSvr</li>
+<li>GCC_Provider::ping_request</li>
+<li>GCC_Ping_Mgr::notify_ping_confirm</li>
+<li>GCC_Provider_Impl::notify_ping_confirm</li>
+<li>GCC_Node_Controller_SAP_Sink::on_ping_confirm</li>
+<li>CAtConfAgent, public GCC_Node_Controller_SAP_Sink</li>
+<li>CAtConfAgent::on_ping_confirm</li>
+<li>CAtConfAgent::m_wAgentEngine = AGENT_TRYCB_TIMER</li>
+<li>CAtConfAgent::Heartbeat</li>
+<li>CAtConfManager::StartCBAgent</li>
+<li>CAtConfAgent::RetryCBConnection</li>
+<li>CAtConfAgent::TryAvailableCBSvr</li>
+<li>GCC_Provider::conference_join_request</li>
+<li>CAtConfAgent::on_conference_join_confirm</li>
+<li>GCC_RESULT_CONNECTION_UNSUCCESSFUL, 5</li>
+<li>::OnConfJoinConfirm(CONF_ERROR_DISCONNECT</li>
+<li>CAtConfManager::CleanUpConnection</li>
+<li>CAtConfAgent::m_wAgentEngine = AGENT_PING_TIMER</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000259210</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Keypoints</dt>
+<dd><ul class="first last simple">
+<li>CMCMMPSessionMgr::OnCacheDataUpdated</li>
+<li>CMCMMPSessionMgr::SetURL</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>web browser control</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blogs.msdn.microsoft.com/patricka/2015/01/12/controlling-webbrowser-control-compatibility/">https://blogs.msdn.microsoft.com/patricka/2015/01/12/controlling-webbrowser-control-compatibility/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Root cause</dt>
+<dd><ul class="first last simple">
+<li>HKEY_LOCAL_MACHINESOFTWAREPoliciesMicrosoftWindowsCurrentVersionInternet Settings</li>
+<li>Security_HKLM_only=dword:00000001</li>
+<li>after this REG is set, the web browser control read the REG config only from HKEY_LOCAL_MACHINE</li>
+<li>Download IEDigest from: <a class="reference external" href="https://www.microsoft.com/en-us/download/details.aspx?id=51694">https://www.microsoft.com/en-us/download/details.aspx?id=51694</a></li>
+<li>Download(Need to install) Fiddler from <a class="reference external" href="http://www.fiddler2.com/fiddler2/">http://www.fiddler2.com/fiddler2/</a></li>
+<li>Download Process Monitor from <a class="reference external" href="https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx">https://technet.microsoft.com/en-us/sysinternals/processmonitor.aspx</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CDlgShareMultimedia</dt>
+<dd><ul class="first last simple">
+<li>IDC_STATIC_SHARE_MULTIMEDIA_NOTE</li>
+<li>IDD_MANAGE_SHARE_MULTIMEDIA</li>
+<li>pServiceMgr-&gt;ShareMultimedia</li>
+<li>CMCServiceMgr::ShareMultimedia</li>
+<li>CMCMMPSessionMgr::SetURL</li>
+<li>MEDIA_VIEW_CACHE_NAME</li>
+<li>PFW_SESSION_TYPE_MMP</li>
+<li>CIECntrWnd::SetURL</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000281442</dt>
+<dd><ul class="first last simple">
+<li>Unable to click on the start Webcam button</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000282685</dt>
+<dd><ul class="first last simple">
+<li>the video button is not enabled when video session is joined successfully and camera detected</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000272041, (CFD::CSCve20228)</dt>
+<dd><ul class="first last">
+<li><p class="first">Panelist can&#8217;t answer the question from attendee in EC session</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCve20228">https://cdetsng.cisco.com/webui/#view=CSCve20228</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>How to reproduce</dt>
+<dd><ul class="first last simple">
+<li>Join the meeting as Attendee</li>
+<li>Host promote some attendee to Panelist.</li>
+<li>Start QA session in meeting and sent to panlelist and host</li>
+<li>Check the meeting in activity report</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id15">
+<h2>2017-05-02<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvd77855</dt>
+<dd><ul class="first last">
+<li><p class="first">CSCvd84327</p>
+</li>
+<li><p class="first">T31.11.2 Unable to maximize meeting win when secondary monitor resolution is higher than primary</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-framework-reskin/pull-requests/406/commits/6ad5cb33b50af564d8ddfbdaf67701d6336265bc">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-framework-reskin/pull-requests/406/commits/6ad5cb33b50af564d8ddfbdaf67701d6336265bc</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CPfwMainFrame::OnGetMinMaxInfo</li>
+<li>//lpMMI-&gt;ptMaxSize.x = GetSystemMetrics(SM_CXFULLSCREEN) + GetSystemMetrics(SM_CXDLGFRAME);</li>
+<li>//lpMMI-&gt;ptMaxSize.y = GetSystemMetrics(SM_CYFULLSCREEN) + GetSystemMetrics(SM_CXDLGFRAME) + GetSystemMetrics(SM_CYCAPTION);</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000272682, (CFD::CSCve12714)</dt>
+<dd><ul class="first last">
+<li><p class="first">You cannot join the event because another attendee has already joined using this registration ID.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key ponts</dt>
+<dd><ul class="first last simple">
+<li>CONF_CONTEXT_USER_RID_MEETING</li>
+<li>CAtConfManagerImpl::SetRegIDStatus</li>
+<li>CAtConfManagerImpl::GetRegIDStatus</li>
+<li>commit id: d46edfa380 &#64;2017-01-20, refactored interface according to jason&#8217;s feedback</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Test account</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="mailto:ariel/P&#37;&#52;&#48;ss123">ariel/P<span>&#64;</span>ss123</a>, Ariel Wu <a class="reference external" href="mailto:ariel8&#37;&#52;&#48;qa&#46;webex&#46;com">ariel8<span>&#64;</span>qa<span>&#46;</span>webex<span>&#46;</span>com</a></li>
+<li><a class="reference external" href="mailto:lyn/P&#37;&#52;&#48;ss123">lyn/P<span>&#64;</span>ss123</a>, Lyn Chen <a class="reference external" href="mailto:lyn&#37;&#52;&#48;qa&#46;webex&#46;com">lyn<span>&#64;</span>qa<span>&#46;</span>webex<span>&#46;</span>com</a></li>
+<li><a class="reference external" href="mailto:nick/P&#37;&#52;&#48;ss123">nick/P<span>&#64;</span>ss123</a>, Nick Zhang      <a class="reference external" href="mailto:nick&#37;&#52;&#48;qa&#46;webex&#46;com">nick<span>&#64;</span>qa<span>&#46;</span>webex<span>&#46;</span>com</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id16">
+<h2>2017-04-24<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] INC000000017298</dt>
+<dd><ul class="first last simple">
+<li>Meeting Centers, High, Service Restored, CB servers alerts on Cls-AB and ED1VACB342</li>
+<li>“12000005”: It’s GCC_RESULT_CONNECTION_UNSUCCESSFUL.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000269796, (CFD::CSCve08717)</dt>
+<dd><blockquote class="first">
+<div><ul>
+<li><p class="first">Joining a meeting and WEBEX crashes.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Commit by Baifer Yu &#64;2017-03-15, fix cscvd56899 and cscvd52828</dt>
+<dd><ul class="first last simple">
+<li>commit id: b4338535</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What’s the problem?</dt>
+<dd><ul class="first last simple">
+<li>JBH meeting and docshow parameters “WBXHybridFlag” was 0, attendee join meeting will encounter this issue.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<ul class="simple">
+<li>This issue introduced at release/32.1.0.</li>
+</ul>
+</div></blockquote>
+<ul class="last">
+<li><dl class="first docutils">
+<dt>What’s the solution?</dt>
+<dd><ul class="first last simple">
+<li>Correct the session type: APPSVR_SESSIONTYPE_TELEPHONY_HYBRID =&gt; APPSVR_SESSIONTYPE_TELEPHONY</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What’s the root cause?</dt>
+<dd><ul class="first last simple">
+<li>Engineer copied following code, he modified the class type (CSmHybridAudioMgr =&gt; CSmTelephonyMgr) but forgot to modify the session type</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000260111</dt>
+<dd><ul class="first last simple">
+<li>GM BSOD when joining a WebEx meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] Phone drop from meeting</dt>
+<dd><ul class="first last simple">
+<li>Phone drop from meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCvd97856</dt>
+<dd><ul class="first last">
+<li><p class="first">T31.11 2 byte characters such as Japanese cannot be inputted directly in chat space</p>
+</li>
+<li><p class="first">Introduce by Reskin</p>
+</li>
+<li><dl class="first docutils">
+<dt>IME WM_IME_CONTROL</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/cc195101.aspx">https://msdn.microsoft.com/en-us/library/cc195101.aspx</a></li>
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/aa768126(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa768126(v=vs.85).aspx</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>candidate windows are always on top-left corner of Mozilla window.</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://bugzilla.mozilla.org/show_bug.cgi?id=283136">https://bugzilla.mozilla.org/show_bug.cgi?id=283136</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="http://m.blog.csdn.net/article/details?id=17322131">http://m.blog.csdn.net/article/details?id=17322131</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Code commit</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-wcl/commits/ac112fc2dafe2f1d7cfe1b2d714739415a9b8864">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-wcl/commits/ac112fc2dafe2f1d7cfe1b2d714739415a9b8864</a></li>
+<li><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-wcl/commits/72b124468cc58a1b085801aa4c71b1504615433a">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-wcl/commits/72b124468cc58a1b085801aa4c71b1504615433a</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">[D] CSCvd97741</p>
+</li>
+<li><dl class="first docutils">
+<dt>[D] join meeting by approve with PT the client keep 2 windows.</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCve01138">https://cdetsng.cisco.com/webui/#view=CSCve01138</a></li>
+<li>Introduced by CSCvd84297 fix</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id17">
+<h2>2017-04-17<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000257688</dt>
+<dd><ul class="first last simple">
+<li>Unable to click on connect to audio in meeting</li>
+<li>docshow parameters: TeleConfParam</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000260834, (CFD::CSCvd97856)</dt>
+<dd><ul class="first last simple">
+<li>T31.11 2 byte characters such as Japanese cannot be inputted directly in chat space</li>
+<li>WCL.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000260424</dt>
+<dd><ul class="first last simple">
+<li>SYMC CAP:  3 minute media time out</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000256871</dt>
+<dd><ul class="first last">
+<li><p class="first">Webcam icon isn&#8217;t seen intermittently in the meeting</p>
+</li>
+<li><dl class="first docutils">
+<dt>This issue had been fixed</dt>
+<dd><ul class="first last simple">
+<li>release32.1.0</li>
+<li>CSmDefUserMgr2::UpdateAllUsers</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">GetVideoCameraStatus</p>
+</li>
+<li><dl class="first docutils">
+<dt>CVUIActiveMainSelfVideoPort</dt>
+<dd><ul class="first last simple">
+<li>CVUIVideoPortView</li>
+<li>VUI_HIDE_MYSELFVIDEO_BTN_ID</li>
+<li>WM_HIDEMYSELFVIDEO</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CVUIShowSelfBtnObjectT::ShowMySelfVideoBtn</dt>
+<dd><ul class="first last simple">
+<li>CPfwDirectUI_Button</li>
+<li>CPfwDirectUI</li>
+<li>WBXUI_RENDER_STYLE_HIDDEN</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">IDC_PLIST_SELF_BAR_VIDEO_BTN</p>
+</li>
+<li><p class="first">CParticipantItemButton</p>
+</li>
+<li><dl class="first docutils">
+<dt>CWndParticipantlistContainer::VideoStatusChanged</dt>
+<dd><ul class="first last simple">
+<li>CWndParticipantlistContainer::OnVideoStatusChanged</li>
+<li>CWndParticipantItem::SetVideoIconStatus</li>
+<li>CWndParticipantItem::ChangeVideoIconStaus</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmDefUserMgr2::UpdateAllUsers</dt>
+<dd><ul class="first last simple">
+<li>CSmDefUserMgr2::OnIdle</li>
+<li>CSmDefUserMgr2::RealUpdateAllUser</li>
+<li>CSmConnectionPointContainer::Fire_OnAllUsersUpdated, dwReasons=1024</li>
+<li>CPListUserMgr::OnAllUsersUpdated</li>
+<li>CWndParticipantItem::SetVideoIconStatus</li>
+<li>CWndParticipantItem::ChangeVideoIconStaus</li>
+<li>REASON_ENABLE_VIDEO, 1024</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000254813</dt>
+<dd><ul class="first last">
+<li><p class="first">Unable to connect VoIP intermittently.</p>
+</li>
+<li><dl class="first docutils">
+<dt>JoinWithVOIP</dt>
+<dd><ul class="first last simple">
+<li>TONE_TYPE_BEEP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>OnVoIPUserEnrollConfirm</dt>
+<dd><ul class="first last simple">
+<li>SESSION_CALLIN_FAIL</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CMMHybridClientSink</dt>
+<dd><ul class="first last simple">
+<li>OnSessionStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id18">
+<h2>2017-04-10<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000253382</dt>
+<dd><ul class="first last">
+<li><p class="first">Audio Broadcast stopped working</p>
+</li>
+<li><p class="first">wbxtra_03082017_084814.wbt, matches with the Conf ID: 1759174696 .</p>
+</li>
+<li><p class="first">Logs are located under <a class="reference external" href="https://cisco.box.com/s/8ruksvrfcbb9y7xio2ahr7zsdlbno0nl">https://cisco.box.com/s/8ruksvrfcbb9y7xio2ahr7zsdlbno0nl</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>PFW_SESSION_TYPE_AUDIOSTREAM</li>
+<li>CSmAudioStreamMgr</li>
+<li>CECAudioStreamMgr</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000259319</dt>
+<dd><ul class="first last simple">
+<li>Customer is unable to join the Audio using Call using computer option which spins at</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000259799</dt>
+<dd><ul class="first last simple">
+<li>T30L10NSP6EP6</li>
+<li>CTCServiceMgr::OnUserChangeIndicationByService</li>
+<li>TS performance issue</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000258264</dt>
+<dd><ul class="first last simple">
+<li>cannot start the another SC session even when host ended the session</li>
+<li>mutiltpd.dll block the main thread more than 2s when leave conference</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000242517</dt>
+<dd><ul class="first last simple">
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000251891</dt>
+<dd><ul class="first last">
+<li><p class="first">US41938</p>
+</li>
+<li><dl class="first docutils">
+<dt>Call Flow</dt>
+<dd><ul class="first last simple">
+<li>CSmNBRSessionMgr2::OnIdle</li>
+<li>CSmNBRSessionMgr2::GetConnectState</li>
+<li>CSmNBRSessionMgr2::GetVideoStatus</li>
+<li>CSmSvcVideoSessionMgr::IsMMPReconnecting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IDS_NBR2_CONNECT_ERROR_LOST_VIDEO_CONNECTION</dt>
+<dd><ul class="first last simple">
+<li>Your video is not being recorded</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmSvcVideoSessionMgr::OnVideoSessionStatus</dt>
+<dd><ul class="first last simple">
+<li>MM_VIDEO_SESSION_DISCRIPTION_NETWORK_ERROR</li>
+<li>MMT_VIDEO_SESSION_LEAVE</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmSvcVideoSessionMgr::OnVideoSessionStatus</dt>
+<dd><ul class="first last simple">
+<li>MMT_VIDEO_SESSION_JOIN_FAIL</li>
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmSvcVideoSessionMgr::OnVideoReconnectStart</dt>
+<dd><ul class="first last simple">
+<li>m_bMMPReconnecting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmSvcVideoSessionMgr::OnVideoReconnectFailed</dt>
+<dd><ul class="first last simple">
+<li>m_pMPPDisconnected</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmSvcVideoSessionMgr::OnNBRStatus</dt>
+<dd><ul class="first last simple">
+<li>MM_NBR_VIDEO_EVENT_RECORING_ERROR</li>
+<li>m_bMMPDisconnected</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id19">
+<h2>2017-04-05<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000254388</dt>
+<dd><ul class="first last simple">
+<li>Meeting Center steals the focus while users attempt to use other applications on their computer</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000255787, (CFD::CSCvd84297)</dt>
+<dd><ul class="first last">
+<li><p class="first">T31.11 crash webexmgr.dll</p>
+</li>
+<li><dl class="first docutils">
+<dt>Keypoints</dt>
+<dd><ul class="first last simple">
+<li>CMCDocViewSessionMgr::InitMeetingInfoNotHybridSubscriberAccessCode</li>
+<li>m_pServiceMgr == Null</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000254665</dt>
+<dd><ul class="first last simple">
+<li>After WebEx loads 100% seems like it is frozen for up to a minute before everything works as normal</li>
+<li>GCC_Ping_Mgr::ping_request</li>
+<li>on_ping_confirm</li>
+<li>CAtConfManager::StartCBAgent</li>
+<li>CAtConfAgent::RetryCBConnection</li>
+<li>CAtConfAgent::TryAvailableCBSvr</li>
+<li>GCC_Conference::on_conference_create_confirm</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000256357</dt>
+<dd><ul class="first last">
+<li><p class="first">Unable to share PDF file in a WebEx Meeting</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>IDS_PD_SHARE_WARNING_P</li>
+<li>CPcmDocViewMgr::GlobalCallBack</li>
+<li>PD_CB_EVENT_NO_PRINTER</li>
+<li>CPcmDocViewMgr::OnGCBEventNoPrinter</li>
+<li>CSmDocViewSessionMgr::OnEventNoPrinter</li>
+<li>CPDAppShareDlg::SetInfo</li>
+<li>CPcmDocViewContainer</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id20">
+<h2>2017-03-27<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvd60475</dt>
+<dd><ul class="first last">
+<li><p class="first">Webex usage to invoice mismatch Jan 2017</p>
+</li>
+<li><dl class="first docutils">
+<dt>CMCServiceMgr::Initialize</dt>
+<dd><ul class="first last simple">
+<li>IDS_MULTI_CLIENT_JOIN_TITLE</li>
+<li>IDS_MC_MULTI_CLIENT_JOIN_WARNING</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CWndMessageBoxBase</p>
+</li>
+<li><dl class="first docutils">
+<dt>CECServiceMgr::Initialize</dt>
+<dd><ul class="first last simple">
+<li>IDS_EVENT_MULTI_CLIENT_JOIN_WARNING</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Windows,  MC, EC and TC</dt>
+<dd><ul class="first last simple">
+<li>Set the Cancel as the default button in duplicate join warning dialog.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">release/31.13.0 and master</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000254741</dt>
+<dd><ul class="first last">
+<li><p class="first">the customer can&#8217;t use his audio divice to join VOIP and can&#8217;t load mac.dll from the wbxtracer.</p>
+</li>
+<li><p class="first">Cause by MEDIASSION.dll and TP.dll</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://support.microsoft.com/en-us/help/3179560/update-for-visual-c-2013-and-visual-c-redistributable-package">https://support.microsoft.com/en-us/help/3179560/update-for-visual-c-2013-and-visual-c-redistributable-package</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://cisco.box.com/s/u86vrdsvenk7oq3hkkm496m94p3489eu">https://cisco.box.com/s/u86vrdsvenk7oq3hkkm496m94p3489eu</a></p>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.removeonline.com/fix-api-ms-win-core-winrt-string-l1-1-0-dll-is-missing-and-not-found-errors/">http://www.removeonline.com/fix-api-ms-win-core-winrt-string-l1-1-0-dll-is-missing-and-not-found-errors/</a></dt>
+<dd><ul class="first last simple">
+<li>System File Checker or Sfc.exe is a Mircrosoft Windows utility.</li>
+<li>This Windows utility will scan and restore your API-MS-WIN-CORE-WINRT-STRING-L1-1-0.DLL corrupt, missing or deleted Windows system files.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000254542</dt>
+<dd><ul class="first last simple">
+<li>Customer is unable to join using VoIP</li>
+<li>PFW_SESSION_MASK_APPLICATION_AUDIO</li>
+<li>CPfwServiceMgr::SetSessionMask</li>
+<li>CSmAudioSessionMgr::CheckAudioStartVoip</li>
+<li>_EXT_JMFERR_StdDownloadExt_FALSE, StdDownloadExt return False</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000243420</dt>
+<dd><ul class="first last simple">
+<li>Webex meeting was disconnected</li>
+<li>atmgr.exe!MC_RunMessageLoop() Line 359 C++</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id21">
+<h2>2017-03-20<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000254104</dt>
+<dd><ul class="first last simple">
+<li>VoIP fails to load and the user receives error 65008</li>
+<li>You set debug option in registry, maybe cause unexpect</li>
+<li>CMmSVideoClient::UpdateVideoCCMetrics</li>
+<li>GetIniFileUrl</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000253691</dt>
+<dd><ul class="first last simple">
+<li>Several users lost ability to use MMP video in session</li>
+<li>CMCOptionMgr::NotifyOptionChange dwOption</li>
+<li>CAtConfAgent::on_session_close_indication,conference</li>
+<li>Meeting Options</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000253440</dt>
+<dd><ul class="first last">
+<li><p class="first">Audio Services / Audio Broadcasting Outage - Rbc.webex.com</p>
+</li>
+<li><p class="first">GCC_RESULT_INVOKE_APPSVR_TIMEOUT, 107</p>
+</li>
+<li><dl class="first docutils">
+<dt>Keypoints</dt>
+<dd><ul class="first last simple">
+<li>CECUIMgr::OnCommunicateMenuPopupForHybrid</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CECUIMgr::UpdateTeleConfMenuStatus4Hybrid</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000254135, (CFD::CSCvd52936)</dt>
+<dd><ul class="first last">
+<li><p class="first">confID 55915843714857052 - shows TP participant</p>
+</li>
+<li><dl class="first docutils">
+<dt>IsSupportVideoCall</dt>
+<dd><ul class="first last simple">
+<li>_SUPPORT_NEW_VIDEOCALLBACK</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">GetCallTPJsonStr</p>
+</li>
+<li><p class="first">BTS site</p>
+</li>
+<li><p class="first">Media Fashion</p>
+</li>
+<li><p class="first">Video Callback</p>
+</li>
+<li><p class="first">endpointDisplayName</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/EUREKA/Media+Fusion+Video+Callback+Interface">https://wiki.cisco.com/display/EUREKA/Media+Fusion+Video+Callback+Interface</a></p>
+</li>
+<li><p class="first">CPfwServiceMgr::CallTP</p>
+</li>
+<li><p class="first">CallTPDeviceByCB</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] MMP performance test, can&#8217;t join meeting</dt>
+<dd><ul class="first last simple">
+<li>From Hong Liu</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id22">
+<h2>2017-03-13<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvd39982</dt>
+<dd><ul class="first last simple">
+<li>CSCvc83497</li>
+<li>global call-in link only not display in customer&#8217;s info tab in the meeting</li>
+<li>Key point</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000250962</dt>
+<dd><ul class="first last">
+<li><p class="first">global call-in link only not display in customer&#8217;s info tab in the meeting</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key docshow parameters</dt>
+<dd><ul class="first last simple">
+<li>QSTemplateURL</li>
+<li>TSPGlobalNumURL</li>
+<li>TSPGlobalNumLabel</li>
+<li>TSPGLOBALCALLINFLAG</li>
+<li>MP_FLAG</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key point</dt>
+<dd><ul class="first last simple">
+<li>GetTSPGlobalCallinNumURL</li>
+<li>GetTSPGlobalCallinNumFlag</li>
+<li>CMCDocViewSessionMgr::GetTeleInstructions</li>
+<li>CMCDocViewSessionMgr::InitMeetingInfo</li>
+<li>CMCDocViewSessionMgr::InitMeetingInfoMPShowTele</li>
+<li>CMCDocViewSessionMgr::SetPDLinkButtonStyle</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id23">
+<h2>2017-03-06<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] WO0000000245864</dt>
+<dd><ul class="first last">
+<li><p class="first">Host unable to view the video shared by attendees</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CWndParticipantlistContainer::AdjustMainVideoPanel</li>
+<li>CWndParticipantlistContainer::LayoutUI</li>
+<li>CWndParticipantlistContainer::AdjustParticipantList</li>
+<li>CWndParticipantlistContainer::ShowMainVideoView</li>
+<li>CMainFrameWrapper::ShowRealVideoPanelView</li>
+<li>CWindowVideoUIMgr::ShowMainVideoPanelView</li>
+<li>CMCPListVideoPanel::StartVideoView</li>
+<li>WM_AFTER_SHOW_HIDE</li>
+<li>CMCPListVideoPanel::OnAfterShowHide</li>
+<li>CVUIActiveMainVideoPort::UpdateActiveVideo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000246366</dt>
+<dd><ul class="first last simple">
+<li>Webex application crash</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000248456</dt>
+<dd><ul class="first last simple">
+<li>Improper use of telephony international callbacks</li>
+<li>ibm2.webex.com</li>
+<li>2637 audio callback, 2637 SMS</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id24">
+<h2>2017-02-28<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] CSCvd05951, (CFD::CSCvd05951)</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://hbt31-ns.qa.webex.com/">https://hbt31-ns.qa.webex.com/</a> <a class="reference external" href="mailto:lyn/P&#37;&#52;&#48;ss123">lyn/P<span>&#64;</span>ss123</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://wdc.webex.com/wdc/globalcallin.php?serviceType=MC&amp;ED=485011217&amp;tollFree=1">https://wdc.webex.com/wdc/globalcallin.php?serviceType=MC&amp;ED=485011217&amp;tollFree=1</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="http://mail.qa.webex.com">http://mail.qa.webex.com</a></p>
+</li>
+<li><p class="first">CCA: Cloud Connected Audio</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>ShowInviteRemindDlg</li>
+<li>CSmQuickStartSessionMgr::ShowInviteRemindDlg</li>
+<li>CDlgInviteRemind:</li>
+<li>CDlgInviteRemind::OnSendMail</li>
+<li>CInviteRemindWrapper::SendEmail</li>
+<li>CSmDocViewSessionMgr::SendMailUseWebEx</li>
+<li>CInviteRemindWrapper::SendMailComplete</li>
+<li>CSmDocViewSessionMgr::UpdateInviteList</li>
+<li>CSmDocViewSessionMgr::OnQSXMLFileDownloaded</li>
+<li>AppDataRoamingwebexQSXMLFile.dat</li>
+<li>SendInviteMailURL</li>
+<li>Global call-in numbers</li>
+<li>CSmDocViewSessionMgr::GetQuickStartInfoXMLFromFile</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] CSCvc90991, (CFD::CSCvc90991)</dt>
+<dd><ul class="first last">
+<li><p class="first">How to enable and disable MQD feature</p>
+</li>
+<li><dl class="first docutils">
+<dt>MQD basic metric</dt>
+<dd><ul class="first last simple">
+<li>low volume</li>
+<li>echo</li>
+<li>noisy</li>
+<li>microphone</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MQD component</dt>
+<dd><ul class="first last simple">
+<li>MQD decision layer</li>
+<li>MQD data collect layer</li>
+<li>MQD UI layer</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MQD relevant module</dt>
+<dd><ul class="first last simple">
+<li>mac.dll</li>
+<li>WbxMQDUIManager.cpp</li>
+<li>audio qulity detect</li>
+<li>WME</li>
+<li>Windows client UI</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>HCC_INFO_VOIP_MQD_NORMAL</li>
+<li><a href="#id46"><span class="problematic" id="id47">IDS_MQD_QUALITY_</span></a></li>
+<li>HCC_INFO_VOIP_MQD_SCORE</li>
+<li>CSmFITUIMgr::ShowMQDTip</li>
+<li>CSmFITUIMgr::OnPfwNotifyGetAudioIconBubbleInfo</li>
+<li>CSmHybridAudioMgr::OnInfoChangeIndication MQD Status</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">[P] WO0000000240975</p>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000236572</dt>
+<dd><ul class="first last">
+<li><p class="first">Pure call in show as Spanish language: such as:  not call_in_11 but Usuario de llamada entrante_11</p>
+</li>
+<li><p class="first">Super Admin =&gt; Docshow =&gt; TA</p>
+</li>
+<li><p class="first">TSSecParams</p>
+</li>
+<li><dl class="first docutils">
+<dt>From Avinash Vinu &lt;<a class="reference external" href="mailto:avinu&#37;&#52;&#48;cisco&#46;com">avinu<span>&#64;</span>cisco<span>&#46;</span>com</a>&gt;</dt>
+<dd><ul class="first last simple">
+<li>Customer has agreed on this.</li>
+<li>Customer has updated to close the case.</li>
+<li>Thanks everyone for the support on this case.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000237796</dt>
+<dd><ul class="first last simple">
+<li>The host of the following meeting insist that one of her participants (Bernd Justen) was not muted upon entry after joining the teleconference (everyone else was muted).</li>
+<li>Code to test</li>
+<li>Check &#8220;Mute upon entry for all participants&#8221; when schedule meeting</li>
+<li>IDC_MANAGE_ATTENDEE_LIST, 11249, CDlgAttendeeList</li>
+<li>CECAttendeeListDlg</li>
+<li>CECAttendeeListForHostDlg</li>
+<li>CECUserMgr::GetAttendeesArray</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000235001, (M::VOIP), (F::MQD)</dt>
+<dd><ul class="first last">
+<li><p class="first">People with a Jabra or Plantronics speakerphone would face error every time they unmute</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CHCCVoIPService::OnMQDInfo, MQD_INFO_SPEECHLVL</li>
+<li>CMMHybridClientSink::OnMQDInfo</li>
+<li>CSmHybridAudioMgr::OnInfoChangeIndication</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] (CFD::CSCvd05951)</dt>
+<dd><ul class="first last simple">
+<li>CCA globalcallin link redirect to meeting has been cancelled from Join WebEx meeting in progress</li>
+<li>Mail to Aier Huang request more info</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] HD0009415846</dt>
+<dd><ul class="first last">
+<li><p class="first">unable to see the chat in the recording</p>
+</li>
+<li><p class="first">It is about the p-list not able to display the participant properly</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://kb.webex.com/WBX54331">http://kb.webex.com/WBX54331</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Recording info</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://nokiameetings.webex.com/nokiameetings/lsr.php?RCID=05d0ac54666246b984f1de2ea53a4d82">https://nokiameetings.webex.com/nokiameetings/lsr.php?RCID=05d0ac54666246b984f1de2ea53a4d82</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000242201, (M::WME)</dt>
+<dd><ul class="first last simple">
+<li>WebEx client crashes right after a user joins the WebEx meeting, Error- &amp;quot;WebEx application ha</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO-086237, BCG</dt>
+<dd><ul class="first last simple">
+<li>Video session hadn&#8217;t created when host and presenter changed</li>
+<li>APPSVR_SESSIONTYPE_MM_VIDEO</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000243469</dt>
+<dd><ul class="first last simple">
+<li>T31.9.8 Unable to start/join the meeting and getting crashed at 10%</li>
+<li>CPfwServiceMgr::LoadResource, pfwres.dll hadn&#8217;t loaded</li>
+<li><a class="reference external" href="mailto:webex-wclsrcWCLwtwclapp&#46;cpp&#37;&#52;&#48;69">webex-wclsrcWCLwtwclapp<span>&#46;</span>cpp<span>&#64;</span>69</a></li>
+<li>CSmDefUserMgr2::CreateContainer</li>
+<li>pPanelMgr-&gt;m_hWCLRightPanelView hadn&#8217;t been checked if NULL or not</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000229584, CSCvc31346, (CFD::CSCvc34464), (F::VOIP),(M::JMT), (RCA::GPC)</dt>
+<dd><ul class="first simple">
+<li>Unable to join VoIP audio conference</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">issue</span> <span class="n">was</span> <span class="n">caused</span> <span class="n">by</span> <span class="n">GPC</span> <span class="n">download</span> <span class="n">GTC</span> <span class="ow">and</span> <span class="n">QS</span> <span class="n">XML</span> <span class="n">failed</span><span class="o">.</span>
+<span class="n">We</span> <span class="n">had</span> <span class="n">a</span> <span class="n">similar</span> <span class="n">issue</span> <span class="n">WO</span><span class="c1"># WO0000000227555 and fired a bug CSCvc34464.</span>
+<span class="n">This</span> <span class="n">bug</span> <span class="n">was</span> <span class="n">fixed</span> <span class="ow">and</span> <span class="n">verified</span> <span class="n">on</span> <span class="n">T31</span><span class="o">.</span><span class="mf">8.5</span> <span class="n">at</span> <span class="mi">12</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mf">2016.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id25">
+<h2>2017-02-07<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] (CFD::CSCvc85292)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc85292">https://cdetsng.cisco.com/webui/#view=CSCvc85292</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] This problem is because Paul&#8217;s meeting client freeze.</dt>
+<dd><ul class="first last simple">
+<li>WbxUI_IsAeroSupport</li>
+<li>CVUIVideoPort::ConfigurePresenterRenderWhenEnterFIT</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WO0000000238496, (Tom is checking)</dt>
+<dd><ul class="first last simple">
+<li>EC - Low Bandwidth Error from Presenter&#8217;s Camera View after an attendee starts speaking</li>
+<li>pVideoClient-&gt;SelectChiefSender</li>
+<li>CSmSvcVideoSessionMgr::NeedApplytoCC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000233708</dt>
+<dd><ul class="first last simple">
+<li>When doing a screen share the laptop BSODs</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000239289</dt>
+<dd><ul class="first last simple">
+<li>This customer is reporting an intermittent issue that when in a Webex meeting and trying to share from a secondary monitor that the system crashes to the BSOD and reboots the computer. This happens right after he joins into a meeting somewhere between 5 and 25 minutes. The issue always happens when the user tries to share the secondary monitor. It happens even if he has shared successfully and then switched back to sharing from the primary display. The system will still crash.</li>
+<li>Could you please help on this BSOD issue on Dell E7470 with Windows 7 64 bit</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000240362</dt>
+<dd><ul class="first last simple">
+<li>PFW_JMF_ERRORCODE_NOERROR_INITED = 2000</li>
+<li>PFW_JMF_ERRORCODE_NOERROR_UI_INITED = 3000</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] (CFD::CSCvc70793)</dt>
+<dd><ul class="first last simple">
+<li>WO0000000238249</li>
+<li>Host joined before alternate host but the Host role was autonmatically switched to the alternate</li>
+<li><a class="reference external" href="https://www.draw.io/#G0B2Ykfab9ktB2U3NzbUdTMWVuN2s">https://www.draw.io/#G0B2Ykfab9ktB2U3NzbUdTMWVuN2s</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id26">
+<h2>2017-01-22<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000236342</dt>
+<dd><ul class="first last simple">
+<li>since they are facing the issue while joining the voip on this T31 site <a class="reference external" href="https://catechnologies.webex.com">https://catechnologies.webex.com</a>.</li>
+<li>WBXHybridFlag</li>
+<li>TSP VOIP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc82198, (M::NBR), (RCA::HDPI)</dt>
+<dd><ul class="first last simple">
+<li>cannot restrict specific country code rather than US on NBR wizard dialog if TSP+other tel</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc82198">https://cdetsng.cisco.com/webui/#view=CSCvc82198</a></li>
+<li>TSPOtherCountryCodeRestriction</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc82097, (M::NBR), (RCA::HDPI)</dt>
+<dd><ul class="first last simple">
+<li>It doesn&#8217;t work when enable specific option to prevent host to select other country flags</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000239840, (CFD::CSCvc80152)</dt>
+<dd><ul class="first last simple">
+<li>unable to end the meeting. Application crashes.</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc50691">https://cdetsng.cisco.com/webui/#view=CSCvc50691</a></li>
+<li><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-framework-reskin/commits/af1dddbc48cada2735d3abe05fb7f60a0595653e">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-framework-reskin/commits/af1dddbc48cada2735d3abe05fb7f60a0595653e</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000240038</dt>
+<dd><ul class="first last simple">
+<li>31.9.5 B one Win10 user can not join meeting</li>
+<li>PT</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000238505</dt>
+<dd><ul class="first last">
+<li><p class="first">High WebEx CPU Usage when connecting to video using Microsoft Lifecam Cinema USB WebCam</p>
+</li>
+<li><p class="first">CSmDefUIMgr::OpenAVStatisticsDlg</p>
+</li>
+<li><p class="first">PopupDlgMgr.cpp</p>
+</li>
+<li><p class="first">CWndAudioVideoStatistics</p>
+</li>
+<li><p class="first">CAudioVideoStatisUtil::GetAVStaticsInfo</p>
+</li>
+<li><p class="first">CWndAudioVideoStatistics::UpdateData</p>
+</li>
+<li><p class="first">CheckAVStatisticsInfo</p>
+</li>
+<li><p class="first">CAudioVideoStatisticsUtil::SaveLog</p>
+</li>
+<li><p class="first">CMmSVideoClient::OnTimer, Update Quality Report, local: cpuUsage</p>
+</li>
+<li><dl class="first docutils">
+<dt>Work Flow</dt>
+<dd><ul class="first last simple">
+<li>CMmSVideoClient::OnTimer</li>
+<li>m_Timer_Update_Quality_Report</li>
+<li>ISVideoClientSink::OnSpecailEventReport</li>
+<li>MMT_SPECIAL_EVENT_RECORD_VIDEO_QUALITY</li>
+<li>CMmSVideoClient::UpdateQualityRecord</li>
+<li>m_pSVideoClientSink-&gt;OnSpecialEventReport</li>
+<li>CSmSvcVideoSessionMgr::OnSpecailEventReport</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000238111, (CFD::CSCvc41813), (M::WME_Audio)</dt>
+<dd><ul class="first last">
+<li><p class="first">MSO team has confirmed that the user has joined the session but couldn’t join MMP VoIP</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>WBXHybridFlag</li>
+<li>TSPHybridFlag</li>
+<li>HybridType</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id27">
+<h2>2017-01-16<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000238772, (M::GPC)</dt>
+<dd><ul class="first last">
+<li><p class="first">T31.9.5 Meeting stops loading at 10-40%, customer receives error message</p>
+</li>
+<li><p class="first">Proxy Env</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms775145(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/ms775145(v=vs.85).aspx</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>fuzPercentMgr.cpp</dt>
+<dd><ul class="first last simple">
+<li>CPerentManager::GetCurrentPerent()</li>
+<li>CPerentManager::SetPercent()</li>
+<li>CPerentManager::NotifyPoint</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IFuzzyWindowMgr.h</dt>
+<dd><ul class="first last simple">
+<li>FUZZY_PROGRESS_JOIN_STEP</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000238671, (JBH)</dt>
+<dd><ul class="first last simple">
+<li>No VOIP and Video options in the session are missing</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000237850</dt>
+<dd><ul class="first last simple">
+<li>T31.9.5 Melissa said webex crashes when sharing any presentation</li>
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] HD0009324438, (CFD::CSCvc67068), （RCA::QA）</dt>
+<dd><ul class="first last">
+<li><p class="first">T31 MC client grays out Call Me in video callback window when plus is in URI</p>
+</li>
+<li><p class="first">Verified that per RFC 3986, a + character is perfectly valid to have in the user-identifying portion of a SIP URI</p>
+</li>
+<li><p class="first">Conflict with CSCuy54722, discuss with Jeremy Zhang, drop CSCuy54722</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>CTPAddressChecker::IsUserName</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li><em>Enter your video address</em> , L1665</li>
+<li>CCallTPSubWindow::OnCallTPNum</li>
+<li>CAudioMainDlg::CreateTPWindow</li>
+<li>CCallTPSubWindow::Initialize(), m_tpEdit</li>
+<li>CCallTPSubWindow::OnEditTPNumber</li>
+<li>CSmAudioStatusWrapper::IsValidTPAddress</li>
+<li>CTPAddressChecker::Test</li>
+<li>CEMailAddressChecker::IsUserName</li>
+<li>CTPAddressChecker::IsUserName</li>
+<li>CSmAudioStatusWrapper::IsTPAddressBlockByBlackWhiteList</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc66196, (CFD::CSCvc66196), (F::HDPI), (M::ComUI), (RCA::code issue)</dt>
+<dd><ul class="first last simple">
+<li>record button is not enabled after close nbr wizard dailog via X</li>
+<li>Introduced by HDPI</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc64610, (CFD::CSCvc64610),(F::HDPI), (M::ComUI), (RCA::code issue)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>What&#8217;s the problem</dt>
+<dd><ul class="first last simple">
+<li>Unable to record meeting with other teleconference, the drop down to select the country for</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the solution</dt>
+<dd><ul class="first last simple">
+<li>Correct <strong>input parameter (AUDIO_COUNTRY_TYPE_PHONE =&gt; AUDIO_COUNTRY_TYPE_NBR)</strong></li>
+<li>Enhance <strong>CwndCountryCode</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the root cause</dt>
+<dd><ul class="first last simple">
+<li>Wrong parameter</li>
+<li>Wrong code reuse</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id28">
+<h2>2017-01-09<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000235859, CSCvc31346, (CFD::CSCvc34464), (M::GPC)</dt>
+<dd><ul class="first last simple">
+<li>Due to a connection issue, you cannot invite or remind others unless you exit and restart the meeting.</li>
+<li>CSmDocViewSessionMgr::CheckQSXMLFileDownload</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000229664, (M::PD), (RCA::by design)</dt>
+<dd><ul class="first last">
+<li><p class="first">Due to an event capacity limit</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key log</dt>
+<dd><ul class="first last simple">
+<li>SVS sesseion reachs the maximum attendee count</li>
+<li>UserJoinType=3</li>
+<li>Schedule EC meeting and upload UCF file, then attendee join first</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>UpdateMyVideoReceivePrivilegeStatus</li>
+<li>CPfwVideo::EnableReceiveVideoPrivilege</li>
+<li>CECStreamingVideoMgr::ReceivePDCommand</li>
+<li>CSmStreamingVideoMgr::ReceivePDCommand</li>
+<li>IMediaStreamingClient::ReceiveCommand</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CPcmDocViewMgr::GlobalCallBack</li>
+<li>PD_CB_VS_MEDIA_STREAMING_COMMAND</li>
+<li>CPcmDocViewMgr::OnGCBStreamingVideoCommand</li>
+<li>WM_PD_STREAMINGVIDEO_COMMAND</li>
+<li>CSmDocViewSessionMgr::OnStreamingVideoCommand</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000236287, (CFD::CSCvc64610), (F::HDPI), (M::ComUI), (RCA::code issue)</dt>
+<dd><ul class="first last">
+<li><p class="first">Unable to record meeting with other teleconference, the drop down to select the country for</p>
+</li>
+<li><dl class="first docutils">
+<dt>Page Config</dt>
+<dd><ul class="first last simple">
+<li>Site Admin : Edit User =&gt; UnCheck ‘Call-back teleconferencing’</li>
+<li>Super Admin : UnCheck &#8216;Country Code Restriction&#8217;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Root cause</dt>
+<dd><ul class="first last simple">
+<li>CDlgNbrWiz3rdAccount::InitPage</li>
+<li>m_wndPhoneNumber::Initialize</li>
+<li>CwndCountryCode::OnClickedCountry =&gt; IsGlobalCallbackSupport</li>
+<li>error parameters : AUDIO_COUNTRY_TYPE_PHONE =&gt; AUDIO_COUNTRY_TYPE_NBR</li>
+<li>CDlgNbrWizard::OnCancel</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points, T31.10</dt>
+<dd><ul class="first last simple">
+<li>TSPOtherCountryCodeRestrictionFlag</li>
+<li>SetTSPOtherDialoutCountryCodeFlag</li>
+<li>IDW_WINDOW_NBR_WIZARD_REC_TYPE</li>
+<li>CDlgNbrWizard</li>
+<li>CWndNbrWizardTeleType</li>
+<li>CDlgNbrWiz3rdAccount</li>
+<li>CWndCountryImage</li>
+<li>CWndCountryCode</li>
+<li>CSmAudioPhoneWrapper::GetAvailableCountryList</li>
+<li>GetCountryCode: CountryCode</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key points, T30</dt>
+<dd><ul class="first last simple">
+<li>CNbrWiz3rdAccount::CreatePfwAudioCmb</li>
+<li>AddCmbBtnDroplistEx</li>
+<li>CNbrWiz3rdAccount::m_pfwAudioCmb</li>
+<li>CNbrWiz3rdAccount::m_imgListFlags</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id29">
+<h2>2017-01-03<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000234162, (CFD::CSCvc61782), (F::HDPI), (M::ComUI), (RCA::code issue)</dt>
+<dd><ul class="first last">
+<li><p class="first">Unable to disable- &#8216;Allow participants to change the sequence of panels&#8217; option from Event window</p>
+</li>
+<li><p class="first">It can only duplicate on T31.8.5 for windows</p>
+</li>
+<li><p class="first">There is no known bug for this issue from QAs, on T31.8/T31.9 release.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Point</dt>
+<dd><ul class="first last simple">
+<li>CDlgHostPanelManager</li>
+<li>CDlgHostPanelManager::GetIsAllowToManagePanels()</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] CSCvc15286, (CFD::CSCvc15286), (F::NBR), (M::NBR), (RCA::wrong configuration)</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc15286">https://cdetsng.cisco.com/webui/#view=CSCvc15286</a></p>
+</li>
+<li><p class="first">CWMS automatic recording feature is not work</p>
+</li>
+<li><p class="first">Page side checked <strong>Record this meeting</strong> box, but page pass docshow parameter to client is 0</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Ponits</dt>
+<dd><ul class="first last simple">
+<li>CSmNBRSessionMgr2::OnHostChanged</li>
+<li>CSmNBRSessionMgr2::OnHostChanged NBR autostart</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow Parameter</dt>
+<dd><ul class="first last simple">
+<li>NBRAutoRecording</li>
+<li>NBRForceRecording</li>
+<li>TeleFlag</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Test site and account</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://orionf3vip.qa.webex.com">https://orionf3vip.qa.webex.com</a></li>
+<li><a class="reference external" href="mailto:oradm&#37;&#52;&#48;qa&#46;webex&#46;com">oradm<span>&#64;</span>qa<span>&#46;</span>webex<span>&#46;</span>com</a>  <a class="reference external" href="mailto:P&#37;&#52;&#48;ss123">P<span>&#64;</span>ss123</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id30">
+<h2>2016-12-26<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[W] WO0000000233852, (M::VOIP)</dt>
+<dd><ul class="first last simple">
+<li>No response after selecting &#8216;call using computer&#8217;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000228324, (M::Video), (RCA::Docshow)</dt>
+<dd><ul class="first">
+<li><p class="first">HD Video is not working during sessions</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CMCDocshowMgr::ProcessParameters</li>
+<li>CMCDocshowMgr::ProcessMeetingTypeParam</li>
+<li>CMCDocshowMgr::HandleSessionTypeOptions</li>
+<li>m_pContextMgr-&gt;GetSiteEnableOption : SessionTypeOptions</li>
+<li>m_pContextMgr-&gt;GetPicassoOptions : MtgPanelStatus</li>
+<li>CMCSiteConfigMgr::InitSiteConfig</li>
+<li>CMCSvcVideoSessionMgr::Initialize</li>
+<li>CSmSvcVideoSessionMgr::ChangeSVCExpOption</li>
+<li>CMmSVideoClient::SetSVCExpMode</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Docshow</span> <span class="n">Parameters</span><span class="p">:</span> <span class="n">SessionTypeOptions</span>
+<span class="c1">#define SESSION_TYPE_ENABLE_VIDEO                                      0x02</span>
+<span class="c1">#define SESSION_TYPE_ENABLE_VIDEO_HQ                           0x8000000 //for SVC task, High video quality</span>
+<span class="c1">#define SESSION_TYPE_ENABLE_VIDEO_HD                           0x20000000      //Roni&lt;&lt;FR29 HD Video&lt;&lt;2011.04.11</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc57112, (CFD::CSCvc57112), (F::HDPI), (M::Whiteboard), (RCA::HDPI)</dt>
+<dd><ul class="first">
+<li><p class="first">Whiteboard option shows up in  meeting client</p>
+</li>
+<li><p class="first">Docshow Parameter: WhiteboardSupport</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CWndPdTabPanel::NewWhiteBoardTbn_ShowWindow</li>
+<li>CMCUIMgr::CheckSharingTBStatus</li>
+<li>CWndPdTabPanel::ShowNewWhiteBoardBtn</li>
+<li>CWndPdTabPanel::OnTabNewWhiteboard</li>
+<li>CMCUIMgr::CheckSharingTBStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">Whiteboard</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">show</span> <span class="n">up</span> <span class="ow">in</span> <span class="n">T30</span> <span class="n">sites</span><span class="o">.</span> <span class="n">Issue</span> <span class="n">only</span> <span class="n">occurs</span> <span class="k">with</span> <span class="n">T31</span> <span class="n">clients</span><span class="o">.</span>
+
+<span class="n">Steps</span> <span class="n">to</span> <span class="n">duplicate</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">Open</span> <span class="n">Site</span> <span class="n">Administration</span> <span class="n">page</span>
+<span class="mf">2.</span> <span class="n">Browse</span> <span class="n">to</span> <span class="n">Configuration</span> <span class="o">&gt;</span> <span class="n">Common</span> <span class="n">Site</span> <span class="n">Settings</span> <span class="o">&gt;</span> <span class="n">Session</span> <span class="n">Types</span>
+<span class="mf">3.</span> <span class="n">Create</span> <span class="n">new</span> <span class="n">PRO</span> <span class="n">Session</span> <span class="o">&gt;</span> <span class="n">Disable</span> <span class="n">Whiteboard</span> <span class="o">&gt;</span> <span class="n">Add</span>
+<span class="mf">4.</span> <span class="n">Assign</span> <span class="n">the</span> <span class="n">new</span> <span class="n">session</span> <span class="nb">type</span> <span class="n">to</span> <span class="n">the</span> <span class="n">desired</span> <span class="n">host</span><span class="s1">&#39;s</span>
+<span class="mf">5.</span> <span class="n">Start</span> <span class="n">meeting</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">new</span> <span class="n">session</span> <span class="nb">type</span> <span class="n">host</span>
+
+<span class="n">Expected</span> <span class="n">results</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">Meeting</span> <span class="n">client</span> <span class="n">opens</span> <span class="n">up</span><span class="p">,</span> <span class="ow">and</span> <span class="n">option</span> <span class="k">for</span> <span class="n">Whiteboard</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">show</span> <span class="n">up</span>
+
+<span class="n">Actual</span> <span class="n">results</span><span class="p">:</span>
+       <span class="o">-</span> <span class="n">Meeting</span> <span class="n">client</span> <span class="n">opens</span> <span class="n">up</span><span class="p">,</span> <span class="ow">and</span> <span class="n">option</span> <span class="k">for</span> <span class="n">new</span> <span class="n">whiteboard</span> <span class="n">appears</span>
+       <span class="o">-</span> <span class="n">When</span> <span class="n">users</span> <span class="n">click</span> <span class="n">on</span> <span class="o">+</span><span class="n">New</span> <span class="n">Whiteboard</span> <span class="n">option</span><span class="p">,</span> <span class="n">nothing</span> <span class="n">happens</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc56545 , (CFD::CSCvc56545), (F::HDPI), (M::PList), (RCA::)</dt>
+<dd><ul class="first simple">
+<li>Space between Participant&#8217;s Names and Hand/Camera</li>
+<li>CSCvc38505</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">new</span> <span class="n">design</span> <span class="n">feature</span> <span class="ow">is</span> <span class="n">generating</span> <span class="n">tons</span> <span class="n">of</span> <span class="n">frustration</span> <span class="ow">and</span> <span class="n">complains</span> <span class="kn">from</span> <span class="nn">Nokia.</span>
+<span class="n">They</span> <span class="n">consider</span> <span class="n">this</span> <span class="k">as</span> <span class="n">a</span> <span class="n">Defect</span> <span class="n">since</span> <span class="n">the</span> <span class="n">most</span> <span class="n">important</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Participant</span> <span class="n">Panel</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">participants</span><span class="o">.</span>
+
+<span class="n">As</span> <span class="n">mentioned</span> <span class="ow">in</span> <span class="n">you</span> <span class="n">last</span> <span class="n">email</span><span class="p">,</span> <span class="n">we</span> <span class="n">see</span> <span class="n">that</span> <span class="n">the</span> <span class="n">Function</span> <span class="n">buttons</span> <span class="n">are</span> <span class="n">talking</span> <span class="n">most</span> <span class="n">of</span> <span class="n">the</span> <span class="n">space</span> <span class="n">which</span> <span class="n">create</span> <span class="n">this</span> <span class="n">issue</span><span class="o">.</span>
+<span class="n">What</span> <span class="n">Nokia</span> <span class="ow">is</span> <span class="n">requesting</span> <span class="ow">is</span> <span class="n">that</span> <span class="n">we</span> <span class="n">go</span> <span class="n">back</span> <span class="n">to</span> <span class="n">the</span> <span class="n">original</span> <span class="n">Participant</span> <span class="n">Panel</span> <span class="n">where</span> <span class="n">the</span> <span class="n">Function</span> <span class="n">button</span> <span class="n">was</span> <span class="n">taking</span> <span class="n">much</span> <span class="n">less</span> <span class="n">space</span><span class="p">,</span> <span class="n">allowing</span> <span class="n">users</span> <span class="n">to</span> <span class="n">see</span> <span class="n">the</span> <span class="n">Participant</span> <span class="n">names</span> <span class="n">without</span> <span class="n">stretching</span> <span class="n">it</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000228802</dt>
+<dd><ul class="first last">
+<li><p class="first">wanted to know how to disable how was webex pop up after meeting ends</p>
+</li>
+<li><dl class="first docutils">
+<dt>CMCServiceMgr::ShouldPopSurveyUI</dt>
+<dd><ul class="first simple">
+<li>_wtof</li>
+<li>Use std::strtod to replace</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">char</span><span class="o">*</span> <span class="n">e</span> <span class="o">=</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="nb">int</span> <span class="n">errno</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">std</span><span class="p">::</span><span class="n">strtod</span><span class="p">(</span><span class="n">mystring</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">);</span>
+<span class="k">if</span><span class="p">((</span><span class="n">NULL</span> <span class="o">!=</span> <span class="n">e</span><span class="p">)</span> <span class="o">||</span> <span class="p">(</span><span class="mi">0</span> <span class="o">!=</span> <span class="n">errno</span><span class="p">))</span>
+       <span class="o">//</span><span class="n">fail</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000234320, (CFD::CSCvc56072), (F::JBH), (M::Page),(RCA::Docshow)</dt>
+<dd><ul class="first last">
+<li><p class="first">T30.9 client WebEx Ball Will not pass during meeting center</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc04028">https://cdetsng.cisco.com/webui/#view=CSCvc04028</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc56072">https://cdetsng.cisco.com/webui/#view=CSCvc56072</a></p>
+</li>
+<li><p class="first">Super Admin: Participant can grab presenter role</p>
+</li>
+<li><p class="first">Site Admin: Allow Participants to Share in meetings (MC only)</p>
+</li>
+<li><p class="first">Session Type: Participant can grab presenter role</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>JBH</li>
+<li>Repeat meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000230313,</dt>
+<dd><ul class="first last simple">
+<li>Error on meeting center exit</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000232524, (F::VOIP), (RCA::Docshow)</dt>
+<dd><ul class="first last">
+<li><p class="first">Unable to Join through VOIP</p>
+</li>
+<li><p class="first">WBXHybridFlag=0</p>
+</li>
+<li><dl class="first docutils">
+<dt>This recording introduce how to set these docshow paramerters</dt>
+<dd><ul class="first last simple">
+<li>WBXHybridFlag=0</li>
+<li>TSPHybridFlag=0</li>
+<li>HybridType=0</li>
+<li><a class="reference external" href="https://go.webex.com/go/lsr.php?RCID=cc3a84739c7f41c5a4e400e89ee9668b">https://go.webex.com/go/lsr.php?RCID=cc3a84739c7f41c5a4e400e89ee9668b</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>CAudioMainDlg::OnInitDialog</li>
+<li>CAudioMainDlg::GetInitStatus</li>
+<li>CAudioMainDlg::InitControls</li>
+<li>CSmAudioStatusWrapper::IsShowCallVoIP</li>
+<li>IsVoIPPortionEnabled, m_bVoIPPortionEnabled</li>
+<li>GetHybridTelephoneOnlyFlag, $HybridTelephoneOnlyFlag</li>
+<li>AT::CWclWindow(Item(IDW_PUSHBUTTON_USING_COMPUTER)).ShowWindow(bJoinedMeeting &amp;&amp; m_bIsVoip ? SW_HIDE: SW_SHOW)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc44326, (CFD::CSCvc44326), (F:Video), (M::WME)</dt>
+<dd><ul class="first last simple">
+<li>Site was upgraded to page version 31.7.6 in the last couple of weeks</li>
+<li>since then his Blackmagic Intensity Shuttle for USB 3.0&#8221; capture card connected with usb to the computer no longer shows video to participants during his meetings.</li>
+<li>pass to Keith Yan</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc37774, (CFD::CSCvc37774), (F::NBR),(M::NBR), (RCA::DefautValue)</dt>
+<dd><ul class="first">
+<li><p class="first">Telephony NBR fail to start when privilege change for the meeting host</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CSmNBRSessionMgr2::CloseConnectingDlg(IDCLOSE)</li>
+<li>CSmNBRSessionMgr2::CloseConnectingDlg default value is IDOK</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Call Flow</p>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">LaunchWizard</span>
+<span class="mf">2.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">OnWizardNotify</span>
+<span class="mf">3.</span> <span class="n">NBR_WM_CLOSE_CONNECTING</span>
+<span class="mf">4.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">ShowConnectingDlg</span> <span class="p">(</span><span class="mi">2</span><span class="n">S</span><span class="p">)</span>
+<span class="mf">5.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">OnTelephonyNotify</span>
+<span class="mf">6.</span> <span class="n">NBR_TN_READY</span>
+<span class="mf">7.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">OnTelephonyReady</span>
+<span class="mf">8.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">ConnectTelephony</span>
+<span class="mf">9.</span> <span class="n">CHCCTelephoneService</span><span class="p">::</span><span class="n">NBRRequest</span>
+<span class="mf">10.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">OnTelephonyConnect</span>
+<span class="mf">11.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">Start</span> <span class="p">(</span><span class="n">check</span> <span class="n">timer</span><span class="p">)</span>
+<span class="mf">12.</span> <span class="n">CSmNBRSessionMgr2</span><span class="p">::</span><span class="n">OnIdle</span> <span class="p">(</span><span class="n">m_dwConnectingTick</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc39475, (CFD::CSCvc39475)</dt>
+<dd><ul class="first simple">
+<li>Block network between two meeting zones: zone1 and zone2 and restart mzm in zone1 and zone2 (which is for the meeting not sync in zone1 and zone2)</li>
+<li>Kill wwp process</li>
+<li>TP plus and WebEx host create meeting on a meeting zone respectively(TP plus in zone1,webex host in zone2)</li>
+<li>Jucked</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>Sorry to jump in. I was assigned for this CFD bug to help what exactly happen for customer.
+Would you please help response Lamfung’s question?
+We will base on your confirmation to determine next action.
+
+Here are more information we researched those days:  Jun and myself have reviewed the TA/CB/TPGW server logs for confid:  3243470856,
+we found this conference issue is caused by the TPGW call got disconnected, and CB conference close is due to bug: CSCvc33320,
+which have been fix in Nov release Tahoe3.10.4.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id31">
+<h2>2016-12-19<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000229581, (F::PMR), (), (RCA::ByDesign)</dt>
+<dd><ul class="first">
+<li><p class="first">Computer do not gets locked or goes to Sleep if a PMR meeting is running regardless of the co</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://stackoverflow.com/questions/629240/prevent-windows-from-going-into-sleep-when-my-program-is-running">http://stackoverflow.com/questions/629240/prevent-windows-from-going-into-sleep-when-my-program-is-running</a></p>
+</li>
+<li><p class="first">powercfg /requests</p>
+</li>
+<li><p class="first">CSCuo46601</p>
+</li>
+<li><p class="first">For PMR meeting is a personal room, it is persistent meeting.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::DisablePCSleep, SetThreadExecutionState(ES_CONTINUOUS|ES_SYSTEM_REQUIRED|ES_DISPLAY_REQUIRED)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>Customer’s computer policy is set to go off to Sleep in 5 Minutes if there is no activity.
+If we start a Scheduled meeting and leave the computer idle for 5 Min, the computer goes off to sleep.
+However, if we start a PMR Meeting the computer do not go off to sleep regardless of the system stays Idle for hours.
+This behavior is consistent across multiple versions and sites.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[P] WebEx Error Message, (M::IPv6)</dt>
+<dd><ul class="first last simple">
+<li>From Allison</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000223509, (M::Crash), (RCA::None)</dt>
+<dd><ul class="first last simple">
+<li>T31.5.20 win10  Crash when sharging application or when changing presenter role between participants.</li>
+<li>Had trouble shooting at 2016-12-12, 10PM-12PM</li>
+<li>Customer had updated to T31.8.5 and hadn&#8217;t reproduce, waiting for response</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000229615, (M:JBH)</dt>
+<dd><ul class="first last">
+<li><p class="first">From BCG</p>
+</li>
+<li><p class="first">Sharing option removed during meeting - for all but Presenter</p>
+</li>
+<li><p class="first">For the presenter change request failed at 2016.11.23 07:31:18. It was caused by Presenter Key verification failed on CB. The option (=8) client sent to CB was not match with the option (=3) queried from Page.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key Points</dt>
+<dd><ul class="first last simple">
+<li>SiteConfigExt</li>
+<li>HandleSiteConfigExt</li>
+<li>CPfwServiceMgr::SetUserAsPresenter</li>
+<li>CAtConfManager::SetUserAsPresenter</li>
+<li>CAtConfManagerImpl::SetUserAsPresenter</li>
+<li>CAtConfAgent::SetUserAsHostPresenter</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000231914, (RCA::Design Issue)</dt>
+<dd><ul class="first">
+<li><p class="first">From BCG</p>
+</li>
+<li><p class="first">You are no longer connected to the meeting, Automatically Reconnecting²</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>CMCServiceMgr::ShowAutoReconnectDlg</li>
+<li>CMCServiceMgr::ModalAutoReconnectDlg</li>
+<li>CMCServiceMgr::ShowUnableToConnectDlg</li>
+<li>$SupportPageWaiting</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">What</span><span class="s1">&#39;s the problem:</span>
+<span class="n">When</span> <span class="n">users</span> <span class="k">try</span> <span class="n">to</span> <span class="n">join</span> <span class="n">meeting</span><span class="p">,</span> <span class="n">received</span> <span class="n">error</span> <span class="n">message</span><span class="p">:</span> <span class="s2">&quot;You are no longer connected to the meeting, Automatically Reconnecting&quot;</span>
+
+<span class="n">RCA</span><span class="p">:</span>
+<span class="n">It</span> <span class="ow">is</span> <span class="n">design</span> <span class="n">issue</span> <span class="k">for</span> <span class="n">the</span> <span class="n">sites</span> <span class="n">which</span> <span class="n">have</span> <span class="n">more</span> <span class="n">than</span> <span class="n">one</span> <span class="n">meeting</span> <span class="n">zone</span><span class="o">.</span>
+<span class="n">When</span> <span class="n">two</span> <span class="n">users</span> <span class="k">try</span> <span class="n">to</span> <span class="n">create</span> <span class="n">a</span> <span class="n">meeting</span> <span class="n">at</span> <span class="n">the</span> <span class="n">same</span> <span class="n">time</span><span class="p">(</span><span class="n">send</span> <span class="n">create</span> <span class="n">ping</span> <span class="n">MZM</span> <span class="n">server</span> <span class="k">for</span> <span class="n">JBH</span> <span class="n">meeting</span><span class="p">),</span>
+<span class="n">since</span> <span class="nb">any</span> <span class="n">meeting</span> <span class="n">client</span> <span class="n">will</span> <span class="s1">&#39;ping&#39;</span> <span class="n">MZM</span> <span class="n">servers</span> <span class="n">one</span> <span class="n">by</span> <span class="n">one</span><span class="p">,</span>  <span class="k">if</span> <span class="n">user1</span><span class="s1">&#39;s ping request first reached to zone 1,</span>
+<span class="n">but</span> <span class="n">reached</span> <span class="n">to</span> <span class="n">zone2</span> <span class="n">secondly</span><span class="o">.</span> <span class="n">And</span> <span class="n">user2</span><span class="s1">&#39;s ping request first reached to zone 2, but reached to zone1 secondly.</span>
+<span class="n">These</span> <span class="n">two</span> <span class="n">users</span> <span class="n">will</span> <span class="n">both</span> <span class="n">ping</span> <span class="n">successful</span><span class="p">,</span> <span class="ow">and</span> <span class="n">per</span> <span class="n">MZM</span> <span class="s1">&#39;s split meeting protection mechanism,</span>
+<span class="n">it</span> <span class="n">will</span> <span class="k">return</span> <span class="n">conference_not_ready</span> <span class="k">for</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">create</span> <span class="n">meeting</span> <span class="n">ping</span> <span class="n">on</span> <span class="n">the</span> <span class="n">same</span> <span class="n">meeting</span><span class="p">,</span>
+<span class="n">then</span> <span class="n">user1</span> <span class="ow">and</span> <span class="n">user2</span> <span class="n">will</span> <span class="n">also</span> <span class="n">both</span> <span class="n">get</span> <span class="n">conference_not_ready</span> <span class="n">message</span><span class="p">,</span>
+<span class="n">this</span> <span class="n">message</span> <span class="n">has</span> <span class="n">high</span> <span class="n">priority</span> <span class="n">to</span> <span class="n">accept</span> <span class="n">than</span> <span class="n">others</span><span class="o">.</span> <span class="n">So</span><span class="p">,</span> <span class="n">both</span> <span class="n">users</span> <span class="n">will</span> <span class="n">be</span> <span class="n">waiting</span> <span class="n">until</span> <span class="n">meeting</span> <span class="ow">is</span> <span class="n">created</span> <span class="ow">or</span> <span class="n">timeout</span><span class="p">(</span><span class="mi">60</span><span class="n">s</span><span class="p">),</span>
+<span class="n">when</span> <span class="n">waiting</span><span class="p">,</span> <span class="n">client</span> <span class="n">will</span> <span class="n">pop</span> <span class="n">up</span> <span class="n">the</span> <span class="n">reconnecting</span> <span class="n">dialog</span><span class="p">,</span> <span class="ow">and</span> <span class="nb">any</span> <span class="n">other</span> <span class="n">users</span> <span class="k">try</span> <span class="n">to</span> <span class="n">join</span> <span class="n">meeting</span> <span class="n">before</span> <span class="n">the</span> <span class="n">meeting</span> <span class="n">been</span> <span class="n">created</span><span class="p">,</span>
+<span class="n">will</span> <span class="n">also</span> <span class="n">pop</span> <span class="n">up</span> <span class="n">the</span> <span class="n">reconnecting</span> <span class="n">dialog</span><span class="o">.</span>
+
+<span class="n">Next</span> <span class="n">Action</span><span class="p">:</span>
+<span class="n">Merge</span> <span class="n">two</span> <span class="n">meeting</span> <span class="n">zones</span> <span class="n">into</span> <span class="n">one</span> <span class="n">meeting</span> <span class="n">zone</span> <span class="n">to</span> <span class="n">avoid</span> <span class="n">customer</span> <span class="n">getting</span> <span class="n">into</span> <span class="n">such</span> <span class="n">race</span> <span class="n">condition</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id32">
+<h2>2016-12-12<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[P] CSCvc36124, (CFD::CSCvc36124)</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc36124">https://cdetsng.cisco.com/webui/#view=CSCvc36124</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>&#8220;Call Using Computer&#8221; clickable before CSP client sent C2W_OnConnectIndication TSPSDK_CONNECT_VOIP_ENROLL_OK (1001)</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://orionf3vip.qa.webex.com">https://orionf3vip.qa.webex.com</a></li>
+<li><a class="reference external" href="mailto:oradm&#37;&#52;&#48;qa&#46;webex&#46;com">oradm<span>&#64;</span>qa<span>&#46;</span>webex<span>&#46;</span>com</a>&nbsp; <a class="reference external" href="mailto:P&#37;&#52;&#48;ss123">P<span>&#64;</span>ss123</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc40283, (CFD::CSCvc40283), (F::), (M::MCRes),(RCA::HDPI)</dt>
+<dd><ul class="first last">
+<li><p class="first">Incorrect host name appears for all host using PMR or MC</p>
+</li>
+<li><p class="first">I had found 73 issued ID, for time limit, I had fixed 8, and asked train team help to check other potential issue</p>
+</li>
+<li><dl class="first docutils">
+<dt>Root Cause</dt>
+<dd><ul class="first last simple">
+<li>MCRes.rc &amp; pfwres.rc</li>
+<li>WebExMgr get resource Key ID from PfwResID.h</li>
+<li>WebExMgr get resource Key Value from MCRes.rc</li>
+<li>There are some Resource Key ID exist in PfwResID.h and MCResId.h</li>
+<li>Like: IDS_USERNAME_INTER</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000231983, (CFD::CSCvc40283)</dt>
+<dd><ul class="first simple">
+<li>Incorrect host name appears for all host using PMR or MC</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>It’s a code issue: there are 2 same resource ID, one is correct,
+another is for menu item “&amp;File (Including Video)”.
+At this place, resource get by error as “&amp;File (Including Video)”
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] Start meeting fails sometime during automation test</dt>
+<dd><ul class="first last simple">
+<li>From 6:48 – 6:52, the client fail to join VoIP session, client traces shows above some error.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc09856, (CFD::CSCvc09856)</dt>
+<dd><ul class="first last simple">
+<li>go.webex.com, on windows 10 PC, when doing video call back, the local video window did not minimize.</li>
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc09856">https://cdetsng.cisco.com/webui/#view=CSCvc09856</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000228352， CSCvc37774, (M::NBR)</dt>
+<dd><ul class="first last simple">
+<li>No audio present in the recording</li>
+<li>Ask to fire a bug, caused the the incorrect PDU sequence.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000229462, (M::WME)</dt>
+<dd><ul class="first last simple">
+<li>When a user joins VoIP, EC crashes  it is happening for multiple users in customer environment</li>
+<li>Crashed at wseclient.dll moduel, loop WME team</li>
+<li>Build private dll to customer to verify</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000221501, (M::WME)</dt>
+<dd><ul class="first simple">
+<li>WebEx application crashes when starting or join a meeting</li>
+<li>Seems the same as WO0000000216828</li>
+<li>Request dump file</li>
+<li>CSCuz52797， Gang asked customer try to replace wseclient.dll and collect log</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">Jun</span> <span class="n">Ma</span><span class="p">:</span>
+<span class="n">I</span> <span class="n">have</span> <span class="n">checked</span> <span class="n">dump</span> <span class="n">file</span> <span class="n">that</span> <span class="n">dump</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">crash</span> <span class="n">location</span> <span class="ow">is</span> <span class="n">SensorsApi</span><span class="o">.</span><span class="n">dll</span><span class="o">.</span>
+<span class="n">I</span> <span class="n">think</span> <span class="n">this</span> <span class="n">crash</span> <span class="n">same</span> <span class="k">with</span> <span class="n">surface</span> <span class="n">pro</span> <span class="n">case</span><span class="o">.</span> <span class="n">you</span> <span class="n">can</span> <span class="n">add</span> <span class="n">HP</span>  <span class="n">Elite</span> <span class="n">X2</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">White</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span> <span class="n">Thanks</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000227797, CSCvc31346, (CFD::CSCvc34464), (M::GPC)</dt>
+<dd><ul class="first last">
+<li><p class="first">error message &#8220;Due to a connection issue, you cannot invite or remind others until you exit and restart the meeting.&#8221; and is unable to start VoIP on one computer</p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>QSTemplateURL, DOWNLOAD_TYPE_TEMPLATE</li>
+<li>QSInviteURL  , DOWNLOAD_TYPE_QS_XMLFILE</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="https://cisco.box.com/s/e0nixhe10w103u7supsahey6i2jgd3qn">https://cisco.box.com/s/e0nixhe10w103u7supsahey6i2jgd3qn</a></p>
+</li>
+<li><p class="first">[go site] <a class="reference external" href="https://cisco.box.com/s/55ciyndr6a5ltpe38eg3pvsg5i3gg9eg">https://cisco.box.com/s/55ciyndr6a5ltpe38eg3pvsg5i3gg9eg</a></p>
+</li>
+<li><p class="first">Ask to fire a bug</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000227555, CSCvc31346, (CFD::CSCvc34464), (M::GPC)</dt>
+<dd><ul class="first last simple">
+<li>VoIP audio connection issue</li>
+<li>Mail out, need trouble shooting</li>
+<li>IDS_QSXML_DOWNLOAD_FAILED_TIP</li>
+<li>Due to a connection issue, you cannot invite or remind others unless you exit and restart the meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000230170, CSCvc31346, (CFD::CSCvc34464), (M::GPC)</dt>
+<dd><ul class="first last simple">
+<li>Due to a connection issue, you cannot invite or remind others unless you exit and restart the meeting</li>
+<li>GPC download failed.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id33">
+<h2>2016-12-05<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] CSCvc17031, WO0000000223017</dt>
+<dd><ul class="first simple">
+<li>cannot recover memory location</li>
+<li>Mail to Caroline Ye</li>
+<li>F1573</li>
+<li>Reopen, need check tomorrow</li>
+<li>Refer to Certify XenApp 7.6 in T31.9 - Test result</li>
+<li>CSCva47546/CSCuz01715</li>
+<li>Mail out, waiting for customer</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">This</span> <span class="n">issue</span> <span class="n">looks</span> <span class="n">like</span> <span class="n">the</span> <span class="n">same</span> <span class="n">root</span> <span class="n">cause</span> <span class="k">as</span> <span class="n">bug</span> <span class="n">CSCva47546</span><span class="o">/</span><span class="n">CSCuz01715</span> <span class="p">(</span><span class="n">Lamfung</span> <span class="p">,</span> <span class="n">please</span> <span class="n">double</span> <span class="n">check</span><span class="p">)</span><span class="o">.</span>
+<span class="n">It</span> <span class="ow">is</span> <span class="n">Citrix</span> <span class="n">issue</span> <span class="n">which</span> <span class="n">we</span> <span class="n">escalated</span> <span class="n">to</span> <span class="n">Citrix</span> <span class="n">Support</span><span class="o">.</span> <span class="n">They</span> <span class="n">resolved</span> <span class="n">it</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">fixes</span> <span class="ow">is</span> <span class="n">included</span> <span class="ow">in</span> <span class="n">XenApp</span><span class="o">/</span><span class="n">Desktop</span> <span class="mf">7.6</span><span class="o">.</span><span class="mi">2000</span> <span class="p">(</span><span class="n">LTSR</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvb95846, (CFD::CSCvb95846), (M::PList), (RCA::)</dt>
+<dd><ul class="first simple">
+<li>Need Allison help to check from DB side</li>
+<li>Client shows the same as the DB</li>
+<li>Check the Mats, is the same like the plist , so seems not a bug, J</li>
+<li>Assign to Chen tao</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span>I tried on go site, the reversed string works well “pɐpɹɥǝɯ ʎʞɹoʇ”, as well as the normal one“torky mehrdad”.
+I think this user is just for fun…
+
+You can use this site for fun too…
+</pre></div>
+</div>
+<p><a class="reference external" href="http://www.fileformat.info/convert/text/upside-down.htm">http://www.fileformat.info/convert/text/upside-down.htm</a></p>
+<blockquote class="last">
+<div><p>I don’t think page have problem, because customer input it indeed.</p>
+</div></blockquote>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] Webex crash</dt>
+<dd><ul class="first">
+<li><p class="first">WebEx client crash when presenter stop app sharing</p>
+</li>
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc24688">https://cdetsng.cisco.com/webui/#view=CSCvc24688</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc25551">https://cdetsng.cisco.com/webui/#view=CSCvc25551</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Key points</dt>
+<dd><ul class="first last simple">
+<li>Share App from <strong>Indicate Button</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="p">)</span><span class="n">Host</span> <span class="n">MeggersJHomeDX</span> <span class="n">start</span> <span class="n">a</span> <span class="n">meeting</span><span class="p">,</span> <span class="ow">and</span> <span class="n">start</span> <span class="n">video</span>
+<span class="mi">2</span><span class="p">)</span><span class="n">Windows</span> <span class="n">user</span> <span class="n">Javed</span> <span class="n">Khan</span> <span class="n">joined</span>
+<span class="mi">3</span><span class="p">)</span><span class="n">Mac</span> <span class="n">attendee</span> <span class="n">Donna</span> <span class="n">Fontaine</span> <span class="n">joined</span>
+<span class="mi">4</span><span class="p">)</span><span class="n">Host</span> <span class="k">pass</span> <span class="n">presenter</span> <span class="n">to</span> <span class="n">Donna</span> <span class="n">Fontaine</span><span class="p">,</span> <span class="n">Donna</span> <span class="n">Fontaine</span> <span class="n">shared</span> <span class="n">app</span>
+<span class="mi">5</span><span class="p">)</span><span class="n">Presenter</span> <span class="n">was</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">Javed</span> <span class="n">Khan</span><span class="p">,</span> <span class="n">Javed</span> <span class="n">Khan</span> <span class="n">shared</span> <span class="n">app</span>
+<span class="mi">6</span><span class="p">)</span><span class="n">After</span> <span class="n">some</span> <span class="n">time</span><span class="p">,</span> <span class="n">Javed</span> <span class="n">Khan</span> <span class="n">stop</span> <span class="n">sharing</span><span class="p">,</span> <span class="n">Javed</span> <span class="n">Khan</span><span class="s1">&#39;s client crashed.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[O] WO0000000223894</dt>
+<dd><ul class="first last simple">
+<li>Video feed issue</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000229219, (M::WME)</dt>
+<dd><ul class="first last simple">
+<li>When starting webex audio(VOIP), webex crashes</li>
+<li>Loop WME team, occurs at util.dll</li>
+<li>Seems caused by dead lock, FreeLibraryAndExitThread and FreeLibrary.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc27759, (F::whiteboard)</dt>
+<dd><ul class="first last simple">
+<li>whiteboard will be opened automatically when switch presenter</li>
+<li>Can we ask QA team to test it on go.w.c?</li>
+<li>Forward to Chaonan</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[W] WO0000000228870, (F::VoIP), (M::WME)</dt>
+<dd><ul class="first last simple">
+<li>VoIP Freezes the WebEx client</li>
+<li>SensorsAPI module</li>
+<li><a class="reference external" href="https://sqbu-github.cisco.com/WebExSquared/wme/issues/4278">https://sqbu-github.cisco.com/WebExSquared/wme/issues/4278</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] CSCvc14491, (CFD::CSCvc14491), (F::TSP), (RSA::Security)</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc14491">https://cdetsng.cisco.com/webui/#view=CSCvc14491</a></p>
+</li>
+<li><p class="first">Intercall</p>
+</li>
+<li><p class="first">From Alexander Fleck (afleck), send out mail request client log</p>
+</li>
+<li><p class="first">TSP server connect the third party server</p>
+</li>
+<li><p class="first">Dongong Peng From TSP server</p>
+</li>
+<li><p class="first">PO (ren bo), TL (Ty), assigned to Evan Xie</p>
+</li>
+<li><dl class="first docutils">
+<dt>Super Admin =&gt; New Site =&gt; Security Options</dt>
+<dd><ul class="first last simple">
+<li>TSP partner is sending only SHA256 values in TSP API clienthashlist.(enabling this will stop checking for SHA1 hash values)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Docshow parameters</dt>
+<dd><ul class="first last simple">
+<li>TSPHybridFlag</li>
+<li>THClientHashList</li>
+<li>CDTAppPDU_Evt_CreateTSPConference</li>
+<li>TSPHybridSecureAccess</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[D] WO0000000229413, (CFD::CSCvc29069), (F::JBH), (M::AnyoneCanShare), (RSA::Security)</dt>
+<dd><ul class="first simple">
+<li>Share screen / application grayed out on meeting</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span>We could reproduce it in local by following steps:
+1. Schedule repeat MC meeting with support JBH, first attendee to be presenter and participant can grab presenter.
+2. Attendee A join meeting before host. User A can share in meeting.
+3. Use TP device join meeting.
+4. Attendee B join meeting after TP device in meeting. User B’s “Share” button will gray out.
+5. Host didn&#39;t join meeting.
+
+Workaround:
+ Host join meeting.
+
+Analysis:
+ After TP device joined meeting, it insert unexpected “startTimeOfInstance” into wbxmmconfparam.
+ This will result doc-show return “FirstParticipantIsPresenter=0” to client.
+ As host not joined meeting, client(Windows/Mac) will let “Share” button gray out when “FirstParticipantIsPresenter=0”.
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id34">
+<h2>2016-11-28<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>[D] WO0000000228604, (CFD::CSCvb98202), (F::NBR)</dt>
 <dd><ul class="first last">
 <li><p class="first">Attendees have the privilege to record the meetings by the HOST but they are still unable to record the meetings.</p>
 </li>
@@ -84,7 +3546,7 @@
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[P] WO0000000218922</dt>
+<dt>[D] WO0000000218922, CSCvc27274, (CFD)</dt>
 <dd><ul class="first last">
 <li><p class="first">Host is not able to see avatar picture in the Personal Meeting Room</p>
 </li>
@@ -105,16 +3567,7 @@
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[P] WO0000000223509</dt>
-<dd><ul class="first last simple">
-<li>T31.5.20 win10  Crash when sharging application or when changing presenter role between participants.</li>
-<li>Ask to schedule a trouble shooting.</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>[W] CSCvc15881</dt>
+<dt>[D] CSCvc15881</dt>
 <dd><ul class="first last simple">
 <li>T31R2 Flash client E Attendees and panelists are unable to hear the host</li>
 <li>Assign to Winter Yu</li>
@@ -123,83 +3576,10 @@
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000221501</dt>
-<dd><ul class="first simple">
-<li>WebEx application crashes when starting or join a meeting</li>
-<li>Seems the same as WO0000000216828</li>
-<li>Request dump file</li>
-<li>CSCuz52797</li>
-</ul>
-<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">From</span> <span class="n">Jun</span> <span class="n">Ma</span><span class="p">:</span>
-<span class="n">I</span> <span class="n">have</span> <span class="n">checked</span> <span class="n">dump</span> <span class="n">file</span> <span class="n">that</span> <span class="n">dump</span> <span class="n">indicate</span> <span class="n">the</span> <span class="n">crash</span> <span class="n">location</span> <span class="ow">is</span> <span class="n">SensorsApi</span><span class="o">.</span><span class="n">dll</span><span class="o">.</span>
-<span class="n">I</span> <span class="n">think</span> <span class="n">this</span> <span class="n">crash</span> <span class="n">same</span> <span class="k">with</span> <span class="n">surface</span> <span class="n">pro</span> <span class="n">case</span><span class="o">.</span> <span class="n">you</span> <span class="n">can</span> <span class="n">add</span> <span class="n">HP</span>  <span class="n">Elite</span> <span class="n">X2</span> <span class="n">to</span> <span class="nb">filter</span> <span class="n">White</span><span class="o">-</span><span class="nb">list</span><span class="o">.</span> <span class="n">Thanks</span>
-</pre></div>
-</div>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
 <dt>[D] CSCvc17039</dt>
 <dd><ul class="first last simple">
 <li>T31.7 Share Multimedia YouTube Adobe Flash Player error</li>
 <li>Assgin to Morgan</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>[D] CSCvc17031</dt>
-<dd><ul class="first last simple">
-<li>cannot recover memory location</li>
-<li>Mail to Caroline Ye</li>
-<li>F1573</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>[P] CSCvc14491</dt>
-<dd><ul class="first last">
-<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc14491">https://cdetsng.cisco.com/webui/#view=CSCvc14491</a></p>
-</li>
-<li><p class="first">Intercall</p>
-</li>
-<li><p class="first">From Alexander Fleck (afleck), send out mail request client log</p>
-</li>
-<li><p class="first">TSP server connect the third party server</p>
-</li>
-<li><p class="first">Dongong Peng From TSP server</p>
-</li>
-<li><p class="first">PO (ren bo), TL (Ty)</p>
-</li>
-<li><dl class="first docutils">
-<dt>Super Admin =&gt; New Site =&gt; Security Options</dt>
-<dd><ul class="first last simple">
-<li>TSP partner is sending only SHA256 values in TSP API clienthashlist.(enabling this will stop checking for SHA1 hash values)</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>Docshow parameters</dt>
-<dd><ul class="first last simple">
-<li>TSPHybridFlag</li>
-<li>THClientHashList</li>
-<li>CDTAppPDU_Evt_CreateTSPConference</li>
-<li>TSPHybridSecureAccess</li>
-</ul>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>[W] WO0000000227555</dt>
-<dd><ul class="first last simple">
-<li>VoIP audio connection issue</li>
-<li>Mail out, need trouble shooting</li>
 </ul>
 </dd>
 </dl>
@@ -225,11 +3605,12 @@
 </dl>
 </li>
 </ol>
-<div class="section" id="id1">
-<h2>2016-11-21<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id35">
+<h2>2016-11-21<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[D] WO0000000221097</dt>
+<dt>[D] WO0000000221097, (M::WME)</dt>
 <dd><ul class="first simple">
 <li>crash</li>
 <li>Seems crashed at SensorApi module</li>
@@ -261,15 +3642,31 @@ Exception content
 </li>
 <li><dl class="first docutils">
 <dt>[D] CSCut59183, CFD S6</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCut59183">https://cdetsng.cisco.com/webui/#view=CSCut59183</a></p>
+</li>
+<li><p class="first">Confirmed with PM Selim Baygin (sbaygin)</p>
+</li>
+<li><dl class="first docutils">
+<dt>Issue description</dt>
 <dd><ul class="first last simple">
-<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCut59183">https://cdetsng.cisco.com/webui/#view=CSCut59183</a></li>
-<li>Confirmed with PM Selim Baygin (sbaygin)</li>
+<li>Host buy two account</li>
+<li>Expectation : Just can start two meeting at the same time</li>
+<li>Actual : It can start the 3rd meeting in TP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CMR Hybrid solution, maintain</p>
+</li>
+<li><p class="first">Current use CMR4, without this issue</p>
+</li>
 </ul>
 </dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[O] WO0000000226784</dt>
+<dt>[W] WO0000000226784</dt>
 <dd><ul class="first last simple">
 <li>Morgan , Wallis Tong (Mobile)</li>
 <li>Attendees are able to hear the panelists during breakout.</li>
@@ -299,7 +3696,7 @@ Exception content
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000226765</dt>
+<dt>[W] WO0000000226765, (M::GPC)</dt>
 <dd><ul class="first last simple">
 <li>Connection taking too long to get connected to VoIP</li>
 <li>Gpc hadn&#8217;t callback caused the client hadn&#8217;t join VoIP</li>
@@ -309,7 +3706,7 @@ Exception content
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] CSCvc02236</dt>
+<dt>[D] CSCvc02236, (CFD), (M::Tahoe)</dt>
 <dd><ul class="first last">
 <li><p class="first"><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvc02236">https://cdetsng.cisco.com/webui/#view=CSCvc02236</a></p>
 </li>
@@ -346,7 +3743,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] WO0000000211161</dt>
+<dt>[D] WO0000000211161, (TS)</dt>
 <dd><ul class="first last simple">
 <li>Unable to join VOIP conference or use Webcam to share video in meetings.</li>
 <li>Loadlibrary failure, msvc.dll, mac.dll, tp.dll, gpsvc.dll</li>
@@ -360,8 +3757,8 @@ Changing it to “1” for both DCs, fixed the issue.
 </li>
 </ol>
 </div>
-<div class="section" id="id2">
-<h2>2016-11-14<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id36">
+<h2>2016-11-14<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
 <dt>[P] WO0000000226423</dt>
@@ -394,27 +3791,6 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[P] CSCut59183, Action(confirm with PM - Selim Baygin)</dt>
-<dd><ul class="first last">
-<li><dl class="first docutils">
-<dt>Issue description</dt>
-<dd><ul class="first last simple">
-<li>Host buy two account</li>
-<li>Expectation : Just can start two meeting at the same time</li>
-<li>Actual : It can start the 3rd meeting in TP</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p class="first">CMR Hybrid solution, maintain</p>
-</li>
-<li><p class="first">Current use CMR4, without this issue</p>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
 <dt>[D] CSCvb69543</dt>
 <dd><ul class="first last simple">
 <li>Had closed</li>
@@ -424,7 +3800,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] CSCvb71340, T31.8 (CC 2016.10.15)</dt>
+<dt>[D] CSCvb71340, (CFD)</dt>
 <dd><ul class="first last simple">
 <li>Update status to Bill Wu</li>
 <li>Need HF team help to reproduce, mail</li>
@@ -435,8 +3811,8 @@ Changing it to “1” for both DCs, fixed the issue.
 </li>
 </ol>
 </div>
-<div class="section" id="id3">
-<h2>2016-11-07<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id37">
+<h2>2016-11-07<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
 <dt>[W] CMR issue 43</dt>
@@ -449,7 +3825,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[P] WO0000000211492</dt>
+<dt>[D] WO0000000211492</dt>
 <dd><ul class="first last simple">
 <li>URGENT WO0000000211492: VoIP Issue HD0009165473</li>
 <li>Sunny Liao sugget rollback to T30</li>
@@ -458,16 +3834,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] CSCvb95846</dt>
-<dd><ul class="first last simple">
-<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb95846&amp;vt=2">https://cdetsng.cisco.com/webui/#view=CSCvb95846&amp;vt=2</a></li>
-<li>Check the Mats, is the same like the plist , so seems not a bug, J</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="first docutils">
-<dt>[P] WO0000000224259, add to pits</dt>
+<dt>[D] WO0000000224259, (M::WME)</dt>
 <dd><ul class="first simple">
 <li>Webex client crashed on HP Elite x2 1012 G1</li>
 <li>ntdll encounter 0x80000003 error</li>
@@ -504,7 +3871,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000223395, CSCvb92423</dt>
+<dt>[D] WO0000000223395, CSCvb92423, (CFD)</dt>
 <dd><ul class="first last simple">
 <li>Meeting Center client Help option is loading the generic page instead of redirecting to the PG customized page</li>
 <li>Docshow =&gt; URLs =&gt; QSHelpURL</li>
@@ -513,7 +3880,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] WO0000000221752</dt>
+<dt>[D] WO0000000221752, (M::WME)</dt>
 <dd><ul class="first simple">
 <li>Client crash, wseclient.dll</li>
 <li>Assigned to WME (Karina Li)</li>
@@ -527,11 +3894,11 @@ Changing it to “1” for both DCs, fixed the issue.
 </li>
 </ol>
 </div>
-<div class="section" id="id4">
-<h2>2016-10-31<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id38">
+<h2>2016-10-31<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[W] WO0000000216828</dt>
+<dt>[W] WO0000000216828, (M::WME)</dt>
 <dd><ul class="first last simple">
 <li>Webex client crashes</li>
 <li><a class="reference external" href="https://cisco.box.com/s/n1odfzep4l0msktbdjxms1e20015kwke">https://cisco.box.com/s/n1odfzep4l0msktbdjxms1e20015kwke</a></li>
@@ -541,7 +3908,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] WO0000000213144, No response from customer</dt>
+<dt>[D] WO0000000213144</dt>
 <dd><ul class="first simple">
 <li>Video dropped for all PC endpoints</li>
 <li>Pingru Cheng mailed to close for the customer hadn&#8217;t response</li>
@@ -580,7 +3947,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] WO0000000219862, CSCvb78192</dt>
+<dt>[D] WO0000000219862, CSCvb78192, (CFD)</dt>
 <dd><ul class="first last simple">
 <li>SC crash</li>
 <li>AppSharing load failure</li>
@@ -591,7 +3958,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] WO0000000223080, INC000000015580</dt>
+<dt>[D] WO0000000223080, INC000000015580, (M::Security)</dt>
 <dd><ul class="first last simple">
 <li>WebEx 11 , urgent</li>
 <li>VOIP can&#8217;t use</li>
@@ -601,7 +3968,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] CSCvb85985</dt>
+<dt>[D] CSCvb85985, (CFD)</dt>
 <dd><ul class="first last simple">
 <li>The page of Meeting info became blank screen on MC client with PPT info  template</li>
 <li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb85985">https://cdetsng.cisco.com/webui/#view=CSCvb85985</a></li>
@@ -612,11 +3979,11 @@ Changing it to “1” for both DCs, fixed the issue.
 </li>
 </ol>
 </div>
-<div class="section" id="id5">
-<h2>2016-10-24<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id39">
+<h2>2016-10-24<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[D] CSCvb78958</dt>
+<dt>[D] CSCvb78958, (M::WME)</dt>
 <dd><ul class="first last simple">
 <li>multi cameras support</li>
 <li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvb78958&amp;vt=3">https://cdetsng.cisco.com/webui/#view=CSCvb78958&amp;vt=3</a></li>
@@ -626,7 +3993,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] CSCvb69936, T30.14 (CC 2016.10.15)</dt>
+<dt>[D] CSCvb69936, (CFD), (M::WME)</dt>
 <dd><ul class="first last">
 <li><p class="first">DNS, DHCP can config proxy url</p>
 </li>
@@ -653,7 +4020,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000214739</dt>
+<dt>[W] WO0000000214739, (M::WME)</dt>
 <dd><ul class="first last simple">
 <li>Meeting window crashes few seconds after joining the meeting.From logs, it crashed in tp.dll</li>
 <li>WME issue, Karina Li is checking</li>
@@ -662,8 +4029,9 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000216265, Video option is not getting enabled while in session also hangs at connecting to audio</dt>
+<dt>[D] WO0000000216265,</dt>
 <dd><ul class="first last simple">
+<li>Video option is not getting enabled while in session also hangs at connecting to audio</li>
 <li>CSmSvcVideoSessionMgr::OnVideoSessionStatus</li>
 </ul>
 </dd>
@@ -671,11 +4039,11 @@ Changing it to “1” for both DCs, fixed the issue.
 </li>
 </ol>
 </div>
-<div class="section" id="id6">
-<h2>2016-10-15<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id40">
+<h2>2016-10-15<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[D] CSCvb45367</dt>
+<dt>[D] CSCvb45367, (CFD)</dt>
 <dd><ul class="first last">
 <li><p class="first">T32 R2 client, received ping result 2, meeting exist but client still try to create meeting and it failed.</p>
 </li>
@@ -726,7 +4094,7 @@ Changing it to “1” for both DCs, fixed the issue.
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000209473</dt>
+<dt>[D] WO0000000209473, (M::GPC), (CFD::CSCvc63547)</dt>
 <dd><ul class="first">
 <li><p class="first">Audio option not populating properly</p>
 </li>
@@ -806,7 +4174,7 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000216726, WO0000000216198</dt>
+<dt>[W] WO0000000216726, WO0000000216198, (M::WME)</dt>
 <dd><ul class="first last simple">
 <li>It takes up to 2 mins to the audio through  connect to call using computer.</li>
 </ul>
@@ -814,7 +4182,7 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] CSCvb47815</dt>
+<dt>[D] CSCvb47815, (CFD), (M::GPC)</dt>
 <dd><ul class="first last">
 <li><p class="first">Can not start meeting from Firefox 49.0.1</p>
 </li>
@@ -846,11 +4214,11 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </li>
 </ol>
 </div>
-<div class="section" id="id7">
-<h2>2016-10-08<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id41">
+<h2>2016-10-08<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[W] WO0000000214995</dt>
+<dt>[D] WO0000000214995, (M::NBR)</dt>
 <dd><ul class="first last simple">
 <li>7 minutes of audio missing in the NBR</li>
 <li>There is no client trace available.</li>
@@ -859,7 +4227,7 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[D] CSCvb53084</dt>
+<dt>[D] CSCvb53084, (CFD)</dt>
 <dd><ul class="first simple">
 <li>Please take a look on this,  it should be a server side change.</li>
 <li>Just change in web side.</li>
@@ -879,7 +4247,7 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>[W] WO0000000197315</dt>
+<dt>[D] WO0000000197315</dt>
 <dd><ul class="first simple">
 <li>Randomly during an EC, Active video user&#8217;s webcam video turns off, when this happens, EC&#8217;s meeting option also becomes unchecked (Event -&gt; Option -&gt; &#8220;Video&#8221; has to be checked again to return Video capabilities for all attendees)</li>
 </ul>
@@ -896,11 +4264,11 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </li>
 </ol>
 </div>
-<div class="section" id="id8">
-<h2>2016-09-26<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id42">
+<h2>2016-09-26<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
-<dt>[D] CSCvb41280, CSCva66671</dt>
+<dt>[D] CSCvb41280, CSCva66671, (CFD), (M::GPC)</dt>
 <dd><ul class="first simple">
 <li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCva66671">https://cdetsng.cisco.com/webui/#view=CSCva66671</a></li>
 <li>Event Center crash</li>
@@ -952,8 +4320,8 @@ From recording, it can show audio dialog at 5:10, I think there is long network 
 </li>
 </ol>
 </div>
-<div class="section" id="id9">
-<h2>2016-09-19<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id43">
+<h2>2016-09-19<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
 <dt>680669022, CSCvb30721, CSCvb19442</dt>
@@ -998,7 +4366,7 @@ https://cisco.box.com/s/vg56oyunfq8cvtwarrijbln7zbl7kxu8
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>WO0000000208302, [Henry Wang for Video, Xu Bin for Audio]</dt>
+<dt>[D] WO0000000208302</dt>
 <dd><ul class="first">
 <li><p class="first">Telepresence can&#8217;t hear WebEx audio</p>
 </li>
@@ -1025,7 +4393,7 @@ https://cisco.box.com/s/vg56oyunfq8cvtwarrijbln7zbl7kxu8
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>WO0000000211961, CSCvb26805</dt>
+<dt>[D] WO0000000211961, CSCvb26805, (CFD)</dt>
 <dd><ul class="first last simple">
 <li>Cluster B fail to connect RA/AA now</li>
 </ul>
@@ -1034,8 +4402,8 @@ https://cisco.box.com/s/vg56oyunfq8cvtwarrijbln7zbl7kxu8
 </li>
 </ol>
 </div>
-<div class="section" id="id10">
-<h2>2016-09-12<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id44">
+<h2>2016-09-12<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
 <dt>CTG Alpha Outage Notification: Outage in go.webex.com</dt>
@@ -1079,7 +4447,7 @@ https://cisco.box.com/s/vg56oyunfq8cvtwarrijbln7zbl7kxu8
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>CSCvb19442 [Code done and verified]</dt>
+<dt>[D] CSCvb19442 , (CFD)</dt>
 <dd><ul class="first last simple">
 <li>An Orion bug</li>
 <li>MC crash after End Meeting</li>
@@ -1151,14 +4519,13 @@ It’s cause Mark can’t  hear/speak,  in fact he didn’t leave audio session.
 </li>
 </ol>
 </div>
-<div class="section" id="id11">
-<h2>2016-08-23<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id45">
+<h2>2016-08-23<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><dl class="first docutils">
 <dt>WO0000000206822</dt>
 <dd><ul class="first last simple">
-<li>ou cannot connect to audio or video because we cannot validate the security certificate</li>
-<li></li>
+<li>you cannot connect to audio or video because we cannot validate the security certificate</li>
 </ul>
 </dd>
 </dl>
@@ -1403,17 +4770,51 @@ And this bug didn’t exist on R2, is there any related codes was fixed in R2 bu
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Tiger Windows FQA</a><ul>
-<li><a class="reference internal" href="#id1">2016-11-21</a></li>
-<li><a class="reference internal" href="#id2">2016-11-14</a></li>
-<li><a class="reference internal" href="#id3">2016-11-07</a></li>
-<li><a class="reference internal" href="#id4">2016-10-31</a></li>
-<li><a class="reference internal" href="#id5">2016-10-24</a></li>
-<li><a class="reference internal" href="#id6">2016-10-15</a></li>
-<li><a class="reference internal" href="#id7">2016-10-08</a></li>
-<li><a class="reference internal" href="#id8">2016-09-26</a></li>
-<li><a class="reference internal" href="#id9">2016-09-19</a></li>
-<li><a class="reference internal" href="#id10">2016-09-12</a></li>
-<li><a class="reference internal" href="#id11">2016-08-23</a></li>
+<li><a class="reference internal" href="#id1">2017-08-14</a></li>
+<li><a class="reference internal" href="#id2">2017-08-08</a></li>
+<li><a class="reference internal" href="#id3">2017-08-01</a></li>
+<li><a class="reference internal" href="#id4">2017-07-24</a></li>
+<li><a class="reference internal" href="#id5">2017-07-17</a></li>
+<li><a class="reference internal" href="#id6">2017-07-11</a></li>
+<li><a class="reference internal" href="#id7">2017-07-04</a></li>
+<li><a class="reference internal" href="#id8">2017-06-26</a></li>
+<li><a class="reference internal" href="#id9">2017-06-20</a></li>
+<li><a class="reference internal" href="#id10">2017-06-12</a></li>
+<li><a class="reference internal" href="#id11">2017-06-05</a></li>
+<li><a class="reference internal" href="#id12">2017-05-31</a></li>
+<li><a class="reference internal" href="#id13">2017-05-22</a></li>
+<li><a class="reference internal" href="#id14">2017-05-08</a></li>
+<li><a class="reference internal" href="#id15">2017-05-02</a></li>
+<li><a class="reference internal" href="#id16">2017-04-24</a></li>
+<li><a class="reference internal" href="#id17">2017-04-17</a></li>
+<li><a class="reference internal" href="#id18">2017-04-10</a></li>
+<li><a class="reference internal" href="#id19">2017-04-05</a></li>
+<li><a class="reference internal" href="#id20">2017-03-27</a></li>
+<li><a class="reference internal" href="#id21">2017-03-20</a></li>
+<li><a class="reference internal" href="#id22">2017-03-13</a></li>
+<li><a class="reference internal" href="#id23">2017-03-06</a></li>
+<li><a class="reference internal" href="#id24">2017-02-28</a></li>
+<li><a class="reference internal" href="#id25">2017-02-07</a></li>
+<li><a class="reference internal" href="#id26">2017-01-22</a></li>
+<li><a class="reference internal" href="#id27">2017-01-16</a></li>
+<li><a class="reference internal" href="#id28">2017-01-09</a></li>
+<li><a class="reference internal" href="#id29">2017-01-03</a></li>
+<li><a class="reference internal" href="#id30">2016-12-26</a></li>
+<li><a class="reference internal" href="#id31">2016-12-19</a></li>
+<li><a class="reference internal" href="#id32">2016-12-12</a></li>
+<li><a class="reference internal" href="#id33">2016-12-05</a></li>
+<li><a class="reference internal" href="#id34">2016-11-28</a></li>
+<li><a class="reference internal" href="#id35">2016-11-21</a></li>
+<li><a class="reference internal" href="#id36">2016-11-14</a></li>
+<li><a class="reference internal" href="#id37">2016-11-07</a></li>
+<li><a class="reference internal" href="#id38">2016-10-31</a></li>
+<li><a class="reference internal" href="#id39">2016-10-24</a></li>
+<li><a class="reference internal" href="#id40">2016-10-15</a></li>
+<li><a class="reference internal" href="#id41">2016-10-08</a></li>
+<li><a class="reference internal" href="#id42">2016-09-26</a></li>
+<li><a class="reference internal" href="#id43">2016-09-19</a></li>
+<li><a class="reference internal" href="#id44">2016-09-12</a></li>
+<li><a class="reference internal" href="#id45">2016-08-23</a></li>
 </ul>
 </li>
 </ul>

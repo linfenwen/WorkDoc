@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="CSCvm03626: cannot pop up update plugin dialog after end meeting" href="CSCvm03626.html" />
+    <link rel="prev" title="US36474 Sign Service Error Code Unify" href="f7295_us36474.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="CSCvm03626.html" title="CSCvm03626: cannot pop up update plugin dialog after end meeting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="f7295_us36474.html" title="US36474 Sign Service Error Code Unify"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cscvk62268-cannot-convert-arf-recording-to-mp4-format-by-msi-installed-nbr-player">
+<h1>CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player<a class="headerlink" href="#cscvk62268-cannot-convert-arf-recording-to-mp4-format-by-msi-installed-nbr-player" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-s-the-problem">
+<h2>What&#8217;s the problem<a class="headerlink" href="#what-s-the-problem" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">site</span><span class="p">:</span>
+<span class="n">ha3web</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nick32sp</span><span class="p">(</span><span class="n">nick</span><span class="o">/</span><span class="k">pass</span><span class="p">)</span>
+
+
+<span class="n">precondition</span><span class="p">:</span>
+
+
+<span class="n">Steps</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">uninstall</span> <span class="nb">all</span> <span class="n">client</span> <span class="n">files</span>
+<span class="mf">2.</span> <span class="n">login</span> <span class="n">site</span><span class="p">,</span>  <span class="n">download</span> <span class="ow">and</span> <span class="n">install</span> <span class="n">nbr2player</span><span class="o">.</span><span class="n">msi</span><span class="p">,</span> <span class="n">it</span> <span class="n">will</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">to</span> <span class="s1">&#39;c:\program files&#39;</span>
+<span class="mf">3.</span> <span class="n">launch</span> <span class="n">nbr</span> <span class="n">player</span> <span class="n">to</span> <span class="nb">open</span> <span class="n">arf</span> <span class="n">file</span><span class="p">,</span> <span class="n">then</span> <span class="n">click</span> <span class="n">File</span><span class="o">-&gt;</span><span class="n">convert</span> <span class="nb">format</span> <span class="o">-&gt;</span><span class="n">mp4</span> <span class="n">menu</span>
+<span class="mf">4.</span> <span class="nb">input</span> <span class="n">webex</span> <span class="n">site</span> <span class="ow">and</span> <span class="n">account</span> <span class="n">info</span> <span class="n">to</span> <span class="k">continue</span>
+
+
+
+<span class="n">Expected</span> <span class="n">Result</span><span class="p">:</span>
+<span class="n">should</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">convert</span> <span class="n">arf</span> <span class="n">recording</span> <span class="n">to</span> <span class="n">mp4</span> <span class="nb">format</span>
+
+<span class="n">Actual</span> <span class="n">Result</span><span class="p">:</span>
+<span class="n">get</span> <span class="n">error</span><span class="o">.</span>
+
+<span class="n">Note</span><span class="p">:</span>
+<span class="n">it</span> <span class="n">exist</span> <span class="ow">in</span> <span class="n">T32</span><span class="o">.</span><span class="mi">15</span> <span class="ow">and</span> <span class="n">later</span><span class="p">,</span> <span class="ow">and</span> <span class="n">also</span> <span class="n">exist</span> <span class="ow">in</span> <span class="n">T33</span><span class="o">.</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">later</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-s-the-solution">
+<h2>What&#8217;s the solution<a class="headerlink" href="#what-s-the-solution" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">nbrplay pass empty version (atgpcdec and atgpcext) to ieatgpc</p>
+</li>
+<li><dl class="first docutils">
+<dt>ExtensionManagerImpl.cpp</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CExtensionManagerImpl::CheckFolder</dt>
+<dd><ul class="first last simple">
+<li>GPC_VERIFY_BREAK(!atgpcdecVersion.empty(), false, _T(&#8220;no GpcExtVersion&#8221;));</li>
+<li>GPC_VERIFY_BREAK(!atgpcextVersion.empty(), false, _T(&#8220;no GpcExtVersion&#8221;));</li>
+<li>to</li>
+<li>gpcWarn(_T(&#8220;preJme&gt;&gt;CheckFolder, GpcDecVersion=%s&#8221;), atgpcdecVersion.c_str());</li>
+<li>gpcWarn(_T(&#8220;preJme&gt;&gt;CheckFolder, GpcExtVersion=%s&#8221;), atgpcextVersion.c_str());</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="what-s-the-root-cause">
+<h2>What&#8217;s the root cause<a class="headerlink" href="#what-s-the-root-cause" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>This issue first introduced at 2018.3.27</dt>
+<dd><ul class="first last simple">
+<li>094ae1066c3e1e9ecda06fa6836f5b566e48164f</li>
+<li>for Jabber(Legacy) launch Meeting</li>
+<li>CExtensionManagerImpl::CheckAndUpdate</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>webex-player</dt>
+<dd><ul class="first last simple">
+<li>define GPC_DEC_VERSION &#8220;25, 2010, 8, 11&#8221; //lucia fix bug 385663 jesy for bug 404413 on SP19</li>
+<li>define GPC_EXT_VERSION &#8220;25, 2010, 8, 11&#8221; //lucia fix bug 385663 jesy for bug 404413 on SP19</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>wbxtrace</dt>
+<dd><ul class="first last simple">
+<li>preJme&gt;&gt;ValidateFile failed, not exist,path=C:ProgramDataWebexWebex500pluginatgpcdec.dll</li>
+<li>C:ProgramDataWebexWebex500pluginatgpcdec.dll.tmp,localVersion=27.17.2017.317,thatVersion=25, 2010, 8, 11</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-env">
+<h2>Test Env<a class="headerlink" href="#test-env" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Site</dt>
+<dd><ul class="first last">
+<li><p class="first">ha3web.qa.webex.com/nick32sp</p>
+</li>
+<li><dl class="first docutils">
+<dt>Account</dt>
+<dd><ul class="first last simple">
+<li>nick/pass</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvk62268">https://cdetsng.cisco.com/webui/#view=CSCvk62268</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player</a><ul>
+<li><a class="reference internal" href="#what-s-the-problem">What&#8217;s the problem</a></li>
+<li><a class="reference internal" href="#what-s-the-solution">What&#8217;s the solution</a></li>
+<li><a class="reference internal" href="#what-s-the-root-cause">What&#8217;s the root cause</a></li>
+<li><a class="reference internal" href="#test-env">Test Env</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f7295_us36474.html"
+                        title="previous chapter">US36474 Sign Service Error Code Unify</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="CSCvm03626.html"
+                        title="next chapter">CSCvm03626: cannot pop up update plugin dialog after end meeting</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/CSCvk62268.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="CSCvm03626.html" title="CSCvm03626: cannot pop up update plugin dialog after end meeting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="f7295_us36474.html" title="US36474 Sign Service Error Code Unify"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

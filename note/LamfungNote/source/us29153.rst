@@ -1,0 +1,361 @@
+US29153 WCL WM_DESTROY, WM_NCDESTROY
+====================================
+
+Background
+----------
+
+::
+ 
+ 在Window编程标准中对于WM_DESTROY和WM_NCDESTROY一般是不允许设置bHandled=true的，
+ 因为很多窗口会在这2个消息中释放对象，拦截了会产生意想不到的问题。
+ 我看到很多代码里没有注意到这个问题，在OnDestroy中没有写上bHandled=false;(默认为true).
+ 为了解决这个问题，我在WCL里加个一个判断，判断用户是否拦截了这两个消息没有继续往下转发。
+ 如果用户拦截了这两个消息，WCL库会出现一个assert:
+ 
+ Please double check your codes about WM_DESTROY event base on the WCL, if you missed the “bHandled = FLASE”
+ 
+
+Issues
+------
+
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\comui_wcl_interface.h(49):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 BEGIN_MSG_MAP(CWclCommUIInstanceT)
+	 	MESSAGE_HANDLER(WM_CREATE, OnCreate)
+	 	MESSAGE_HANDLER(WM_INITDIALOG, OnCreate)
+	 	MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	 END_MSG_MAP()
+	 
+	 template <class T> class CWclCommUIInstanceT
+	 
+	 LRESULT OnDestroy(UINT nMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+	 {
+	 	s_pPtr = nullptr;
+	 	bHandled = FALSE;
+	 	return 0;
+	 }	 
+	 
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\comui_wcl_interface.h(54):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 BEGIN_WCLMSG_MAP(CWclCommUIInstanceT)
+	 	MESSAGE_HANDLER(WM_CREATE, OnCreate)
+	 	MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	 END_WCLMSG_MAP()
+	 
+	 template <class T> class CWclCommUIInstanceT
+	 
+	 LRESULT OnDestroy(UINT nMsg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+	 {
+	 	s_pPtr = nullptr;
+	 	bHandled = FALSE;
+	 	return 0;
+	 }
+	 
+
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\DlgPDAdvancePage.h(43):		
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CPDAdvancePage
+	 : public CPopupDlgInstanceT<CPDAdvancePage>
+	 , public CPopupDlgBase<CPDAdvancePage>
+	 , public AT::CTimerProc
+	 
+	 LRESULT CPDAdvancePage::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	m_oIDTimerID.KillTimer();
+	 	DestroyMessageBox();
+	 	
+	 	bHandled = FALSE;
+	 	return 0;
+	 }
+	 
+	
+#. **C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\DlgPDSaveAsPDF.h(27)**:		
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CWndSaveAsPDFContentListBox : 
+	 public AT::CWclWindowImpl<CWndSaveAsPDFContentListBox, AT::CWclListBox>
+	 
+	 ATResult CWndSaveAsPDFContentListBox::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG_FUNC(e_logInfo, _T("CWndSaveAsPDFContentListBox::OnDestroy"), __P(IsWindow()), __P(m_mapTaskList.size()));
+	 	
+	 	bHandled = ATTrue;
+	 	return 0;
+	 }
+	 
+
+#. **C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\DlgPDSaveAsPDF.h(68)**:		
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CDlgPDSaveAsPDF : public conISaveAsPDF
+	 , public AT::CWclWindowImpl<CDlgPDSaveAsPDF>
+	 
+	 ATResult CDlgPDSaveAsPDF::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG_FUNC(e_logInfo, _T("CDlgPDSaveAsPDF::OnDestroy"), __P(IsWindow()));
+	 	
+	 	if (m_saveAsPDFContent.IsWindow())
+	 	{
+	 		m_saveAsPDFContent.ClearContent();
+	 		m_saveAsPDFContent.UnsubclassWindow();
+	 	}
+	 
+	 m_iSaved = 0;
+	 m_pCancelDlg = nullptr;
+	 
+	 bHandled = ATTrue;
+	 return 0;
+	 }
+	
+	
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\PopUpDlgBase.h(95):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CPopupDlgBase
+	 : public AT::CWclWindowImpl<TImpl, AT::CWclMgr>
+	 
+	 ATResult OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	//FLOG(e_logInfo, _T("CPopupDlgBase::OnDestroy"));
+	 	bHandled = false;
+	 	
+	 	SetDlgState(POPDLGSTATE::POPUP_DLG_PENDING_CLOSE);
+	 	return 0;
+	 }
+	 
+	
+#. **C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\WndUCFLoadIndicatorContainer.h(23)**:		
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CWndUCFLoadIndicatorContainer :
+	 public AT::CWclWindowImpl< CWndUCFLoadIndicatorContainer >,
+	 
+	 ATResult CWndUCFLoadIndicatorContainer::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG_FUNC(e_logInfo, _T("CWndUCFLoadIndicatorContainer::OnDestroy"), __P(m_hWnd), __P(IsWindow()));
+	 	return S_OK;
+	 }
+	
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\SvsImageWnd.h(26):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CSvsImageWnd :
+	 public AT::CWclWindowImpl<CSvsImageWnd>,
+	 
+	 ATResult CSvsImageWnd::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG(e_logInfo, FUNC_NAME);
+	 	bHandled = FALSE;
+	 
+	
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\SvsMainWnd.h(27):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CSvsMainWnd
+	 : public AT::CWclWindowImpl<CSvsMainWnd, AT::CWclMgr>
+	 
+	 ATResult CSvsMainWnd::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG(e_logInfo, FUNC_NAME, __P(m_ucfObjID.dwDocID));
+	 	bHandled = FALSE;
+	 
+	 
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\SvsPanelWnd.h(30):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CSvsPanelWnd
+	 : public AT::CWclWindowImpl<CSvsPanelWnd, AT::CWclMgr>
+	 
+	 ATResult CSvsPanelWnd::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG(e_logInfo, FUNC_NAME);
+	 	bHandled = FALSE;
+	 
+
+#. **C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\SvsPromptWnd.h(23)**:        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CSvsPromptWnd :
+	 public AT::CWclWindowImpl<CSvsPromptWnd>,
+	 
+	 ATResult CSvsPromptWnd::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG(e_logInfo, FUNC_NAME, __P(GetHWND()));
+	 	m_PosRefWndCheckTimer.KillTimer();
+	 	return S_OK;
+	 }
+	 
+	
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\SvsTimeIndicator.h(21):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CSvsTimeIndicator :
+	 public AT::CWclWindowImpl<CSvsTimeIndicator>
+	 
+	 ATResult CSvsTimeIndicator::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG(e_logInfo, FUNC_NAME);
+	 	bHandled = FALSE;
+    
+#. C:\\Workspace\\CCTG\\webex-docshare-rsk\\src\\windows\\PDcomUI\\SvsVolumeTrackBar.h(22):        
+	+ MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
+	::
+	 
+	 class CSvsVolumeTrackBar
+	 : public AT::CWclWindowImpl<CSvsVolumeTrackBar, AT::CWclMgr>
+	 
+	 ATResult CSvsVolumeTrackBar::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	      FLOG(e_logInfo, FUNC_NAME);
+	      bHandled = FALSE;
+
+Code
+----
+
+#. src/windows/PDcomUI/DlgPDSaveAsPDF.cpp
+	::
+	 
+	 diff --git a/src/windows/PDcomUI/DlgPDSaveAsPDF.cpp b/src/windows/PDcomUI/DlgPDSaveAsPDF.cpp
+	 index 484e60c..e1b587c 100644
+	 --- a/src/windows/PDcomUI/DlgPDSaveAsPDF.cpp
+	 +++ b/src/windows/PDcomUI/DlgPDSaveAsPDF.cpp
+	 @@ -45,10 +45,12 @@ ATResult CWndSaveAsPDFContentListBox::OnDrawItem(ATUInt uMsg, ATWParam wParam, A
+	 
+	 ATResult CWndSaveAsPDFContentListBox::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 -       FLOG_FUNC(e_logInfo, _T("CWndSaveAsPDFContentListBox::OnDestroy"), __P(IsWindow()), __P(m_mapTaskList.size()));
+	 +    FLOG_FUNC(e_logInfo, _T("CWndSaveAsPDFContentListBox::OnDestroy"), __P(IsWindow()), __P(m_mapTaskList.size()));
+	 
+	 -       bHandled = ATTrue;
+	 -       return 0;
+	 +    //{{{ Modify by Lamfung Wen @2018-03-14, US29153
+	 +    bHandled = false;
+	 +    //}}}
+	 +    return 0;
+	 }
+	 
+	 BOOL CWndSaveAsPDFContentListBox::AddNewTask(const AT::CString& strFilename)
+	 @@ -184,19 +186,21 @@ ATResult CDlgPDSaveAsPDF::OnInitDialog(ATUInt uMsg, ATWParam wParam, ATLParam lP
+	 
+	 ATResult CDlgPDSaveAsPDF::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 -       FLOG_FUNC(e_logInfo, _T("CDlgPDSaveAsPDF::OnDestroy"), __P(IsWindow()));
+	 +    FLOG_FUNC(e_logInfo, _T("CDlgPDSaveAsPDF::OnDestroy"), __P(IsWindow()));
+	 
+	 -       if (m_saveAsPDFContent.IsWindow())
+	 -       {
+	 -               m_saveAsPDFContent.ClearContent();
+	 -               m_saveAsPDFContent.UnsubclassWindow();
+	 -       }
+	 +    if (m_saveAsPDFContent.IsWindow())
+	 +    {
+	 +        m_saveAsPDFContent.ClearContent();
+	 +        m_saveAsPDFContent.UnsubclassWindow();
+	 +    }
+	 
+	 -       m_iSaved = 0;
+	 -       m_pCancelDlg = nullptr;
+	 +    m_iSaved = 0;
+	 +    m_pCancelDlg = nullptr;
+	 
+	 -       bHandled = ATTrue;
+	 -       return 0;
+	 +    //{{{ Modify by Lamfung Wen @2018-03-14, US29153
+	 +    bHandled = false;
+	 +    //}}}
+	 +    return 0;
+	 }
+	 
+	 
+#. src/windows/PDcomUI/PDcomUI.rc
+	+ 10032, 1100, 1801, 1900
+	+ 10032, 1100, 1803, 1400
+	
+#. src/windows/PDcomUI/SvsPromptWnd.cpp
+	::
+	 
+	 diff --git a/src/windows/PDcomUI/SvsPromptWnd.cpp b/src/windows/PDcomUI/SvsPromptWnd.cpp
+	 index 602648b..961372c 100644
+	 --- a/src/windows/PDcomUI/SvsPromptWnd.cpp
+	 +++ b/src/windows/PDcomUI/SvsPromptWnd.cpp
+	 @@ -32,6 +32,11 @@ ATResult CSvsPromptWnd::OnCreate(ATUInt uMsg, ATWParam wParam, ATLParam lParam,
+	 ATResult CSvsPromptWnd::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 FLOG(e_logInfo, FUNC_NAME, __P(GetHWND()));
+	 +
+	 +    //{{{ Add by Lamfung Wen @2018-03-14, US29153
+	 +    bHandled = false;
+	 +    //}}}
+	 +
+	 m_PosRefWndCheckTimer.KillTimer();
+	 return S_OK;
+	 }
+	 
+	 
+#. src/windows/PDcomUI/WndUCFLoadIndicatorContainer.cpp
+	::
+	 
+	 diff --git a/src/windows/PDcomUI/WndUCFLoadIndicatorContainer.cpp b/src/windows/PDcomUI/WndUCFLoadIndicatorContainer.cpp
+	 index 1224970..acff0b8 100644
+	 --- a/src/windows/PDcomUI/WndUCFLoadIndicatorContainer.cpp
+	 +++ b/src/windows/PDcomUI/WndUCFLoadIndicatorContainer.cpp
+	 @@ -27,6 +27,11 @@ ATResult CWndUCFLoadIndicatorContainer::OnInitDialog(ATUInt uMsg, ATWParam wPara
+	 ATResult CWndUCFLoadIndicatorContainer::OnDestroy(ATUInt uMsg, ATWParam wParam, ATLParam lParam, ATBool& bHandled)
+	 {
+	 	FLOG_FUNC(e_logInfo, _T("CWndUCFLoadIndicatorContainer::OnDestroy"), __P(m_hWnd), __P(IsWindow()));
+	 	+
+	 	+    //{{{ Add by Lamfung Wen @2018-03-14, US29153
+	 	+    bHandled = false;
+	 	+    //}}}
+	 	+
+	 	return S_OK;
+	 }
+	
+
+Build
+-----
+
+#. Download dependencies file
+#. Build PDGdiplus , pdgdiplus.lib
+#. Build PDComUI
+
+Test
+----
+
+#. Site
+	+ https://sademo2.dmz.webex.com
+	+ dofu1
+	
+#. Replace pdcomui.dll
+	+ regedit
+	+ Computer\\HKEY_CURRENT_USER\\Software\\WebEx\\T33_UMC
+		- autoupdate:0
+
+
+Reference
+---------
+
+#. git rep
+	+ https://lawen@bitbucket-eng-chn-sjc1.cisco.com/bitbucket/scm/cctg/webex-docshare-rsk.git
+	+ PDComUI
+
+#. US
+	+ https://rally1.rallydev.com/#/60282351184d/detail/userstory/204772299324/tasks
+
+
+

@@ -1,0 +1,541 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GPC Key point Summary &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="US37807 : TFS Integration test" href="US37807.html" />
+    <link rel="prev" title="CSCvm09848: sc cannot pop up update plugin dialog after end meeting" href="CSCvm09848.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="US37807.html" title="US37807 : TFS Integration test"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="CSCvm09848.html" title="CSCvm09848: sc cannot pop up update plugin dialog after end meeting"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gpc-key-point-summary">
+<h1>GPC Key point Summary<a class="headerlink" href="#gpc-key-point-summary" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fqa">
+<h2>FQA<a class="headerlink" href="#fqa" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Identify product version</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>gpcproductversion</dt>
+<dd><ul class="first last simple">
+<li>T32_TC</li>
+<li>T32_MC</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>atgpcdec version</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>gpcunpackversion</dt>
+<dd><ul class="first last simple">
+<li>27.17.2017.317</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>meeting id</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>meetingid</dt>
+<dd><ul class="first last simple">
+<li>103917954415114443</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Browser type</dt>
+<dd><ul class="first last">
+<li><p class="first">preJME&gt;&gt;ciscoWebexStart,Chrome/Firefox/3rd Extention</p>
+</li>
+<li><p class="first">CWSGPCWrapper::SetBrowserAgentType</p>
+</li>
+<li><dl class="first docutils">
+<dt>jme&gt;&gt;CJmeBrowserAgent&gt;&gt;GetBrowserType&gt;&gt; browser type</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>BROWSE_TYPE_FROM_PAGE_UNKNOWN = -1,</dt>
+<dd><ul class="first last simple">
+<li>BROWSE_TYPE_FROM_PAGE_IE = 0,</li>
+<li>BROWSE_TYPE_FROM_PAGE_FIREFOX = 9,</li>
+<li>BROWSE_TYPE_FROM_PAGE_SAFARI = 10,</li>
+<li>BROWSE_TYPE_FROM_PAGE_CHROME = 12,</li>
+<li>BROWSE_TYPE_FROM_PAGE_EDGE = 15,</li>
+<li>BROWSE_TYPE_FROM_PT = 101,</li>
+<li>BROWSE_TYPE_FROM_JABBER = 102,</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IE Plugin Auto Update</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CExtensionManagerImpl::LoadUpdateSetting</dt>
+<dd><ul class="first last simple">
+<li></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Jme_UpdateMgr_CheckUpdate.cpp</p>
+</li>
+<li><dl class="first docutils">
+<dt>Register</dt>
+<dd><ul class="first last simple">
+<li>HKEY_CURRENT_USER</li>
+<li>HKEY_LOCAL_MACHINE</li>
+<li>SOFTWARE\JME_PRODUCT_ROOT\JME_PARAM_GPC_PRODUCT_VERSION\autoupdate</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>JME_PRODUCT_ROOT</dt>
+<dd><ul class="first last simple">
+<li>GpcProductRoot_Value</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>JME_PARAM_GPC_PRODUCT_VERSION</dt>
+<dd><ul class="first last simple">
+<li>GpcProductVersion</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">jme&gt;&gt;updateMgr&gt;&gt;checkUpdate&gt;&gt;initAutoUpdate</p>
+</li>
+<li><p class="first">jme&gt;&gt;updateMgr&gt;&gt;checkNeedUpdate</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TFS Type</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>IsDocShowCommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterDochShow</li>
+<li>DocShow:</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsShotNameCommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterShortFileName</li>
+<li>&#8220;<a href="#id1"><span class="problematic" id="id2">webex_</span></a>&#8220;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsNewCommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterNew</li>
+<li>get meeting info ,****,***,*****_webexe.exe</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsWebEx11CommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterWebEx11</li>
+<li>&#8220;__&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Old Parameter</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterOld</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>GPC download logic</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>download filelist</dt>
+<dd><ul class="first last simple">
+<li>gpcurlroot</li>
+<li>gpcinifilename</li>
+<li>filelist = gpcurlroot + &#8220;\&#8221; + gpcinifilename</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">#MTD# Add URL</p>
+</li>
+<li><p class="first">jme&gt;&gt;updateMgr&gt;&gt;fileList</p>
+</li>
+<li><p class="first">jme&gt;&gt;updateMgr&gt;&gt;doCheckUpdate</p>
+</li>
+<li><p class="first">jme&gt;&gt;updateMgr&gt;&gt;checkUpdate</p>
+</li>
+<li><p class="first">jme&gt;&gt;updateMgr&gt;&gt;checkNeedUpdate</p>
+</li>
+<li><p class="first">#MTD# Started download</p>
+</li>
+<li><p class="first">#MTD# Downloaded</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsDBCSLeadByte</dt>
+<dd><ul class="first last simple">
+<li>判断某字节是否在双字节字符集(例如汉字)的前导字节集中(GB   2312-80)   汉字编码中的第一个字节。DBCS：双字节字符集。</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Filelist Info</dt>
+<dd><ul class="first simple">
+<li>File List Item and GPCFilesHash Item</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;AppSharing.dll; AppSharing.7z;;1032, 1811, 100, 1600;937016;238936;N;VERSION;IGNORE;0&quot;</span>
+<span class="n">Source</span> <span class="n">Name</span> <span class="p">:</span> <span class="n">appsharing</span><span class="o">.</span><span class="n">dll</span><span class="p">,</span><span class="n">Url</span> <span class="p">:</span> <span class="n">appsharing</span><span class="o">.</span><span class="mi">7</span><span class="n">z</span><span class="p">,</span><span class="n">Target</span> <span class="p">:</span> <span class="p">,</span><span class="n">Version</span> <span class="p">:</span> <span class="mi">1032</span><span class="p">,</span> <span class="mi">1811</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1600</span><span class="p">,</span>
+<span class="n">File</span> <span class="n">size</span> <span class="p">:</span> <span class="mi">924216</span><span class="p">,</span><span class="n">Compressed</span> <span class="n">size</span> <span class="p">:</span> <span class="mi">234785</span><span class="p">,</span><span class="n">Action</span> <span class="p">:</span> <span class="n">N</span><span class="p">,</span><span class="n">UpdateControl</span> <span class="p">:</span> <span class="n">VERSION</span><span class="p">,</span><span class="n">FailureControl</span> <span class="p">:</span> <span class="n">IGNORE</span><span class="p">,</span><span class="n">OS</span> <span class="n">version</span> <span class="p">:</span> <span class="mi">0</span>
+
+<span class="n">AppSharing</span><span class="o">.</span><span class="mi">7</span><span class="n">z</span><span class="p">:</span><span class="n">o9m</span><span class="o">/</span><span class="n">RkCkONW33qbNTe</span><span class="o">/</span><span class="mi">0</span><span class="n">NelbXkx94fensENAdClfCdM</span><span class="o">=</span><span class="p">:</span><span class="mi">1032</span><span class="p">,</span> <span class="mi">1811</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1600</span><span class="p">:</span><span class="mi">937016</span><span class="p">:</span><span class="mi">238936</span><span class="p">::</span><span class="n">Cisco</span> <span class="n">WebEx</span> <span class="n">LLC</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="last">
+<li><dl class="first docutils">
+<dt>Target</dt>
+<dd><ul class="first last simple">
+<li>%system% : GetSystemDirectory</li>
+<li>%window% : GetWindowsDirectory</li>
+<li>%pdriver% : GetPrinterDriverDirectory, C:\Windows\system32\spool\DRIVERS\W32X86</li>
+<li>%kdriver% : GetSystemDirectory</li>
+<li>%uninstall% :</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Action</dt>
+<dd><ul class="first last simple">
+<li>&#8220;r&#8221; : DllRegisterServer</li>
+<li>&#8220;e&#8221; : ShellExecuteEx, lpParameters = _T(&#8220;/r&#8221;)</li>
+<li>&#8220;p&#8221; : ShellExecuteEx, lpParameters = _T(&#8220;/p&#8221;)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>FailureControl</dt>
+<dd><ul class="first last simple">
+<li>HandleGetFileCallback</li>
+<li>FailureControl = &#8220;ignore&#8221;</li>
+<li>FailureControl = &#8220;redirect&#8221;</li>
+<li>FailureControl = &#8220;reboot&#8221;</li>
+<li>FailureControl != &#8220;ignore&#8221;, Stop</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>UpdateControl</dt>
+<dd><ul class="first last simple">
+<li>CATGpcInstallationMgr::CItem::NeedUpdate</li>
+<li>&#8220;NEWVER&#8221; : _IsNeedUpdateByCheckingNewerVersion</li>
+<li>&#8220;version&#8221; : _IsNeedUpdateByCheckingVersion, _IsNeedUpdateByCheckingSize</li>
+<li>&#8220;size&#8221; : _IsNeedUpdateByCheckingSize</li>
+<li>&#8220;existence&#8221; : return FALSE</li>
+<li>&#8220;vertag&#8221; : _IsNeedUpdateByCheckingVerTag, &#8220;#~&#64;WebexVersionTag&#64;~#&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>GPCFilesHash Item</dt>
+<dd><ul class="first last simple">
+<li>JmeSecurityHashItem</li>
+<li>ParseGPCFileHash</li>
+<li>ParseOneHashItem</li>
+<li>m_vtSecurityHashItems</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Check Proxy</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CheckJscriptProxy</dt>
+<dd><ul class="first last simple">
+<li>InternetOpen</li>
+<li>InternetQueryOption</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>RemoveProxySet</dt>
+<dd><ul class="first last simple">
+<li>InternetOpen</li>
+<li>InternetQueryOption</li>
+<li>InternetSetOption</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CASL</dt>
+<dd><ul class="first last simple">
+<li>CANADA</li>
+<li>GetUserGeoID, 39</li>
+<li>ReadCASLFlagFromReg</li>
+<li>ReadCASLFlagFromIni</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>After file downloaded, verify file integrity</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>doInstallFile</dt>
+<dd><ul class="first last simple">
+<li>check7zFileHash : CalHashOfFile, Base64Encode</li>
+<li>Unzip .7z file : GpcDecompressFileW, GpcDecompressFile</li>
+<li>checkInstallFileSecurity : CheckWebExFileDigitalSignature, VerifyModuleSignatureAndSubject</li>
+<li>SetSecurityDesc</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>File Security</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Advapi32.dll</dt>
+<dd><ul class="first simple">
+<li>ConvertStringSecurityDescriptorToSecurityDescriptorW</li>
+<li>ConvertStringSecurityDescriptorToSecurityDescriptorA</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">SecuDescAllUsers</span> <span class="o">=</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;D:&quot;</span><span class="p">)</span>                                             <span class="o">//</span><span class="n">DACL</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;BA)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">Admin</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;PU)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">Power</span> <span class="n">User</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;BU)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">User</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GRGWGX;;;WD)&quot;</span><span class="p">);</span>             <span class="o">//</span><span class="n">Allow</span> <span class="n">Everyone</span> <span class="n">RWX</span>
+
+<span class="n">SecuDescCurrentUser</span> <span class="o">=</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;D:&quot;</span><span class="p">)</span>                                          <span class="o">//</span><span class="n">DACL</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;BA)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">Admin</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;PU)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">Power</span> <span class="n">User</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;BU)&quot;</span><span class="p">);</span>                 <span class="o">//</span><span class="n">Allow</span> <span class="n">User</span> <span class="n">Full</span> <span class="n">Control</span>
+
+<span class="n">SecuDescAdministrator</span> <span class="o">=</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;D:&quot;</span><span class="p">)</span>                                        <span class="o">//</span><span class="n">DACL</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;BA)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">Admin</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GA;;;PU)&quot;</span><span class="p">)</span>                  <span class="o">//</span><span class="n">Allow</span> <span class="n">Power</span> <span class="n">User</span> <span class="n">Full</span> <span class="n">Control</span>
+                                <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;(A;OICI;GRGX;;;BU)&quot;</span><span class="p">);</span>               <span class="o">//</span><span class="n">Allow</span> <span class="n">User</span> <span class="n">Full</span> <span class="n">Control</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">SetFileSecurity</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>TFS self delete</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>TFS_CallDeleteSelf</dt>
+<dd><ul class="first simple">
+<li>VerifyModuleSignatureAndSubject</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CSecurityUtilImpl</span><span class="p">::</span><span class="n">VerifyModuleSignature</span><span class="p">,</span> <span class="n">Is</span> <span class="n">Fail</span> <span class="n">to</span> <span class="n">verify</span> <span class="p">[</span><span class="n">C</span><span class="p">:</span>\\<span class="n">Users</span>\\<span class="n">lawen</span>\\<span class="n">AppData</span>\\<span class="n">Local</span>\\<span class="n">WebEx</span>\\<span class="n">webex</span><span class="o">.</span><span class="n">exe</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="last simple">
+<li>CreateProcess</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">TFS_DeleteSelf</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Security Descriptor String Format</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows/desktop/secauthz/security-descriptor-string-format">https://docs.microsoft.com/en-us/windows/desktop/secauthz/security-descriptor-string-format</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GPC Key point Summary</a><ul>
+<li><a class="reference internal" href="#fqa">FQA</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="CSCvm09848.html"
+                        title="previous chapter">CSCvm09848: sc cannot pop up update plugin dialog after end meeting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="US37807.html"
+                        title="next chapter">US37807 : TFS Integration test</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/gpc_keypoint_summary.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="US37807.html" title="US37807 : TFS Integration test"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="CSCvm09848.html" title="CSCvm09848: sc cannot pop up update plugin dialog after end meeting"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

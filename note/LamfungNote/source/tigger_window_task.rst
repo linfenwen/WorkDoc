@@ -74,6 +74,11 @@ Main Component Own
 	+ Jason Gao
 	+ Aier Huang
 
+#. US PM
+	+ When need confirm if by design, can loop these two PM
+	+ Rai Johnson (raijohns) <raijohns@cisco.com>
+	+ Wendy Wang (yiqwang) <yiqwang@cisco.com>
+
 
 
 
@@ -118,6 +123,9 @@ WIKI
 	
 #. CFD status
 	https://wwwin-ottawa.cisco.com/tfoggoa/Scrubber/showquery.html?query=yuzchen-0
+
+#. Replace Debug Dll File
+	+ https://wiki.cisco.com/display/CSGMSO/How+to+replace+debug+dll+file+on+customer+pc
 
 
 * \\10.224.188.12\csg-hgh-VSCM-Vanoris\baiferYu\project_task_\rt

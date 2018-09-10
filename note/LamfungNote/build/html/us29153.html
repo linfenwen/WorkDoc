@@ -1,0 +1,570 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>US29153 WCL WM_DESTROY, WM_NCDESTROY &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="F4013: Test L10N and AllInOne" href="f4013_us27784.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f4013_us27784.html" title="F4013: Test L10N and AllInOne"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="us29153-wcl-wm-destroy-wm-ncdestroy">
+<h1>US29153 WCL WM_DESTROY, WM_NCDESTROY<a class="headerlink" href="#us29153-wcl-wm-destroy-wm-ncdestroy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>在Window编程标准中对于WM_DESTROY和WM_NCDESTROY一般是不允许设置bHandled=true的，
+因为很多窗口会在这2个消息中释放对象，拦截了会产生意想不到的问题。
+我看到很多代码里没有注意到这个问题，在OnDestroy中没有写上bHandled=false;(默认为true).
+为了解决这个问题，我在WCL里加个一个判断，判断用户是否拦截了这两个消息没有继续往下转发。
+如果用户拦截了这两个消息，WCL库会出现一个assert:
+
+Please double check your codes about WM_DESTROY event base on the WCL, if you missed the “bHandled = FLASE”
+</pre></div>
+</div>
+</div>
+<div class="section" id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\comui_wcl_interface.h(49):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">BEGIN_MSG_MAP</span><span class="p">(</span><span class="n">CWclCommUIInstanceT</span><span class="p">)</span>
+       <span class="n">MESSAGE_HANDLER</span><span class="p">(</span><span class="n">WM_CREATE</span><span class="p">,</span> <span class="n">OnCreate</span><span class="p">)</span>
+       <span class="n">MESSAGE_HANDLER</span><span class="p">(</span><span class="n">WM_INITDIALOG</span><span class="p">,</span> <span class="n">OnCreate</span><span class="p">)</span>
+       <span class="n">MESSAGE_HANDLER</span><span class="p">(</span><span class="n">WM_DESTROY</span><span class="p">,</span> <span class="n">OnDestroy</span><span class="p">)</span>
+<span class="n">END_MSG_MAP</span><span class="p">()</span>
+
+<span class="n">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">CWclCommUIInstanceT</span>
+
+<span class="n">LRESULT</span> <span class="n">OnDestroy</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nMsg</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">BOOL</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">s_pPtr</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\comui_wcl_interface.h(54):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">BEGIN_WCLMSG_MAP</span><span class="p">(</span><span class="n">CWclCommUIInstanceT</span><span class="p">)</span>
+       <span class="n">MESSAGE_HANDLER</span><span class="p">(</span><span class="n">WM_CREATE</span><span class="p">,</span> <span class="n">OnCreate</span><span class="p">)</span>
+       <span class="n">MESSAGE_HANDLER</span><span class="p">(</span><span class="n">WM_DESTROY</span><span class="p">,</span> <span class="n">OnDestroy</span><span class="p">)</span>
+<span class="n">END_WCLMSG_MAP</span><span class="p">()</span>
+
+<span class="n">template</span> <span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="o">&gt;</span> <span class="k">class</span> <span class="nc">CWclCommUIInstanceT</span>
+
+<span class="n">LRESULT</span> <span class="n">OnDestroy</span><span class="p">(</span><span class="n">UINT</span> <span class="n">nMsg</span><span class="p">,</span> <span class="n">WPARAM</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">LPARAM</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">BOOL</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">s_pPtr</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\DlgPDAdvancePage.h(43):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CPDAdvancePage</span>
+<span class="p">:</span> <span class="n">public</span> <span class="n">CPopupDlgInstanceT</span><span class="o">&lt;</span><span class="n">CPDAdvancePage</span><span class="o">&gt;</span>
+<span class="p">,</span> <span class="n">public</span> <span class="n">CPopupDlgBase</span><span class="o">&lt;</span><span class="n">CPDAdvancePage</span><span class="o">&gt;</span>
+<span class="p">,</span> <span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CTimerProc</span>
+
+<span class="n">LRESULT</span> <span class="n">CPDAdvancePage</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">m_oIDTimerID</span><span class="o">.</span><span class="n">KillTimer</span><span class="p">();</span>
+       <span class="n">DestroyMessageBox</span><span class="p">();</span>
+
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\DlgPDSaveAsPDF.h(27)</strong>:</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CWndSaveAsPDFContentListBox</span> <span class="p">:</span>
+<span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CWndSaveAsPDFContentListBox</span><span class="p">,</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclListBox</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">CWndSaveAsPDFContentListBox</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CWndSaveAsPDFContentListBox::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()),</span> <span class="n">__P</span><span class="p">(</span><span class="n">m_mapTaskList</span><span class="o">.</span><span class="n">size</span><span class="p">()));</span>
+
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">ATTrue</span><span class="p">;</span>
+       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\DlgPDSaveAsPDF.h(68)</strong>:</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CDlgPDSaveAsPDF</span> <span class="p">:</span> <span class="n">public</span> <span class="n">conISaveAsPDF</span>
+<span class="p">,</span> <span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CDlgPDSaveAsPDF</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">CDlgPDSaveAsPDF</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CDlgPDSaveAsPDF::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()));</span>
+
+       <span class="k">if</span> <span class="p">(</span><span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">IsWindow</span><span class="p">())</span>
+       <span class="p">{</span>
+               <span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">ClearContent</span><span class="p">();</span>
+               <span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">UnsubclassWindow</span><span class="p">();</span>
+       <span class="p">}</span>
+
+<span class="n">m_iSaved</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">m_pCancelDlg</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+
+<span class="n">bHandled</span> <span class="o">=</span> <span class="n">ATTrue</span><span class="p">;</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\PopUpDlgBase.h(95):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CPopupDlgBase</span>
+<span class="p">:</span> <span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">TImpl</span><span class="p">,</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclMgr</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="o">//</span><span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CPopupDlgBase::OnDestroy&quot;</span><span class="p">));</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+
+       <span class="n">SetDlgState</span><span class="p">(</span><span class="n">POPDLGSTATE</span><span class="p">::</span><span class="n">POPUP_DLG_PENDING_CLOSE</span><span class="p">);</span>
+       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\WndUCFLoadIndicatorContainer.h(23)</strong>:</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CWndUCFLoadIndicatorContainer</span> <span class="p">:</span>
+<span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span> <span class="n">CWndUCFLoadIndicatorContainer</span> <span class="o">&gt;</span><span class="p">,</span>
+
+<span class="n">ATResult</span> <span class="n">CWndUCFLoadIndicatorContainer</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CWndUCFLoadIndicatorContainer::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">m_hWnd</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()));</span>
+       <span class="k">return</span> <span class="n">S_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\SvsImageWnd.h(26):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CSvsImageWnd</span> <span class="p">:</span>
+<span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CSvsImageWnd</span><span class="o">&gt;</span><span class="p">,</span>
+
+<span class="n">ATResult</span> <span class="n">CSvsImageWnd</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">);</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\SvsMainWnd.h(27):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CSvsMainWnd</span>
+<span class="p">:</span> <span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CSvsMainWnd</span><span class="p">,</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclMgr</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">CSvsMainWnd</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">,</span> <span class="n">__P</span><span class="p">(</span><span class="n">m_ucfObjID</span><span class="o">.</span><span class="n">dwDocID</span><span class="p">));</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\SvsPanelWnd.h(30):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CSvsPanelWnd</span>
+<span class="p">:</span> <span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CSvsPanelWnd</span><span class="p">,</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclMgr</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">CSvsPanelWnd</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">);</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\SvsPromptWnd.h(23)</strong>:</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CSvsPromptWnd</span> <span class="p">:</span>
+<span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CSvsPromptWnd</span><span class="o">&gt;</span><span class="p">,</span>
+
+<span class="n">ATResult</span> <span class="n">CSvsPromptWnd</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">,</span> <span class="n">__P</span><span class="p">(</span><span class="n">GetHWND</span><span class="p">()));</span>
+       <span class="n">m_PosRefWndCheckTimer</span><span class="o">.</span><span class="n">KillTimer</span><span class="p">();</span>
+       <span class="k">return</span> <span class="n">S_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\SvsTimeIndicator.h(21):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CSvsTimeIndicator</span> <span class="p">:</span>
+<span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CSvsTimeIndicator</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">CSvsTimeIndicator</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">);</span>
+       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>C:\Workspace\CCTG\webex-docshare-rsk\src\windows\PDcomUI\SvsVolumeTrackBar.h(22):</dt>
+<dd><ul class="first simple">
+<li>MESSAGE_HANDLER(WM_DESTROY, OnDestroy)</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CSvsVolumeTrackBar</span>
+<span class="p">:</span> <span class="n">public</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclWindowImpl</span><span class="o">&lt;</span><span class="n">CSvsVolumeTrackBar</span><span class="p">,</span> <span class="n">AT</span><span class="p">::</span><span class="n">CWclMgr</span><span class="o">&gt;</span>
+
+<span class="n">ATResult</span> <span class="n">CSvsVolumeTrackBar</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">);</span>
+     <span class="n">bHandled</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="code">
+<h2>Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>src/windows/PDcomUI/DlgPDSaveAsPDF.cpp</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">DlgPDSaveAsPDF</span><span class="o">.</span><span class="n">cpp</span> <span class="n">b</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">DlgPDSaveAsPDF</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">index</span> <span class="mi">484</span><span class="n">e60c</span><span class="o">..</span><span class="n">e1b587c</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">DlgPDSaveAsPDF</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">DlgPDSaveAsPDF</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">45</span><span class="p">,</span><span class="mi">10</span> <span class="o">+</span><span class="mi">45</span><span class="p">,</span><span class="mi">12</span> <span class="o">@@</span> <span class="n">ATResult</span> <span class="n">CWndSaveAsPDFContentListBox</span><span class="p">::</span><span class="n">OnDrawItem</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">A</span>
+
+<span class="n">ATResult</span> <span class="n">CWndSaveAsPDFContentListBox</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="o">-</span>       <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CWndSaveAsPDFContentListBox::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()),</span> <span class="n">__P</span><span class="p">(</span><span class="n">m_mapTaskList</span><span class="o">.</span><span class="n">size</span><span class="p">()));</span>
+<span class="o">+</span>    <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CWndSaveAsPDFContentListBox::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()),</span> <span class="n">__P</span><span class="p">(</span><span class="n">m_mapTaskList</span><span class="o">.</span><span class="n">size</span><span class="p">()));</span>
+
+<span class="o">-</span>       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">ATTrue</span><span class="p">;</span>
+<span class="o">-</span>       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">+</span>    <span class="o">//</span><span class="p">{{{</span> <span class="n">Modify</span> <span class="n">by</span> <span class="n">Lamfung</span> <span class="n">Wen</span> <span class="nd">@2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="n">US29153</span>
+<span class="o">+</span>    <span class="n">bHandled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="o">+</span>    <span class="o">//</span><span class="p">}}}</span>
+<span class="o">+</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">BOOL</span> <span class="n">CWndSaveAsPDFContentListBox</span><span class="p">::</span><span class="n">AddNewTask</span><span class="p">(</span><span class="n">const</span> <span class="n">AT</span><span class="p">::</span><span class="n">CString</span><span class="o">&amp;</span> <span class="n">strFilename</span><span class="p">)</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">184</span><span class="p">,</span><span class="mi">19</span> <span class="o">+</span><span class="mi">186</span><span class="p">,</span><span class="mi">21</span> <span class="o">@@</span> <span class="n">ATResult</span> <span class="n">CDlgPDSaveAsPDF</span><span class="p">::</span><span class="n">OnInitDialog</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lP</span>
+
+<span class="n">ATResult</span> <span class="n">CDlgPDSaveAsPDF</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="o">-</span>       <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CDlgPDSaveAsPDF::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()));</span>
+<span class="o">+</span>    <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CDlgPDSaveAsPDF::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()));</span>
+
+<span class="o">-</span>       <span class="k">if</span> <span class="p">(</span><span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">IsWindow</span><span class="p">())</span>
+<span class="o">-</span>       <span class="p">{</span>
+<span class="o">-</span>               <span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">ClearContent</span><span class="p">();</span>
+<span class="o">-</span>               <span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">UnsubclassWindow</span><span class="p">();</span>
+<span class="o">-</span>       <span class="p">}</span>
+<span class="o">+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">IsWindow</span><span class="p">())</span>
+<span class="o">+</span>    <span class="p">{</span>
+<span class="o">+</span>        <span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">ClearContent</span><span class="p">();</span>
+<span class="o">+</span>        <span class="n">m_saveAsPDFContent</span><span class="o">.</span><span class="n">UnsubclassWindow</span><span class="p">();</span>
+<span class="o">+</span>    <span class="p">}</span>
+
+<span class="o">-</span>       <span class="n">m_iSaved</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">-</span>       <span class="n">m_pCancelDlg</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+<span class="o">+</span>    <span class="n">m_iSaved</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">+</span>    <span class="n">m_pCancelDlg</span> <span class="o">=</span> <span class="n">nullptr</span><span class="p">;</span>
+
+<span class="o">-</span>       <span class="n">bHandled</span> <span class="o">=</span> <span class="n">ATTrue</span><span class="p">;</span>
+<span class="o">-</span>       <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="o">+</span>    <span class="o">//</span><span class="p">{{{</span> <span class="n">Modify</span> <span class="n">by</span> <span class="n">Lamfung</span> <span class="n">Wen</span> <span class="nd">@2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="n">US29153</span>
+<span class="o">+</span>    <span class="n">bHandled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="o">+</span>    <span class="o">//</span><span class="p">}}}</span>
+<span class="o">+</span>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>src/windows/PDcomUI/PDcomUI.rc</dt>
+<dd><ul class="first last simple">
+<li>10032, 1100, 1801, 1900</li>
+<li>10032, 1100, 1803, 1400</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>src/windows/PDcomUI/SvsPromptWnd.cpp</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">SvsPromptWnd</span><span class="o">.</span><span class="n">cpp</span> <span class="n">b</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">SvsPromptWnd</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">index</span> <span class="mi">602648</span><span class="n">b</span><span class="o">..</span><span class="mi">961372</span><span class="n">c</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">SvsPromptWnd</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">SvsPromptWnd</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">32</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">32</span><span class="p">,</span><span class="mi">11</span> <span class="o">@@</span> <span class="n">ATResult</span> <span class="n">CSvsPromptWnd</span><span class="p">::</span><span class="n">OnCreate</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span>
+<span class="n">ATResult</span> <span class="n">CSvsPromptWnd</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="n">FLOG</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">FUNC_NAME</span><span class="p">,</span> <span class="n">__P</span><span class="p">(</span><span class="n">GetHWND</span><span class="p">()));</span>
+<span class="o">+</span>
+<span class="o">+</span>    <span class="o">//</span><span class="p">{{{</span> <span class="n">Add</span> <span class="n">by</span> <span class="n">Lamfung</span> <span class="n">Wen</span> <span class="nd">@2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="n">US29153</span>
+<span class="o">+</span>    <span class="n">bHandled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+<span class="o">+</span>    <span class="o">//</span><span class="p">}}}</span>
+<span class="o">+</span>
+<span class="n">m_PosRefWndCheckTimer</span><span class="o">.</span><span class="n">KillTimer</span><span class="p">();</span>
+<span class="k">return</span> <span class="n">S_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>src/windows/PDcomUI/WndUCFLoadIndicatorContainer.cpp</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">--</span><span class="n">git</span> <span class="n">a</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">WndUCFLoadIndicatorContainer</span><span class="o">.</span><span class="n">cpp</span> <span class="n">b</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">WndUCFLoadIndicatorContainer</span><span class="o">.</span><span class="n">cpp</span>
+<span class="n">index</span> <span class="mf">1224970.</span><span class="o">.</span><span class="n">acff0b8</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="n">a</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">WndUCFLoadIndicatorContainer</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">+++</span> <span class="n">b</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span><span class="n">PDcomUI</span><span class="o">/</span><span class="n">WndUCFLoadIndicatorContainer</span><span class="o">.</span><span class="n">cpp</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">27</span><span class="p">,</span><span class="mi">6</span> <span class="o">+</span><span class="mi">27</span><span class="p">,</span><span class="mi">11</span> <span class="o">@@</span> <span class="n">ATResult</span> <span class="n">CWndUCFLoadIndicatorContainer</span><span class="p">::</span><span class="n">OnInitDialog</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wPara</span>
+<span class="n">ATResult</span> <span class="n">CWndUCFLoadIndicatorContainer</span><span class="p">::</span><span class="n">OnDestroy</span><span class="p">(</span><span class="n">ATUInt</span> <span class="n">uMsg</span><span class="p">,</span> <span class="n">ATWParam</span> <span class="n">wParam</span><span class="p">,</span> <span class="n">ATLParam</span> <span class="n">lParam</span><span class="p">,</span> <span class="n">ATBool</span><span class="o">&amp;</span> <span class="n">bHandled</span><span class="p">)</span>
+<span class="p">{</span>
+       <span class="n">FLOG_FUNC</span><span class="p">(</span><span class="n">e_logInfo</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;CWndUCFLoadIndicatorContainer::OnDestroy&quot;</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">m_hWnd</span><span class="p">),</span> <span class="n">__P</span><span class="p">(</span><span class="n">IsWindow</span><span class="p">()));</span>
+       <span class="o">+</span>
+       <span class="o">+</span>    <span class="o">//</span><span class="p">{{{</span> <span class="n">Add</span> <span class="n">by</span> <span class="n">Lamfung</span> <span class="n">Wen</span> <span class="nd">@2018</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">14</span><span class="p">,</span> <span class="n">US29153</span>
+       <span class="o">+</span>    <span class="n">bHandled</span> <span class="o">=</span> <span class="n">false</span><span class="p">;</span>
+       <span class="o">+</span>    <span class="o">//</span><span class="p">}}}</span>
+       <span class="o">+</span>
+       <span class="k">return</span> <span class="n">S_OK</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="build">
+<h2>Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Download dependencies file</li>
+<li>Build PDGdiplus , pdgdiplus.lib</li>
+<li>Build PDComUI</li>
+</ol>
+</div>
+<div class="section" id="test">
+<h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Site</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://sademo2.dmz.webex.com">https://sademo2.dmz.webex.com</a></li>
+<li>dofu1</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Replace pdcomui.dll</dt>
+<dd><ul class="first last">
+<li><p class="first">regedit</p>
+</li>
+<li><dl class="first docutils">
+<dt>Computer\HKEY_CURRENT_USER\Software\WebEx\T33_UMC</dt>
+<dd><ul class="first last simple">
+<li>autoupdate:0</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>git rep</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://lawen&#64;bitbucket-eng-chn-sjc1.cisco.com/bitbucket/scm/cctg/webex-docshare-rsk.git">https://lawen&#64;bitbucket-eng-chn-sjc1.cisco.com/bitbucket/scm/cctg/webex-docshare-rsk.git</a></li>
+<li>PDComUI</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>US</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://rally1.rallydev.com/#/60282351184d/detail/userstory/204772299324/tasks">https://rally1.rallydev.com/#/60282351184d/detail/userstory/204772299324/tasks</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">US29153 WCL WM_DESTROY, WM_NCDESTROY</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#issues">Issues</a></li>
+<li><a class="reference internal" href="#code">Code</a></li>
+<li><a class="reference internal" href="#build">Build</a></li>
+<li><a class="reference internal" href="#test">Test</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f4013_us27784.html"
+                        title="previous chapter">F4013: Test L10N and AllInOne</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/us29153.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f4013_us27784.html" title="F4013: Test L10N and AllInOne"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

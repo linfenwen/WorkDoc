@@ -1,0 +1,147 @@
+F7112 Local H.264-based Recordings and Playback 
+===============================================
+
+#. 2018.03.21, Hold F7112 first meeting
+	+ Learn Local Recording current status
+	+ Learn Local Recording history
+	+ Meeting Recording
+		- https://alpha.webex.com/alpha/lsr.php?RCID=803c4018d4eb492899ed55925b1b649d
+		- Recording password: xUTqwJW4
+	+ Meeting Minutes
+		- Background from Walker
+			+ Current WRF file maybe include two type data: DLC and H264
+			+ Current WRF Editor can't edit when the WRF file include DLC and H264 data
+			+ Many customer complain WRF Editor can't edit WRF file
+			
+		- Parker said:
+			#. Local Recording had two ways
+				+ Online Local Recording: WRF file generate by meeting process
+				+ Offline Local Recording: WRF file generate by AtAuthor process
+			#. Data handle
+				+ Local Recording call AS component to capture meeting window
+				+ AS component support two different encode logic: DLC and H264
+				+ When AS component capture image data it will notify Local Recording through the callback interface, then Local Recording will use WRF data format to record
+				+ Local Recording call AudioCC component to capture audio
+				+ When AudioCC component capture audio data it will notify Local Recording through the callback interface, then Local Recording will use WRF data format to record
+			#. Playback
+				+ Local Recording Player parse WRF file
+				+ Local Recording Player pass PCM data to AudioCC component base on timestamp, then AudioCC play the audio data
+				+ Local Recording Player pass DLC or H264 data to AS component base on timestamp, then AS play the video data 
+			#. Others
+				+ WOT.h defined WRF header format, key frame format
+				+ Every 1 minute will generate one key frame
+		- Titus said:
+			#. He had dumped image data from AS component through hard code AS code
+			#. AS component not just capture meeting process's window, it also capture cursor
+			#. He had also given some suggestion from AS side
+				
+
+#. US29571: Understand current local recording background knowledge
+	+ Task
+		- Provide support from AS side
+		- Provide support from AtAuthor side
+		- How current AtAuthor work
+	+ Output
+		- Document current local recording work's logic 
+		- Define what will do in the next sprint
+
+Plan
+----
+
+Parker
+------
+
+#. AtAuthor.exe
+#. Local Recording call AS
+#. Local Recording call Audio
+#. Every one munite will create one key frame
+#. WRF Header
+#. WOT.h, Key Frame Format
+#. PlayBack can play WRF file
+#. According Timestamp, as and audio 
+
+Online Recording
+~~~~~~~~~~~~~~~~
+
+#. Just Recording meeting window
+#. Customer select file format
+#. audiocc
+#. ARF: 
+
+
+Capture
+~~~~~~~
+
+#. AS
+#. WME, HFPS
+
+Q & A
+~~~~~
+
+#. How to record video
+#. How to record chat
+#. How AtAuthor.exe comunicate with meeting process?
+#. Offline switch to Online
+#. AS H264 data, just picture
+#. DLC or H264, dump H264 data, mp4 or not
+#. If use AS, need consider DLC or H264
+#. If use other method to capture picture, need consider cursor
+
+
+Background
+----------
+
+Daily Works
+-----------
+
+#. @2018-03-16 received wiki link in Reference 
+#. @2018-03-26 Test current WRF logic
+	+ Meeting Process will show record status in the status bar
+	+ Meeting Process will show record status in the meeting title
+	+ Local Recording Status will sync up with all the attendee
+	+ Even meeting without any voice, WRF will record voice by capture system sound
+	+ Debug how atauthor retrieve audio data
+	+ Record PC Audio
+
+
+Reference
+---------
+
+#. https://wiki.cisco.com/display/PDINFO/F7112%3ALocal+H.264-based+Recordings+and+Playback
+#. https://wiki.cisco.com/display/PDINFO/09-F7112%3ALocal+H.264-based+Recordings+and+Playback
+
+#. Like a Native English Speaker
+	+ https://www.youtube.com/watch?v=9b7lFcGbxK0
+
+#. PCM to ACC
+	+ http://blog.csdn.net/leixiaohua1020/article/details/25430449
+	+ https://github.com/leixiaohua1020/simplest_ffmpeg_audio_encoder
+
+#. PCM(Pulse Code Modulation) File Format Introduce
+	+ http://blog.csdn.net/ce123_zhouwei/article/details/9359389
+	+ https://github.com/leixiaohua1020/simplest_ffmpeg_audio_encoder
+	
+#. AAC(Advanced Audio Coding) Audio File Format
+	+ http://blog.csdn.net/wlsfling/article/details/5876016
+	+ ADIF: Audio Data Interchange Format 
+	+ ADTS: Audio Data Transport Stream
+	
+#. MP4 
+	+ https://bytescout.com/blog/2014/09/mp4-file-format.html
+	
+#. AppShare Document 2014
+	+ https://cisco.box.com/s/pe91of1i8d0vzcok7ns0assz5nb88ii1
+	
+#. Others
+	+ http://blog.csdn.net/dancing_night/article/details/46698853
+	+ http://www.cucer.cn/2016/03/10/ffmpeg-screen-capture.html
+
+#. http://blog.sina.com.cn/s/blog_56e19aa70101cc3o.html
+#. https://blog.csdn.net/liulina603/article/details/24637039
+
+#. mp4v2
+	+ H264 codec to MP4 file 
+	+ https://blog.csdn.net/qq_29350001/article/details/73742075
+	+ http://mp4v2.googlecode.com/svn/trunk/
+	+ https://blog.csdn.net/firehood_/article/details/8813587
+

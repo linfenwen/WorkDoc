@@ -1,0 +1,675 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NBR Remove Script &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="C++ Code Analysis" href="cpp_code_analysis.html" />
+    <link rel="prev" title="NBR Player Issue" href="nbr_player_nmac.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cpp_code_analysis.html" title="C++ Code Analysis"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="nbr_player_nmac.html" title="NBR Player Issue"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nbr-remove-script">
+<h1>NBR Remove Script<a class="headerlink" href="#nbr-remove-script" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="webex-ini-template">
+<h2>webex.ini template<a class="headerlink" href="#webex-ini-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">WebEx</span><span class="p">]</span>
+<span class="n">urlroot</span><span class="o">=</span>
+<span class="n">localrootsectionver</span><span class="o">=</span>
+<span class="n">gpcextver</span><span class="o">=</span>
+<span class="n">gpcdecver</span><span class="o">=</span>
+<span class="n">downloadmsgtitle</span><span class="o">=</span>
+<span class="n">downloadlocalsetting</span><span class="o">=</span>
+<span class="n">ininame</span><span class="o">=</span>
+<span class="n">productroot</span><span class="o">=</span>
+<span class="n">skip_download</span><span class="o">=</span>
+<span class="n">HomePageURL</span><span class="o">=</span>
+<span class="n">PlaybackURL1</span><span class="o">=</span>
+<span class="n">PlaybackURL2</span><span class="o">=</span>
+<span class="n">PlaybackBrowser</span><span class="o">=</span>
+<span class="n">productname</span><span class="o">=</span>
+<span class="n">controltype</span><span class="o">=</span>
+<span class="n">Reserved0</span><span class="o">=</span>
+<span class="n">Reserved1</span><span class="o">=</span>
+<span class="n">Reserved2</span><span class="o">=</span>
+<span class="n">Reserved3</span><span class="o">=</span>
+<span class="n">Reserved4</span><span class="o">=</span>
+<span class="n">Reserved5</span><span class="o">=</span>
+<span class="n">Reserved6</span><span class="o">=</span>
+<span class="n">Reserved7</span><span class="o">=</span>
+<span class="n">Reserved8</span><span class="o">=</span>
+<span class="n">Reserved9</span><span class="o">=</span>
+<span class="n">Reserved10</span><span class="o">=</span>
+<span class="n">Reserved11</span><span class="o">=</span>
+<span class="p">[</span><span class="n">Vista</span><span class="p">]</span>
+<span class="n">sectionnameEX</span><span class="o">=</span>
+<span class="n">AppName_V</span><span class="o">=</span>
+<span class="n">AppPara_V</span><span class="o">=</span><span class="s2">&quot;-Online C:\Users\Lamfung\AppData\LocalLow\WebEx\webex.ini&quot;</span>
+<span class="p">[</span><span class="n">NameValue</span><span class="p">]</span>
+<span class="n">SFSupporting</span><span class="o">=</span>
+<span class="n">GpcMovingInSubdir</span><span class="o">=</span>
+<span class="n">ClientBuildVersion</span><span class="o">=</span>
+<span class="n">T29CryptoFlag</span><span class="o">=</span>
+<span class="n">EnableCertChecking</span><span class="o">=</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arf-remove-script-sequence">
+<h2>ARF remove script sequence<a class="headerlink" href="#arf-remove-script-sequence" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/arf_remove_script_sequence.svg" src="_images/arf_remove_script_sequence.svg" /></div>
+<div class="section" id="gpc-parameters">
+<h2>GPC Parameters<a class="headerlink" href="#gpc-parameters" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">gpccomponentname</p>
+</li>
+<li><p class="first">gpcinitcall</p>
+</li>
+<li><p class="first">gpcexitcall</p>
+</li>
+<li><dl class="first docutils">
+<dt>gpcactions</dt>
+<dd><ul class="first last simple">
+<li>GpcChangeLocation(szHomePage, szFrameName), Base64Decode(szhomepage), Base64Decode(szframename)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">gpcerrorpageurl</p>
+</li>
+<li><p class="first">szhomepage</p>
+</li>
+<li><p class="first">szframename</p>
+</li>
+<li><dl class="first docutils">
+<dt>WebEx</dt>
+<dd><ul class="first last simple">
+<li>urlroot=[gpcurlroot], HardCode(urlroot)=NoneDecode(gpcurlroot)</li>
+<li>localrootsectionver=[gpcproductversion],HardCode(localrootsectionver)=NoneDecode(gpcproductversion)</li>
+<li>gpcextver=[gpcextversion],HardCode(gpcextver)=NoneDecode(gpcextversion)</li>
+<li>gpcdecver=[gpcunpackversion],HardCode(gpcdecver)=NoneDecode(gpcunpackversion)</li>
+<li>downloadmsgtitle=[gpcprogressbartitle],HardCode(downloadmsgtitle)=Base64Decode(gpcprogressbartitle)</li>
+<li>downloadlocalsetting=[gpclocalsetting],HardCode(downloadlocalsetting)=Base64Decode(gpclocalsetting)</li>
+<li>ininame=[gpcinifilename],HardCode(ininame)=Base64Decode(gpcinifilename)</li>
+<li>productroot=[gpcproductroot],HardCode(productroot)=NoneDecode(gpcproductroot)</li>
+<li>None (hard code), skip_download=IsVista()?0:1,HardCode(skip_download)=IsVista()?0:1</li>
+<li>HomePageURL=[homepageurl], HardCode(HomePageURL)=Base64Decode(homepageurl)</li>
+<li>PlaybackURL1=[playbackurl1], HardCode(PlaybackURL1)=Base64Decode(playbackurl1)</li>
+<li>PlaybackURL2=[playbackur2], HardCode(PlaybackURL2)=Base64Decode(playbackur2)</li>
+<li>PlaybackBrowser=[browsertype], HardCode(PlaybackBrowser)=Base64Decode(browsertype)</li>
+<li>None (hard code), HardCode(productname)=HardCode(nbrpl)</li>
+<li>controltype=[controltype], HardCode(controltype)=Base64Decode(controltype)</li>
+<li>Reserved0=[reserved0], HardCode(Reserved0)=Base64Decode(reserved0)</li>
+<li>Reserved1=[reserved1], HardCode(Reserved1)=Base64Decode(reserved1)</li>
+<li>Reserved2=[reserved2], HardCode(Reserved2)=Base64Decode(reserved2)</li>
+<li>Reserved3=[reserved3], HardCode(Reserved3)=Base64Decode(reserved3)</li>
+<li>Reserved4=[reserved4], HardCode(Reserved4)=Base64Decode(reserved4)</li>
+<li>Reserved5=[reserved5], HardCode(Reserved5)=Base64Decode(reserved5)</li>
+<li>Reserved6=[reserved6], HardCode(Reserved6)=Base64Decode(reserved6)</li>
+<li>Reserved7=[reserved7], HardCode(Reserved7)=Base64Decode(reserved7)</li>
+<li>Reserved8=[reserved8], HardCode(Reserved8)=Base64Decode(reserved8)</li>
+<li>Reserved9=[reserved9], HardCode(Reserved9)=Base64Decode(reserved9)</li>
+<li>Reserved10=[reserved10], HardCode(Reserved10)=Base64Decode(reserved10)</li>
+<li>Reserved11=[reserved11], HardCode(Reserved11)=Base64Decode(reserved11)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Vista</dt>
+<dd><ul class="first last simple">
+<li>None (hard code), HardCode(sectionnameEX)=HardCode(WebEx_V)</li>
+<li>None (hard code), HardCode(AppName_V)=HardCode(webex\500\nbrplay.exe)</li>
+<li>None (hard code), HardCode(AppPara_V)=&#8221;-Online WebExIniFileFullPath&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NameValue</dt>
+<dd><ul class="first last simple">
+<li>[paramname0]=[paramvalue0], Base64Decode(paramname0)=Base64Decode(paramvalue0)</li>
+<li>[paramname1]=[paramvalue1], Base64Decode(paramname1)=Base64Decode(paramvalue1)</li>
+<li>[paramname2]=[paramvalue2], Base64Decode(paramname2)=Base64Decode(paramvalue2)</li>
+<li>[paramname3]=[paramvalue3], Base64Decode(paramname3)=Base64Decode(paramvalue3)</li>
+<li>[paramname4]=[paramvalue4], Base64Decode(paramname4)=Base64Decode(paramvalue4)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="script-execute-sequence">
+<h2>Script Execute Sequence<a class="headerlink" href="#script-execute-sequence" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ExecuteScript</span><span class="p">:</span>
+ <span class="n">szCookie</span> <span class="o">=</span> <span class="n">InitControl</span><span class="p">(</span><span class="o">%</span><span class="n">HWND</span><span class="p">);</span>
+ <span class="n">NBR2_SetDownloadParameters</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span><span class="n">GpcProductVersion</span><span class="p">,</span><span class="n">GpcUrlRoot</span><span class="p">,</span><span class="n">GpcExtVersion</span><span class="p">,</span><span class="n">GpcUnpackVersion</span><span class="p">,</span><span class="n">GpcProgressBarTitle</span><span class="p">,</span><span class="n">GpcIniFileName</span><span class="p">,</span><span class="n">GpcProductRoot</span><span class="p">,</span><span class="n">GpcLocalSetting</span><span class="p">);</span>
+ <span class="n">NameValue</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span> <span class="n">ParamName0</span><span class="p">,</span><span class="n">ParamValue0</span><span class="p">);</span>
+ <span class="n">NameValue</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span> <span class="n">ParamName1</span><span class="p">,</span><span class="n">ParamValue1</span><span class="p">);</span>
+ <span class="n">NameValue</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span> <span class="n">ParamName2</span><span class="p">,</span><span class="n">ParamValue2</span><span class="p">);</span>
+ <span class="n">NameValue</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span> <span class="n">ParamName3</span><span class="p">,</span><span class="n">ParamValue3</span><span class="p">);</span>
+ <span class="n">NameValue</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span> <span class="n">ParamName4</span><span class="p">,</span><span class="n">ParamValue4</span><span class="p">);</span>
+ <span class="n">NBR2_SetAdditionParams</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span><span class="n">homepageURL</span><span class="p">,</span><span class="n">playbackURL1</span><span class="p">,</span><span class="n">playbackURL2</span><span class="p">,</span><span class="n">browserType</span><span class="p">,</span><span class="n">lpszReserved1</span><span class="p">,</span><span class="n">lpszReserved2</span><span class="p">,</span><span class="n">lpszReserved3</span><span class="p">);</span>
+ <span class="n">NBR2_SetControlParams</span><span class="p">(</span><span class="n">szCookie</span><span class="p">,</span><span class="n">ControlType</span><span class="p">,</span><span class="n">Reserved0</span><span class="p">,</span><span class="n">Reserved1</span><span class="p">,</span><span class="n">Reserved2</span><span class="p">,</span><span class="n">Reserved3</span><span class="p">,</span><span class="n">Reserved4</span><span class="p">,</span><span class="n">Reserved5</span><span class="p">,</span><span class="n">Reserved6</span><span class="p">,</span><span class="n">Reserved7</span><span class="p">,</span><span class="n">Reserved8</span><span class="p">,</span><span class="n">Reserved9</span><span class="p">,</span><span class="n">Reserved10</span><span class="p">,</span><span class="n">Reserved11</span><span class="p">);</span>
+<span class="n">ExecuteScript</span><span class="p">:</span>
+ <span class="n">GpcChangeLocation</span><span class="p">(</span><span class="n">szHomePage</span><span class="p">,</span> <span class="n">szFrameName</span><span class="p">);</span>
+<span class="n">ExecuteScript</span><span class="p">:</span>
+ <span class="n">ExitControl</span><span class="p">(</span><span class="n">szCookie</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="atplycli-dll-api">
+<h2>atplycli.dll API<a class="headerlink" href="#atplycli-dll-api" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">InitControl</p>
+</li>
+<li><p class="first">ExitControl</p>
+</li>
+<li><dl class="first docutils">
+<dt>NBR2_SetControlParams</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Execute Script</dt>
+<dd><ul class="first last simple">
+<li>NBR2_SetControlParams(szCookie,ControlType,Reserved0,Reserved1,Reserved2,Reserved3,Reserved4,Reserved5,Reserved6,Reserved7,Reserved8,Reserved9,Reserved10,Reserved11);</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Write to webex.ini: [WebEx]</dt>
+<dd><ol class="first last arabic simple">
+<li>productname=nbrpl</li>
+<li>controltype=[controltype]</li>
+<li>Reserved0=[reserved0]</li>
+<li>Reserved1=[reserved1]</li>
+<li>Reserved2=[reserved2]</li>
+<li>Reserved3=[reserved3]</li>
+<li>Reserved4=[reserved4]</li>
+<li>Reserved5=[reserved5]</li>
+<li>Reserved6=[reserved6]</li>
+<li>Reserved7=[reserved7]</li>
+<li>Reserved8=[reserved8]</li>
+<li>Reserved9=[reserved9]</li>
+<li>Reserved10=[reserved10]</li>
+<li>Reserved11=[reserved11]</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NBR2_SetDownloadParameters</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Execute Script</dt>
+<dd><ul class="first last simple">
+<li>NBR2_SetDownloadParameters(szCookie,GpcProductVersion,GpcUrlRoot,GpcExtVersion,GpcUnpackVersion,GpcProgressBarTitle,GpcIniFileName,GpcProductRoot,GpcLocalSetting)；</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>SetDownloadParameters</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">WBXVoid</span> <span class="n">WBXCallback</span> <span class="n">NBR2_SetDownloadParameters</span><span class="p">(</span><span class="n">WBXLPCTSTR</span> <span class="n">lpszCookie</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszLocalSecVer</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszUrlRoot</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszGpcExtVer</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszGpcDecVer</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszDownloadMsgTitle</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszReserved1</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszReserved2</span><span class="p">,</span>
+                                                  <span class="n">WBXLPCTSTR</span> <span class="n">lpszReserved3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Write to webex.ini: [WebEx]</dt>
+<dd><ol class="first last arabic simple">
+<li>urlroot=[gpcurlroot]</li>
+<li>localrootsectionver=[gpcproductversion]</li>
+<li>gpcextver=[gpcextversion]</li>
+<li>gpcdecver=[gpcunpackversion]</li>
+<li>downloadmsgtitle=[gpcprogressbartitle]</li>
+<li>downloadlocalsetting=[gpclocalsetting]</li>
+<li>ininame=[gpcinifilename]</li>
+<li>productroot=[gpcproductroot]</li>
+<li>skip_download=IsVista()?0:1</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Write to webex.ini: [Vista]</dt>
+<dd><ol class="first last arabic simple">
+<li>sectionnameEX= WebEx_V</li>
+<li>AppName_V= webex\500\nbrplay.exe</li>
+<li>AppPara_V=&#8221;-Online WebExIniFileFullPath&#8221;</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NBR2_SetAdditionParams</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Execute Script</dt>
+<dd><ul class="first last simple">
+<li>NBR2_SetAdditionParams(szCookie,homepageURL,playbackURL1,playbackURL2,browserType,lpszReserved1,lpszReserved2,lpszReserved3);</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Write to webex.in: [WebEx]</dt>
+<dd><ol class="first last arabic simple">
+<li>HomePageURL=[homepageurl]</li>
+<li>PlaybackURL1=[playbackurl1]</li>
+<li>PlaybackURL2=[playbackur2]</li>
+<li>PlaybackBrowser=[browsertype]</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">NameValue</p>
+</li>
+</ol>
+</div>
+<div class="section" id="code-change">
+<h2>Code Change<a class="headerlink" href="#code-change" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>atgpcext_win.cpp</dt>
+<dd><ul class="first last simple">
+<li>GetServiceType()</li>
+<li>CATGpcExtension::InitComponent()</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>JmeParameterWriterImpl.cpp</dt>
+<dd><ul class="first last simple">
+<li>CJmeParameterWriterImpl::InitParameterWriterHelper</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>GPCParamUtil.cpp</dt>
+<dd><ul class="first last simple">
+<li>szPrecompatibleParams</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="wrf">
+<h2>WRF<a class="headerlink" href="#wrf" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>atauthor.exe</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-windows-localrecorder/browse">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTG/repos/webex-windows-localrecorder/browse</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[gpccomponentname]=[QVRSQ1AuRExM]</dt>
+<dd><ul class="first last simple">
+<li>gpccomponentname, atrcp.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[gpcactions]=[IEdwY0NoYW5nZUxvY2F0aW9uKHN6SG9tZVBhZ2UsIHN6RnJhbWVOYW1lKTt8IHwgfCB8IHwgfCB8IHwgfCB8IHwgfA==]</dt>
+<dd><ul class="first last simple">
+<li>GpcChangeLocation(szHomePage, szFrameName);| | | | | | | | | | | |</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[gpcinitcall]=[c3pDb29raWUgPSBJbml0Q29udHJvbF9BbGxJbk9uZSglSFdORCxHcGNMb2NhbFNldHRpbmcsQWxsSW5PbmVQYWNrYWdlRW5hYmxlKTtXZWJFeF9TZXRDb250cm9sVHlwZShzekNvb2tpZSxDb250cm9sVHlwZSxSZWNvcmRBZGRyZXNzKTs=]</dt>
+<dd><p class="first last">szCookie = InitControl_AllInOne(%HWND,GpcLocalSetting,AllInOnePackageEnable);WebEx_SetControlType(szCookie,ControlType,RecordAddress);</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>F6535 GPC Security - Remove Script Codes for SC,WRF,NBR</dt>
+<dd><p class="first last"><a class="reference external" href="https://wiki.cisco.com/pages/viewpage.action?pageId=109437735">https://wiki.cisco.com/pages/viewpage.action?pageId=109437735</a></p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arf-test-case">
+<h3>ARF test case<a class="headerlink" href="#arf-test-case" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Clean Package(gota70.eng.webex.com 32.10.0.142)</p>
+<blockquote>
+<div><table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">ARF Remove Script(Clean Package 32.10.0.142)</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">&nbsp;</th>
+<th class="head">IE</th>
+<th class="head">FireFox</th>
+<th class="head">Chrome</th>
+<th class="head">Edge</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Win7</th>
+<td>IE9(9.0.8112.16421)</td>
+<td>FireFox(56.0.2)</td>
+<td>Chrome(63.0.3239.90)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><th class="stub">Win8.1</th>
+<td>IE11(11.0.9600.18618)</td>
+<td>FireFox(56.0)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><th class="stub">Win10</th>
+<td>IE11(11.64.16299.0)</td>
+<td>FireFox(57.0.1)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first">Upgrade Package(cisco.webex.com 32.8.4.6=&gt;32.10.0.142 gota70.eng.webex.com)</p>
+<blockquote>
+<div><table border="1" class="docutils" id="id2">
+<caption><span class="caption-text">ARF Remove Script(32.8.4.6=&gt;32.10.0.142)</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">&nbsp;</th>
+<th class="head">IE</th>
+<th class="head">FireFox</th>
+<th class="head">Chrome</th>
+<th class="head">Edge</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Win7</th>
+<td>IE9(9.0.8112.16421)</td>
+<td>FireFox(56.0.2)</td>
+<td>Chrome(63.0.3239.90)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><th class="stub">Win8.1</th>
+<td>IE11(11.0.9600.18618)</td>
+<td>FireFox(56.0)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><th class="stub">Win10</th>
+<td>IE11(11.64.16299.0)</td>
+<td>FireFox(57.0.1)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="cdect-issue">
+<h2>CDECT Issue<a class="headerlink" href="#cdect-issue" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CSCvg08443, WRF Issue</dt>
+<dd><ul class="first last simple">
+<li>Created at 09/25/17 8:49</li>
+<li>Can&#8217;t online playback wrf file again with ActiveX after playback with Java download method</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="wrf-test-case">
+<h3>WRF test case<a class="headerlink" href="#wrf-test-case" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Clean Package(gota70.eng.webex.com 32.10.0.142)</p>
+<blockquote>
+<div><table border="1" class="docutils" id="id3">
+<caption><span class="caption-text">WRF Remove Script(Clean Package 32.10.0.142)</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">&nbsp;</th>
+<th class="head">IE</th>
+<th class="head">FireFox</th>
+<th class="head">Chrome</th>
+<th class="head">Edge</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Win7</th>
+<td>IE9(9.0.8112.16421)</td>
+<td>FireFox(56.0.2)</td>
+<td>Chrome(63.0.3239.90)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><th class="stub">Win8.1</th>
+<td>IE11(11.0.9600.18618)</td>
+<td>FireFox(56.0)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><th class="stub">Win10</th>
+<td>IE11(11.64.16299.0)</td>
+<td>FireFox(57.0.1)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first">Upgrade Package(cisco.webex.com 32.8.4.6=&gt;32.10.0.142 gota70.eng.webex.com)</p>
+<blockquote>
+<div><table border="1" class="docutils" id="id4">
+<caption><span class="caption-text">WRF Remove Script(32.8.4.6=&gt;32.10.0.142)</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head stub">&nbsp;</th>
+<th class="head">IE</th>
+<th class="head">FireFox</th>
+<th class="head">Chrome</th>
+<th class="head">Edge</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><th class="stub">Win7</th>
+<td>IE9(9.0.8112.16421)</td>
+<td>FireFox(56.0.2)</td>
+<td>Chrome(63.0.3239.90)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><th class="stub">Win8.1</th>
+<td>IE11(11.0.9600.18618)</td>
+<td>FireFox(56.0)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><th class="stub">Win10</th>
+<td>IE11(11.64.16299.0)</td>
+<td>FireFox(57.0.1)</td>
+<td>Chrome(63.0.3239.84)</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">NBR Remove Script</a><ul>
+<li><a class="reference internal" href="#webex-ini-template">webex.ini template</a></li>
+<li><a class="reference internal" href="#arf-remove-script-sequence">ARF remove script sequence</a></li>
+<li><a class="reference internal" href="#gpc-parameters">GPC Parameters</a></li>
+<li><a class="reference internal" href="#script-execute-sequence">Script Execute Sequence</a></li>
+<li><a class="reference internal" href="#atplycli-dll-api">atplycli.dll API</a></li>
+<li><a class="reference internal" href="#code-change">Code Change</a></li>
+<li><a class="reference internal" href="#wrf">WRF</a></li>
+<li><a class="reference internal" href="#test-case">Test Case</a><ul>
+<li><a class="reference internal" href="#arf-test-case">ARF test case</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cdect-issue">CDECT Issue</a><ul>
+<li><a class="reference internal" href="#wrf-test-case">WRF test case</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="nbr_player_nmac.html"
+                        title="previous chapter">NBR Player Issue</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cpp_code_analysis.html"
+                        title="next chapter">C++ Code Analysis</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/nbr_remove_script.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cpp_code_analysis.html" title="C++ Code Analysis"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="nbr_player_nmac.html" title="NBR Player Issue"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

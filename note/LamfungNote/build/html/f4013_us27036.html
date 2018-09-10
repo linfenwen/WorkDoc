@@ -1,0 +1,458 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>US27036: upgrade/downgrade for webACD/Jabber/PT &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="VSCM PC Lists" href="vscm_pc_list.html" />
+    <link rel="prev" title="CMR 3.5 and 4.0 sanity test" href="monthly_release_sanity_test_cmr_35_40.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="vscm_pc_list.html" title="VSCM PC Lists"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="monthly_release_sanity_test_cmr_35_40.html" title="CMR 3.5 and 4.0 sanity test"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="us27036-upgrade-downgrade-for-webacd-jabber-pt">
+<h1>US27036: upgrade/downgrade for webACD/Jabber/PT<a class="headerlink" href="#us27036-upgrade-downgrade-for-webacd-jabber-pt" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="test-env">
+<h2>Test Env<a class="headerlink" href="#test-env" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Test Site</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://f4013.qa.webex.com/">https://f4013.qa.webex.com/</a></li>
+<li><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a></li>
+<li>account : admin / <a class="reference external" href="mailto:P&#37;&#52;&#48;ss1234">P<span>&#64;</span>ss1234</a></li>
+<li>2018.01.29 &#8220;Cisco WebEx had a problem processing your request&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/PDINFO/Test+Matrix+and+Summary">https://wiki.cisco.com/display/PDINFO/Test+Matrix+and+Summary</a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="webacd-win10">
+<h2>WebACD Win10<a class="headerlink" href="#webacd-win10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="sc">
+<h3>SC<a class="headerlink" href="#sc" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>WebACD 32.9.1.2, download from cisco.webex.com =&gt; SC =&gt; Support =&gt; Downloads</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a></dt>
+<dd><ul class="first last simple">
+<li>Program Files (x86)\WebEx\WebACD</li>
+<li>msvcp120.dll, Cisco WebEx LLC</li>
+<li>msvcr120.dll, Cisco WebEx LLC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>cisco.webex.com</dt>
+<dd><ul class="first last simple">
+<li>cec</li>
+<li>Your account doesn&#8217;t have <strong>WebACD privilege</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="mc">
+<h3>MC<a class="headerlink" href="#mc" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>WebACD 32.9.1.2, download from cisco.webex.com =&gt; SC =&gt; Support =&gt; Downloads</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a>, 32.11.0.f4013.413</dt>
+<dd><ul class="first last simple">
+<li>AppData\Local\WebEx\WebEx\T32_UMC</li>
+<li>msvcr120.dll, Cisco WebEx LLC</li>
+<li>msvcp120.dll, Cisco WebEx LLC</li>
+<li>msvcr100.dll, Cisco WebEx LLC</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>32.12.0.f4013.71 =&gt; 32.10.3.4</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a>, 32.12.0.f4013.71</dt>
+<dd><ul class="first last simple">
+<li>C:\Users\lawen\AppData\Local\WebEx\WebEx\T32_UMC</li>
+<li>msvcr120.dll, Microsoft Corporation</li>
+<li>msvcp120.dll, Microsoft Corporation</li>
+<li>msvcr100.dll, Microsoft Corporation</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a>, 32.10.3.4</dt>
+<dd><ul class="first last simple">
+<li>C:\ProgramData\WebEx\WebEx\T32_UMC</li>
+<li>msvcr120.dll, Cisco WebEx LLC</li>
+<li>msvcp120.dll, Cisco WebEx LLC</li>
+<li>msvcr100.dll, Cisco WebEx LLC</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="jabber-win10">
+<h2>Jabber Win10<a class="headerlink" href="#jabber-win10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>MC<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>32.9.1.2 =&gt; 32.11.0.f4013.382</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a></dt>
+<dd><ul class="first last simple">
+<li>C:\Users\lawen\AppData\Local\Cisco\WebEx\cisco.webex.com\T32L</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com">https://m1eweb2.qa.webex.com</a></dt>
+<dd><ul class="first simple">
+<li>C:\ProgramData\WebEx\WebEx\T32_UMC</li>
+<li>F4013 Crash</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="n">CAssignAlternateHost</span><span class="p">::</span><span class="n">AdviseReLoginFromAssignAlternateHostEvent</span>
+<span class="ne">Exception</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">02</span><span class="p">:</span><span class="mi">28</span><span class="p">:</span><span class="mi">04</span> <span class="n">UTC</span>
+<span class="ne">Exception</span> <span class="n">Client</span><span class="p">:</span> <span class="n">MeetingID</span> <span class="o">=</span> <span class="mi">85457468440710517</span><span class="p">,</span> <span class="n">SessionID</span> <span class="o">=</span> <span class="mi">92481301</span><span class="p">,</span> <span class="n">LangID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">PID</span> <span class="o">=</span> <span class="mi">8860</span><span class="p">,</span> <span class="n">BuildNum</span> <span class="o">=</span> <span class="mf">32.11</span><span class="o">.</span><span class="mf">0.</span><span class="n">f4013</span><span class="o">.</span><span class="mi">382</span>
+<span class="ne">Exception</span> <span class="n">Code</span><span class="p">:</span> <span class="n">C0000005</span> <span class="p">[</span><span class="n">ACCESS_VIOLATION</span><span class="p">],</span> <span class="n">Caused</span> <span class="n">by</span> <span class="n">Read</span> <span class="kn">from</span> <span class="nn">location</span> <span class="mi">00022098</span>
+<span class="ne">Exception</span> <span class="n">Address</span><span class="p">:</span> <span class="mi">59</span><span class="n">BF4F24</span> <span class="p">[</span><span class="mi">0001</span><span class="p">:</span><span class="mi">003</span><span class="n">A3F24</span><span class="p">]</span>
+<span class="ne">Exception</span> <span class="n">Module</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">ProgramData</span>\<span class="n">WebEx</span>\<span class="n">WebEx</span>\<span class="n">T32_UMC</span>\<span class="n">webexmgr</span><span class="o">.</span><span class="n">dll</span> <span class="p">[</span><span class="n">version</span><span class="p">:</span> <span class="mf">3211.0</span><span class="o">.</span><span class="mf">1801.2400</span><span class="p">]</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>32.11.0.f4013.413 =&gt; 32.9.1.2</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a></dt>
+<dd><ul class="first last simple">
+<li>C:\ProgramData\WebEx\WebEx\T32_UMC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a></dt>
+<dd><ul class="first last simple">
+<li>C:\Users\lawen\AppData\Local\Cisco\WebEx\cisco.webex.com\T32L</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="tc">
+<h3>TC<a class="headerlink" href="#tc" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Jabber 11.9.1 Build 55716 can&#8217;t start TC meeting</li>
+</ol>
+</div>
+</div>
+<div class="section" id="pt-win8-0">
+<h2>PT Win8.0<a class="headerlink" href="#pt-win8-0" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id2">
+<h3>MC<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>32.11.0.f4013.345 =&gt; 32.9.1.2</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a>, 32.11.0.f4013.345</dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_UMC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a>, 32.9.1.2</dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_UMC_01</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>32.9.1.2 =&gt; 32.11.0.f4013.345</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a></dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_UMC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a></dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_UMC_01</li>
+<li>msvcp120.dll, sha256, Name of signer: Not available</li>
+<li>msvcr120.dll, sha256, Name of signer: Not available</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h3>TC<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>32.11.0.f4013.345 =&gt; 32.9.1.2</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a></dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_TC</li>
+<li>msvcp120.dll, sha256, Name of signer: Not available</li>
+<li>msvcr120.dll, sha256, Name of signer: Not available</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a></dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_TC</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>32.9.1.2 =&gt; 32.11.0.f4013.345</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://cisco.webex.com">https://cisco.webex.com</a></dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_TC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a></dt>
+<dd><ul class="first last simple">
+<li>ProgramData\WebEx\WebEx\T32_TC</li>
+<li>msvcp120.dll, sha256, Name of signer: Not available</li>
+<li>msvcr120.dll, sha256, Name of signer: Not available</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="issue">
+<h2>Issue<a class="headerlink" href="#issue" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">sha256, Name of signer: Not available</p>
+</li>
+<li><p class="first">PT 32.11.0.25, can&#8217;t support ec</p>
+</li>
+<li><p class="first">32.11.0.f4013.382 mc meeting crash when start meeting, <strong>32.11.0.f4013.413</strong> can&#8217;t reproduce</p>
+</li>
+<li><p class="first">Jabber 11.9.1 can&#8217;t start ec meeting</p>
+</li>
+<li><p class="first">Jabber 11.9.1 Build 55716 can&#8217;t start TC meeting</p>
+</li>
+<li><p class="first">cisco.webex.com, Your account doesn&#8217;t have WebACD privilege</p>
+</li>
+<li><p class="first">WebACD can&#8217;t download from m1eweb2.qa.webex.com, it tips <strong>Http/1.1 Service Unavailable</strong></p>
+</li>
+<li><p class="first">WebACD (32.9.1.2), mc meeting, folder, <strong>msvcr120.dll</strong>, <strong>msvcp120.dll</strong>, <strong>msvcr100.dll</strong></p>
+</li>
+<li><dl class="first docutils">
+<dt>MC crash, <a class="reference external" href="https://m1eweb2.qa.webex.com/f4013">https://m1eweb2.qa.webex.com/f4013</a>, 32.12.0.f4013.63, 32.12.0.f4013.67</dt>
+<dd><ul class="first last simple">
+<li>Seems caused by CI Env, need confirm in the next build</li>
+<li>32.12.0.f4013.71 can&#8217;t reproduce</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="ne">Exception</span> <span class="n">Time</span><span class="p">:</span> <span class="mi">02</span><span class="o">/</span><span class="mi">07</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">09</span><span class="p">:</span><span class="mi">04</span><span class="p">:</span><span class="mi">51</span> <span class="n">UTC</span>
+<span class="ne">Exception</span> <span class="n">Client</span><span class="p">:</span> <span class="n">MeetingID</span> <span class="o">=</span> <span class="mi">86180344400711083</span><span class="p">,</span> <span class="n">SessionID</span> <span class="o">=</span> <span class="mi">92482490</span><span class="p">,</span> <span class="n">LangID</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">PID</span> <span class="o">=</span> <span class="mi">12196</span><span class="p">,</span> <span class="n">BuildNum</span> <span class="o">=</span> <span class="mf">32.12</span><span class="o">.</span><span class="mf">0.</span><span class="n">f4013</span><span class="o">.</span><span class="mi">54</span>
+<span class="ne">Exception</span> <span class="n">Code</span><span class="p">:</span> <span class="n">C0000005</span> <span class="p">[</span><span class="n">ACCESS_VIOLATION</span><span class="p">],</span> <span class="n">Caused</span> <span class="n">by</span> <span class="n">Read</span> <span class="kn">from</span> <span class="nn">location</span> <span class="mi">00000001</span>
+<span class="ne">Exception</span> <span class="n">Address</span><span class="p">:</span> <span class="mi">6</span><span class="n">A71F82F</span> <span class="p">[</span><span class="mi">0001</span><span class="p">:</span><span class="mi">001</span><span class="n">AE82F</span><span class="p">]</span>
+<span class="ne">Exception</span> <span class="n">Module</span><span class="p">:</span> <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">lawen</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">WebEx</span>\<span class="n">WebEx</span>\<span class="n">T32_UMC</span>\<span class="n">webexmgr</span><span class="o">.</span><span class="n">dll</span> <span class="p">[</span><span class="n">version</span><span class="p">:</span> <span class="mf">3211.0</span><span class="o">.</span><span class="mf">1801.2800</span><span class="p">]</span>
+<span class="n">Image</span> <span class="n">Base</span><span class="p">:</span> <span class="mi">6</span><span class="n">A570000</span>  <span class="n">Image</span> <span class="n">Size</span><span class="p">:</span> <span class="mi">006</span><span class="n">CE000</span>  <span class="n">Checksum</span><span class="p">:</span> <span class="mi">006</span><span class="n">C03E4</span>
+<span class="n">Time</span> <span class="n">Stamp</span><span class="p">:</span> <span class="mi">5</span><span class="n">A714614</span> <span class="p">[</span><span class="mi">01</span><span class="o">/</span><span class="mi">31</span><span class="o">/</span><span class="mi">2018</span> <span class="mi">04</span><span class="p">:</span><span class="mi">29</span><span class="p">:</span><span class="mi">08</span> <span class="n">UTC</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">US27036: upgrade/downgrade for webACD/Jabber/PT</a><ul>
+<li><a class="reference internal" href="#test-env">Test Env</a></li>
+<li><a class="reference internal" href="#webacd-win10">WebACD Win10</a><ul>
+<li><a class="reference internal" href="#sc">SC</a></li>
+<li><a class="reference internal" href="#mc">MC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#jabber-win10">Jabber Win10</a><ul>
+<li><a class="reference internal" href="#id1">MC</a></li>
+<li><a class="reference internal" href="#tc">TC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pt-win8-0">PT Win8.0</a><ul>
+<li><a class="reference internal" href="#id2">MC</a></li>
+<li><a class="reference internal" href="#id3">TC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#issue">Issue</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="monthly_release_sanity_test_cmr_35_40.html"
+                        title="previous chapter">CMR 3.5 and 4.0 sanity test</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="vscm_pc_list.html"
+                        title="next chapter">VSCM PC Lists</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f4013_us27036.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="vscm_pc_list.html" title="VSCM PC Lists"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="monthly_release_sanity_test_cmr_35_40.html" title="CMR 3.5 and 4.0 sanity test"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

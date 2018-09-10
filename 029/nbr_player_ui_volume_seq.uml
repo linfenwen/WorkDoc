@@ -1,0 +1,38 @@
+@startuml
+
+participant CNBRPlayBar
+participant CWbxBmpButton
+participant CNBRPlayMgr
+participant CNBRMainFrame
+participant CNBRUIMgr
+
+box "CNBRPfwUICtl" #LightBlue
+	participant INBRCommand
+	participant CNBRPfwUICtl
+end box
+
+== User adjust volume ==
+
+[-> CNBRPlayBar : OnVolume
+CNBRPlayBar -> CWbxBmpButton : GetPos
+
+CNBRPlayBar -> CNBRPlayMgr : UICommand
+note over CNBRPlayBar, CNBRPlayMgr : NBRUI_VOLUME
+
+CNBRPlayMgr -> CNBRMainFrame : ToUICmd
+note over CNBRPlayMgr, CNBRMainFrame : UICMD_SET_VOLUME
+
+CNBRMainFrame -> CNBRUIMgr : ToPFWCmd
+note over CNBRMainFrame, CNBRUIMgr : NBR_PLAY_CMDID_SETVOLUME
+
+CNBRUIMgr -> INBRCommand : OnHandleCommand
+INBRCommand --> CNBRPfwUICtl : OnHandleCommand
+
+CNBRPfwUICtl -> CNBRPfwPlayCtl : OnHandlePlayCmd
+note over CNBRPfwUICtl, CNBRPfwPlayCtl : NBR_PLAY_CMDID_SETVOLUME
+
+CNBRPfwPlayCtl -> CNBRPfwPlayCtl : SetVolume
+CNBRPfwPlayCtl -> INBRPlayCCCtl : HandlePlayCmd
+note over CNBRPfwPlayCtl, INBRPlayCCCtl : NBR_PFW_CC_CMD_SET_VOLUME
+
+@enduml

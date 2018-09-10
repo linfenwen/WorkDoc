@@ -158,6 +158,24 @@
 </dd>
 </dl>
 </li>
+<li><dl class="first docutils">
+<dt>View Critical sestion</dt>
+<dd><ul class="first last simple">
+<li>RtlEnterCriticalSection</li>
+<li>02 0042efe8 7054edf9 70620e28 0042f024 0042f008 ntdll_77940000!RtlEnterCriticalSection+0x150 (FPO: [Non-Fpo])</li>
+<li>!cs 70620e28</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>!uniqstack</dt>
+<dd><ul class="first last simple">
+<li>It enumerates all the thread call stacks and eliminates duplicates, so that you can understand at a glance what these hundreds of threads are doing.</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ol>
 </div>
 <div class="section" id="handle">
@@ -195,6 +213,26 @@
 </dd>
 </dl>
 </li>
+<li><p class="first">!handle 0 f event</p>
+</li>
+<li><p class="first">!handle 0 f section</p>
+</li>
+<li><p class="first">!handle 0 f directory</p>
+</li>
+<li><p class="first">!handle 0 f mutant</p>
+</li>
+<li><p class="first">!handle 0 f windowstation</p>
+</li>
+<li><p class="first">!handle 0 f key</p>
+</li>
+<li><p class="first">!handle 0 f desktop</p>
+</li>
+<li><p class="first">!handle 0 f iocompletion</p>
+</li>
+<li><p class="first">!handle 0 f timer</p>
+</li>
+<li><p class="first">!handle 0 f tpworkerfactory</p>
+</li>
 </ol>
 </div>
 <div class="section" id="thread">
@@ -229,6 +267,14 @@
 <dt>!runaway 7</dt>
 <dd><ul class="first last simple">
 <li>Show all the threads of current process time info with 3 format</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>dt nt!_TEB &#64;$teb</dt>
+<dd><ul class="first last simple">
+<li>Display the complete TEB structure</li>
 </ul>
 </dd>
 </dl>
@@ -342,12 +388,24 @@
 </div>
 <div class="section" id="issue">
 <h2>80000003 issue<a class="headerlink" href="#issue" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li>Hardcode interrupt request, like: __asm int 3 (ASM), System.Diagnostics.Debugger.Break (C#), DebugBreak() (WinAPI).</li>
-<li>OS enable memory runtime check, like Application Verifier can trigger after heap corruption, memory overrun.</li>
-<li>Compiler can have some configuration to enble what should be filled for the uninitialized memory block and end of function(blank area, after retun..).
-For example, Microsoft VC complier can fill 0xCC if enable /GZ. 0xCC is actually a opcode of __asm int 3</li>
-<li><a class="reference external" href="http://stackoverflow.com/questions/3306235/what-is-the-break-instruction-exception-in-windbg">http://stackoverflow.com/questions/3306235/what-is-the-break-instruction-exception-in-windbg</a></li>
+<ol class="arabic">
+<li><p class="first">Hardcode interrupt request, like: __asm int 3 (ASM), System.Diagnostics.Debugger.Break (C#), DebugBreak() (WinAPI).</p>
+</li>
+<li><p class="first">OS enable memory runtime check, like Application Verifier can trigger after heap corruption, memory overrun.</p>
+</li>
+<li><p class="first">Compiler can have some configuration to enble what should be filled for the uninitialized memory block and end of function(blank area, after retun..).
+For example, Microsoft VC complier can fill 0xCC if enable /GZ. 0xCC is actually a opcode of __asm int 3</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://stackoverflow.com/questions/3306235/what-is-the-break-instruction-exception-in-windbg">http://stackoverflow.com/questions/3306235/what-is-the-break-instruction-exception-in-windbg</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>RtlEnterCriticalSection</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://stackoverflow.com/questions/26573238/windbg-how-to-read-the-locks-output">http://stackoverflow.com/questions/26573238/windbg-how-to-read-the-locks-output</a></li>
+</ul>
+</dd>
+</dl>
+</li>
 </ol>
 </div>
 <div class="section" id="reference">
@@ -388,6 +446,30 @@ For example, Microsoft VC complier can fill 0xCC if enable /GZ. 0xCC is actually
 <dt>kernel32!UnhandledExceptionFilter</dt>
 <dd><ul class="first last simple">
 <li>www.debuginfo.com/articles/easywindbg2.html</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Deep Dive into Process Environment Block with Windbg</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://garage4hackers.com/showthread.php?t=1902">http://garage4hackers.com/showthread.php?t=1902</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Why don’t critical sections work cross process?</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blogs.msdn.microsoft.com/larryosterman/2005/08/24/why-dont-critical-sections-work-cross-process/">https://blogs.msdn.microsoft.com/larryosterman/2005/08/24/why-dont-critical-sections-work-cross-process/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Obscure WinDbg Commands</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://blogs.microsoft.co.il/sasha/2013/08/12/obscure-windbg-commands-part-1/">http://blogs.microsoft.co.il/sasha/2013/08/12/obscure-windbg-commands-part-1/</a></li>
 </ul>
 </dd>
 </dl>

@@ -1,0 +1,209 @@
+F7112 : US31106 Provide Architecture Design For MP4 Local Recording
+===================================================================
+
+Acceptence Critaria
+-------------------
+#. Get the agreement of the whole architecture design among WME, Walker, Won, Nemo, Parker who related with this feature.  And deliver the design before sprint demo.
+#. List all of the stories for this feature in Rally based on above agreement.
+#. Provide the estimation of the release day before sprint demo. Need get cross team's estimation and commitment also.
+
+Based On WME MP4 Local Recording Overview
+-----------------------------------------
+
+.. figure:: _static/based-wme-mp4-local-recording-4.png
+
+Data Flow Solution
+~~~~~~~~~~~~~~~~~~
+
+.. figure:: _static/based-wme-mp4-local-recording-data-flow.png
+
+Video Bit Rate
+~~~~~~~~~~~~~~
+
+.. figure:: _static/sdr-hdr-video-bitrate.png
+	:height: 1424px
+	:width: 1780px
+	:scale: 30 %
+
+Design FQA
+----------
+
+
+
+#. In-meeting case, why we suggest use a new process to do mp4 local recording work but not in the meeting process?
+
+#. In-meeting case, why we suggest to capture data in meeting process?
+	+ VOIP data always from meeting process
+	+ Performance consider
+	
+#. MP4 Audio codec: OPUS or AAC?
+	+ Confirmed with Keith, Audio Engine can provide PCM data
+
+#. WME need provide audio mixing API or not?
+	+ If provide, the logic will be simple in MP4 Local recording client side
+	+ Else, need create several audio track and map the audio data
+	+ Legacy VOIP
+	+ Hybrid VOIP
+	+ TSP VOIP
+
+#. How to handle resolution change?
+
+#. WME support pause or resume?
+
+#. WME provide H264 encode API?
+
+#. High resolution concerns?
+	+ CPU usage
+	+ Disk usage
+	+ FPS
+	+ Fixed code stream
+	+ UI
+
+
+Mile Stone
+----------
+
+#. Create a process without UI, call WME API to retrieve H264 and AAC data, then generate a MP4 file
+	+ As a developer, I can call WME API to retrieve image data
+	+ As a developer, I can call WME API to encode image raw data and output H264 data
+	+ As an audio data user, I can call **MP4 Creator Module** to generate MP4 file
+		- Need Parker to provide **MP4 Creator Module**	
+	+ As a developer, I can call WME API to retrieve audio data
+		- Need WME team provide a training or document to introduce relevant API or sample code
+	+ As a video data user, I call call **MP4 Creator Module** to generate MP4 file
+	+ As an audio data and video data user, I can call **MP4 Creator Module** to generate MP4 file
+	
+#. Create a process with UI, which use WCL as UI Library, it's can record a specify process.
+	+ As a developer, I can use WCL to complete **Webex Recorder** Window
+		- Need UI team provide UI design
+	+ As a developer, I can use WCL to complete **Save Webex Recording** Window
+	+ As a developer, I can use **WME API** to retrieve **Open Application Lists**
+		- Need WME team provide support
+	+ As a developer, I can use WCL to complete **Webex Recorder-Open Application** Window
+	+ As a developer, I can response the command from **Webex Recorder** Window
+	+ As a developer, I can use WCL to complete **Recorder Panel** Window
+		- Need UI team provide UI design
+	+ As a developer, I can response the command from **Recorder Panel** Window
+	+ As a developer, I can use WCL to complete the **Audio Setup Wizard** Window
+	+ As a developer, I can response the command from **Audio Setup Wizard** Window
+#. Create a process with UI, which use WCL as UI Library, it's can record meeting process.
+	+ As a developer, I need use feature toggle to enable or disable MP4 Local Recording
+	+ As a developer, I can use WCL to create **Save Recorded Meeting As** Window
+	+ As a developer, I need define LPC command channel message
+	+ As a developer, I need define LPC data channel data format
+	+ As a developer, I can call WME API to retrieve audio data
+	+ As a developer, I can call WME API to retrieve video data
+	+ As a developer, I can send data from Meeting process to **Local Recording** process
+	+ As a developer, When **Local Recording** process receive data from **Meeting Process**, I can call **MP4FileCreator** to generate MP4 file
+	+ As a developer, When the AS is sharing, I can retrieve audio and video data
+	+ As a developer, When the DS is sharing, I can retrieve audio and video data
+
+#. Create a process with UI, which use WCL as UI Library, it's can record meeting process and sync status with meeting process
+	+ As a developer, when input different resolution image data, I can output the fixed size image data
+	+ As an user, when I click "Recording" button on **Recorder Panel** window, on the meeting process's status bar, it will show "Recording..."
+	+ As an user, when I click "Pause" button on **Recorder Panel** window, on the meeting process's status bar, it will show "Meeting recording is paused."
+	+ As an user, when I click "Stop" button on **Recorder Panel** window, on the meeting process's status bar, it will back to normal, and the **Webex Recorder** process will be exited.
+	
+#. Legacy AS or DS MP4 Local Recording support
+
+#. Others
+	+ TA
+	
+
+FQA
+---
+
+#. Audio codec type (AAC, ADTS Header)
+	+ Speaker capture
+	+ Microphone capture
+	+ Silence package
+	+ WME support mix
+	
+#. Video codec type
+	+ Screen capture
+	+ WME support capture specify process
+	+ Resolution Change
+
+
+Message
+-------
+
+Presenter
+~~~~~~~~~
+
+#. RPC::Message Windows
+#. Click **Record button** on **Recorder Panel**, then **Meeting Window** status bar will show *Recording...*
+#. Click **Pause button** on **Recorder Panel**, then **Meeting Window** will status bar show *Meeting recording is paused.*
+#. Click **Stop button** on **Recorder Panel**, then **Meeting Window** will status bar back to normal
+
+
+UI
+--
+
+Presenter
+~~~~~~~~~
+
+#. .. figure:: _static/presenter-save-recorder-meeting-as.png
+
+#. .. figure:: _static/presenter-meeting-right-top.png
+
+#. .. figure:: _static/msi-recorder-panel.png
+
+#. .. figure:: _static/presenter-status-bar-recording.png
+
+#. .. figure:: _static/presenter-meeting-recording-is-paused.png
+
+#. .. figure:: _static/presenter-back-to-normal.png
+
+#. Meeting close, **Recorder Panel** window will be closed
+
+
+MSI WebEx Recorder
+~~~~~~~~~~~~~~~~~~
+
+#. .. figure:: _static/msi-webex-recorder.png
+
+#. .. figure:: _static/msi-about-webex-recorder.png
+
+#. .. figure:: _static/msi-save-webex-recording.png
+
+#. .. figure:: _static/msi-webex-recorder-and-player-help.png
+
+#. .. figure:: _static/msi-webex-recorder-audio-setup-wizard-1.png
+
+#. .. figure:: _static/msi-webex-recorder-audio-setup-wizard-2.png
+
+#. .. figure:: _static/msi-webex-recorder-audio-setup-wizard-3.png
+
+#. .. figure:: _static/msi-webex-recorder-audio-setup-wizard-4.png
+
+#. .. figure:: _static/msi-webex-recorder-audio-setup-wizard-5.png
+
+#. .. figure:: _static/msi-webex-recorder-audio-setup-wizard-6.png
+
+#. .. figure:: _static/msi-webex-recorder-open-application.png
+
+#. .. figure:: _static/msi-webex-recorder-other-application.png
+
+#. .. figure:: _static/msi-webex-recorder-settings.png
+
+#. .. figure:: _static/msi-recorder-panel.png
+
+#. .. figure:: _static/msi-webex-recorder-2.png
+
+
+Reference
+---------
+
+#. opus vs aac
+	+ http://opus-codec.org/comparison/
+	
+#. aac vs mp3
+	+ https://www.winxdvd.com/resource/aac-vs-mp3.htm#1
+	
+#. Provide browser support information
+	+ https://caniuse.com/#search=opus
+	
+#. LPC (Local procedure calls) Part 1 architecture
+	+ https://blogs.msdn.microsoft.com/ntdebugging/2007/07/26/lpc-local-procedure-calls-part-1-architecture/
+

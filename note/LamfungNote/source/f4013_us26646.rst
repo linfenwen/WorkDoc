@@ -1,0 +1,338 @@
+US26646 : As a developer, I will add vendors' file into filelist.json
+=====================================================================
+
+Task
+----
+
+#. Research and collect vendor's file ==> **vendor's file list**
+	+ What's the vendor's
+#. Research how to add vendor's file into filelist.json
+	+ Where are to place filelist.json file
+#. Code implement
+#. UT
+#. Doc
+
+filelist.json
+-------------
+
+::
+ 
+ {
+    "Vendors":
+    [
+        { "Item":"atl90.7z", "DestFileName":"atl90.dll"},
+        { "Item":"msvcp90.7z", "DestFileName":"msvcp90.dll"},
+        { "Item":"msvcp120.7z", "DestFileName":"msvcp120.dll"},
+        { "Item":"msvcp120x64.7z", "DestFileName":"msvcp120.dll"},
+        { "Item":"msvcr90.7z", "DestFileName":"msvcr90.dll"},
+        { "Item":"msvcr100.7z", "DestFileName":"msvcr100.dll"},
+        { "Item":"msvcr120.7z", "DestFileName":"msvcr120.dll"},
+        { "Item":"msvcr120x64.7z", "DestFileName":"msvcr120.dll"}
+    ],
+    "WebEx":
+    [
+        { "Item":"atmgr.7z", "DestFileName": "atmgr.exe" }
+    ]
+ }
+
+
+Microsoft system files
+----------------------
+
+With Digital Signatures
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. atl90.dll
+	+ gpcini.ptool, atl90.dll, atl90.7z
+#. msvcp90.dll
+	+ gpcini.sales, msvcp90.dll, msvcp90.7z
+	+ gpcini.nbr, msvcp90.dll, msvcp90.7z
+#. msvcp90x64.dll
+	+ webex-client-packaging\\staticdll
+#. msvcp100.dll
+	+ webex-client-packaging\\staticdll
+#. msvcp120.dll
+	+ gpcini.ptool, msvcp120.dll, msvcp120.7z
+	+ gpcini.ra, msvcp120.dll, msvcp120.7z
+	+ gpcini.smt, msvcp120.dll, msvcp120.7z
+	+ gpcini.support, msvcp120.dll, msvcp120.7z
+	+ gpcini.training, msvcp120.dll, msvcp120.7z
+	+ gpcini.webex, msvcp120.dll, msvcp120.7z
+	+ gpcini.webex_orion, msvcp120.dll, msvcp120.7z
+	+ gpcini.event, msvcp120.dll, msvcp120.7z
+	+ gpcini.nbr, msvcp120.dll, msvcp120.7z
+	+ gpcini.nbr_orion, msvcp120.dll, msvcp120.7z
+#. msvcp120x64.dll
+	+ filelist.ra, msvcp120x64.dll,msvcp120x64.7z
+	+ filelist.smt, msvcp120x64.dll,msvcp120x64.7z
+	+ filelist.support, msvcp120x64.dll,msvcp120x64.7z
+	+ filelist.training, msvcp120x64.dll,msvcp120x64.7z
+	+ filelist.webex, msvcp120x64.dll,msvcp120x64.7z
+	+ filelist.webex_orion, msvcp120x64.dll,msvcp120x64.7z
+	+ filelist.ptool, msvcp120x64.dll,msvcp120x64.7z
+#. msvcr90.dll
+	+ gpcini.sales, msvcr90.dll, msvcr90.7z
+	+ gpcini.nbr, msvcr90.dll, msvcr90.7z
+#. msvcr90x64.dll
+	+ filelist.support, msvcr90x64.dll,msvcr90x64.7z
+	+ filelist.training, msvcr90x64.dll,msvcr90x64.7z
+#. msvcr100.dll
+	+ gpcini.webex, msvcr100.dll, msvcr100.7z
+	+ gpcini.webex_orion, msvcr100.dll, msvcr100.7z
+#. msvcr100x64.dll
+	+ webex-client-packaging\\staticdll
+#. msvcr120.dll
+	+ gpcini.ptool, msvcr120.dll, msvcr120.7z
+	+ gpcini.ra, msvcr120.dll, msvcr120.7z
+	+ gpcini.smt, msvcr120.dll, msvcr120.7z
+	+ gpcini.support, msvcr120.dll, msvcr120.7z
+	+ gpcini.training, msvcr120.dll, msvcr120.7z
+	+ gpcini.webex, msvcr120.dll, msvcr120.7z
+	+ gpcini.webex_orion, msvcr120.dll, msvcr120.7z
+	+ gpcini.event, msvcr120.dll, msvcr120.7z
+	+ gpcini.nbr, msvcr120.dll, msvcr120.7z
+	+ gpcini.nbr_orion, msvcr120.dll, msvcr120.7z
+#. msvcr120x64.dll
+	+ filelist.ra, msvcr120x64.dll,msvcr120x64.7z
+	+ filelist.smt, msvcr120x64.dll,msvcr120x64.7z
+	+ filelist.support, msvcr120x64.dll,msvcr120x64.7z
+	+ filelist.training, msvcr120x64.dll,msvcr120x64.7z
+	+ filelist.webex, msvcr120x64.dll,msvcr120x64.7z
+	+ filelist.webex_orion, msvcr120x64.dll,msvcr120x64.7z
+	+ filelist.ptool, msvcr120x64.dll,msvcr120x64.7z
+
+
+Without Digital Signatures
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. msvcp60.dll
+	+ gpcini.sales, msvcp60.dll, msvcp60.7z
+	+ gpcini.nbr, msvcp60.dll, msvcp60.7z
+#. msvcm90.dll
+	+ webex-client-packaging\\staticdll
+#. msvcrt.dll
+	+ T30_MC, T30_EC, T30_TC, T30_SC
+#. scrrun.dll
+	+ webex-client-packaging\\staticdll
+#. unidrv.dll
+	+ gpcini.ra, unidrv.dll, unidrv1.7z
+	+ gpcini.sales, unidrv.dll, unidrv1.7z
+	+ gpcini.smt, unidrv.dll, unidrv1.7z
+	+ gpcini.support, unidrv.dll, unidrv1.7z
+	+ gpcini.training, unidrv.dll, unidrv1.7z
+	+ gpcini.webex, unidrv.dll, unidrv1.7z
+	+ gpcini.webex_orion, unidrv.dll, unidrv1.7z
+	+ gpcini.event, unidrv.dll, unidrv1.7z
+#. unidrv.hlp
+	+ gpcini.ra, unidrv.dll, unidrv1.7z
+	+ gpcini.sales, unidrv.dll, unidrv1.7z
+	+ gpcini.smt, unidrv.dll, unidrv1.7z
+	+ gpcini.support, unidrv.dll, unidrv1.7z
+	+ gpcini.training, unidrv.dll, unidrv1.7z
+	+ gpcini.webex, unidrv.dll, unidrv1.7z
+	+ gpcini.webex_orion, unidrv.dll, unidrv1.7z
+	+ gpcini.event, unidrv.dll, unidrv1.7z
+#. unidrvui.dll
+	+ gpcini.ra, unidrv.dll, unidrv1.7z
+	+ gpcini.sales, unidrv.dll, unidrv1.7z
+	+ gpcini.smt, unidrv.dll, unidrv1.7z
+	+ gpcini.support, unidrv.dll, unidrv1.7z
+	+ gpcini.training, unidrv.dll, unidrv1.7z
+	+ gpcini.webex, unidrv.dll, unidrv1.7z
+	+ gpcini.webex_orion, unidrv.dll, unidrv1.7z
+	+ gpcini.event, unidrv.dll, unidrv1.7z
+#. unires.dll
+	+ gpcini.ra, unidrv.dll, unidrv1.7z
+	+ gpcini.sales, unidrv.dll, unidrv1.7z
+	+ gpcini.smt, unidrv.dll, unidrv1.7z
+	+ gpcini.support, unidrv.dll, unidrv1.7z
+	+ gpcini.training, unidrv.dll, unidrv1.7z
+	+ gpcini.webex, unidrv.dll, unidrv1.7z
+	+ gpcini.webex_orion, unidrv.dll, unidrv1.7z
+	+ gpcini.event, unidrv.dll, unidrv1.7z
+#. rasdd.dll
+	+ gpcini.sales, rasdd.dll, rasdd.7z
+	+ gpcini.support, rasdd.dll, rasdd.7z
+	+ gpcini.training, rasdd.dll, rasdd.7z
+	+ gpcini.webex, rasdd.dll, rasdd.7z
+	+ gpcini.webex_orion, rasdd.dll, rasdd.7z
+	+ gpcini.event, rasdd.dll, rasdd.7z
+#. rasddui.dll
+	+ gpcini.sales, rasdd.dll, rasdd.7z
+	+ gpcini.support, rasdd.dll, rasdd.7z
+	+ gpcini.training, rasdd.dll, rasdd.7z
+	+ gpcini.webex, rasdd.dll, rasdd.7z
+	+ gpcini.webex_orion, rasdd.dll, rasdd.7z
+	+ gpcini.event, rasdd.dll, rasdd.7z
+#. dmcolor.dll
+	+ gpcini.ra, dmcolor.dll, dmcolor1.7z
+	+ gpcini.sales, dmcolor.dll, dmcolor1.7z
+	+ gpcini.smt, dmcolor.dll, dmcolor1.7z
+	+ gpcini.support, dmcolor.dll, dmcolor1.7z
+#. iconlib.dll
+	+ gpcini.ra, iconlib.dll, iconlib1.7z
+	+ gpcini.sales, iconlib.dll, iconlib1.7z
+	+ gpcini.smt, iconlib.dll, iconlib1.7z
+	+ gpcini.support, iconlib.dll, iconlib1.7z
+	+ gpcini.training, iconlib.dll, iconlib1.7z
+	+ gpcini.event, iconlib.dll, iconlib1.7z
+
+Other open source
+-----------------
+
+#. lcppn30.dll (Adobe Systems)
+
+Using Cisco Digital Signatures
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. libeay32.dll (OpenSSL Library)
+#. ssleay32.dll (OpenSSL Library)
+#. icudt32.dll  (IBM)
+#. icule32.dll  (IBM)
+#. icuuc32.dll  (IBM)
+
+vendors\\output\\release
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. aggpcdec.dll
+#. atjpeg60.dll
+#. atpack.dll
+#. libfaac.dll
+#. mpeg4convert.dll
+#. svslibavcodec.dll
+#. svslibavformat.dll
+#. svslibswscale.dll
+#. waveinput.dll
+
+
+
+Unknown
+~~~~~~~
+
+#. stdnames.gpd
+#. atconc.dll
+#. safereboot.exe
+#. lame_enc.dll
+#. atpng12.dll
+#. ocff.dll
+
+
+Vendor's file list
+------------------
+
+#. filelist.event, 184
+	- dmcolor.dll,dmcolor.7z
+	- atpng12.dll,atpng12.7z
+	- msvcp120.dll,msvcp120.7z
+	- msvcr120.dll,msvcr120.7z
+	- msvcp120x64.dll,msvcp120x64.7z
+	- msvcr120x64.dll,msvcr120x64.7z
+	- msvcr90x64.dll,msvcr90x64.7z
+
+GPC Ignore Check Digital Sign Files
+-----------------------------------
+
+#. _success
+#. atnt40k.sys
+#. atas9516.dll
+#. atpcap16.dll
+#. atprint.dll
+#. dmcolor.dll
+#. iconlib.dll
+#. unidrv.dll
+
+Progress
+--------
+
+
+#. webex-client-packaging\\staticdll
+#. vendors\\output\\bin\\release
+#. webex-documentshare-base\\src\\windows\\DvDocImp\\MiniDrv
+#. filelist.event (184)
+#. gpcini.event
+#. filelist.webex (193)
+#. gpcini.webex
+#. filelist.support (206)
+#. gpcini.support
+#. filelist.training (172)
+#. gpcini.training
+#. filelist.nbr (94)
+#. gpcini.nbr
+#. filelist.nbr_orion (87)
+#. gpcini.nbr_orion
+#. filelist.outlook (4)
+#. gpcini.outlook
+#. filelist.ptool (89)
+#. gpcini.ptool
+#. filelist.ptool_orion (74)
+#. filelist.ra (115)
+#. gpcini.ra
+#. filelist.sales (111)
+#. gpcini.sales
+#. filelist.smt (120)
+#. gpcini.smt
+#. filelist.webex_orion (152)
+#. gpcini.webex_orion
+
+
+WebEx Meeting component
+-----------------------
+
+#. pfwres.dll (by WebEx Communications) - WebEx Picasso Common Framework (PFWRes)
+#. atarm.dll (by WebEx Communications Inc) - WebEx Communications Inc arm (arm)
+#. atpcapnt.dll (by WebEx Communications) - WebEx Printer Driver Capture (ATPCAPNT)
+#. webexmgr.dll - WebEx Picasso Meeting Center (WebExMgr)
+#. atasctrl.dll - WebEx Application Sharing (WebEx Application Sharing Control)
+#. ataudio.dll - WebEx, Inc ataudio codec (ataudio)
+#. atpack.dll (by Activetouch) - Activetouch Corp. atgzip (atgzip)
+#. atrpui.dll (by WebEx Communications Inc) - WebEx Recorder/Player UI
+#. atssrcli.dll (by WEBEX) - WEBEX Server Side Record (AtSSR)
+#. atssrinf.dll - Webex Server Side Record (ATWRFINFO Module)
+#. atcarmcl.dll (by Golden Age Co) - Golden Age Co. atcarmcl (atcarmcl)
+#. atmemmgr.dll (by Golden Age Co)
+#. atrecply.dll (by WebEx) - WebEx Recorder/Playber (WebEx Recorder/Player)
+#. atres.dll - WebEx Resource Manager
+#. atdocvu.dll (by WebEx Commnications) - WebEx Document Viewer
+#. atpdmod.dll (by WebEx Commnications)
+#. mcres.dll - WebEx Meeting Center (MCRes)
+#. raurl.dll (by WebEx) - WebEx Remote Access (ratest)
+#. atplayim.dll - AtPlayerCtl Module
+#. atinet.dll - WebEx Inc. atinet (atinet)
+#. atnote.dll - NoteMaker Module
+#. atpng12.dll - WebEx PNG Module (PNG V. 1.2.5 encoding and decoding route)
+#. atwbxui.dll - WebEx UI Library (UI Component Library)
+#. atfilesr.dll - AtFileSr Module
+#. atnetext.dll - WebEx. atnetext (atnetext)
+#. atsyncvd.dll - atsyncvd Module
+#. atucfobj.dll - atucfobj Module
+#. atwebctl.dll - AtWebCtl Module
+#. atasanot.exe - WebEx ATASANOT (ATASANOT)
+#. atkbctl.dll - WebEx atkbctl (atkbctl)
+#. atlchat.dll - atlchat Module
+#. atstmget.dll (by WebEx Communications, Inc) - WebEx atstmget (atstmget)
+#. atvideo.dll - atvideo Module
+#. wbxcrypt.dll - WebEx wbxcrypt (wbxcrypt)
+#. atas32.dll - WebEx ATAS32 (ATAS32)
+#. atconc.dll - atconc Module
+#. atlms.dll - atlaud Module
+#. atshin.exe - AtShIn Module
+#. atpollk2.dll - WebEx AtPoll (AtPoll)
+#. cnvtata.dll (by WWebEx Commnications) - WebEx UCF (cnvtata)
+#. uilibres.dll - WebEx UI (UI Resource)
+#. attp.dll - WebEx (attp)
+#. atauthor.exe - ATAUTHOR
+#. atjpeg60.dll
+#. atpacko.dll (by ActiveTouch) - atpack
+#. atshell.exe - atshell 
+
+
+
+Reference
+---------
+
+#. https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-client-packaging/browse/staticdll
+#. https://basedll.com/lastnews/
+#. http://ccatg-build2.cisco.com/cirepo/artifacts/32.11.0/
+#. http://test-apache.erp.ufl.edu/implementation/teams/it/WebExServiceMgrInstallSup.pdf
+
+

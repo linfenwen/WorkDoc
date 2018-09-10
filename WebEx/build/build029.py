@@ -26,7 +26,7 @@ def executeCmd(command, args=None) :
 		out, err = p.communicate()
 		
 		if 0 != p.returncode :
-			print('returncode: %s error:%s' %(p.returncode, err))
+			print('executeCmd returncode: %s error:%s %s' %(p.returncode, err, cmd))
 			return None
 		
 		return out
@@ -76,11 +76,12 @@ def GetUnCommitedFiles(strFiles) :
 				f1 = f1[nLen2+3:]
 				#print(2, f1)
 			
-			if (f1.rfind('.uml') >= 0 ) or (f1.rfind('.dot') >= 0) or (f1.rfind('.rst') >= 0):
+			if (f1.rfind('.uml') >= 0 ) or (f1.rfind('.dot') >= 0):
 				f2 = strBaseDir + f1
 				print(f2)
 				retFileList.append(f2)
 		
+		#print("GetUnCommitedFiles", retFileList)
 		return retFileList
 	except Exception, e:
 		print("GetUnCommitedFiles Exception", e)
@@ -96,7 +97,7 @@ def GenerateSvg(strUml) :
 		if (strUml.rfind('.dot') >= 0 ) :
 			cmd = 'dot %s -Tsvg -o %s' %(strUml, retSvg)
 		elif (strUml.rfind('.uml') >= 0 ) :
-			cmd = 'java -jar /usr/bin/plantuml.jar -tsvg %s' %(strUml)
+			cmd = 'java -jar /usr/local/bin/plantuml.jar -tsvg %s' %(strUml)
 		else :
 			return None
 		
@@ -126,11 +127,17 @@ def CopyFile(strSrcFile, strDestFolder) :
 
 def BuildSvgs(strFileList) :
 	try:
+		if None == strFileList :
+			print('BuildSvgs None == strFileList')
+			return True
+		
 		nCount = 0
-		strDestFolder = '%s' %("/Users/lamfungwen/WorkDoc/note/Lamfung Note/source/_static")
+		strDestFolder = '%s' %("/Users/lamfungwen/WorkDoc/note/LamfungNote/source/_static")
 		for file in strFileList :
 			strSvg = GenerateSvg(file)
-			nCount += CopyFile(strSvg, strDestFolder)
+			print(strSvg, file)
+			CopyFile(strSvg, strDestFolder)
+			nCount = nCount + 1
 		
 		print('BuildSvgs', nCount)
 		return True
@@ -143,7 +150,7 @@ def BuildDocument() :
 	curWorkDir = os.getcwd()
 	try:
 		#print(curWorkDir)
-		newWorkDir = "/Users/lamfungwen/WorkDoc/note/Lamfung Note"
+		newWorkDir = "/Users/lamfungwen/WorkDoc/note/LamfungNote"
 		os.chdir(newWorkDir)
 		#print(os.getcwd())
 		ret = executeCmd('make html')

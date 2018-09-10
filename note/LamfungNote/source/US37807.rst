@@ -1,0 +1,111 @@
+US37807 : TFS Integration test
+===============================
+
+Test Case
+---------
+
+#. OS Type
+	+ Win7
+	+ Win8
+	+ Win10
+	
+#. Browser Type
+	+ IE
+	+ FireFox
+	+ Chrome
+	+ Edge 
+
+#. TFS Type
+	
+	+ IsDocShowCommandParameterFormat
+		- ParseCommandParameterDochShow
+		- DocShow:
+	+ IsShotNameCommandParameterFormat
+		- ParseCommandParameterShortFileName
+		- "webex_"
+	+ IsNewCommandParameterFormat
+		- ParseCommandParameterNew
+		- get meeting info ,****,***,*****_webexe.exe
+	+ IsWebEx11CommandParameterFormat
+		- ParseCommandParameterWebEx11
+		- "__"
+	+ Old Parameter
+		- ParseCommandParameterOld
+
+#. Service Type
+	+ mc
+	+ ec
+	+ tc
+	+ sc
+
+#. Parameter Length
+
+Issues
+------
+
+#. webex.exe exit without any prompt
+	+ PE parameter is : "Hello"
+	+ CEmbeddedTFSTest_IsFromEmbeddedTFSTestWithErrorSuffix_Test::TestBody(void)
+	+ First time introduce
+		- 2017.4.14, 15cb3fbffe6538d051bad21cc0d7193f171ccd36
+		- start working on webex.exe (tfs)
+		- ParameterUtilImpl.cpp
+		- CParameterUtilImpl::ParseCommandParameterOld
+	+ What's the reason
+		- _tcstok_s
+		- TCHAR* p = NULL
+		- tstring strData = p
+		::
+		 
+		 000C07D9  movzx       ecx,word ptr [eax]
+		 First-chance exception at 0x000C07D9 in CiscoWebExStart_test.exe: 0xC0000005: Access violation reading location 0x00000000.
+
+
+#. webex.exe can't launch meeting when the process name is not equal "webex.exe"
+	+ Input check
+		- PE file has customer data
+		- The process name must be "webex.exe"
+		
+#. preJME>>run failed, unknown sources. exeName=123.exe
+
+#. After running Embedded TFS, the Embedded TFS file will be deleted.
+
+#. 2018.08.29
+	+ IE tips
+		- Your PC doesn't trust this website's security certificate.
+		- Error Code: DLG_FLAGS_INVALID_CA
+	
+	+ Chrome
+		- WebEx_mc_f7295_qa.webex.com_pzxM1NgV7r
+		
+	+ Edge
+		- IE run TFS
+		- Edge can use URL Protocol to start meeting
+	
+	+ Firefox
+		- WebEx_mc_f7295_qa.webex.com_S7f7CeWIdn
+	
+Test Env
+--------
+
+
+#. Site
+	+ http://f7295.qa.webex.com/
+	+ Account
+		admin/P@ss1234
+
+
+Reference
+---------
+
+#. https://rally1.rallydev.com/#/60282351184d/dashboard?qdp=%2Fdetail%2Fuserstory%2F248373654272
+
+#. http://www.masmforum.com/board/index.php?PHPSESSID=8d46cd4ecb1688be429ab49694ec53e6&topic=13852.5;wap2 
+
+#. MOV搬移指令
+	- http://slvs.tc.edu.tw/~baochyi/teacher/assembly/c0402.htm
+
+#. Enable/Disable UAC
+	- https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10
+
+

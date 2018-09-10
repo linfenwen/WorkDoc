@@ -1,0 +1,71 @@
+WebEx.exe supports embedded docShow
+====================================
+
+PE Format
+~~~~~~~~~
+
+Define Json Format
+~~~~~~~~~~~~~~~~~~
+
+Code Coverage
+~~~~~~~~~~~~~
+
+#. http://tascher.eng.webex.com/tascher/featureReport 
+
+FAQ
+~~~
+
+#. Consider Entry Point
+#. Coding for the business
+#. UT for the new code
+#. Integrate Test
+
+Reference
+~~~~~~~~~
+
+#. pe file format
+	+ https://blog.kowalczyk.info/articles/pefileformat.html
+
+#. pe
+	+ http://xue23.blog.163.com/blog/static/9793442005431142120/
+	
+#. self-extracting executable
+	+ https://www.strchr.com/creating_self-extracting_executables
+	
+#. dump pe file from memory
+	+ https://blog.csdn.net/iiprogram/article/details/2298838
+	
+#. PECOFF
+	+ http://www.microsoft.com/whdc/system/platform/firmware/PECOFF.mspx
+	
+#. What is a Digital Signature?
+	+ http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html
+	+ http://www.youdzone.com/signature.html
+	
+#. 关于证书的那些事：自签名证书和私有CA签名证书等
+	+ https://www.jianshu.com/p/cc6b804a4d80
+	+ https://www.cnblogs.com/E7868A/archive/2012/11/16/2772240.html
+	+ https://blog.csdn.net/zahuopuboss/article/details/53415811
+	
+#. X.509数字证书的结构与解析
+	+ https://blog.csdn.net/xy010902100449/article/details/52145009
+	
+#.  X.509证书的编码及解析：程序解析以及winhex模板解析
+	+ http://www.cnblogs.com/jiu0821/p/4598352.html
+	
+#. Format a X.509 certificate
+	+ https://www.samltool.com/format_x509cert.php
+
+#. rfc5280
+	+ https://tools.ietf.org/html/rfc5280
+	+ https://tools.ietf.org/html/rfc8399
+	
+#.  Registering the Application Handling the Custom URI Scheme
+	+ https://msdn.microsoft.com/en-us/windows/desktop/aa767914
+	
+#. URLMON.DLL VS WININET.DLL
+	+ https://blogs.technet.microsoft.com/askperf/2007/08/21/under-the-hood-wininet/
+	
+#. winsock, wininet, winhttp, ws2_32
+	+ http://www.voidcn.com/article/p-xlpomozl-k.html
+

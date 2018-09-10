@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code Refactoring Training &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="Training Written Email" href="training_written_email.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="training_written_email.html" title="Training Written Email"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="code-refactoring-training">
+<h1>Code Refactoring Training<a class="headerlink" href="#code-refactoring-training" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="day1-9-30-12-00-and-1-30-5-00">
+<h2>Day1 (9:30~12:00) and (1:30~5:00)<a class="headerlink" href="#day1-9-30-12-00-and-1-30-5-00" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discuss-the-question-your-company-encounter-when-code-refactor">
+<h3>Discuss the question your company encounter when code refactor<a class="headerlink" href="#discuss-the-question-your-company-encounter-when-code-refactor" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">软件腐烂</p>
+</li>
+<li><dl class="first docutils">
+<dt>Why code became bad?</dt>
+<dd><ul class="first last simple">
+<li>It might began with something good</li>
+<li>But after several versions, it becomes bad</li>
+<li>Original functionality becomes hiden</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>案例分析</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>故障管理</dt>
+<dd><ul class="first last simple">
+<li>交付压力 vs 质量 矛盾</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">诺基亚</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>破窗效应 (Broken windows theory)</dt>
+<dd><ul class="first last simple">
+<li>破窗效应</li>
+<li>惯性定律</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">技术债务 (Technical Debt)</p>
+</li>
+<li><p class="first">重构概念</p>
+</li>
+<li><p class="first">Baby Steps</p>
+</li>
+<li><dl class="first docutils">
+<dt>重构-技术难题</dt>
+<dd><ul class="first last simple">
+<li>如何发现重构点</li>
+<li>知道重构的目标(结果)</li>
+<li>如何去重构&#8211;重构实践</li>
+<li>如何保障重构的正确性&#8211;单元测试</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">识别代码坏味道</p>
+</li>
+<li><dl class="first docutils">
+<dt>时间</dt>
+<dd><ul class="first last simple">
+<li>代码时间 1</li>
+<li>UT时间 1</li>
+<li>重构时间 1</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="day2-9-30-12-00-and-1-30-5-00">
+<h2>Day2 (9:30~12:00) and (1:30~5:00)<a class="headerlink" href="#day2-9-30-12-00-and-1-30-5-00" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">代码坏味道列表</p>
+</li>
+<li><dl class="first docutils">
+<dt>表驱动法</dt>
+<dd><ul class="first last simple">
+<li>直接访问 directory access</li>
+<li>索引访问 Index access</li>
+<li>阶梯访问 stair-step access</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">重构到架构</p>
+</li>
+<li><dl class="first docutils">
+<dt>Why can save agile</dt>
+<dd><ul class="first last simple">
+<li>You can&#8217;t stay agile without clean code</li>
+<li>You can&#8217;t have clean code without refactoring</li>
+<li>You can&#8217;t refactor without good automated success</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Primitive Obsession (基本型别偏执)</p>
+</li>
+<li><dl class="first docutils">
+<dt>修改遗留代码的艺术-</dt>
+<dd><ul class="first last simple">
+<li>改动越少越好(面积)</li>
+<li>可测试性</li>
+<li>可读性</li>
+<li>可扩展性</li>
+<li>服用性</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Tangling (缠绕)： 把 Base 和 Extension</p>
+</li>
+<li><p class="first">混乱的原因-开发者技能</p>
+</li>
+<li><dl class="first docutils">
+<dt>修改遗留代码的方法</dt>
+<dd><ul class="first last simple">
+<li>新生方法 Sprout Method</li>
+<li>新生类 Sprout Class</li>
+<li>外覆方法 Wrapper Method</li>
+<li>外覆类 Wrapper Class</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>防止退化</dt>
+<dd><ul class="first last">
+<li><p class="first">改进之前，先要防止退化。</p>
+</li>
+<li><dl class="first docutils">
+<dt>找痛点</dt>
+<dd><ul class="first last simple">
+<li>复杂</li>
+<li>调用频度</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>学习心得体会<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>通过本次培训，系统性的学习了代码重构的相关知识:
+       1. 为什么要重构 - 软件代码腐烂， 破窗效应 和 技术债务
+       2. 什么是重构
+       3. 代码的坏味道， 以及如何检测代码坏味道， 人工代码评审 和 静态分析工具
+       4. 重构工具 和 重构技巧
+       5. 重构， clean code 和 单元测试的关系
+       6. 重构的流程：Baby Step
+
+重构是一个持续的不间断的过程，
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Code Refactoring Training</a><ul>
+<li><a class="reference internal" href="#day1-9-30-12-00-and-1-30-5-00">Day1 (9:30~12:00) and (1:30~5:00)</a><ul>
+<li><a class="reference internal" href="#discuss-the-question-your-company-encounter-when-code-refactor">Discuss the question your company encounter when code refactor</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#day2-9-30-12-00-and-1-30-5-00">Day2 (9:30~12:00) and (1:30~5:00)</a></li>
+<li><a class="reference internal" href="#id1">学习心得体会</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="training_written_email.html"
+                        title="previous chapter">Training Written Email</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/code_refactor_training.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="training_written_email.html" title="Training Written Email"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

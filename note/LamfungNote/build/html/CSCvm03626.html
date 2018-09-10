@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CSCvm03626: cannot pop up update plugin dialog after end meeting &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="CSCvm09850: tc cannot pop up update plugin dialog after end meeting" href="CSCvm09850.html" />
+    <link rel="prev" title="CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player" href="CSCvk62268.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="CSCvm09850.html" title="CSCvm09850: tc cannot pop up update plugin dialog after end meeting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="CSCvk62268.html" title="CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cscvm03626-cannot-pop-up-update-plugin-dialog-after-end-meeting">
+<h1>CSCvm03626: cannot pop up update plugin dialog after end meeting<a class="headerlink" href="#cscvm03626-cannot-pop-up-update-plugin-dialog-after-end-meeting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-s-the-problem">
+<h2>What&#8217;s the problem<a class="headerlink" href="#what-s-the-problem" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Test</span> <span class="n">site</span><span class="p">:</span>
+<span class="n">ha3web</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nick32ep</span> <span class="o">-</span> <span class="mf">32.15</span><span class="o">.</span><span class="mi">10</span>
+<span class="n">ha3web</span><span class="o">.</span><span class="n">qa</span><span class="o">.</span><span class="n">webex</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nick32sp</span> <span class="o">-</span> <span class="mf">32.15</span><span class="o">.</span><span class="mi">20</span>
+<span class="n">nick</span><span class="o">/</span><span class="k">pass</span>
+
+<span class="n">precondition</span><span class="p">:</span>
+<span class="n">UAC</span> <span class="n">on</span>
+
+<span class="n">Steps</span><span class="p">:</span>
+<span class="mf">1.</span> <span class="n">start</span> <span class="n">mc</span> <span class="n">on</span> <span class="mf">32.15</span><span class="o">.</span><span class="mi">10</span> <span class="n">site</span> <span class="k">with</span> <span class="n">activex</span> <span class="p">(</span><span class="n">old</span> <span class="n">ieatgpc</span><span class="o">.</span><span class="n">dll</span><span class="p">)</span> <span class="ow">or</span> <span class="n">install</span> <span class="n">mc</span> <span class="n">msi</span><span class="o">.</span>
+<span class="mf">2.</span> <span class="n">start</span> <span class="n">mc</span> <span class="n">on</span> <span class="mf">32.15</span><span class="o">.</span><span class="mi">20</span> <span class="n">site</span> <span class="k">with</span> <span class="n">activex</span> <span class="p">(</span><span class="n">new</span> <span class="n">ieatgpc</span><span class="o">.</span><span class="n">dll</span><span class="p">)</span>
+<span class="mf">3.</span><span class="n">end</span> <span class="n">meeting</span>
+
+<span class="n">Expected</span> <span class="n">Result</span><span class="p">:</span>
+<span class="n">pop</span> <span class="n">up</span> <span class="n">update</span> <span class="n">plugin</span> <span class="n">dialog</span> <span class="n">after</span> <span class="n">end</span> <span class="n">meeting</span>
+
+<span class="n">Actual</span> <span class="n">Result</span><span class="p">:</span>
+<span class="n">cannot</span> <span class="n">pop</span> <span class="n">up</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-s-the-solution">
+<h2>What&#8217;s the solution<a class="headerlink" href="#what-s-the-solution" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>For MC</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>2018.04.07, first commit</dt>
+<dd><ul class="first last simple">
+<li>f7df03dbe8ac6994f99bce13ab3309d1eb9b98a9</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Atmgr.cpp</dt>
+<dd><ul class="first last simple">
+<li>ProcessEndMeeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AtmgrMeetingMgr.cpp</dt>
+<dd><ul class="first last simple">
+<li>CAtmgrMeetingMgr::OnClose</li>
+<li>ProcessEndMeeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For EC</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>2018.04.10, first commit</dt>
+<dd><ul class="first last simple">
+<li>ec3b502978576d328f1c2fceacfb6e67432f9783</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">AtMgrContainer.cpp</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAtMgrContainerWnd::OnDestroy</dt>
+<dd><ul class="first last simple">
+<li>ProcessEndMeeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="what-s-the-root-cause">
+<h2>What&#8217;s the root cause<a class="headerlink" href="#what-s-the-root-cause" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Introduce time, 2017.06.21</dt>
+<dd><ul class="first last simple">
+<li>449653e751d98bc02cf5d7a14092b479a440128d</li>
+<li>AtmgrUtilImpl.cpp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">This is a legacy issue for ie plugin upgrade feature</p>
+</li>
+<li><dl class="first docutils">
+<dt>At 2018.04.07 had fixed this issue</dt>
+<dd><ul class="first last simple">
+<li>f7df03dbe8ac6994f99bce13ab3309d1eb9b98a9</li>
+<li>move the iecheckupdate to OnClose, as the original place will not works</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-env">
+<h2>Test Env<a class="headerlink" href="#test-env" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Site</dt>
+<dd><ul class="first last">
+<li><p class="first">ha3web.qa.webex.com/nick32ep</p>
+</li>
+<li><p class="first">ha3web.qa.webex.com/nick32sp</p>
+</li>
+<li><dl class="first docutils">
+<dt>Account</dt>
+<dd><p class="first last">nick/pass</p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvm03626">https://cdetsng.cisco.com/webui/#view=CSCvm03626</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CSCvm03626: cannot pop up update plugin dialog after end meeting</a><ul>
+<li><a class="reference internal" href="#what-s-the-problem">What&#8217;s the problem</a></li>
+<li><a class="reference internal" href="#what-s-the-solution">What&#8217;s the solution</a></li>
+<li><a class="reference internal" href="#what-s-the-root-cause">What&#8217;s the root cause</a></li>
+<li><a class="reference internal" href="#test-env">Test Env</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="CSCvk62268.html"
+                        title="previous chapter">CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="CSCvm09850.html"
+                        title="next chapter">CSCvm09850: tc cannot pop up update plugin dialog after end meeting</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/CSCvm03626.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="CSCvm09850.html" title="CSCvm09850: tc cannot pop up update plugin dialog after end meeting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="CSCvk62268.html" title="CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

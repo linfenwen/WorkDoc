@@ -1,0 +1,188 @@
+cscvi43565 Meeting Crash
+========================
+
+What's the problem
+------------------
+
+T33_10%_Meeting crash in atmgr.exe in fire-Drill meerting
+
+Description
+-----------
+
+::
+ 
+	. Machine join T33 Fire-drill meeting and try to join A/V in T33 site.
+	
+	Expected Result: 
+		join meeting well.
+	
+	Actual Result:
+	meeting crash in atmgr.exe.
+	
+	full dump:
+	\\10.224.57.125\share\Carson\CrashLog\wbxcrash_03132018_89353680020577933_full.zip
+
+wbxcrash_03132018_89353680020577933.wbt
+---------------------------------------
+::
+ 
+    1   CFW         16:10:28.829 03/13/18   [4088:4556] CSmAppShareSessionMgr::OnIdle()  pMainframe->RedrawWindow
+    2   crashdle    16:10:28.845 03/13/18   [4088:4556] ===================================Crash Log Begin
+    3   crashdle    16:10:28.845 03/13/18   [4088:4556] Exception Time: 03/13/2018 08:10:28 UTC
+    4   crashdle    16:10:28.863 03/13/18   [4088:4556] Exception Client: MeetingID = 89353680020577933, SessionID = 130347818, LangID = 0, PID = 4088, BuildNum = 33.0.0.117
+    5   crashdle    16:10:28.863 03/13/18   [4088:4556] Exception Code: C0000005 [ACCESS_VIOLATION], Caused by Write to location 0000888C
+    6   crashdle    16:10:28.863 03/13/18   [4088:4556] Exception Address: 0000888C [0000:00000000]
+    7   crashdle    16:10:28.863 03/13/18   [4088:4556] System Infomation:
+    8   crashdle    16:10:28.864 03/13/18   [4088:4556] User: Administrator
+    9   crashdle    16:10:28.864 03/13/18   [4088:4556] Processors Number : 4 [Type 586]
+    10  crashdle    16:10:28.864 03/13/18   [4088:4556] Operating System Version: 6.1 Build 7601 [Service Pack 1]
+    11  crashdle    16:10:28.864 03/13/18   [4088:4556] 47 % memory in use
+    12  crashdle    16:10:28.864 03/13/18   [4088:4556] 3921 MBytes physical memory
+    13  crashdle    16:10:28.864 03/13/18   [4088:4556] 2070 MBytes physical memory free
+    14  crashdle    16:10:28.864 03/13/18   [4088:4556] 0 MBytes paging file
+    15  crashdle    16:10:28.864 03/13/18   [4088:4556] 0 MBytes paging file free
+    16  crashdle    16:10:28.864 03/13/18   [4088:4556] Registers:
+    17  crashdle    16:10:28.864 03/13/18   [4088:4556] EDI: 00000000  ESI: 10922830  EAX: 76B30335
+    18  crashdle    16:10:28.864 03/13/18   [4088:4556] EBX: 76A588D0  ECX: 10922828  EDX: 00000000
+    19  crashdle    16:10:28.864 03/13/18   [4088:4556] EIP: 0000888C  EBP: 002EF2F4  SegCs: 00000023
+    20  crashdle    16:10:28.864 03/13/18   [4088:4556] EFlags: 00210206  ESP: 002EF2E4  SegSs: 0000002B
+    21  crashdle    16:10:28.864 03/13/18   [4088:4556] Call Stack:
+    22  crashdle    16:10:28.864 03/13/18   [4088:4556] Address   Frame     LogicalAddress TimeStamp   GUIDAge                             Module
+    23  crashdle    16:10:28.883 03/13/18   [4088:4556] Modules List:
+    24  crashdle    16:10:28.883 03/13/18   [4088:4556] TimeStamp                           GUIDAge                             Module
+    25  crashdle    16:10:28.883 03/13/18   [4088:4556] 5AA66515 [03/12/2018 11:31:33 UTC] ab180c18873849c0bf96108165eeb64d1  "c:\programdata\webex\webex\t33_umc\atmgr.exe", loaded at 010B0000 - 0117B000 [000CB000]
+    26  crashdle    16:10:28.897 03/13/18   [4088:4556] 5582B84E [06/18/2015 12:23:42 UTC] c248037e60f24924a47aaa4bcc0b87121  "C:\PROGRA~2\baidu\BAIDUE~1\20201~1.195\BDEFrame.dll", loaded at 10000000 - 1001C000 [0001C000]
+    27  AudioEngine 16:10:28.903 03/13/18   [4088:3600] [AudioEngine] INFO: [N]AudioDataDumper::DumpPlaybackChannel(), DumpPlaybackData(AudioResampleProperty*) return = 0 , this = 0x228488c0
+    28  crashdle    16:10:28.909 03/13/18   [4088:4556] 4D27BF1B [01/08/2011 01:34:19 UTC] a85ab4dedafd487ebefd5d0c3fb240e71  "C:\Windows\system32\igdumdx32.dll", loaded at 11C00000 - 11C92000 [00092000]
+    29  crashdle    16:10:28.931 03/13/18   [4088:4556] 4D27BFB5 [01/08/2011 01:36:53 UTC] c8ee60303c6b492886710f61b80ef5a81  "C:\Windows\system32\igdumd32.dll", loaded at 12390000 - 1290E000 [0057E000]
+    30  crashdle    16:10:28.955 03/13/18   [4088:4556] 4CE7988A [11/20/2010 09:44:42 UTC] 2f6719406fef4d2592c074702eba1bd72  "C:\Windows\system32\SearchFolder.dll", loaded at 663E0000 - 66480000 [000A0000]
+    31  crashdle    16:10:28.955 03/13/18   [4088:4556] 5A4993DB [01/01/2018 01:50:19 UTC] 04d6d2a292964115b81c0f9fcc382eb62  "C:\Windows\SysWOW64\actxprxy.dll", loaded at 66480000 - 664CE000 [0004E000]
+    32  crashdle    16:10:28.955 03/13/18   [4088:4556] 5A58DE23 [01/12/2018 16:11:15 UTC] 2e822f12434f458c8eeaf92e94a41e171  "C:\Windows\System32\StructuredQuery.dll", loaded at 664D0000 - 6652C000 [0005C000]
+    33  crashdle    16:10:28.967 03/13/18   [4088:4556] 599850B7 [08/19/2017 14:52:39 UTC] c434d23443e04e99b0e2ce5091aa82c62  "C:\Windows\System32\shdocvw.dll", loaded at 66530000 - 6655F000 [0002F000]
+    34  mcsnew.dll  16:10:28.987 03/13/18   [4088:2540] [UTIL] INFO: CMmCommandTransport::OnReceive, MM_SESSION_PDU_DOWNLINK_REPT_NETSTATUE this=0x101c97f8
+    35  crashdle    16:10:28.987 03/13/18   [4088:4556] 4A5BC726 [07/13/2009 23:45:42 UTC] 878e29febfdd46dba28aa12389f37c741  "C:\Windows\system32\EhStorShell.dll", loaded at 66560000 - 66591000 [00031000]
+    36  mcsnew.dll  16:10:28.987 03/13/18   [4088:2540] [UTIL] INFO: CMmClientSessionManager::OnMcsDownLinkReport() this=0x9cc6210
+    37  crashdle    16:10:28.999 03/13/18   [4088:4556] 55CE62C7 [08/14/2015 21:51:03 UTC] The_image_doesn't_have_debug_data  "C:\Program Files (x86)\Microsoft Office\root\Office16\1033\GrooveIntlResource.dll", loaded at 665E0000 - 66E5E000 [0087E000]
+    38  crashdle    16:10:29.007 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] d8c3af70b2104690b1adcd623010f45e1  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-utility-l1-1-0.dll", loaded at 67020000 - 67023000 [00003000]
+    39  crashdle    16:10:29.015 03/13/18   [4088:4556] 559F3A84 [07/10/2015 03:22:44 UTC] 61f59674447943cc86fa31353af0ff371  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-environment-l1-1-0.dll", loaded at 67030000 - 67033000 [00003000]
+    40  WSE         16:10:29.017 03/13/18   [4088:4572] [WSE] INFO: CWseVideoListenChannel::HandleKeyFrameLost, DID=0, TimeStamp of Last SuccessfullyDecoded Frame=0,[Video],[CheckPoint],this=0x10a001e0
+    41  crashdle    16:10:29.022 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] a3f43eca8c954ac08fcbf848ee09c0841  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-filesystem-l1-1-0.dll", loaded at 67040000 - 67043000 [00003000]
+    42  crashdle    16:10:29.028 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] 46db67a721f94debba9cfb6e6597c56b1  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-time-l1-1-0.dll", loaded at 67050000 - 67053000 [00003000]
+    43  crashdle    16:10:29.032 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] 54b24d5c6bef44f69d0c6b823fd09f4d1  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-multibyte-l1-1-0.dll", loaded at 67060000 - 67065000 [00005000]
+    44  crashdle    16:10:29.042 03/13/18   [4088:4556] 559F3A84 [07/10/2015 03:22:44 UTC] ecadf678df70409f8ad1dff36baf258b1  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-math-l1-1-0.dll", loaded at 67070000 - 67075000 [00005000]
+    45  crashdle    16:10:29.045 03/13/18   [4088:4556] 559F3A84 [07/10/2015 03:22:44 UTC] 219f25b5f37d4ebc9203a6aeff8e1faa1  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-locale-l1-1-0.dll", loaded at 67080000 - 67083000 [00003000]
+    46  mticket.dll 16:10:29.046 03/13/18   [4088:2540] [UTIL] WARNING: CheckMemSize, ReAlloc BuffSize: 2048 this=0x1080ccdc[D:\ec\ws\offl_Train_Client_33.0.0_webex-mmp-sdk_2183194_201803120109\webex-mmp-sdk\src\westlake\src\common\Mediaconfticket\MediaConfEncryptData.cpp:1194]
+    47  mticket.dll 16:10:29.046 03/13/18   [4088:2540] [UTIL] WARNING: CheckMemSize, ReAlloc BuffSize: 2048 this=0x1080ccdc[D:\ec\ws\offl_Train_Client_33.0.0_webex-mmp-sdk_2183194_201803120109\webex-mmp-sdk\src\westlake\src\common\Mediaconfticket\MediaConfEncryptData.cpp:1194]
+    48  WSE         16:10:29.046 03/13/18   [4088:2540] [WSE] INFO: CWseVideoListenChannel::OnRecvMediaData, received a SPS NAL, timestamp=276223469,this=0x10a00eb8
+    49  crashdle    16:10:29.053 03/13/18   [4088:4556] 558CE3E9 [06/26/2015 05:32:25 UTC] 2724dc25b3da4a7b8a5080cf1e7b8bbc1  "C:\Program Files (x86)\Microsoft Office\root\Office16\MSVCP140.dll", loaded at 67090000 - 670FD000 [0006D000]
+    50  crashdle    16:10:29.056 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] 9dc1be5c1b09417a8cf9766c7dbb0d701  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-convert-l1-1-0.dll", loaded at 67100000 - 67104000 [00004000]
+    51  wels        16:10:29.057 03/13/18   [4088:5108] [OpenH264] this = 0x22A0BD08, Info:WelsRequestMem(): memory alloc size = 320 * 192, ref list size = 3
+    52  wels        16:10:29.057 03/13/18   [4088:5108] [OpenH264] this = 0x22A0BD08, Info:SyncPictureResolutionExt(), overall memory usage: 4528344 bytes
+    53  crashdle    16:10:29.057 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] 86a5d85ef98346ad99cb00bdece363201  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-stdio-l1-1-0.dll", loaded at 67110000 - 67114000 [00004000]
+    54  crashdle    16:10:29.057 03/13/18   [4088:4556] 559F3A83 [07/10/2015 03:22:43 UTC] 16b8caff051b4186b342fcd13adadffc1  "C:\Program Files (x86)\Microsoft Office\root\Office16\api-ms-win-crt-heap-l1-1-0.dll", loaded at 67120000 - 67123000 [00003000]
+
+wbxcrash_03132018_89353680020577933_full.dmp
+--------------------------------------------
+
+::
+ 
+	.  0  Id: ff8.11cc Suspend: 0 Teb: 7efdd000 Unfrozen
+	ChildEBP RetAddr  Args to Child              
+	002eebb0 766f15ce 000012c4 00000000 00000000 ntdll!ZwWaitForSingleObject+0x15 (FPO: [3,0,0])
+	002eec1c 755c1194 000012c4 ffffffff 00000000 KERNELBASE!WaitForSingleObjectEx+0x98 (FPO: [SEH])
+	002eec34 755c1148 000012c4 ffffffff 00000000 kernel32!WaitForSingleObjectExImplementation+0x75 (FPO: [3,0,4])
+	002eec48 6bff1a49 000012c4 ffffffff 6bff17aa kernel32!WaitForSingleObject+0x12 (FPO: [2,0,0])
+	002eec78 756003b7 002eed30 de4872ab 00000000 webexmgr!Exception_Report+0x29f
+	002eed00 77b150d7 002eed30 77b14fb4 00000000 kernel32!UnhandledExceptionFilter+0x127 (FPO: [SEH])
+	002eed08 77b14fb4 00000000 002ef844 77acc640 ntdll!__RtlUserThreadStart+0x62 (FPO: [SEH])
+	002eed1c 77b14e59 00000000 00000000 00000000 ntdll!_EH4_CallFilterFunc+0x12 (FPO: [Uses EBP] [0,0,4])
+	002eed44 77b034c1 fffffffe 002ef834 002eee80 ntdll!_except_handler4+0x8e (FPO: [4,5,4])
+	002eed68 77b03493 002eee30 002ef834 002eee80 ntdll!ExecuteHandler2+0x26 (FPO: [Uses EBP] [5,3,1])
+	002eed8c 77b03434 002eee30 002ef834 002eee80 ntdll!ExecuteHandler+0x24 (FPO: [5,0,3])
+	002eee18 77ab0163 002eee30 002eee80 002eee30 ntdll!RtlDispatchException+0x127 (FPO: [2,25,4])
+	002eee18 00000000 002eee30 002eee80 002eee30 ntdll!KiUserExceptionDispatcher+0xf (FPO: [2,0,0]) (CONTEXT @ 00000008)
+
+
+	  *** Stack trace for last set context - .thread/.cxr resets it
+	ChildEBP RetAddr  Args to Child              
+	WARNING: Frame IP not in any known module. Following frames may be wrong.
+	002ef2e0 76b39ce5 00000001 76b92b88 002ef340 0x888c
+	002ef2f4 75b242c2 10922830 002ef378 1080ca70 shell32!CExplorerBrowser::Release+0x27
+	002ef318 76b9178f 10922830 76b92b88 76a588d0 shlwapi!IUnknown_QueryService+0x5c
+	002ef358 76b92b50 002ef378 002ef37c 00000000 shell32!CBrowserProgressAggregator::_UpdateInfoBars+0x35
+	002ef384 760562fa 00030840 00008000 00000000 shell32!CBrowserProgressAggregator::s_WndProc+0x114
+	002ef3b0 76056d3a 76b92ad1 00030840 00008000 user32!InternalCallWinProc+0x23
+	002ef428 760577c4 00000000 76b92ad1 00030840 user32!UserCallWinProcCheckWow+0x109
+	002ef488 7605788a 76b92ad1 00000000 002ef4c8 user32!DispatchMessageWorker+0x3b5
+	002ef498 010e7155 002ef4ac 00000000 00000001 user32!DispatchMessageW+0xf
+	002ef4c8 010e732e de519adb 00000001 003573ac atmgr!MC_RunMessageLoop+0x38 [d:\ec\ws\offl_train_client_33.0.0_webex-windows-mc_2183660_201803120429\webex-windows-mc\src\mc\atmgrexe\atmgr_runinmc.cpp @ 391]
+	002ef508 010e70a4 00000000 003cbf40 010e775f atmgr!MC_Run_JME+0x10c [d:\ec\ws\offl_train_client_33.0.0_webex-windows-mc_2183660_201803120429\webex-windows-mc\src\mc\atmgrexe\atmgr_runinmc.cpp @ 226]
+	002ef514 010e775f 00000002 003573ac 00000000 atmgr!MC_Run+0x6b [d:\ec\ws\offl_train_client_33.0.0_webex-windows-mc_2183660_201803120429\webex-windows-mc\src\mc\atmgrexe\atmgr_runinmc.cpp @ 121]
+	002ef528 010d4402 003573ac de51987f 00000000 atmgr!RunInMCMode+0x56 [d:\ec\ws\offl_train_client_33.0.0_webex-windows-mc_2183660_201803120429\webex-windows-mc\src\mc\atmgrexe\atmgr_runinmc.cpp @ 53]
+	002ef7ac 0110599d 010b0000 00000000 00331dea atmgr!wWinMain+0x410 [d:\ec\ws\offl_train_client_33.0.0_webex-windows-mc_2183660_201803120429\webex-windows-mc\src\mc\atmgrexe\atmgr.cpp @ 750]
+	002ef7f8 755c343d 7efde000 002ef844 77ad9832 atmgr!__tmainCRTStartup+0xfd [f:\dd\vctools\crt\crtw32\startup\crt0.c @ 251]
+	002ef804 77ad9832 7efde000 77a14797 00000000 kernel32!BaseThreadInitThunk+0xe
+	002ef844 77ad9805 01105a17 7efde000 00000000 ntdll!__RtlUserThreadStart+0x70
+	002ef85c 00000000 01105a17 7efde000 00000000 ntdll!_RtlUserThreadStart+0x1b
+
+
+	0:000> dt 002ef4ac MSG
+	Local var @ 0x2ef4ac Type tagMSG
+	   +0x000 hwnd             : 0x00030840 HWND__
+	   +0x004 message          : 0x8000
+	   +0x008 wParam           : 0
+	   +0x00c lParam           : 0
+	   +0x010 time             : 0x363f9f
+	   +0x014 pt               : tagPOINT
+
+Summary
+-------
+
+From the dump file, it seems crash at message loop, and there is a strange thing:
+In our meeting process, load a third party module: BDEFrame.dll
+And here is the detail info for BDEFrame.dll:
+::
+ 
+ 	0:000> lmvm bdeframe
+	start    end        module name
+	10000000 1001c000   BDEFrame   (no symbols)           
+		Loaded symbol image file: BDEFrame.dll
+		Image path: C:\Program Files (x86)\Baidu\BaiduExpert\2.0.201.1955\BDEFrame.dll
+		Image name: BDEFrame.dll
+		Timestamp:        Thu Jun 18 20:23:42 2015 (5582B84E)
+		CheckSum:         0002C632
+		ImageSize:        0001C000
+		File version:     2.0.201.1955
+		Product version:  2.0.201.1955
+		File flags:       0 (Mask 17)
+		File OS:          4 Unknown Win32
+		File type:        1.0 App
+		File date:        00000000.00000000
+		Translations:     0804.04b0
+		CompanyName:      百度在线网络技术（北京）有限公司
+		ProductName:      百度电脑专家
+		InternalName:     BDEFrame.dll
+		OriginalFilename: BDEFrame.dll
+		ProductVersion:   2.0.201.1955
+		FileVersion:      2.0.201.1955
+		PrivateBuild:     2.0.201.1955
+		SpecialBuild:     1955
+		FileDescription:  百度电脑专家功能模块
+		LegalCopyright:   Copyright (C) 2014 Baidu Inc.
+		LegalTrademarks:  Baidu
+		Comments:         2015-06-18T20:18:53.038000
+
+
+What's the next:
+----------------
+
+Need Carson try to reproduce, and then debug on that issue machine.
+
+
+Reference
+---------
+
+#. https://cdetsng.cisco.com/webui/#view=CSCvi43565
+#. QA: Carson Wang
+
+

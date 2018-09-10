@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>US26646 : As a developer, I will add vendors’ file into filelist.json &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="Audio and Video Connection" href="audio_video_connection_av.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="audio_video_connection_av.html" title="Audio and Video Connection"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="us26646-as-a-developer-i-will-add-vendors-file-into-filelist-json">
+<h1>US26646 : As a developer, I will add vendors&#8217; file into filelist.json<a class="headerlink" href="#us26646-as-a-developer-i-will-add-vendors-file-into-filelist-json" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task">
+<h2>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Research and collect vendor&#8217;s file ==&gt; <strong>vendor&#8217;s file list</strong></dt>
+<dd><ul class="first last simple">
+<li>What&#8217;s the vendor&#8217;s</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Research how to add vendor&#8217;s file into filelist.json</dt>
+<dd><ul class="first last simple">
+<li>Where are to place filelist.json file</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Code implement</p>
+</li>
+<li><p class="first">UT</p>
+</li>
+<li><p class="first">Doc</p>
+</li>
+</ol>
+</div>
+<div class="section" id="filelist-json">
+<h2>filelist.json<a class="headerlink" href="#filelist-json" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s2">&quot;Vendors&quot;</span><span class="p">:</span>
+   <span class="p">[</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;atl90.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;atl90.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcp90.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcp90.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcp120.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcp120.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcp120x64.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcp120.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr90.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr90.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr100.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr100.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr120.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr120.dll&quot;</span><span class="p">},</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr120x64.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span><span class="s2">&quot;msvcr120.dll&quot;</span><span class="p">}</span>
+   <span class="p">],</span>
+   <span class="s2">&quot;WebEx&quot;</span><span class="p">:</span>
+   <span class="p">[</span>
+       <span class="p">{</span> <span class="s2">&quot;Item&quot;</span><span class="p">:</span><span class="s2">&quot;atmgr.7z&quot;</span><span class="p">,</span> <span class="s2">&quot;DestFileName&quot;</span><span class="p">:</span> <span class="s2">&quot;atmgr.exe&quot;</span> <span class="p">}</span>
+   <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="microsoft-system-files">
+<h2>Microsoft system files<a class="headerlink" href="#microsoft-system-files" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="with-digital-signatures">
+<h3>With Digital Signatures<a class="headerlink" href="#with-digital-signatures" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>atl90.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ptool, atl90.dll, atl90.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcp90.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.sales, msvcp90.dll, msvcp90.7z</li>
+<li>gpcini.nbr, msvcp90.dll, msvcp90.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcp90x64.dll</dt>
+<dd><ul class="first last simple">
+<li>webex-client-packaging\staticdll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcp100.dll</dt>
+<dd><ul class="first last simple">
+<li>webex-client-packaging\staticdll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcp120.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ptool, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.ra, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.smt, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.support, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.training, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.webex, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.webex_orion, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.event, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.nbr, msvcp120.dll, msvcp120.7z</li>
+<li>gpcini.nbr_orion, msvcp120.dll, msvcp120.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcp120x64.dll</dt>
+<dd><ul class="first last simple">
+<li>filelist.ra, msvcp120x64.dll,msvcp120x64.7z</li>
+<li>filelist.smt, msvcp120x64.dll,msvcp120x64.7z</li>
+<li>filelist.support, msvcp120x64.dll,msvcp120x64.7z</li>
+<li>filelist.training, msvcp120x64.dll,msvcp120x64.7z</li>
+<li>filelist.webex, msvcp120x64.dll,msvcp120x64.7z</li>
+<li>filelist.webex_orion, msvcp120x64.dll,msvcp120x64.7z</li>
+<li>filelist.ptool, msvcp120x64.dll,msvcp120x64.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcr90.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.sales, msvcr90.dll, msvcr90.7z</li>
+<li>gpcini.nbr, msvcr90.dll, msvcr90.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcr90x64.dll</dt>
+<dd><ul class="first last simple">
+<li>filelist.support, msvcr90x64.dll,msvcr90x64.7z</li>
+<li>filelist.training, msvcr90x64.dll,msvcr90x64.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcr100.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.webex, msvcr100.dll, msvcr100.7z</li>
+<li>gpcini.webex_orion, msvcr100.dll, msvcr100.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcr100x64.dll</dt>
+<dd><ul class="first last simple">
+<li>webex-client-packaging\staticdll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcr120.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ptool, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.ra, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.smt, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.support, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.training, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.webex, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.webex_orion, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.event, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.nbr, msvcr120.dll, msvcr120.7z</li>
+<li>gpcini.nbr_orion, msvcr120.dll, msvcr120.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcr120x64.dll</dt>
+<dd><ul class="first last simple">
+<li>filelist.ra, msvcr120x64.dll,msvcr120x64.7z</li>
+<li>filelist.smt, msvcr120x64.dll,msvcr120x64.7z</li>
+<li>filelist.support, msvcr120x64.dll,msvcr120x64.7z</li>
+<li>filelist.training, msvcr120x64.dll,msvcr120x64.7z</li>
+<li>filelist.webex, msvcr120x64.dll,msvcr120x64.7z</li>
+<li>filelist.webex_orion, msvcr120x64.dll,msvcr120x64.7z</li>
+<li>filelist.ptool, msvcr120x64.dll,msvcr120x64.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="without-digital-signatures">
+<h3>Without Digital Signatures<a class="headerlink" href="#without-digital-signatures" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>msvcp60.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.sales, msvcp60.dll, msvcp60.7z</li>
+<li>gpcini.nbr, msvcp60.dll, msvcp60.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcm90.dll</dt>
+<dd><ul class="first last simple">
+<li>webex-client-packaging\staticdll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>msvcrt.dll</dt>
+<dd><ul class="first last simple">
+<li>T30_MC, T30_EC, T30_TC, T30_SC</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>scrrun.dll</dt>
+<dd><ul class="first last simple">
+<li>webex-client-packaging\staticdll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>unidrv.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ra, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.sales, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.smt, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.support, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.training, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex_orion, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.event, unidrv.dll, unidrv1.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>unidrv.hlp</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ra, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.sales, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.smt, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.support, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.training, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex_orion, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.event, unidrv.dll, unidrv1.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>unidrvui.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ra, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.sales, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.smt, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.support, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.training, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex_orion, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.event, unidrv.dll, unidrv1.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>unires.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ra, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.sales, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.smt, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.support, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.training, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.webex_orion, unidrv.dll, unidrv1.7z</li>
+<li>gpcini.event, unidrv.dll, unidrv1.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>rasdd.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.sales, rasdd.dll, rasdd.7z</li>
+<li>gpcini.support, rasdd.dll, rasdd.7z</li>
+<li>gpcini.training, rasdd.dll, rasdd.7z</li>
+<li>gpcini.webex, rasdd.dll, rasdd.7z</li>
+<li>gpcini.webex_orion, rasdd.dll, rasdd.7z</li>
+<li>gpcini.event, rasdd.dll, rasdd.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>rasddui.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.sales, rasdd.dll, rasdd.7z</li>
+<li>gpcini.support, rasdd.dll, rasdd.7z</li>
+<li>gpcini.training, rasdd.dll, rasdd.7z</li>
+<li>gpcini.webex, rasdd.dll, rasdd.7z</li>
+<li>gpcini.webex_orion, rasdd.dll, rasdd.7z</li>
+<li>gpcini.event, rasdd.dll, rasdd.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>dmcolor.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ra, dmcolor.dll, dmcolor1.7z</li>
+<li>gpcini.sales, dmcolor.dll, dmcolor1.7z</li>
+<li>gpcini.smt, dmcolor.dll, dmcolor1.7z</li>
+<li>gpcini.support, dmcolor.dll, dmcolor1.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>iconlib.dll</dt>
+<dd><ul class="first last simple">
+<li>gpcini.ra, iconlib.dll, iconlib1.7z</li>
+<li>gpcini.sales, iconlib.dll, iconlib1.7z</li>
+<li>gpcini.smt, iconlib.dll, iconlib1.7z</li>
+<li>gpcini.support, iconlib.dll, iconlib1.7z</li>
+<li>gpcini.training, iconlib.dll, iconlib1.7z</li>
+<li>gpcini.event, iconlib.dll, iconlib1.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="other-open-source">
+<h2>Other open source<a class="headerlink" href="#other-open-source" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>lcppn30.dll (Adobe Systems)</li>
+</ol>
+<div class="section" id="using-cisco-digital-signatures">
+<h3>Using Cisco Digital Signatures<a class="headerlink" href="#using-cisco-digital-signatures" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>libeay32.dll (OpenSSL Library)</li>
+<li>ssleay32.dll (OpenSSL Library)</li>
+<li>icudt32.dll  (IBM)</li>
+<li>icule32.dll  (IBM)</li>
+<li>icuuc32.dll  (IBM)</li>
+</ol>
+</div>
+<div class="section" id="vendors-output-release">
+<h3>vendors\output\release<a class="headerlink" href="#vendors-output-release" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>aggpcdec.dll</li>
+<li>atjpeg60.dll</li>
+<li>atpack.dll</li>
+<li>libfaac.dll</li>
+<li>mpeg4convert.dll</li>
+<li>svslibavcodec.dll</li>
+<li>svslibavformat.dll</li>
+<li>svslibswscale.dll</li>
+<li>waveinput.dll</li>
+</ol>
+</div>
+<div class="section" id="unknown">
+<h3>Unknown<a class="headerlink" href="#unknown" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>stdnames.gpd</li>
+<li>atconc.dll</li>
+<li>safereboot.exe</li>
+<li>lame_enc.dll</li>
+<li>atpng12.dll</li>
+<li>ocff.dll</li>
+</ol>
+</div>
+</div>
+<div class="section" id="vendor-s-file-list">
+<h2>Vendor&#8217;s file list<a class="headerlink" href="#vendor-s-file-list" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>filelist.event, 184</dt>
+<dd><ul class="first last simple">
+<li>dmcolor.dll,dmcolor.7z</li>
+<li>atpng12.dll,atpng12.7z</li>
+<li>msvcp120.dll,msvcp120.7z</li>
+<li>msvcr120.dll,msvcr120.7z</li>
+<li>msvcp120x64.dll,msvcp120x64.7z</li>
+<li>msvcr120x64.dll,msvcr120x64.7z</li>
+<li>msvcr90x64.dll,msvcr90x64.7z</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="gpc-ignore-check-digital-sign-files">
+<h2>GPC Ignore Check Digital Sign Files<a class="headerlink" href="#gpc-ignore-check-digital-sign-files" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>_success</li>
+<li>atnt40k.sys</li>
+<li>atas9516.dll</li>
+<li>atpcap16.dll</li>
+<li>atprint.dll</li>
+<li>dmcolor.dll</li>
+<li>iconlib.dll</li>
+<li>unidrv.dll</li>
+</ol>
+</div>
+<div class="section" id="progress">
+<h2>Progress<a class="headerlink" href="#progress" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>webex-client-packaging\staticdll</li>
+<li>vendors\output\bin\release</li>
+<li>webex-documentshare-base\src\windows\DvDocImp\MiniDrv</li>
+<li>filelist.event (184)</li>
+<li>gpcini.event</li>
+<li>filelist.webex (193)</li>
+<li>gpcini.webex</li>
+<li>filelist.support (206)</li>
+<li>gpcini.support</li>
+<li>filelist.training (172)</li>
+<li>gpcini.training</li>
+<li>filelist.nbr (94)</li>
+<li>gpcini.nbr</li>
+<li>filelist.nbr_orion (87)</li>
+<li>gpcini.nbr_orion</li>
+<li>filelist.outlook (4)</li>
+<li>gpcini.outlook</li>
+<li>filelist.ptool (89)</li>
+<li>gpcini.ptool</li>
+<li>filelist.ptool_orion (74)</li>
+<li>filelist.ra (115)</li>
+<li>gpcini.ra</li>
+<li>filelist.sales (111)</li>
+<li>gpcini.sales</li>
+<li>filelist.smt (120)</li>
+<li>gpcini.smt</li>
+<li>filelist.webex_orion (152)</li>
+<li>gpcini.webex_orion</li>
+</ol>
+</div>
+<div class="section" id="webex-meeting-component">
+<h2>WebEx Meeting component<a class="headerlink" href="#webex-meeting-component" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>pfwres.dll (by WebEx Communications) - WebEx Picasso Common Framework (PFWRes)</li>
+<li>atarm.dll (by WebEx Communications Inc) - WebEx Communications Inc arm (arm)</li>
+<li>atpcapnt.dll (by WebEx Communications) - WebEx Printer Driver Capture (ATPCAPNT)</li>
+<li>webexmgr.dll - WebEx Picasso Meeting Center (WebExMgr)</li>
+<li>atasctrl.dll - WebEx Application Sharing (WebEx Application Sharing Control)</li>
+<li>ataudio.dll - WebEx, Inc ataudio codec (ataudio)</li>
+<li>atpack.dll (by Activetouch) - Activetouch Corp. atgzip (atgzip)</li>
+<li>atrpui.dll (by WebEx Communications Inc) - WebEx Recorder/Player UI</li>
+<li>atssrcli.dll (by WEBEX) - WEBEX Server Side Record (AtSSR)</li>
+<li>atssrinf.dll - Webex Server Side Record (ATWRFINFO Module)</li>
+<li>atcarmcl.dll (by Golden Age Co) - Golden Age Co. atcarmcl (atcarmcl)</li>
+<li>atmemmgr.dll (by Golden Age Co)</li>
+<li>atrecply.dll (by WebEx) - WebEx Recorder/Playber (WebEx Recorder/Player)</li>
+<li>atres.dll - WebEx Resource Manager</li>
+<li>atdocvu.dll (by WebEx Commnications) - WebEx Document Viewer</li>
+<li>atpdmod.dll (by WebEx Commnications)</li>
+<li>mcres.dll - WebEx Meeting Center (MCRes)</li>
+<li>raurl.dll (by WebEx) - WebEx Remote Access (ratest)</li>
+<li>atplayim.dll - AtPlayerCtl Module</li>
+<li>atinet.dll - WebEx Inc. atinet (atinet)</li>
+<li>atnote.dll - NoteMaker Module</li>
+<li>atpng12.dll - WebEx PNG Module (PNG V. 1.2.5 encoding and decoding route)</li>
+<li>atwbxui.dll - WebEx UI Library (UI Component Library)</li>
+<li>atfilesr.dll - AtFileSr Module</li>
+<li>atnetext.dll - WebEx. atnetext (atnetext)</li>
+<li>atsyncvd.dll - atsyncvd Module</li>
+<li>atucfobj.dll - atucfobj Module</li>
+<li>atwebctl.dll - AtWebCtl Module</li>
+<li>atasanot.exe - WebEx ATASANOT (ATASANOT)</li>
+<li>atkbctl.dll - WebEx atkbctl (atkbctl)</li>
+<li>atlchat.dll - atlchat Module</li>
+<li>atstmget.dll (by WebEx Communications, Inc) - WebEx atstmget (atstmget)</li>
+<li>atvideo.dll - atvideo Module</li>
+<li>wbxcrypt.dll - WebEx wbxcrypt (wbxcrypt)</li>
+<li>atas32.dll - WebEx ATAS32 (ATAS32)</li>
+<li>atconc.dll - atconc Module</li>
+<li>atlms.dll - atlaud Module</li>
+<li>atshin.exe - AtShIn Module</li>
+<li>atpollk2.dll - WebEx AtPoll (AtPoll)</li>
+<li>cnvtata.dll (by WWebEx Commnications) - WebEx UCF (cnvtata)</li>
+<li>uilibres.dll - WebEx UI (UI Resource)</li>
+<li>attp.dll - WebEx (attp)</li>
+<li>atauthor.exe - ATAUTHOR</li>
+<li>atjpeg60.dll</li>
+<li>atpacko.dll (by ActiveTouch) - atpack</li>
+<li>atshell.exe - atshell</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-client-packaging/browse/staticdll">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/CCTGFORK/repos/webex-client-packaging/browse/staticdll</a></li>
+<li><a class="reference external" href="https://basedll.com/lastnews/">https://basedll.com/lastnews/</a></li>
+<li><a class="reference external" href="http://ccatg-build2.cisco.com/cirepo/artifacts/32.11.0/">http://ccatg-build2.cisco.com/cirepo/artifacts/32.11.0/</a></li>
+<li><a class="reference external" href="http://test-apache.erp.ufl.edu/implementation/teams/it/WebExServiceMgrInstallSup.pdf">http://test-apache.erp.ufl.edu/implementation/teams/it/WebExServiceMgrInstallSup.pdf</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">US26646 : As a developer, I will add vendors&#8217; file into filelist.json</a><ul>
+<li><a class="reference internal" href="#task">Task</a></li>
+<li><a class="reference internal" href="#filelist-json">filelist.json</a></li>
+<li><a class="reference internal" href="#microsoft-system-files">Microsoft system files</a><ul>
+<li><a class="reference internal" href="#with-digital-signatures">With Digital Signatures</a></li>
+<li><a class="reference internal" href="#without-digital-signatures">Without Digital Signatures</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other-open-source">Other open source</a><ul>
+<li><a class="reference internal" href="#using-cisco-digital-signatures">Using Cisco Digital Signatures</a></li>
+<li><a class="reference internal" href="#vendors-output-release">vendors\output\release</a></li>
+<li><a class="reference internal" href="#unknown">Unknown</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vendor-s-file-list">Vendor&#8217;s file list</a></li>
+<li><a class="reference internal" href="#gpc-ignore-check-digital-sign-files">GPC Ignore Check Digital Sign Files</a></li>
+<li><a class="reference internal" href="#progress">Progress</a></li>
+<li><a class="reference internal" href="#webex-meeting-component">WebEx Meeting component</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="audio_video_connection_av.html"
+                        title="previous chapter">Audio and Video Connection</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f4013_us26646.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="audio_video_connection_av.html" title="Audio and Video Connection"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

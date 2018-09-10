@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>F7112 : Prepare WEBEXRECORDER &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Appear “Cisco WebEx Meeting has stopped working” after ending meeting" href="CSCvj48806.html" />
+    <link rel="prev" title="F7112 : US31106 Provide Architecture Design For MP4 Local Recording" href="f7112_US31106.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="CSCvj48806.html" title="Appear “Cisco WebEx Meeting has stopped working” after ending meeting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="f7112_US31106.html" title="F7112 : US31106 Provide Architecture Design For MP4 Local Recording"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="f7112-prepare-webexrecorder">
+<h1>F7112 :  Prepare WEBEXRECORDER<a class="headerlink" href="#f7112-prepare-webexrecorder" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Capture Window</li>
+<li>Resize Bitmap</li>
+<li>Retrieve RGB Data</li>
+<li>Convert RGB to YUV420</li>
+<li>Generate H264 through OpenH264</li>
+<li>Write H264 Data to MP4 file</li>
+<li>Fixed Frame, timer multi thread</li>
+</ol>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Output Resolution</li>
+<li>Frame</li>
+<li>Source Window</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>BITMAPINFOHEADER error Run-Time Check Failure #2 - Stack around the variable was corrupted</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://social.msdn.microsoft.com/Forums/sqlserver/en-US/3c636b3f-eecf-4d22-85e4-86d21801ab55/bitmapinfoheader-error-runtime-check-failure-2-stack-around-the-variable-was-corrupted?forum=vcgeneral">https://social.msdn.microsoft.com/Forums/sqlserver/en-US/3c636b3f-eecf-4d22-85e4-86d21801ab55/bitmapinfoheader-error-runtime-check-failure-2-stack-around-the-variable-was-corrupted?forum=vcgeneral</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Retrieve RGB data from HBITMAP</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/3688409/getdibits-and-loop-through-pixels-using-x-y">https://stackoverflow.com/questions/3688409/getdibits-and-loop-through-pixels-using-x-y</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>YUV raw file</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.sunrayimage.com/examples.html">http://www.sunrayimage.com/examples.html</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>rawplayer</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://yonsm.net/rawplayer/">http://yonsm.net/rawplayer/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>H264 View</dt>
+<dd><ul class="first last simple">
+<li>Elecard streameye</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>wav to aac</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://convertio.co/zh/wav-aac/">https://convertio.co/zh/wav-aac/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PPT</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cisco.app.box.com/folder/49795952633">https://cisco.app.box.com/folder/49795952633</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">F7112 :  Prepare WEBEXRECORDER</a><ul>
+<li><a class="reference internal" href="#others">Others</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f7112_US31106.html"
+                        title="previous chapter">F7112 : US31106 Provide Architecture Design For MP4 Local Recording</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="CSCvj48806.html"
+                        title="next chapter">Appear &#8220;Cisco WebEx Meeting has stopped working&#8221; after ending meeting</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f7112_US_0.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="CSCvj48806.html" title="Appear “Cisco WebEx Meeting has stopped working” after ending meeting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="f7112_US31106.html" title="F7112 : US31106 Provide Architecture Design For MP4 Local Recording"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

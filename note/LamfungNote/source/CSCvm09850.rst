@@ -1,0 +1,74 @@
+CSCvm09850: tc cannot pop up update plugin dialog after end meeting
+===================================================================
+
+What's the problem
+------------------
+
+::
+	
+	Test site:
+	ha3web.qa.webex.com/nick32ep - 32.15.10
+	ha3web.qa.webex.com/nick32sp - 32.15.20
+	nick/pass
+
+	precondition:
+	UAC on
+
+	Steps:
+	1. start meeting on 32.15.10 site with activex (old ieatgpc.dll) or install msi.
+	2. start tc on 32.15.20 site using IE/Firefox (new ieatgpc.dll)
+	3.end meeting
+
+	Expected Result:
+	pop up update plugin dialog after end meeting
+
+	Actual Result:
+	cannot pop up
+
+
+What's the solution
+-------------------
+
+What's the root cause
+---------------------
+
+Key Points
+----------
+
+#. TC, AtMgrContainer.cpp
+	+ CAtMgrContainerWnd::OnDestroy
+		- CAtMgrContainerWnd::OnDestroy()
+		- CAtMgrContainerWnd::OnDestroy(),PostQuitMessage
+	+ MEETING_CENTER(mc)
+	+ EVENT_CENTER(ec)
+	+ MEETING_CENTER_STD(mcstd)
+	+ TRAINING_CENTER(tc)
+	+ atmgr GetMessage exit1
+	
+#. TC, AtMgrContainer.cpp
+	+ CAtMgrGenericContainer::OnDestroy
+	+ RA_CENTER(ra)
+	+ ON_DEMOND_HOL(hol)
+	+ atmgr GetMessage exit2
+		
+#. AtMgr.cpp
+	+ >>>>>>CAtMgr::Run() exit
+	+ CAtmgrUtil::OnExitInstance(exitArg)
+
+
+Test Env
+--------
+
+#. Site
+	+ ha3web.qa.webex.com/nick32ep - 32.15.10
+	+ ha3web.qa.webex.com/nick32sp - 32.15.20
+	+ nick/pass
+
+
+Reference
+---------
+
+#. https://cdetsng.cisco.com/webui/#view=CSCvm09850
+
+
+

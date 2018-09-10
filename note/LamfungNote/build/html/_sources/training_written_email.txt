@@ -389,6 +389,26 @@ Case Summary
 #. Don't accuse people - be positive even though people didn't
 
 
+Sharing 2017-05-19
+------------------
+
+#. I'm Lamfung, from windows client team, I focus on windows MC and EC,
+#. sometimes I will check SC and TC, and support Orion and KeTian.
+
+#. At this slide, I will share you two diagrams.
+#. In the past 7 months, I had analyzed 92 customer tickets and fixed 20 windows client CFD bug in SP and EP.
+
+#. In the Monthly Trend, it shows the tickets I analyzed each month which recorded in the PITs, and the total ticket count which caused by windows MC client. 
+
+#. When received a ticket from customer, we will analyze first, after that mark which component cause this issue.
+
+#. Here is the distribution of the 92 tickets, 41% was caused by MC, 13% was caused by WME which include audio, video and proxy issue, 10% was caused by GPC, 7% was caused by page.
+
+#. From the distribution diagram, it tells us, 
+
+#. That's all my sharing, thanks.
+
+
 4Ps
 ----
 

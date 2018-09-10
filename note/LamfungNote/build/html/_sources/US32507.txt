@@ -1,0 +1,122 @@
+GPC will be auto updated if it is in ProgramData
+================================================
+
+Relevant components
+-------------------
+
+#. CiscoWebexStart.exe
+	+ %AppData%\\Local\\Webex
+	
+#. chrome.json
+	+ %AppData%\\Local\\Webex
+
+#. firefox.json
+	+ %AppData%\\Local\\Webex	
+	
+#. webex.exe
+	+ %AppData%\\Local\\Webex
+	
+#. npatgpc.dll
+	+ C:\\Users\\USERNAME\\AppData\\Roaming\\Mozilla\\plugins
+	
+#. ieatgpc.dll
+	+ C:\\Windows\\Downloaded Program Files\\ieatgpc.dll
+	+ DllRegisterServer
+	+ DllUnregisterServer
+
+Key Points
+----------
+
+#. CApplicationImpl::ExitInstance
+#. CUpgradePluginImpl::CheckAndUpgrade
+#. CAtmgrUtilImpl::MoveGPCRegisterFolder
+
+#. Firefox Extension
+	+ version >= 52
+	+ HKEY_CURRENT_USER\\Software\\Mozilla\\NativeMessagingHosts\\com.webex.meeting
+	+ HKEY_LOCAL_MACHINE\\SOFTWARE\\Mozilla\\NativeMessagingHosts
+
+#. Registry
+	+ HKEY_CLASSES_ROOT//WOW6432Node//CLSID//{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}
+	+ HKEY_CLASSES_ROOT//WOW6432Node//CLSID//{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}//InprocServer32
+
+
+#. End meeting
+	+ CAtmgrMeetingMgr::OnControlNotify
+		- ID_LOBBY_NOTIFY
+		- CAtmgrParmMgr::RemoveINIFile
+	+ CAtmgrMeetingMgr::OnClose
+		- ProcessEndMeeting
+		- CAtmgrUtil::OnEndMeeting
+	+ CAtmgrUtil::OnExitInstance
+
+#. Daily meeting
+	+ Chrome & Firefox is ok, but IE can't entry
+	+ IE plugin ok
+	+ Refactor code
+	+ Add Log
+	+ UT
+
+#. IE Plugin Update Dialog
+	+ This dialog show in meeting process
+	+ CUpgradePluginImpl::ShowUpdateDialog
+	
+#. CAtmgrUtilImpl::OnExitInstance_CheckIeatgpc
+	+ CUpdatePluginImpl::CheckAndUpgrade
+		- CUpgradePluginImpl::ShowUpdateDialog
+	
+
+#. Register
+	::
+	 
+		[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Code Store Database\Distribution Units]
+
+		[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Code Store Database\Distribution Units\{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}]
+
+		[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Code Store Database\Distribution Units\{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}\Contains]
+
+		[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Code Store Database\Distribution Units\{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}\Contains\Files]
+		"C:\\ProgramData\\WebEx\\ieatgpc.dll"=""
+
+		[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Code Store Database\Distribution Units\{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}\DownloadInformation]
+		"CODEBASE"=""
+		"INF"="C:\\ProgramData\\WebEx\\ieatgpc.inf"
+
+		[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Code Store Database\Distribution Units\{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}\InstalledVersion]
+		"LastModified"=""
+
+Env
+---
+
+#. Test site
+	+ https://m1eweb2.qa.webex.com/mw3300/mywebex/default.do?siteurl=f8414
+	+ user:Admin
+	+ Pass:P@ss1234
+	
+#. Report
+	+ http://tascher.qa.webex.com/tascher/featureReport
+
+Reference
+---------
+
+#. https://wiki.cisco.com/display/CSGSEC/CSCvh89157+Developer%27s+Works
+
+#. ActiveX register three methods
+	+ https://www.jianshu.com/p/f914ae704a0e
+	
+#. Monitor Registry
+	+ http://blog.51cto.com/hakuyo/1215651
+	+ detours.lib
+		- https://www.codeproject.com/Articles/30140/API-Hooking-with-MS-Detours
+		
+#. Understanding and Using COM Threading Models
+	+ https://msdn.microsoft.com/en-us/library/ms809971.aspx
+	
+#. javascript detect ActiveX Plugin status
+	+ https://www.cnblogs.com/lwme/p/js-detect-activex-enabled.html
+	+ http://www.nirsoft.net/utils/axhelper.html
+
+#. How to determine if an ActiveX object has been registered
+	+ http://www.gchew.net/ 
+
+#. 0797 7223977, 0797-6818257， 导诊 8089002，药剂科8083587, 医保科 

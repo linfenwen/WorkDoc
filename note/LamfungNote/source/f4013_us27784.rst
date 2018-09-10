@@ -1,0 +1,272 @@
+F4013: Test L10N and AllInOne
+=============================
+
+Test Env
+--------
+
+#. Test Site
+	+ https://m1eweb2.qa.webex.com/f4013
+	+ account : admin / P@ss1234
+	+ https://hmsuper.qa.webex.com/superadmin/SuperAdmin.jsp
+	+ admin/pass
+
+Test Case
+---------
+
+AllInOne Package Disable
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. System Locale: English
+	+ Host
+		- English
+		- Japanese
+		- French
+		- German
+	+ Attendee
+		- English
+		- Japanese
+		- French
+		- German
+	
+#. System Locale: Chinese
+	+ Host
+		- English
+		- Japanese
+		- French
+		- German
+	+ Attendee
+		- English
+		- Japanese
+		- French
+		- German
+
+
+AllInOne Package Enable
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. System Locale: English
+	+ Host
+		- English
+		- Japanese
+		- French
+		- German
+	+ Attendee
+		- English
+		- Japanese
+		- French
+		- German
+	
+#. System Locale: Chinese
+	+ Host
+		- English
+		- Japanese
+		- French
+		- German
+	+ Attendee
+		- English
+		- Japanese
+		- French
+		- German
+
+System Locale: en-us;English (United States)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Japanese, 32.12.0.f4013.107
+	+ admin test's Personal Room
+	+ 管理者テストのパーソナルルーム
+	+ WindowTitle: Cisco WebEx Meeting Center
+	+ LanguageID=5
+	+ bAllInOneEnable[0]
+	+ Dll Diffs Japanisch VS English
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\atres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\atres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\mcres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\mcres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\pfwres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\pfwres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\uilibres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\uilibres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\wbxreport.exe
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\wbxreport.exe	
+
+#. French, 32.12.0.f4013.107
+	+ LanguageID=7
+	+ WindowTitle: Centre de réunions Cisco WebEx
+	+ bAllInOneEnable[0]
+	+ Dll Diffs Japanisch VS English
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\atres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\atres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\mcres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\mcres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\pfwres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\pfwres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\uilibres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\uilibres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\wbxreport.exe
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\wbxreport.exe
+
+#. German, 32.12.0.f4013.107
+	+ LanguageID=9
+	+ WindowTitle: Cisco WebEx Meeting Center
+	+ bAllInOneEnable[0]
+	+ Dll Diffs Deutsch VS English
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\atres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\atres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\mcres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\mcres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\pfwres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\pfwres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\uilibres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\uilibres.dll
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC\\wbxreport.exe
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC-english\\wbxreport.exe	
+
+#. English, 32.12.0.f4013.107
+	+ LanguageID=1
+	+ bAllInOneEnable[0]
+	+ WindowTitle: Cisco WebEx Meeting Center
+
+System Locale: zh-cn;Chinese (China)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. English, 32.12.0.f4013.107
+	+ LanguageID=1
+	+ bAllInOneEnable[0]
+	+ WindowTitle: Cisco WebEx Meeting Center
+	
+#. Japanese , 32.12.0.f4013.212
+	+ 
+
+2018.02.12
+----------
+
+#. Abmelden(German)
+	+ C:\ProgramData\WebEx\WebEx\T32_UMC
+	+ Version 32.12.0.f4013.107
+	+ System Locale: en-us;English (United States)
+		- systeminfo | findstr /B /C:”System Locale” 
+
+#. English
+	+ C:\ProgramData\WebEx\WebEx\T32_UMC
+	+ Version 32.12.0.f4013.107
+	+ System Locale: en-us;English (United States)
+		- systeminfo | findstr /B /C:”System Locale” 
+
+#. Dll difference be German VS English
+	+ atres_de.dll        vs      atres.dll
+	+ mcres_de.dll        vs      mcres.dll
+	+ pfwres_de.dll       vs      pfwres.dll
+	+ uilibres_de.dll     vs      uilibres.dll
+	+ wbxreport_de.exe    vs      wbxreport.exe
+	+ atcliun_de.exe      vs      atcliun.exe
+
+Test L10N
+---------
+
+Test AllInOne
+-------------
+
+Key Points
+----------
+
+#. languageId
+#. bAllInOneEnable
+#. LanguageID=1031
+#. UserLanguageID=9
+#. AllInOnePackageEnable
+
+Issues
+------
+
+#. AllInOne disable, 32.12.0.f4013.107, Host
+	+ Deutsch, WindowTitle: Cisco WebEx Meeting Center
+	+ French, WindowTitle: Centre de réunions Cisco WebEx
+	+ Japanisch, WindowTitle: Cisco WebEx Meeting Center
+	+ English, WindowTitle: Cisco WebEx Meeting Center
+
+
+#. Can't start CMR meeting from page, 2018.2.26
+	+ https://m1eweb2.qa.webex.com/f4013
+
+#. CRASH, 2018.2.27
+	+ https://m1eweb2.qa.webex.com/f4013
+	+ 32.12.0.f4013.212, CRASH when start CMR meeting
+	
+#. CRASH, 2018.2.28
+	+ https://m1eweb2.qa.webex.com/f4013
+	+ 32.12.0.f4013.223, CRASH when start CMR meeting 
+	
+	::
+	  
+	 Exception Time: 02/28/2018 02:07:56 UTC
+	 Exception Client: MeetingID = 88081257773141240, SessionID = 92483723, LangID = 0, PID = 16756, BuildNum = 32.12.0.f4013.223
+	 Exception Code: C0000005 [ACCESS_VIOLATION], Caused by Write to location 8B038B00
+	 Exception Address: 8B038B00 [0000:00000000]
+	 System Infomation:
+	 User: lawen
+	 Processors Number : 4 [Type 586]
+	 Operating System Version: 6.2 Build 9200 []
+	 69 % memory in use
+	 2048 MBytes physical memory
+	 1852 MBytes physical memory free
+	 0 MBytes paging file
+	 0 MBytes paging file free
+	 Registers:
+	 EDI: 00000000  ESI: 00000087  EAX: 00730069
+	 EBX: 523DE848  ECX: 00730069  EDX: 10004800
+	 EIP: 8B038B00  EBP: 006E8494  SegCs: 00000023
+	 EFlags: 00210206  ESP: 006E8410  SegSs: 0000002B
+	 Call Stack:
+	 Address   Frame     LogicalAddress TimeStamp   GUIDAge                             Module
+	 Modules List:
+	 TimeStamp                           GUIDAge                             Module
+	 5A7D6998 [02/09/2018 09:27:52 UTC] 65444dc91dc748eebe4da018508156721  "C:\ProgramData\WebEx\WebEx\T32_UMC\atmgr.exe", loaded at 012E0000 - 013AA000 [000CA000]
+	 00000000 [01/01/1970 00:00:00 UTC] The_image_doesn't_have_debug_data  "C:\Program Files (x86)\SogouInput\8.8.0.1814\Resource.dll", loaded at 0E5F0000 - 0E6AB000 [000BB000]
+	 5A1543FD [11/22/2017 09:31:41 UTC] da19eddbe6b649d689d39c7be30a999876  "C:\WINDOWS\system32\SogouPy.ime", loaded at 10000000 - 10532000 [00532000]
+	 5A6A9D4C [01/26/2018 03:15:24 UTC] c9a668bece4e4040a0d1f7d67fdaa40d1  "C:\ProgramData\WebEx\WebEx\T32_UMC\openh264.dll", loaded at 508E0000 - 5099F000 [000BF000]
+	 746C88F0 [11/24/2031 07:00:00 UTC] 4d6e963e92276769c663ad9c948949f51  "C:\WINDOWS\SYSTEM32\D3DIM700.DLL", loaded at 509A0000 - 50A0D000 [0006D000]
+	 0D94BC78 [03/22/1977 04:03:04 UTC] 8a9db0dec50a0846f5c8c1b3459b24011  "C:\Windows\System32\MFC42.dll", loaded at 50A60000 - 50B8E000 [0012E000]
+	 015803F5 [09/18/1970 22:36:37 UTC] 5549335ac86d9bdfb26c761fda7a36751  "C:\Windows\System32\ksproxy.ax", loaded at 50B90000 - 50BCE000 [0003E000]
+	 D36DF997 [05/28/2082 13:18:15 UTC] 613e6f907e9e9988c07e44da84d26a351  "C:\Windows\System32\MFSENSORGROUP.dll", loaded at 50BD0000 - 50C01000 [00031000]
+	 B94C2B69 [07/06/2068 05:06:49 UTC] b3c8cef955f7cb844f787d66eed2080d1  "C:\Windows\System32\mfksproxy.dll", loaded at 50C10000 - 50C46000 [00036000]
+	 5A6A9DB8 [01/26/2018 03:17:12 UTC] 113433ec4c5f4f059ce67f5f5409e21e1  "C:\ProgramData\WebEx\WebEx\T32_UMC\wbxaecodec.dll", loaded at 50C50000 - 50CB9000 [00069000]
+	 5A6A9DB7 [01/26/2018 03:17:11 UTC] 0e97537b9be34cdfba1625caab58d0ba1  "C:\ProgramData\WebEx\WebEx\T32_UMC\wqos.dll", loaded at 50CC0000 - 50D0E000 [0004E000]
+	 9F481885 [09/06/2054 10:10:13 UTC] cd9d8191c0d1a465e56fd992b85f36041  "C:\WINDOWS\SYSTEM32\DDRAW.dll", loaded at 50D10000 - 50DFA000 [000EA000]
+	 5A6A9E15 [01/26/2018 03:18:45 UTC] 0279ebff784a4414bb35a2033ef285741  "C:\ProgramData\WebEx\WebEx\T32_UMC\wbxaudioengine.dll", loaded at 50E00000 - 50F75000 [00175000]
+	 5A6A9E03 [01/26/2018 03:18:27 UTC] fd071458074342dfa4f3d22756627e251  "C:\ProgramData\WebEx\WebEx\T32_UMC\wrtp.dll", loaded at 50F80000 - 510C8000 [00148000]
+	 5A6A9E12 [01/26/2018 03:18:42 UTC] 8035a906165941a49f5c8d6c46f22ecb1  "C:\ProgramData\WebEx\WebEx\T32_UMC\wseclient.dll", loaded at 510D0000 - 51202000 [00132000]
+	 5A6A9E40 [01/26/2018 03:19:28 UTC] 13a1a8751dc9454081ec9f8683cce8fc1  "C:\ProgramData\WebEx\WebEx\T32_UMC\wmeclient.dll", loaded at 51210000 - 51347000 [00137000]
+	 5A95633D [02/27/2018 13:55:09 UTC] 69fa1a2fe8874f4284af5bbd320837a11  "C:\ProgramData\WebEx\WebEx\T32_UMC\mcsnew.dll", loaded at 51350000 - 51433000 [000E3000]
+	 5A6A9DC6 [01/26/2018 03:17:26 UTC] 6629120ca456408697fda8e5c09cb30f1  "C:\ProgramData\WebEx\WebEx\T32_UMC\tp.dll", loaded at 51440000 - 5157A000 [0013A000]
+	 5A6A9E76 [01/26/2018 03:20:22 UTC] d1c6d95a3a894ee5873d14b5d025bd3d1  "C:\ProgramData\WebEx\WebEx\T32_UMC\mediasession.dll", loaded at 51580000 - 519A7000 [00427000]
+	 5A9563DC [02/27/2018 13:57:48 UTC] 3691153ef6bd4fef9a5f60201143f5ad1  "C:\ProgramData\WebEx\WebEx\T32_UMC\msvc.dll", loaded at 519B0000 - 51A66000 [000B6000]
+	 00000000 [01/01/1970 00:00:00 UTC] The_image_doesn't_have_debug_data  "C:\ProgramData\WebEx\WebEx\T32_UMC\pfwres_jp.dll", loaded at 51A70000 - 521AD000 [0073D000]
+	 5A911305 [02/24/2018 07:23:49 UTC] e24becab81254438b27fcd5a279bb8ef1  "C:\ProgramData\WebEx\WebEx\T32_UMC\comUI.dll", loaded at 521B0000 - 524CA000 [0031A000]
+	 00000000 [01/01/1970 00:00:00 UTC] The_image_doesn't_have_debug_data  "C:\ProgramData\WebEx\WebEx\T32_UMC\mcres_jp.dll", loaded at 524D0000 - 525C5000 [000F5000]
+	 5A18DEC3 [11/25/2017 03:08:51 UTC] 2314a4cd011e4056a477d4a5407c63931  "C:\ProgramData\WebEx\WebEx\T32_UMC\atWbxUI15.DLL", loaded at 525D0000 - 526E1000 [00111000]
+
+
+FQA
+---
+
+#. How to switch language?
+	+ WebEx Site Administration
+	+ Edit User => Double Specify User => Language 
+
+#. How to enable or disable AllInOne?
+	+ login https://hmsuper.qa.webex.com/superadmin/SuperAdmin.jsp
+	+ find f4013 site
+	+ check or uncheck All-language MC MSI Package
+
+#. What's the AllInOne?
+
+Reference
+---------
+
+#. https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html
+#. https://msdn.microsoft.com/en-us/library/windows/desktop/dd318693(v=vs.85).aspx
+#. https://msdn.microsoft.com/en-us/library/ms912047(v=winembedded.10).aspx
+	+ 
+#. How to change system locale in Windows 10 
+	+ https://answers.microsoft.com/en-us/surface/forum/surfbook-surfaccess/how-to-change-system-locale-in-windows-10-the/d7826ef0-13cd-43ea-8e01-2846d813dfed?auth=1
+

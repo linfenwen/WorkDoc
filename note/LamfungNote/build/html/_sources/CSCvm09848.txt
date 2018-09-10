@@ -1,0 +1,73 @@
+CSCvm09848: sc cannot pop up update plugin dialog after end meeting
+===================================================================
+
+What's the problem
+------------------
+
+::
+ 
+	Test site:
+	ha3web.qa.webex.com/nick32ep - 32.15.10
+	ha3web.qa.webex.com/nick32sp - 32.15.20
+	nick/pass
+
+	precondition:
+	UAC on
+
+	Steps:
+	1. start meeting on 32.15.10 site with activex (old ieatgpc.dll) or install msi.
+	2. start sc on 32.15.20 site using IE/Firefox (new ieatgpc.dll)
+	3.end meeting
+
+	Expected Result:
+	pop up update plugin dialog after end meeting
+
+	Actual Result:
+	cannot pop up
+
+
+What's the solution
+-------------------
+
+#. AtMgr.cpp
+	+ ProcessEndMeeting
+	::
+	 
+		MeetingArg meetingArg{ 0 };
+		meetingArg.cbSize = sizeof(meetingArg);
+		meetingArg.isMeeingLaunched = g_bIsMeetingLaunched;
+		meetingArg.uLocaleIndex = g_uGPCLocalSetting;
+		CAtmgrUtil::OnEndMeeting(meetingArg);
+
+#. AtMgrCntner.cpp
+	+ CAtMgrGenericContainer::OnDestroy
+		- ProcessEndMeeting
+
+What's the root cause
+---------------------
+
+#. In 32.15.20
+
+#. SC hadn't call ProcessEndMeeting
+
+#. GPC will not trigger IE Plugin Upgrade Logic
+
+Key points
+----------
+
+
+Test Env
+--------
+
+#. Site
+	+ ha3web.qa.webex.com/nick32ep - 32.15.10
+	+ ha3web.qa.webex.com/nick32sp - 32.15.20
+	+ nick/pass
+
+
+Reference
+---------
+
+#. https://cdetsng.cisco.com/webui/#view=CSCvm09848
+
+

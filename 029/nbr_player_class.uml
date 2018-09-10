@@ -1,0 +1,72 @@
+@startuml
+interface INBRPlayCCSink {
++ NotifyInfo()
++ OnEditInfo()
+}
+
+CNBRPfwPlayCtl --|> INBRPlayCCSink
+
+class CNBRPfwUICtl {
+- INBRCommand*	m_pUIMgr
+}
+CNBRPfwUICtl --|> INBRCommand
+CNBRPfwUICtl --> INBRCommand
+
+class CNBRPfwMgr {
+# CNBRPfwPlayCtl* m_pPlayCtl;
+# CNBRPfwUICtl*	m_pUICtl;	
+}
+
+CNBRPfwMgr *-- CNBRPfwPlayCtl
+CNBRPfwMgr *-- CNBRPfwUICtl
+
+CNBRPfwUICtl --> CNBRPfwPlayCtl
+
+interface INBRCommand {
++ OnHandleCommand()
+}
+
+class CNBRUIMgr {
+- CNBRPlayMgr*    m_pPlayMgr;
+- CNBRMainFrame*	m_pMainFrm;
+- INBRCommand*    m_pPfwCtl;
+}
+
+CNBRUIMgr --|> INBRCommand
+CNBRUIMgr --> INBRCommand
+
+class CNBRMainFrame {
+- CNBRCntMgr* m_pCntMgr
+}
+Class CNBRCntMgr {
+- CNBRUISink*     m_pUI
+}
+
+CNBRCntMgr --> CNBRUISink
+
+CNBRMainFrame --|> CNBRUISink
+CNBRMainFrame *-- CNBRCntMgr
+
+class CNBRPlayMgr {
+- CNBRPlayBar*   m_pPlayBar;
+- CNBRMixer*     m_pMixer;
+}
+
+CNBRPlayMgr *-- CNBRPlayBar
+CNBRPlayMgr *-- CNBRMixer
+
+CNBRPlayMgr --> CNBRMainFrame
+
+CNBRUIMgr *-- CNBRPlayMgr
+CNBRUIMgr *-- CNBRMainFrame
+
+class CNBRPfwMgrWin {
+- CNBRUIMgr*        m_pUIMgr
+}
+
+CNBRPfwMgrWin *-- CNBRUIMgr
+
+CNBRPfwMgrWin --|> CNBRPfwMgr
+
+@enduml
+

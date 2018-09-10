@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appear “Cisco WebEx Meeting has stopped working” after ending meeting &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="F7112 : Prepare WEBEXRECORDER" href="f7112_US_0.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f7112_US_0.html" title="F7112 : Prepare WEBEXRECORDER"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="appear-cisco-webex-meeting-has-stopped-working-after-ending-meeting">
+<h1>Appear &#8220;Cisco WebEx Meeting has stopped working&#8221; after ending meeting<a class="headerlink" href="#appear-cisco-webex-meeting-has-stopped-working-after-ending-meeting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-s-the-problem">
+<h2>What&#8217;s the problem<a class="headerlink" href="#what-s-the-problem" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Page</span><span class="p">:</span><span class="mf">33.2</span><span class="o">.</span><span class="mf">0.229</span>
+<span class="n">Client</span><span class="p">:</span><span class="mf">33.2</span><span class="o">.</span><span class="mf">0.186</span>
+
+<span class="n">Steps</span><span class="p">:</span>
+<span class="mf">1.</span><span class="n">Win7</span> <span class="nb">open</span> <span class="n">test</span> <span class="n">site</span><span class="p">(</span><span class="n">Classic</span> <span class="n">View</span><span class="p">)</span> <span class="ow">and</span> <span class="n">start</span> <span class="n">a</span> <span class="n">MC</span> <span class="n">meeting</span><span class="o">.</span>
+<span class="mf">2.</span><span class="n">Host</span> <span class="n">end</span> <span class="n">the</span> <span class="n">meeting</span><span class="o">.</span>
+
+<span class="n">Expected</span> <span class="n">Result</span><span class="p">:</span>
+<span class="n">The</span> <span class="n">meeting</span> <span class="n">was</span> <span class="n">ended</span> <span class="n">normally</span><span class="o">.</span>
+
+<span class="n">Actual</span> <span class="n">Result</span><span class="p">:</span>
+<span class="mf">1.</span><span class="n">Appear</span> <span class="s2">&quot;Cisco WebEx Meetings has stopped working&quot;</span> <span class="n">dialog</span><span class="o">.</span>
+<span class="mf">2.</span><span class="n">The</span> <span class="n">landing</span> <span class="n">page</span> <span class="n">can</span><span class="s1">&#39;t be displayed and prompt &quot;The webpage cannot be found&quot;.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-s-the-solution">
+<h2>What&#8217;s the solution<a class="headerlink" href="#what-s-the-solution" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="what-s-the-root-cause">
+<h2>What&#8217;s the root cause<a class="headerlink" href="#what-s-the-root-cause" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>ptoneclk.exe</dt>
+<dd><ul class="first last simple">
+<li>Logitech, <a class="reference external" href="mailto:QuickCam&#37;&#52;&#48;Pro">QuickCam<span>&#64;</span>Pro</a> 9000, M/N:M/N:V-UBM46:UBM46</li>
+<li>Issue occurs when detect USB video device</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-env">
+<h2>Test Env<a class="headerlink" href="#test-env" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>OS</dt>
+<dd><ul class="first last simple">
+<li>Win7</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Site</dt>
+<dd><ul class="first last">
+<li><p class="first">qat31sky.qa.webex.com</p>
+</li>
+<li><dl class="first docutils">
+<dt>Account</dt>
+<dd><p class="first last"><a class="reference external" href="mailto:admin/P&#37;&#52;&#48;ss123">admin/P<span>&#64;</span>ss123</a></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>vnc</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://10.224.67.251/">http://10.224.67.251/</a></li>
+<li>passwd</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>atshell.exe</dt>
+<dd><ul class="first last simple">
+<li>C:WorkspaceCCTGwebex-docshare-rsksrcwindowsdvshell</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsSaveAsPDFProcessExists</dt>
+<dd><ul class="first last simple">
+<li>No instance of &#8220;atshell.exe&#8221; exists.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/#view=CSCvj48806">https://cdetsng.cisco.com/webui/#view=CSCvj48806</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/xjtuse2014/article/details/52302083">https://blog.csdn.net/xjtuse2014/article/details/52302083</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Appear &#8220;Cisco WebEx Meeting has stopped working&#8221; after ending meeting</a><ul>
+<li><a class="reference internal" href="#what-s-the-problem">What&#8217;s the problem</a></li>
+<li><a class="reference internal" href="#what-s-the-solution">What&#8217;s the solution</a></li>
+<li><a class="reference internal" href="#what-s-the-root-cause">What&#8217;s the root cause</a></li>
+<li><a class="reference internal" href="#test-env">Test Env</a></li>
+<li><a class="reference internal" href="#others">Others</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f7112_US_0.html"
+                        title="previous chapter">F7112 :  Prepare WEBEXRECORDER</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/CSCvj48806.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f7112_US_0.html" title="F7112 : Prepare WEBEXRECORDER"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+F7112 :  Prepare WEBEXRECORDER
+==============================
+
+#. Capture Window
+#. Resize Bitmap
+#. Retrieve RGB Data
+#. Convert RGB to YUV420
+#. Generate H264 through OpenH264
+#. Write H264 Data to MP4 file
+#. Fixed Frame, timer multi thread
+
+Others
+------
+
+#. Output Resolution
+#. Frame
+#. Source Window
+
+Reference
+---------
+
+#. BITMAPINFOHEADER error Run-Time Check Failure #2 - Stack around the variable was corrupted
+	+ https://social.msdn.microsoft.com/Forums/sqlserver/en-US/3c636b3f-eecf-4d22-85e4-86d21801ab55/bitmapinfoheader-error-runtime-check-failure-2-stack-around-the-variable-was-corrupted?forum=vcgeneral
+
+#. Retrieve RGB data from HBITMAP
+	+ https://stackoverflow.com/questions/3688409/getdibits-and-loop-through-pixels-using-x-y
+
+#. YUV raw file
+	+ http://www.sunrayimage.com/examples.html
+	
+#. rawplayer
+	+ http://yonsm.net/rawplayer/
+	
+#. H264 View
+	+ Elecard streameye
+	
+#. wav to aac
+	+ https://convertio.co/zh/wav-aac/
+	
+#. PPT
+	+ https://cisco.app.box.com/folder/49795952633
+
+

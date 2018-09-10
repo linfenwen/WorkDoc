@@ -1,0 +1,78 @@
+CSCvk62268: cannot convert arf recording to mp4 format by msi installed nbr player
+===================================================================================
+
+What's the problem
+------------------
+
+::
+ 
+	Test site:
+	ha3web.qa.webex.com/nick32sp(nick/pass)
+
+
+	precondition:
+
+
+	Steps:
+	1. uninstall all client files
+	2. login site,  download and install nbr2player.msi, it will be installed to 'c:\program files'
+	3. launch nbr player to open arf file, then click File->convert format ->mp4 menu
+	4. input webex site and account info to continue
+
+
+
+	Expected Result:
+	should be able to convert arf recording to mp4 format
+
+	Actual Result:
+	get error.
+
+	Note:
+	it exist in T32.15 and later, and also exist in T33.0 and later
+
+
+What's the solution
+-------------------
+
+#. nbrplay pass empty version (atgpcdec and atgpcext) to ieatgpc
+
+#. ExtensionManagerImpl.cpp
+	+ CExtensionManagerImpl::CheckFolder
+		- GPC_VERIFY_BREAK(!atgpcdecVersion.empty(), false, _T("no GpcExtVersion"));
+		- GPC_VERIFY_BREAK(!atgpcextVersion.empty(), false, _T("no GpcExtVersion"));
+		- to
+		- gpcWarn(_T("preJme>>CheckFolder, GpcDecVersion=%s"), atgpcdecVersion.c_str());
+		- gpcWarn(_T("preJme>>CheckFolder, GpcExtVersion=%s"), atgpcextVersion.c_str());
+
+What's the root cause
+---------------------
+
+#. This issue first introduced at 2018.3.27
+	+ 094ae1066c3e1e9ecda06fa6836f5b566e48164f
+	+ for Jabber(Legacy) launch Meeting
+	+ CExtensionManagerImpl::CheckAndUpdate
+
+#. webex-player
+	+ define GPC_DEC_VERSION "25, 2010, 8, 11" //lucia fix bug 385663 jesy for bug 404413 on SP19
+	+ define GPC_EXT_VERSION "25, 2010, 8, 11" //lucia fix bug 385663 jesy for bug 404413 on SP19
+
+#. wbxtrace
+	+ preJme>>ValidateFile failed, not exist,path=C:\ProgramData\Webex\Webex\500\plugin\atgpcdec.dll
+	+ C:\ProgramData\Webex\Webex\500\plugin\atgpcdec.dll.tmp,localVersion=27.17.2017.317,thatVersion=25, 2010, 8, 11
+
+Test Env
+--------
+
+#. Site
+	+ ha3web.qa.webex.com/nick32sp
+	+ Account
+		- nick/pass
+
+
+Reference
+---------
+
+#. https://cdetsng.cisco.com/webui/#view=CSCvk62268
+
+
+

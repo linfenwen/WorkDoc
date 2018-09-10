@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Local Recording Introduce I &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="US30394 : Research how to generate mp4 file" href="f7112_US30394.html" />
+    <link rel="prev" title="F7112 US29571: Understand current local recording background knowledge" href="f7112_US29571.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f7112_US30394.html" title="US30394 : Research how to generate mp4 file"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="f7112_US29571.html" title="F7112 US29571: Understand current local recording background knowledge"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="local-recording-introduce-i">
+<h1>Local Recording Introduce I<a class="headerlink" href="#local-recording-introduce-i" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><img alt="_static/local_recording_user_case.png" src="_static/local_recording_user_case.png" />
+</div></blockquote>
+</div>
+<div class="section" id="core-component">
+<h2>Core Component<a class="headerlink" href="#core-component" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><img alt="_static/atasctrl_call_atrecply.png" src="_static/atasctrl_call_atrecply.png" />
+</div></blockquote>
+</div>
+<div class="section" id="codec">
+<h2>Codec<a class="headerlink" href="#codec" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="as-codec-type">
+<h3>AS Codec Type<a class="headerlink" href="#as-codec-type" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">AS_CODEC_TSHARE</p>
+</li>
+<li><p class="first">AS_CODEC_H264</p>
+</li>
+<li><dl class="first docutils">
+<dt>CSmRecordSessionMgr::SetRecordCodec</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>AS CODEC H264 <strong>1</strong></dt>
+<dd><ul class="first last simple">
+<li>IsTandbergMeeting : SiteConfigExt &amp; SITE_CONFIGEXT_SUPPORT_TP_PLUS(0x1000000)</li>
+<li>IsEnableMp4PlaybackInNonCMR : EnableMP4ForNonCMR</li>
+<li>GetHostCETFlag : HostCETFlag</li>
+<li>GetCETMeetingFlag : CETMeetingFlag</li>
+<li>GetSupportTPFlag : SiteConfigExt &amp; SITE_CONFIGEXT_SUPPORT_TP (0x800)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">AS CODEC TSHARE <strong>0</strong></p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="audio-codec-type">
+<h3>Audio Codec Type<a class="headerlink" href="#audio-codec-type" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>AUDIOCODEC_GSM610    0</li>
+<li>AUDIOCODEC_G7231_63  1</li>
+<li>AUDIOCODEC_G7231_53  2</li>
+<li>AUDIOCODEC_PCM1      3</li>
+<li>AUDIOCODEC_PCM2      4</li>
+<li>AUDIOCODEC_PCM3      5</li>
+<li>AUDIOCODEC_FLAC      6</li>
+<li>AUDIOCODEC_G711      7</li>
+<li>AUDIOCODEC_LAME      8</li>
+<li>AUDIOCODEC_RSV2      9</li>
+<li>AUDIOCODEC_ISAC      10/<em>added aaron for iSAC</em>/</li>
+<li><strong>AUDIOCODEC_ILBC</strong>      11//by smithg for adding iLBC codec type</li>
+</ol>
+</div>
+<div class="section" id="ilbc">
+<h3>iLBC<a class="headerlink" href="#ilbc" title="Permalink to this headline">¶</a></h3>
+<p>iLBC is a VOIP codec originally created by Global IP Sound but made available (including its source code) under a restricted but free and fairly liberal license, including permission to modify.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>What is iLBC?
+
+    iLBC (internet Low Bitrate Codec) is a FREE speech codec suitable for robust voice communication over IP. The codec is designed for narrow band speech and results in a payload bit rate of 13.33 kbit/s with an encoding frame length of 30 ms and 15.20 kbps with an encoding length of 20 ms. The iLBC codec enables graceful speech quality degradation in the case of lost frames, which occurs in connection with lost or delayed IP packets.
+
+
+Features
+
+    Bitrate 13.33 kbps (399 bits, packetized in 50 bytes) for the frame size of 30 ms and 15.2 kbps (303 bits, packetized in 38 bytes) for the frame size of 20 ms
+    Basic quality higher than G.729A, high robustness to packet loss
+    Computational complexity in a range of G.729A
+            Royalty-free Codec
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="local-record-relevant-ui">
+<h2>Local Record Relevant UI<a class="headerlink" href="#local-record-relevant-ui" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Save Recorded Meeting As</p>
+<blockquote>
+<div><img alt="_static/AB-SaveRecordedMeetingAs.png" src="_static/AB-SaveRecordedMeetingAs.png" />
+</div></blockquote>
+</li>
+<li><p class="first">Meeting Title <strong>Recording</strong></p>
+<blockquote>
+<div><img alt="_static/AB-MeetingTitleRecording.png" src="_static/AB-MeetingTitleRecording.png" />
+</div></blockquote>
+</li>
+<li><p class="first">Meeting Status <strong>Recording</strong></p>
+<blockquote>
+<div><img alt="_static/AB-atmgr-Recording.png" src="_static/AB-atmgr-Recording.png" />
+</div></blockquote>
+</li>
+<li><p class="first">Meeting Status <strong>Meeting recording is paused</strong></p>
+<blockquote>
+<div><img alt="_static/AB-atmgr-MeetingRecordingIsPaused.png" src="_static/AB-atmgr-MeetingRecordingIsPaused.png" />
+</div></blockquote>
+</li>
+<li><p class="first">Recorder Panel</p>
+<blockquote>
+<div><img alt="_static/ABC-RecorderPanel.png" src="_static/ABC-RecorderPanel.png" />
+</div></blockquote>
+</li>
+<li><p class="first">WebEx Recorder - Untitled</p>
+<blockquote>
+<div><img alt="_static/C-WebExRecorderOffline.png" src="_static/C-WebExRecorderOffline.png" />
+</div></blockquote>
+</li>
+<li><p class="first">Save WebEx Recording</p>
+<blockquote>
+<div><img alt="_static/C-SaveWebExRecording.png" src="_static/C-SaveWebExRecording.png" />
+</div></blockquote>
+</li>
+<li><p class="first">WebEx Recorder-Open Application</p>
+<blockquote>
+<div><img alt="_static/C-WebExRecorderOpenApplication.png" src="_static/C-WebExRecorderOpenApplication.png" />
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Item1, pfwres.dll</p>
+</li>
+<li><p class="first">Item5, atrpui.dll</p>
+</li>
+<li><dl class="first docutils">
+<dt>Next Sprint:</dt>
+<dd><ul class="first last simple">
+<li>US30394</li>
+<li>Research how to generate mp4 file</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><a class="reference external" href="https://www.voip-info.org/wiki/view/iLBC">https://www.voip-info.org/wiki/view/iLBC</a></li>
+<li><a class="reference external" href="https://www.techwalla.com/articles/what-is-pcm-audio">https://www.techwalla.com/articles/what-is-pcm-audio</a></li>
+<li><a class="reference external" href="https://www.draw.io/#G1OSzetgfChSNLtG-4JqGBn_Cg6yoo34G3">https://www.draw.io/#G1OSzetgfChSNLtG-4JqGBn_Cg6yoo34G3</a></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Local Recording Introduce I</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#core-component">Core Component</a></li>
+<li><a class="reference internal" href="#codec">Codec</a><ul>
+<li><a class="reference internal" href="#as-codec-type">AS Codec Type</a></li>
+<li><a class="reference internal" href="#audio-codec-type">Audio Codec Type</a></li>
+<li><a class="reference internal" href="#ilbc">iLBC</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#local-record-relevant-ui">Local Record Relevant UI</a></li>
+<li><a class="reference internal" href="#others">Others</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f7112_US29571.html"
+                        title="previous chapter">F7112 US29571: Understand current local recording background knowledge</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f7112_US30394.html"
+                        title="next chapter">US30394 : Research how to generate mp4 file</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/local_recording_introduce_I.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f7112_US30394.html" title="US30394 : Research how to generate mp4 file"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="f7112_US29571.html" title="F7112 US29571: Understand current local recording background knowledge"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

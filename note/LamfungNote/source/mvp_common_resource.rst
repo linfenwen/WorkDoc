@@ -26,6 +26,59 @@ Windows Topic
 #. Debugging LoadLibrary Failures
 	+ https://blogs.msdn.microsoft.com/junfeng/2006/11/20/debugging-loadlibrary-failures/
 
+#. Software Reverse Engineering Tools
+	+ https://www.apriorit.com/dev-blog/366-software-reverse-engineering-tools
+#. PDB viewer, cvdump.exe
+	+ https://github.com/Microsoft/microsoft-pdb/blob/master/cvdump/cvdump.exe
+#. PDB2MAP
+	+ dumpbin /map application.exe > application.map
+	+ https://stackoverflow.com/questions/2451369/how-to-create-a-map-file-from-a-pdb-file
+
+#. User Mode Callbacks In Windows
+	+ http://eugeii.com/posts/user-mode-callbacks-in-windows/
+#. C++ Linker
+	+ http://www.airs.com/blog/archives/38
+#. C++ PLT & GOT
+	+ https://www.technovelty.org/linux/plt-and-got-the-key-to-code-sharing-and-dynamic-libraries.html
+#. sxstrace.exe
+	+ The application has failed to start because its side-by-side configuration is incorrect
+		- https://blogs.msdn.microsoft.com/cesardelatorre/2011/03/27/the-application-has-failed-to-start-because-its-side-by-side-configuration-is-incorrect-error-related-to-mmc-exe-programs-and-weird-cause-simple-solution/
+	+ https://knowledge.autodesk.com/support/3ds-max/troubleshooting/caas/sfdcarticles/sfdcarticles/The-application-has-failed-to-start-because-its-side-by-side-configuration-is-incorrect.html
+	+ sxstrace.exe usage
+		- Before running your application, run sxstrace in trace mode:
+     	- sxstrace.exe Trace -logfile:C:\MySxSTrace.log
+    	- Reproduce the error by starting your application
+    	- Now stop the trace by using the below command
+     	- sxstrace.exe Parse -logfile:C:\MySxSTrace.log -outfile:C:\MySxSTrace.txt
+#. Monitoring Silent Process Exit
+	+ https://docs.microsoft.com/en-us/windows-hardware/drivers/debugger/registry-entries-for-silent-process-exit
+#. Find out who killed a process in Windows
+	+ http://techibee.com/sysadmins/find-out-who-killed-a-process-in-windows/2286
+	
+#. Valgrind
+	+ http://valgrind.org/docs/manual/cl-manual.html
+
+#. WinObj, Kernel Object
+	+ https://www.remkoweijnen.nl/blog/2009/01/27/accessing-kernel-objects-in-other-sessions/
+	+ https://msdn.microsoft.com/en-us/library/aa382954(VS.85).aspx
+
+#. How to view the environment variables of a process
+	+ View environment variables of a process in the visual studio debugger
+		- https://blogs.msdn.microsoft.com/habibh/2009/06/08/how-to-display-the-environment-variables-for-a-process-in-the-visual-studio-debugger/
+	+ View environment variables of a process in **Process Explorer**
+
+#. Process and Environment
+	+ https://www.ics.com/designpatterns/book/environment.html
+
+#. WMIC (Windows Management Instrumentation)
+	+ http://blog.csdn.net/hxh129/article/details/8721406
+	+ wmic.exe is a powerful command line utility for interacting with WMI. 
+	+ https://www.fireeye.com/content/dam/fireeye-www/global/en/current-threats/pdfs/wp-windows-management-instrumentation.pdf
+	+ http://la.trendmicro.com/media/misc/understanding-wmi-malware-research-paper-en.pdf
+	
+#. mock objects
+	+ http://clean-cpp.org/mock-objects/
+	
 Common Topic
 ------------
 
@@ -56,6 +109,52 @@ Common Topic
 	+ https://tools.ietf.org/html/draft-ietf-wrec-wpad-01
 #. Jenkins
 	https://jenkins.io/index.html
+#. Online x86 / x64 Assembler and Disassembler
+	+ https://defuse.ca/online-x86-assembler.htm
+	+ https://www.nayuki.io/page/a-fundamental-introduction-to-x86-assembly-programming
+#. X86 opcode reference
+	+ http://ref.x86asm.net/coder32.html
+#. Intel developer site
+	+ https://software.intel.com/en-us/search/site/language/en?query=x86
+#. princeton course
+	+ http://www.cs.princeton.edu/courses/archive/spr11/cos217/lectures/
+#. x86 Architecture Overview
+	+ http://cs.lmu.edu/~ray/notes/x86overview/
+#. windbg-quickstart-guide
+	+ https://blogs.msdn.microsoft.com/rihamselim/2012/02/25/windbg-quickstart-guide-part-1/
+#. C++ Standards Committee Papers
+	+ http://www.open-std.org/jtc1/sc22/wg21/docs/papers/?X-OpenDNS-Session=_dc7b20f201c5b0477e0a2f005ce7bc4ac6c39270ed45_e92cef02_
+#. International Country Calling Codes and International Dialing Prefixes
+	http://www.nationsonline.org/oneworld/international-calling-codes.htm
+#. Understanding lvalues and rvalues in C and C++
+	https://eli.thegreenplace.net/2011/12/15/understanding-lvalues-and-rvalues-in-c-and-c
+
+#. c++11
+	http://thispointer.com/
+	
+#. Out of Memory
+	http://outofmemory.cn/#csdn
+	
+#. PDF books
+	+ https://doc.lagout.org
+	
+#. The Secret behind the Single Responsibility Principle
+	+ https://hackernoon.com/the-secret-behind-the-single-responsibility-principle-e2f3692bae25
+	
+#. Inheritance is evil. Stop using it.
+	+ https://codeburst.io/inheritance-is-evil-stop-using-it-6c4f1caf5117
+	
+#. Do you need a Dependency Injection Container?
+	+ http://fabien.potencier.org/do-you-need-a-dependency-injection-container.html
+	
+#. A simple C++11 IoC container that's all you need
+	+ http://turncoder.blogspot.com/2014/02/a-simple-c11-ioc-container-thats-all.html
+
+#. Inversion of control
+	+ https://en.wikipedia.org/wiki/Inversion_of_control
+	
+#. SOLID principle
+	+ https://medium.com/@linfengwen
 
 Open Source
 -----------
@@ -114,7 +213,13 @@ Technical Blog
 	http://www.wintellect.com/devcenter/jrobbins/pdb-files-what-every-developer-must-know
 #. firefox npapi
 	https://developer.mozilla.org/en-US/docs/Plugins/Guide/Plug-in_Development_Overview#Windows_Installation_Using_the_Registry
-
+#. C++11 - the new ISO C++ standard
+	http://www.stroustrup.com/C++11FAQ.html
+	
+#. multi thread paralel computing
+	http://www.parallellabs.com
+	
+	
 	
 Security Topic
 --------------
@@ -138,7 +243,25 @@ Security Topic
 	https://en.wikipedia.org/wiki/Pwn2Own
 #. **看雪学院**
 	www.pediy.com/kssd/pediy08/pediy8-364.htm
+#. Cisco WebEx code execution hole
+	+ This vulnerability was reported to Cisco by Tavis Ormandy of Google 
+	+ https://nakedsecurity.sophos.com/author/pducklin/
+	+ https://nakedsecurity.sophos.com/2017/01/26/cisco-webex-code-execution-hole-what-you-need-to-know/
+	+ https://tools.cisco.com/security/center/content/CiscoSecurityAdvisory/cisco-sa-20170124-webex
+	+ https://security.googleblog.com/
+	+ https://googleprojectzero.blogspot.com/2016/06/how-to-compromise-enterprise-endpoint.html
+	+ http://taviso.decsystem.org/
+	+ http://www.pctools.com/security-news/zero-day-vulnerability/
+	+ http://www.securityweek.com/cisco-starts-patching-critical-webex-flaw
+	+ http://www.zdnet.com/article/code-execution-hole-in-webex-meeting-manager/
+	+ https://bugs.chromium.org/p/project-zero/issues/detail?id=1096
 	
+#. The Art of Unpacking
+	+ http://www.youngroe.com/2017/05/23/Learning/The-Art-of-Unpacking/	
+
+#. 逆向工程核心原理
+	+ http://www.52bug.cn/%E9%80%86%E5%90%91%E7%B3%BB%E5%88%97/1641.html
+
 	
 Assembly Language 
 -----------------
@@ -204,6 +327,38 @@ Study Track
 	https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-702.pdf
 #. EDA
 	http://www.enterpriseintegrationpatterns.com/docs/EDA.pdf
+
+Others
+------
+
+#. https://github.com/houshanren/hangzhou_house_knowledge#2018%E6%8B%86%E8%BF%81%E5%A4%A7%E5%B9%95-%E4%B8%BB%E5%9F%8E%E8%A6%81%E6%8B%864%E4%B8%87%E6%88%B7%E3%80%81%E8%90%A7%E5%B1%B18000%E6%88%B7%E3%80%81%E4%B8%B4%E5%AE%891500%E6%88%B7
+
+2016-12-01, Refresh Mac Machine
+-------------------------------
+
+#. https://sqbu-github.cisco.com/WebExSquared/
+#. http://windbg.info/doc/1-common-cmds.html
+#. http://www.cnblogs.com/rolling-stone/p/3244254.html
+#. http://www.technlg.net/windows/symbol-server-path-windbg-debugging/
+#. www.cplusplus.com
+#. cisco.jiveon.com/
+#. http://www.cnblogs.com/kissdodog/p/3730598.html
+#. tsphybrid.qa.webex.com/wbxadmin
+#. http://nadeausoftware.com/articles
+#. http://stackoverflow.com/questions/3973582/how-do-i-write-a-utf-8-encoded-string-to-a-file-in-windows-in-c
+#. github.com  bindiff
+#. http://timsplus.qa.webex.com/TimsPlus/login
+#. http://creately.com/blog/diagrams/class-diagram-relationships/
+#. http://english.stackexchange.com/
+#. http://www.oreilly.com/pub/e/3357
+#. https://www.hackerrank.com/
+#. http://www.jantar.org/talks/zadarnowski03languages.pdf
+#. http://www.ccs.neu.edu/home/matthias/369-s10/Transcript/anf-vs-cps.pdf
+#. http://www.forbes.com/
+#. http://www.gegeek.com/
+#. http://www.gegeek.com/tech_reference/tech_shop_docs/Troubleshooting/Advanced%20Windows%20Debugging.pdf
+#. more details please refer to
+	+ https://drive.google.com/drive/folders/refresh mac(20161201)
 
 
 

@@ -1,0 +1,55 @@
+@startuml
+
+participant GPCGlobalAPI
+participant CATGpcExtension
+participant CATGpcExtensionNoScriptCall
+participant CMeetingLauncher
+participant CJmeParameterWriter_Helper
+participant CJmeParameterWriterImpl
+participant CJmeParameterWriter_Helper_ARF
+
+
+[-> GPCGlobalAPI : GpcInitInstance
+GPCGlobalAPI -> GPCGlobalAPI : Gpc_InitInstance
+note over GPCGlobalAPI: JME not support
+
+GPCGlobalAPI -> CATGpcExtension : CreateATGPCExtension
+note over GPCGlobalAPI, CATGpcExtension : new CATGpcExtensionNoScriptCall
+
+GPCGlobalAPI -> CATGpcExtension : InitInstance
+
+[-> GPCGlobalAPI : GpcHeartbeat
+GPCGlobalAPI -> CATGpcExtension : Heartbeat
+CATGpcExtension -> CATGpcExtension : InitComponent
+CATGpcExtension -> CATGpcExtension : StartMeeting
+CATGpcExtension -> CATGpcExtensionNoScriptCall : StartMeeting
+CATGpcExtensionNoScriptCall -> CMeetingLauncher : StartMeeting
+note over CATGpcExtension, CMeetingLauncher : gpccomponentname(atplycli.dll)
+
+CMeetingLauncher -> CMeetingLauncher : InitJmeContext
+CMeetingLauncher -> CMeetingLauncher : CreateIni
+CMeetingLauncher -> CJmeParameterWriterImpl : Write
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : InitParam
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : InitParameterWriteHelper
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : new CJmeParameterWriter_Helper_ARF
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : WriteParameterFromInitCall
+CJmeParameterWriterImpl -> CJmeParameterWriter_Helper : ProcessOtherValueItem
+
+== CJmeParameterWriter_Helper_ARF Handle detail webex.ini logic ==
+CJmeParameterWriter_Helper -> CJmeParameterWriter_Helper_ARF : ProcessOtherValueItem
+CJmeParameterWriter_Helper_ARF -> CJmeParameterWriter_Helper_ARF : NameValue_Handler
+CJmeParameterWriter_Helper_ARF -> CJmeParameterWriter_Helper_ARF : NBR2_SetDownloadParameters_Handler
+CJmeParameterWriter_Helper_ARF -> CJmeParameterWriter_Helper_ARF : NBR2_SetControlParams_Handler
+CJmeParameterWriter_Helper_ARF -> CJmeParameterWriter_Helper_ARF : NBR2_SetAdditionParams_Handler
+
+
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : WriteParameterAfterInitCall
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : WriteOtherIniParam
+CJmeParameterWriterImpl -> CJmeParameterWriterImpl : WriteParameterInContainer
+CJmeParameterWriterImpl -> CIniFileParseImpl : CommitIniFile
+
+CMeetingLauncher -> CMeetingLauncher : GoToLobby
+CMeetingLauncher -> CJmeActionDispatcherImpl::Run
+CJmeActionDispatcherImpl -> CJmeActionDispatcherImpl : InitDispatcher
+
+@enduml

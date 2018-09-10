@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Audio and Video Connection &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="US26646 : As a developer, I will add vendors’ file into filelist.json" href="f4013_us26646.html" />
+    <link rel="prev" title="Screen capture research" href="screen_capture_research.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f4013_us26646.html" title="US26646 : As a developer, I will add vendors’ file into filelist.json"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="screen_capture_research.html" title="Screen capture research"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="audio-and-video-connection">
+<h1>Audio and Video Connection<a class="headerlink" href="#audio-and-video-connection" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="us25508">
+<h2>US25508<a class="headerlink" href="#us25508" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>As a developer, when not show A/V connection window, I need make sure mainframe window is OK</dt>
+<dd><ul class="first last simple">
+<li>verify no session relevant case</li>
+<li>verify no device relevant case</li>
+<li>verify session and device relevant case</li>
+<li>Learn audio and video connection relevant code</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Verify 7 test case</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>no session but has device case</dt>
+<dd><ul class="first last simple">
+<li>no audio and no video session</li>
+<li>no audio but has video session</li>
+<li>no video but has audio session</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>no device but has session case</dt>
+<dd><ul class="first last simple">
+<li>no audio and no video device</li>
+<li>no audio but has video device</li>
+<li>no video but has audio device</li>
+<li>has audio and video device</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Know <strong>Audio and Video Connection</strong> relevant logic</dt>
+<dd><ul class="first last simple">
+<li>Which docshow parameter enable/disable popup</li>
+<li>How to check relevant webex trace</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="key-code">
+<h2>Key Code<a class="headerlink" href="#key-code" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CPfwServiceMgr</dt>
+<dd><ul class="first last simple">
+<li>ShowAudioVideoDialog</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CPopupDlgMgr</dt>
+<dd><ul class="first last simple">
+<li>GetDlgInstance, DLG_AUDIO_VIDEO_WIZARD</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CDlgAudioVideoWizard</p>
+</li>
+<li><p class="first">CDlgPanelviewConfigConnectionPage</p>
+</li>
+<li><p class="first">CWndPanelviewConfigConnectionPage</p>
+</li>
+<li><p class="first">CAudioVideoWizardWrapper</p>
+</li>
+<li><p class="first">CDlgWebcamDetected</p>
+</li>
+<li><p class="first">CEmbedWndVideo</p>
+</li>
+<li><p class="first">CEmbedWndUsingComputer</p>
+</li>
+<li><p class="first">CAudioTestWizardWrapper</p>
+</li>
+</ol>
+</div>
+<div class="section" id="caudiovideowizardwrapper-isneedenteraudiovideowizard">
+<h2>CAudioVideoWizardWrapper::IsNeedEnterAudioVideoWizard<a class="headerlink" href="#caudiovideowizardwrapper-isneedenteraudiovideowizard" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Return False</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>TRUE == m_bEnteredAudioVideoWizard</dt>
+<dd><ul class="first last simple">
+<li>CMCServiceMgr::Initialize</li>
+<li>CPfwServiceMgr::ShowAudioVideoDialog</li>
+<li>CPopupDlgMgr, GetDlgInstance(DLG_AUDIO_VIDEO_WIZARD)</li>
+<li>CDlgAudioVideoWizard::GetInstance</li>
+<li>conIPopupDlgBase-&gt;ShowModelessDlg()</li>
+<li>CDlgAudioVideoWizard::OnInitDialog, SetInAudioVideoWizardFlag(true)</li>
+<li>CAudioVideoWizardWrapper::SetInAudioVideoWizardFlag(true)</li>
+<li>m_bEnteredAudioVideoWizard = true</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">True == CConfigWrapper::IsEvent(), <strong>ec</strong></p>
+</li>
+<li><dl class="first docutils">
+<dt>True == CMCServiceMgr::IsInLockRoom</dt>
+<dd><ul class="first last simple">
+<li>PMR_LOCK_ROOM</li>
+<li>PMR_WAITTING_ROOM</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">True == CMCServiceMgr::IsNeedEnterVMRWaittingRoom</p>
+</li>
+<li><p class="first">True == CMCServiceMgr::IsNeedEnterVMRLockRoom</p>
+</li>
+<li><dl class="first docutils">
+<dt>False == CConfigWrapper::IsAudioVideoWizardEnable</dt>
+<dd><ul class="first last simple">
+<li>F4322&gt;Ops team should able to turn on/off new AV</li>
+<li>CConfContextMgr::IsAudioVideoWizardEnable</li>
+<li>Docshow parameter: <strong>AutoPopupAVDialog</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>False == CAudioVideoWizardWrapper::IsNeedEnterAudioWizard</dt>
+<dd><ul class="first last simple">
+<li>True == CSmAudioStatusWrapper::IsShowLegacyVoIP</li>
+<li>True == (SessionTypeOptions &amp; SESSION_TYPE_ENABLE_VOIP(0x0200))</li>
+<li>False == (TSPHybridFlag &amp;&amp; TSPTelephonyFlag)</li>
+<li>True == bAutoVoIP , WBXPBAutoVoipFlag &amp;&amp; m_bVoIPPortionEnabled &amp;&amp; $HybridTelephoneOnlyFlag</li>
+<li>True == bAutoCallFromURL, eAutoCallBackEnabled</li>
+<li>True == bAutoCallFromPB, $TELEPHONE_NUM</li>
+<li>False == CAudioVideoWizardWrapper::IsEnableAttendeeJBHAudio</li>
+<li>AUDIO_PAGE_OPTION_NONE == GetAudioTypeStatus</li>
+<li>AUDIO_PAGE_OPTION_SPECIAL == GetAudioTypeStatus</li>
+<li>AUDIO_PAGE_OPTION_VOIP == GetAudioTypeStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>False == CAudioVideoWizardWrapper::IsNeedEnterVideoWizard</dt>
+<dd><ul class="first last simple">
+<li>False == CSmSvcVideoSessionMgr::IsSessionTypeEnable</li>
+<li>CMCSiteConfigMgr::InitSiteConfig</li>
+<li>dwEverestOption &amp; SESSION_TYPE_ENABLE_VIDEO (0x02)</li>
+<li>CMCSvcVideoSessionMgr</li>
+<li>g_pMCServiceMgr-&gt;m_mcVideoMgr.SetSessionTypeEnable</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Return True</dt>
+<dd><ul class="first last simple">
+<li>True == CConfigWrapper::IsAudioVideoWizardEnable</li>
+<li>True == CAudioVideoWizardWrapper::IsNeedEnterAudioWizard</li>
+<li>True == CAudioVideoWizardWrapper::IsNeedEnterVideoWizard</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="ui-resource">
+<h2>UI Resource<a class="headerlink" href="#ui-resource" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">17196: IDC_MANAGE_PANELVIEW_CONFIG_CONNECTION_PAGE</p>
+</li>
+<li><dl class="first docutils">
+<dt>17203: IDC_STATIC_CONNECTION_PAGE_TITLE</dt>
+<dd><ul class="first last simple">
+<li>Audio and Video Connection</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>17206: IDC_PUSHBUTTON_CONNECT_AUDIO_AND_VIDEO</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>pfwres.dll</dt>
+<dd><ul class="first last simple">
+<li>60083: IDS_AVW_CONNECT_AUDIO_VIDEO, Connect Audio and Video</li>
+<li>60084: IDS_AVW_CONNECT_AUDIO, Connect Audio</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>15527: IDC_STATIC_NOVIDEO_TEXT, We can&#8217;t detect a video camera device</dt>
+<dd><ul class="first last simple">
+<li>15225: IDC_WINDOW_NOVIDEO_ALERT</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>17335: IDC_STATIC_NO_SPEAKER_MESSAGE</dt>
+<dd><ul class="first last simple">
+<li>17333: IDC_WINDOW_NO_SPEAKER_WARNING_WND</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="q-a">
+<h2>Q&amp;&amp;A<a class="headerlink" href="#q-a" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Where to new CWebExMgrCtl</dt>
+<dd><ul class="first last">
+<li><p class="first">CAtMgrContainerWnd::InsertWebExMgr</p>
+</li>
+<li><dl class="first docutils">
+<dt>WebExMgr.cpp::ATNewInstance</dt>
+<dd><ul class="first last simple">
+<li>pMgrCtl = new CWebExMgrCtl</li>
+<li>g_pWebExMgrCtl = pMgrCtl</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Legacy VOIP will not show audio video dialog</dt>
+<dd><ul class="first last">
+<li><p class="first">CSmAudioStatusWrapper::IsShowLegacyVoIP</p>
+</li>
+<li><dl class="first docutils">
+<dt>CSmAudioSessionMgr::IsSessionTypeEnable, APPSVR_SESSION_MM_AUDIO</dt>
+<dd><ul class="first last simple">
+<li>SessionTypeOptions &amp; SESSION_TYPE_ENABLE_VOIP(0x0200)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to call ShowAudioVideoDialog</dt>
+<dd><ul class="first last">
+<li><p class="first">_tWinMain</p>
+</li>
+<li><p class="first">g_pMCServiceMgr</p>
+</li>
+<li><p class="first">CAtmgrDownloadMgr::OnDownloadFinish, WM_DOWNLOAD_FINISH</p>
+</li>
+<li><p class="first">CAtmgrMeetingMgr::OnDownloadFinish, WM_DOWNLOAD_FINISH</p>
+</li>
+<li><p class="first">CAtmgrMeetingMgr::StartMeeting</p>
+</li>
+<li><p class="first">CWebexmgrLoader::StartClient</p>
+</li>
+<li><p class="first">CWebexmgrLoader::FinishCall</p>
+</li>
+<li><p class="first">webexmgr.dll::FinishCall2</p>
+</li>
+<li><p class="first">CWebExMgrCtl::MC_FinishCall</p>
+</li>
+<li><dl class="first docutils">
+<dt>CMCServiceMgr::Initialize</dt>
+<dd><ul class="first last simple">
+<li>InitializeUI</li>
+<li>ShowMainFrameWnd</li>
+<li>ShowAudioVideoDialog</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How to show Audio Video Dialog</dt>
+<dd><ul class="first last simple">
+<li>CPfwServiceMgr::ShowAudioVideoDialog</li>
+<li>CPopupDlgMgr::GetDlgInstance(DLG_AUDIO_VIDEO_WIZARD)</li>
+<li>conIPopupDlgBase::ShowModelessDlg()</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioVideoWizardWrapper::IsNeedEnterAudioVideoWizard</dt>
+<dd><ul class="first last">
+<li><p class="first">Docshow parameter: AutoPopupAVDialog</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioVideoWizardWrapper::IsNeedEnterAudioWizard</dt>
+<dd><ul class="first last">
+<li><p class="first">CAudioVideoWizardWrapper::IsNeedEnterAudioWizard, bAudioSessionSucc=TRUE =&gt; TRUE</p>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioVideoWizardWrapper::IsEnableAttendeeJBHAudio return TRUE</dt>
+<dd><ol class="first last arabic simple">
+<li>pContextMgr-&gt;GetPrivilegeExt() &amp; PRI_JBH_FOR_TELEPHONY</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">IsEnableAttendeeJBHAudio return TRUE, CAudioVideoWizardWrapper::IsNeedEnterAudio, emAudioOption !=1,3,4 =&gt; TRUE</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CAudioVideoWizardWrapper::IsNeedEnterVideoWizard</dt>
+<dd><ul class="first last simple">
+<li>m_pContextMgr-&gt;GetSiteEnableOption, SessionTypeOptions</li>
+<li>CMCSiteConfigMgr::InitSiteConfig, dwEverestOption, SESSION_TYPE_ENABLE_VIDEO, 0x02</li>
+<li>APPSVR_SESSIONTYPE_MM_VIDEO</li>
+<li>CMCSvcVideoSessionMgr::SetSessionTypeEnable</li>
+<li>CSmSvcVideoSessionMgr::IsSessionTypeEnable</li>
+<li>CAudioVideoWizardWrapper::IsNeedEnterVideo</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Enable Audio Video Wizard Flag</dt>
+<dd><ul class="first last simple">
+<li>F4322</li>
+<li>Docshow parameter: AutoPopupAVDialog</li>
+<li>Docshow parameter: AVDialogAutoOpenCamera</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Audio device list</dt>
+<dd><ul class="first last simple">
+<li>CHybridVoIPModule::AW_GetDeviceList</li>
+<li>CHybridVoIPModule::AW_GetSelectedDevice</li>
+<li>CAudioWizardImpl::GetInitRecordDevice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Video device list</p>
+</li>
+<li><dl class="first docutils">
+<dt>Enable Audio and Video Connect button</dt>
+<dd><ul class="first last simple">
+<li>CWndPanelviewConfigConnectionPage::EnableAudioVideoConnectButton</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MC objects</dt>
+<dd><ul class="first last simple">
+<li>MC_CreateMeetingObject</li>
+<li>CAtmgrAgentWnd</li>
+<li>CAtmgrDownloadMgr</li>
+<li>CAtmgrMeetingMgr</li>
+<li>CWebexmgrLoader</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>In atmgr which class will load ini file</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CAtmgrParamMgr</dt>
+<dd><ul class="first last simple">
+<li>SetCmdLine</li>
+<li>LoadIniFile</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to load <strong>webexmgr.dll</strong></dt>
+<dd><ul class="first last simple">
+<li>CWebexmgrLoader::StartClient</li>
+<li>CWebexmgrLoader::InsertWebExMgr</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to load <strong>confmgr.dll</strong></dt>
+<dd><ul class="first last">
+<li><p class="first">WebEx_SetConferenceMgr_Internal</p>
+</li>
+<li><dl class="first docutils">
+<dt>CMCDocshowMgr::LoadConfMgr</dt>
+<dd><ul class="first last simple">
+<li>CMCDocshowMgr::GetConfMgrPath</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to install exception handler</dt>
+<dd><ul class="first last simple">
+<li>WebExMgr.cpp::FinishCall2</li>
+<li>TryInstallExceptionHandler</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Attendee in the lobby room, Host admit</dt>
+<dd><ul class="first last simple">
+<li>IDC_MANAGE_BEFOREJOINHOST_PMR, CDlgBeforejoinhostPmr</li>
+<li>CsmPDUMgrWrapper::OnDataIndication, MC_PDU_PMRMEETING_HOST_ENTERLOCKROOM_RSP</li>
+<li>HandlePDU_EnterLockRoom</li>
+<li>Fire_OnPDUReceived_EnterLockRoom</li>
+<li>CPDUMgrEvent::OnPDUReceived_EnterLockRoom</li>
+<li>CMCServiceMgr::OnEnterLockRoomRsp</li>
+<li>CMCServiceMgr::ContinueMeetngFromVMRLockRoom</li>
+<li>CMCServiceMgr::ContinueMeetingFromVMRWaitingRoom</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Lobby Panel in host side</dt>
+<dd><ul class="first last simple">
+<li>7111: IDD_MANAGE_LOBBY_PANEL</li>
+<li>CDlgLobbyPanel</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How to create quickstart window</dt>
+<dd><ul class="first last simple">
+<li>CFramePanelView::CreateQuickStartWnd</li>
+<li>CCComUIMgr::GetQuickStartDlgInstance</li>
+<li>1946: IDC_WND_QUICKSTART</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">lock room and host admit &#8211; <strong>Found one issue</strong></p>
+<blockquote>
+<div><img alt="_static/audio_video_av_lockroom_admit.png" src="_static/audio_video_av_lockroom_admit.png" />
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>no audio and no video session</dt>
+<dd><ul class="first simple">
+<li>config in site super admin</li>
+</ul>
+<img alt="_static/no_audio_no_video_session.png" class="last" src="_static/no_audio_no_video_session.png" />
+</dd>
+</dl>
+</li>
+<li><p class="first">no audio and no video device</p>
+<blockquote>
+<div><img alt="_static/no_audio_no_video_av_1.png" src="_static/no_audio_no_video_av_1.png" />
+</div></blockquote>
+</li>
+<li><p class="first">no audio but have video device</p>
+<blockquote>
+<div><img alt="_static/no_audio_video_av_1.png" src="_static/no_audio_video_av_1.png" />
+</div></blockquote>
+</li>
+<li><p class="first">no video but have audio device</p>
+<blockquote>
+<div><img alt="_static/audio_no_video_av_1.png" src="_static/audio_no_video_av_1.png" />
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>audio and video device</dt>
+<dd><img alt="_static/audio_video_av_1.png" class="first last" src="_static/audio_video_av_1.png" />
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Audio and Video Connection</a><ul>
+<li><a class="reference internal" href="#us25508">US25508</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+<li><a class="reference internal" href="#key-code">Key Code</a></li>
+<li><a class="reference internal" href="#caudiovideowizardwrapper-isneedenteraudiovideowizard">CAudioVideoWizardWrapper::IsNeedEnterAudioVideoWizard</a></li>
+<li><a class="reference internal" href="#ui-resource">UI Resource</a></li>
+<li><a class="reference internal" href="#q-a">Q&amp;&amp;A</a></li>
+<li><a class="reference internal" href="#test-case">Test Case</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="screen_capture_research.html"
+                        title="previous chapter">Screen capture research</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f4013_us26646.html"
+                        title="next chapter">US26646 : As a developer, I will add vendors&#8217; file into filelist.json</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/audio_video_connection_av.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f4013_us26646.html" title="US26646 : As a developer, I will add vendors’ file into filelist.json"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="screen_capture_research.html" title="Screen capture research"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

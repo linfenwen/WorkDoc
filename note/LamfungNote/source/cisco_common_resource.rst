@@ -31,6 +31,33 @@ CDETS
 
 #. https://cdetsng.cisco.com/webui/#main
 
+#. JIRA
+	+ https://wiki.cisco.com/display/WEBEXCHINA/JIRA+FAQ+for+Webex+Bugs+Tracking
+	+ http://jira-eng-gpk2.cisco.com/
+		- MUST-Fill Fields:
+		- Issue type: Bug
+		- Summary: it is for issue title
+		- Severity: S1,S2,S3,S4,S5,S6
+		- Description: it is for bug steps and details
+		- Components: it is same as CDETs. 
+		- Found: select applicable items. If it is CFD bug, please select “Customer" 
+		- Assignee: keep Automatic, and it will be assigned to DE managers as we defined.
+		- Affects Version: issues exist on which versions.
+		- Epic Link : must select one of below options:
+		- "WBX-Late-Discovery"
+		- "WBX-Regression-Build"
+		- "WBX-Regression-Release"
+		- "WBX-New-Feature-without-FeatureID"
+		- "WBX-Bugs-Other"
+		- "WBX-Fxxxx-xxxx" for one individual feature ID, such as "WBX-F3706-xxxx"
+		- PSIRT : It is for Security bugs only, and the option is in CDETS tab. It will be filled by infoSec team or Security team only.
+
+Request Repo Permission
+------------------------
+
+#. https://webexci.cisco.com/
+
+
 REPO
 ----
 
@@ -56,6 +83,8 @@ REPO
 	+ https://stash-eng-chn-sjc1.cisco.com/stash/projects/CCTGFORK/repos/vendors/browse-
 #. webex-mmp-sdk
 	+ https://stash-eng-chn-sjc1.cisco.com/stash/projects/CCTGFORK/repos/webex-mmp-sdk/browse
+#. webex-mmp
+	+ https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/scm/cctg/webex-mmp.git
 
 
 WIKI
@@ -112,6 +141,19 @@ WIKI
 #. WebEx Audio config in super admin
 	https://wiki.cisco.com/display/CHINAPM/WebEx+Audio+config+in+super+admin
 
+#. MMP Issue
+	https://wiki.cisco.com/display/MMPISSUE/MMPIssue+Traces+Home
+
+#. HR help site
+	+ http://helpzone.cisco.com
+	+ Key point
+		- payslip china
+		- voe
+		- visa 
+		- ADP ESS
+		- over time
+		- leave type
+		- leave policy
 
 CMR4.0 (Spark CCP) Training Session
 -----------------------------------
@@ -128,7 +170,14 @@ eStore
 
 #. Spark
 	http://estore.cisco.com/RequestCenter/servicecatalog/servicecatalog.do?route=offer&id=776
+
+#. Expense Reports
+	+ https://cisco.jiveon.com/docs/DOC-87153	
+	+ Oracle iExpense
+	+ CN RD HZ Internet Expenses User
 	
+#. WBT web based training
+	+ http://wwwin-enged.cisco.com/roadmaps/tech/wbt/#0-6
 	
 BLOG
 ----

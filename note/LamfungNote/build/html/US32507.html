@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GPC will be auto updated if it is in ProgramData &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="WebEx.exe supports embedded docShow" href="f7295_us26076.html" />
+    <link rel="prev" title="Appear “Cisco WebEx Meeting has stopped working” after ending meeting" href="CSCvj48806.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f7295_us26076.html" title="WebEx.exe supports embedded docShow"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="CSCvj48806.html" title="Appear “Cisco WebEx Meeting has stopped working” after ending meeting"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gpc-will-be-auto-updated-if-it-is-in-programdata">
+<h1>GPC will be auto updated if it is in ProgramData<a class="headerlink" href="#gpc-will-be-auto-updated-if-it-is-in-programdata" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="relevant-components">
+<h2>Relevant components<a class="headerlink" href="#relevant-components" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CiscoWebexStart.exe</dt>
+<dd><ul class="first last simple">
+<li>%AppData%\Local\Webex</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>chrome.json</dt>
+<dd><ul class="first last simple">
+<li>%AppData%\Local\Webex</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>firefox.json</dt>
+<dd><ul class="first last simple">
+<li>%AppData%\Local\Webex</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>webex.exe</dt>
+<dd><ul class="first last simple">
+<li>%AppData%\Local\Webex</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>npatgpc.dll</dt>
+<dd><ul class="first last simple">
+<li>C:\Users\USERNAME\AppData\Roaming\Mozilla\plugins</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>ieatgpc.dll</dt>
+<dd><ul class="first last simple">
+<li>C:\Windows\Downloaded Program Files\ieatgpc.dll</li>
+<li>DllRegisterServer</li>
+<li>DllUnregisterServer</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="key-points">
+<h2>Key Points<a class="headerlink" href="#key-points" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">CApplicationImpl::ExitInstance</p>
+</li>
+<li><p class="first">CUpgradePluginImpl::CheckAndUpgrade</p>
+</li>
+<li><p class="first">CAtmgrUtilImpl::MoveGPCRegisterFolder</p>
+</li>
+<li><dl class="first docutils">
+<dt>Firefox Extension</dt>
+<dd><ul class="first last simple">
+<li>version &gt;= 52</li>
+<li>HKEY_CURRENT_USER\Software\Mozilla\NativeMessagingHosts\com.webex.meeting</li>
+<li>HKEY_LOCAL_MACHINE\SOFTWARE\Mozilla\NativeMessagingHosts</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Registry</dt>
+<dd><ul class="first last simple">
+<li>HKEY_CLASSES_ROOT//WOW6432Node//CLSID//{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}</li>
+<li>HKEY_CLASSES_ROOT//WOW6432Node//CLSID//{E06E2E99-0AA1-11D4-ABA6-0060082AA75C}//InprocServer32</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>End meeting</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CAtmgrMeetingMgr::OnControlNotify</dt>
+<dd><ul class="first last simple">
+<li>ID_LOBBY_NOTIFY</li>
+<li>CAtmgrParmMgr::RemoveINIFile</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CAtmgrMeetingMgr::OnClose</dt>
+<dd><ul class="first last simple">
+<li>ProcessEndMeeting</li>
+<li>CAtmgrUtil::OnEndMeeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CAtmgrUtil::OnExitInstance</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Daily meeting</dt>
+<dd><ul class="first last simple">
+<li>Chrome &amp; Firefox is ok, but IE can&#8217;t entry</li>
+<li>IE plugin ok</li>
+<li>Refactor code</li>
+<li>Add Log</li>
+<li>UT</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IE Plugin Update Dialog</dt>
+<dd><ul class="first last simple">
+<li>This dialog show in meeting process</li>
+<li>CUpgradePluginImpl::ShowUpdateDialog</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CAtmgrUtilImpl::OnExitInstance_CheckIeatgpc</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CUpdatePluginImpl::CheckAndUpgrade</dt>
+<dd><ul class="first last simple">
+<li>CUpgradePluginImpl::ShowUpdateDialog</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Register</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SOFTWARE</span>\<span class="n">WOW6432Node</span>\<span class="n">Microsoft</span>\<span class="n">Code</span> <span class="n">Store</span> <span class="n">Database</span>\<span class="n">Distribution</span> <span class="n">Units</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SOFTWARE</span>\<span class="n">WOW6432Node</span>\<span class="n">Microsoft</span>\<span class="n">Code</span> <span class="n">Store</span> <span class="n">Database</span>\<span class="n">Distribution</span> <span class="n">Units</span>\<span class="p">{</span><span class="n">E06E2E99</span><span class="o">-</span><span class="mi">0</span><span class="n">AA1</span><span class="o">-</span><span class="mi">11</span><span class="n">D4</span><span class="o">-</span><span class="n">ABA6</span><span class="o">-</span><span class="mi">0060082</span><span class="n">AA75C</span><span class="p">}]</span>
+
+<span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SOFTWARE</span>\<span class="n">WOW6432Node</span>\<span class="n">Microsoft</span>\<span class="n">Code</span> <span class="n">Store</span> <span class="n">Database</span>\<span class="n">Distribution</span> <span class="n">Units</span>\<span class="p">{</span><span class="n">E06E2E99</span><span class="o">-</span><span class="mi">0</span><span class="n">AA1</span><span class="o">-</span><span class="mi">11</span><span class="n">D4</span><span class="o">-</span><span class="n">ABA6</span><span class="o">-</span><span class="mi">0060082</span><span class="n">AA75C</span><span class="p">}</span>\<span class="n">Contains</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SOFTWARE</span>\<span class="n">WOW6432Node</span>\<span class="n">Microsoft</span>\<span class="n">Code</span> <span class="n">Store</span> <span class="n">Database</span>\<span class="n">Distribution</span> <span class="n">Units</span>\<span class="p">{</span><span class="n">E06E2E99</span><span class="o">-</span><span class="mi">0</span><span class="n">AA1</span><span class="o">-</span><span class="mi">11</span><span class="n">D4</span><span class="o">-</span><span class="n">ABA6</span><span class="o">-</span><span class="mi">0060082</span><span class="n">AA75C</span><span class="p">}</span>\<span class="n">Contains</span>\<span class="n">Files</span><span class="p">]</span>
+<span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">ProgramData</span><span class="se">\\</span><span class="s2">WebEx</span><span class="se">\\</span><span class="s2">ieatgpc.dll&quot;</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+
+<span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SOFTWARE</span>\<span class="n">WOW6432Node</span>\<span class="n">Microsoft</span>\<span class="n">Code</span> <span class="n">Store</span> <span class="n">Database</span>\<span class="n">Distribution</span> <span class="n">Units</span>\<span class="p">{</span><span class="n">E06E2E99</span><span class="o">-</span><span class="mi">0</span><span class="n">AA1</span><span class="o">-</span><span class="mi">11</span><span class="n">D4</span><span class="o">-</span><span class="n">ABA6</span><span class="o">-</span><span class="mi">0060082</span><span class="n">AA75C</span><span class="p">}</span>\<span class="n">DownloadInformation</span><span class="p">]</span>
+<span class="s2">&quot;CODEBASE&quot;</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<span class="s2">&quot;INF&quot;</span><span class="o">=</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">ProgramData</span><span class="se">\\</span><span class="s2">WebEx</span><span class="se">\\</span><span class="s2">ieatgpc.inf&quot;</span>
+
+<span class="p">[</span><span class="n">HKEY_LOCAL_MACHINE</span>\<span class="n">SOFTWARE</span>\<span class="n">WOW6432Node</span>\<span class="n">Microsoft</span>\<span class="n">Code</span> <span class="n">Store</span> <span class="n">Database</span>\<span class="n">Distribution</span> <span class="n">Units</span>\<span class="p">{</span><span class="n">E06E2E99</span><span class="o">-</span><span class="mi">0</span><span class="n">AA1</span><span class="o">-</span><span class="mi">11</span><span class="n">D4</span><span class="o">-</span><span class="n">ABA6</span><span class="o">-</span><span class="mi">0060082</span><span class="n">AA75C</span><span class="p">}</span>\<span class="n">InstalledVersion</span><span class="p">]</span>
+<span class="s2">&quot;LastModified&quot;</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="env">
+<h2>Env<a class="headerlink" href="#env" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Test site</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://m1eweb2.qa.webex.com/mw3300/mywebex/default.do?siteurl=f8414">https://m1eweb2.qa.webex.com/mw3300/mywebex/default.do?siteurl=f8414</a></li>
+<li>user:Admin</li>
+<li>Pass:P&#64;ss1234</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Report</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://tascher.qa.webex.com/tascher/featureReport">http://tascher.qa.webex.com/tascher/featureReport</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/CSGSEC/CSCvh89157+Developer%27s+Works">https://wiki.cisco.com/display/CSGSEC/CSCvh89157+Developer%27s+Works</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>ActiveX register three methods</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/f914ae704a0e">https://www.jianshu.com/p/f914ae704a0e</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Monitor Registry</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="http://blog.51cto.com/hakuyo/1215651">http://blog.51cto.com/hakuyo/1215651</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>detours.lib</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.codeproject.com/Articles/30140/API-Hooking-with-MS-Detours">https://www.codeproject.com/Articles/30140/API-Hooking-with-MS-Detours</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Understanding and Using COM Threading Models</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/ms809971.aspx">https://msdn.microsoft.com/en-us/library/ms809971.aspx</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>javascript detect ActiveX Plugin status</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.cnblogs.com/lwme/p/js-detect-activex-enabled.html">https://www.cnblogs.com/lwme/p/js-detect-activex-enabled.html</a></li>
+<li><a class="reference external" href="http://www.nirsoft.net/utils/axhelper.html">http://www.nirsoft.net/utils/axhelper.html</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How to determine if an ActiveX object has been registered</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.gchew.net/">http://www.gchew.net/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">0797 7223977, 0797-6818257， 导诊 8089002，药剂科8083587, 医保科</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">GPC will be auto updated if it is in ProgramData</a><ul>
+<li><a class="reference internal" href="#relevant-components">Relevant components</a></li>
+<li><a class="reference internal" href="#key-points">Key Points</a></li>
+<li><a class="reference internal" href="#env">Env</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="CSCvj48806.html"
+                        title="previous chapter">Appear &#8220;Cisco WebEx Meeting has stopped working&#8221; after ending meeting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f7295_us26076.html"
+                        title="next chapter">WebEx.exe supports embedded docShow</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/US32507.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f7295_us26076.html" title="WebEx.exe supports embedded docShow"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="CSCvj48806.html" title="Appear “Cisco WebEx Meeting has stopped working” after ending meeting"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

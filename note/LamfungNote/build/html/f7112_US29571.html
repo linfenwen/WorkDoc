@@ -1,0 +1,640 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>F7112 US29571: Understand current local recording background knowledge &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="Local Recording Introduce I" href="local_recording_introduce_I.html" />
+    <link rel="prev" title="F7112 Local H.264-based Recordings and Playback" href="f7112.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="local_recording_introduce_I.html" title="Local Recording Introduce I"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="f7112.html" title="F7112 Local H.264-based Recordings and Playback"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="f7112-us29571-understand-current-local-recording-background-knowledge">
+<h1>F7112 US29571: Understand current local recording background knowledge<a class="headerlink" href="#f7112-us29571-understand-current-local-recording-background-knowledge" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task">
+<h2>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Provide support from AS side</li>
+<li>Provide support from AtAuthor side</li>
+<li>How current AtAuthor work</li>
+</ol>
+</div>
+<div class="section" id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Document current local recording work&#8217;s logic</li>
+<li>Define what will do in the next sprint</li>
+</ol>
+</div>
+<div class="section" id="atasctrl-call-atrecply">
+<h2>Atasctrl call Atrecply<a class="headerlink" href="#atasctrl-call-atrecply" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><img alt="_static/atasctrl_call_atrecply.png" src="_static/atasctrl_call_atrecply.png" />
+</div></blockquote>
+</div>
+<div class="section" id="key-points">
+<h2>Key Points<a class="headerlink" href="#key-points" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CSmRecordSessionMgr::StartRecord</dt>
+<dd><ul class="first last simple">
+<li>RECORD_PLAYER_NAME, <strong>atauthor.exe</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CSmRecordSessionMgr::SetRecordCodec</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>AS CODEC H264 <strong>1</strong></dt>
+<dd><ul class="first last simple">
+<li>IsTandbergMeeting : SiteConfigExt &amp; SITE_CONFIGEXT_SUPPORT_TP_PLUS(0x1000000)</li>
+<li>IsEnableMp4PlaybackInNonCMR : EnableMP4ForNonCMR</li>
+<li>GetHostCETFlag : HostCETFlag</li>
+<li>GetCETMeetingFlag : CETMeetingFlag</li>
+<li>GetSupportTPFlag : SiteConfigExt &amp; SITE_CONFIGEXT_SUPPORT_TP (0x800)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">AS CODEC TSHARE <strong>0</strong></p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>atauthor.cpp</dt>
+<dd><ul class="first last simple">
+<li>_tWinMain</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">atres.dll</p>
+</li>
+<li><p class="first">-ONLINERECORD H264Codec</p>
+</li>
+<li><p class="first">Mutex, WebExOnDemanAuthorClass</p>
+</li>
+<li><p class="first">g_container.InsertObject, <strong>atasctrl.dll</strong></p>
+</li>
+<li><dl class="first docutils">
+<dt>WebEx Recording(<a href="#id1"><span class="problematic" id="id2">*</span></a>.wrf), IDS_SAVE_RECORD_FILTERS</dt>
+<dd><ul class="first last simple">
+<li>CSmRecordSessionMgr::GetWebExRecordFileName</li>
+<li>CSmRecordSessionMgr::GetRecordFileDlgTitleFromService</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Save Recorded Meeting As</dt>
+<dd><ul class="first last simple">
+<li>IDS_MEETING_RECORD_TITLE</li>
+<li>pfwres.dll</li>
+<li>CWBXFileDlg</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">ApOnlineWebExRecord</p>
+</li>
+<li><dl class="first docutils">
+<dt>WebExOnDemandAuthorClass</dt>
+<dd><ul class="first last simple">
+<li>IDM_RPUI_PAUSE</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">RecorderCallBack</p>
+</li>
+<li><dl class="first docutils">
+<dt>CWotRecorder</dt>
+<dd><ul class="first last simple">
+<li>AudioModule</li>
+<li>ATAUDIO.dll</li>
+<li>atrecply.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Click Start button on <strong>Recorder Panel</strong></dt>
+<dd><ul class="first last simple">
+<li>atrecply.dll!SplitFrameWndProc</li>
+<li>atrecply.dll!CWotRecorder::ReSetTimer</li>
+<li>atrecply.dll!CWotRecorder::InitAudio</li>
+<li>ataudio.dll!ATInitAudio</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Module call stack</dt>
+<dd><ul class="first last simple">
+<li>atauthor.exe</li>
+<li>atasctrl.dll</li>
+<li>atrecply.dll</li>
+<li>ataudio.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Atauthor.exe dll list</dt>
+<dd><ul class="first last simple">
+<li>atres.dll</li>
+<li>atasctrl.dll</li>
+<li>atrecply.dll</li>
+<li>atrpui.dll</li>
+<li>ATRECPLY.LOG</li>
+<li><strong>ataudio.dll</strong></li>
+<li>atas32.dll</li>
+<li>atasnt40.dll</li>
+<li>atasuicom.dll</li>
+<li>atdl2006.dll</li>
+<li>atjpeg60.dll</li>
+<li>atkbctl.dll</li>
+<li>atpack.dll</li>
+<li>Atwbxui15.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CWrfRecorderPanel</dt>
+<dd><ul class="first last simple">
+<li>atRecorderPanel.h</li>
+<li>IDS_RPUI_RECORDERPCAUDIO, <strong>Record PC Audio</strong></li>
+<li>atrpui.dll</li>
+<li>InitRecorderPanel</li>
+<li>CWotRecorder::CreatePanel, load <strong>atrpui.dll</strong> by <strong>atrecply.dll</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">CATAudioRecordChannel</p>
+</li>
+<li><p class="first">CWotRecorder::WriteToWOTFileOnLine</p>
+</li>
+<li><dl class="first docutils">
+<dt>Audio data write to file</dt>
+<dd><ul class="first last simple">
+<li>atrecply.dll!CWotRecorder::WriteToWOTFileOnLine(unsigned char * lpBuffer, unsigned long dwSize) Line 4055     C++</li>
+<li>atrecply.dll!CWotRecorder::WriteToWOTFile(unsigned char * lpBuffer, unsigned long dwSize) Line 1796   C++</li>
+<li>atrecply.dll!CWotRecorder::WOTRecordASAudioVideoMedia(unsigned char bMediaType, unsigned char * lpBuffer, unsigned long dwBufferSize) Line 1640       C++</li>
+<li>atrecply.dll!CWotRecorder::WOTRecordMergerAudio() Line 2139   C++</li>
+<li>atrecply.dll!CWotRecorder::WOTRecordAudioMedia(unsigned char * lpBuffer, unsigned long dwBufferSize, int bForceNewPacket) Line 1748   C++</li>
+<li>atrecply.dll!AudioRecordCallBack(void * pAudioEngine, unsigned long dwLength, unsigned char * pBuffer, long lParam, unsigned long dwParam) Line 323   C++</li>
+<li>ataudio.dll!AudioModule::HandleRecordRequest(int option) Line 1783    C++</li>
+<li>ataudio.dll!AudioModule::OnMessage1(tagMESSAGE &amp; msg) Line 2690       C++</li>
+<li>ataudio.dll!MessageQueue::WaitForMessage1() Line 495  C++</li>
+<li>ataudio.dll!MessageQueue::_CreateQueue1(void * context) Line 411      C++</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AS data write to file</dt>
+<dd><ul class="first last">
+<li><p class="first">atrecply.dll!CWotRecorder::WOTBeginAsKeyFrame(int bCacheReset, int bScreenRefresh) Line 1813  C++</p>
+</li>
+<li><p class="first">atrecply.dll!CWotRecorder::RequestDepentAsKeyFrame() Line 979 C++</p>
+</li>
+<li><p class="first">atrecply.dll!SplitFrameWndProc(<a href="#id3"><span class="problematic" id="id4">HWND__</span></a> * hWnd, unsigned int uMessage, unsigned int wParam, long lParam) Line 3841      C++</p>
+</li>
+<li><dl class="first docutils">
+<dt>2018-04-04</dt>
+<dd><ul class="first last simple">
+<li>atrecply.dll!CWotRecorder::WOTRecordASAudioVideoMedia(unsigned char bMediaType, unsigned char * lpBuffer, unsigned long dwBufferSize) Line 1597       C++</li>
+<li>atrecply.dll!CWotRecorder::WOTRecordASMedia(unsigned char * lpBuffer, unsigned long dwBufferSize) Line 1685   C++</li>
+<li>atrecply.dll!WOTRecordASMedia(long lParam, unsigned char * lpBuffer, unsigned long dwBufferSize) Line 157     C++</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>send record status to webexmgr <strong>wot.h</strong></dt>
+<dd><ul class="first last simple">
+<li>WOT_RECORDER_COMMAND_MSG                                      WM_USER+110</li>
+<li>WOT_RECORDER_COMMAND_START                                    1</li>
+<li>WOT_RECORDER_COMMAND_PAUSE                                    2</li>
+<li>WOT_RECORDER_COMMAND_RESUME                                   3</li>
+<li>WOT_RECORDER_COMMAND_STOP                                     4</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>CWotRecorder::WOTRecorderEscape, RecorderEscape</dt>
+<dd><blockquote class="first">
+<div><ul>
+<li><dl class="first docutils">
+<dt>WOT_RECORDER_ESC_SETMEETINGHWND</dt>
+<dd><ul class="first last simple">
+<li>m_hMeetingWnd = (HWND)dwParam1;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">WOT_RECORDER_ESC_SETRECORDERCONSOLEHWND</p>
+</li>
+</ul>
+<ul class="simple">
+<li>WOTSetRecorderConsoleWnd((HWND)dwParam1)</li>
+<li>m_hRecorderConsoleWnd</li>
+</ul>
+</div></blockquote>
+<ul class="last">
+<li><dl class="first docutils">
+<dt>WOT_RECORDER_ESC_SETRECORDERPANELHWND</dt>
+<dd><ul class="first last simple">
+<li>WOTSetRecorderPanelWnd((HWND)dwParam1)</li>
+<li>m_hRecorderPanelWnd = hRecorderPanelWnd</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WOT_RECORDER_COMMAND_MSG</dt>
+<dd><ul class="first last">
+<li><p class="first">pcmappsharemgr.h</p>
+</li>
+<li><dl class="first docutils">
+<dt>SmDefUIMgr.cpp</dt>
+<dd><ul class="first last simple">
+<li>CSmDefUIMgr::OnWindowsMsg</li>
+<li>CSmDefUIMgr::OnRecordMessage</li>
+<li>CSmRecordSessionMgr::OnRecordMessage</li>
+<li>SendPDURecordStatus</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">wot.h</p>
+</li>
+<li><p class="first">CWotRecorder::WOTRecorderEscape</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WRF Data Type</dt>
+<dd><ul class="first last simple">
+<li><strong>WOT_CHILDFRAME_AS           0x01</strong></li>
+<li><strong>WOT_CHILDFRAME_AUDIO        0x02</strong></li>
+<li>WOT_CHILDFRAME_VIDEO  0x03</li>
+<li>WOT_CHILDFRAME_CONTROL        0x08</li>
+<li>WOT_CHILDFRAME_HIDDEN 0x09</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AS Codec Type</dt>
+<dd><ul class="first last">
+<li><p class="first">AS_CODEC_TSHARE</p>
+</li>
+<li><p class="first">AS_CODEC_H264</p>
+</li>
+<li><p class="first">CDvAsDoc::SelectCodec</p>
+</li>
+<li><dl class="first docutils">
+<dt>CTPMeetingHelper::OnH264Command</dt>
+<dd><ul class="first last simple">
+<li>m_pAsDoc-&gt;SelectCodec(AS_CODEC_H264)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Audio Codec Type</dt>
+<dd><ul class="first last simple">
+<li>AUDIOCODEC_GSM610    0</li>
+<li>AUDIOCODEC_G7231_63  1</li>
+<li>AUDIOCODEC_G7231_53  2</li>
+<li>AUDIOCODEC_PCM1      3</li>
+<li>AUDIOCODEC_PCM2      4</li>
+<li>AUDIOCODEC_PCM3      5</li>
+<li>AUDIOCODEC_FLAC      6</li>
+<li>AUDIOCODEC_G711      7</li>
+<li>AUDIOCODEC_LAME      8</li>
+<li>AUDIOCODEC_RSV2      9</li>
+<li>AUDIOCODEC_ISAC      10/<em>added aaron for iSAC</em>/</li>
+<li>AUDIOCODEC_ILBC      11//by smithg for adding iLBC codec type</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>ataudio.dll</dt>
+<dd><ul class="first last simple">
+<li>ATGetCodecInfo</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">libfaac.dll</p>
+</li>
+<li><dl class="first docutils">
+<dt>mpeg4convert.dll</dt>
+<dd><ul class="first last simple">
+<li>webex-player\src\windows\nbrmpeg4\mp4creator.cpp</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>mpeg4ip</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/stsquad/mpeg4ip/blob/master/server/mp4creator/Makefile.am">https://github.com/stsquad/mpeg4ip/blob/master/server/mp4creator/Makefile.am</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/thebeginner/article/details/49026759">https://blog.csdn.net/thebeginner/article/details/49026759</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/lh2016rocky/article/details/70882301">https://blog.csdn.net/lh2016rocky/article/details/70882301</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AS_DATA_WINDOWSIMAGE</dt>
+<dd><ul class="first last simple">
+<li>CAsKernelDataCenter::OnRcvNtHookDataPack</li>
+<li>CAsKernelDataCenter::SendDataToTShareCodec</li>
+<li>CAsKernelDataCenter::SendDataToRawDataCodec</li>
+<li>CAsKernelDataCenter::SendDataToH264Codec</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How <strong>ATRECPLY.dll</strong> know the video codec type</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>ATASCTRL.DLL</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">CDvAsDoc::StartShareApp</span><dd><ul class="first last simple">
+<li>m_pWebExRecorder-&gt;WOTCallWebExRecorder(WOT_RECORDER_ESC_SET_H264, 1, 0, NULL, 0);</li>
+<li>ATRECPLY.DLL : WOTCallWebExRecorder</li>
+<li>CWotRecorder::WOTRecorderEscape</li>
+<li>WOT_RECORDER_ESC_SET_H264 : WOTSetH264Codec</li>
+<li>CWotRecorder::WOTSetH264Codec</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Host A Start a meeting, select <strong>Record on This Computer</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>atmgr.exe</strong> call <strong>atrecply.dll</strong> to record</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Record at attendee side</dt>
+<dd><ul class="first last simple">
+<li>&#8220;c:programdatawebexwebext33_umcATAUTHOR.EXE&#8221; -ONLINERECORD</li>
+<li>&#8220;c:programdatawebexwebext33_umcATAUTHOR.EXE&#8221; -ONLINERECORD H264Codec</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Download atrecply MSI, then click <strong>WebEx Recorder</strong> to start <strong>AtAuthor.exe</strong></dt>
+<dd><ul class="first last simple">
+<li>Then select record Meeting Process</li>
+<li>&#8220;C:Program Files (x86)WebExRecord PlaybackAtAuthor.exe&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="fqa">
+<h2>FQA<a class="headerlink" href="#fqa" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">How meeting process know the recording status</p>
+</li>
+<li><p class="first">How AS component know codec solution</p>
+</li>
+<li><dl class="first docutils">
+<dt>atasctrl.dll</dt>
+<dd><ul class="first last simple">
+<li>ApSetHwndforBacktoMeeting</li>
+<li>ApOnlineWebExRecord</li>
+<li>ApStartShareApplicationWithoutDelay</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to load <strong>atrecply.dll</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>atasctrl.dll</strong></li>
+<li>CWebExRecorder::InitWebExRecorder</li>
+<li>atrecply.dll</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to load <strong>ataudio.dll</strong></dt>
+<dd><ul class="first last simple">
+<li><strong>atrecply.dll</strong></li>
+<li>CWotPlayer::InitAudioModule</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to capture audio</dt>
+<dd><ul class="first last">
+<li><p class="first">webex-atcodec-k2</p>
+</li>
+<li><p class="first">atcodec_k2.lib</p>
+</li>
+<li><dl class="first docutils">
+<dt>MMSystem.h</dt>
+<dd><ul class="first last simple">
+<li>waveInUnprepareHeader</li>
+<li>waveInOpen</li>
+<li>waveInStart</li>
+<li>waveInAddBuffer</li>
+<li>waveInClose</li>
+<li>waveInReset</li>
+<li>waveInGetNumDevs</li>
+<li>waveInGetDevCaps</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Where to set audio format</dt>
+<dd><ul class="first last simple">
+<li>WAVE_FORMAT_PCM</li>
+<li>waveInOpen</li>
+<li>WAVEFORMAT, wFormatTag</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">How Meeting Process Find Local Recording Window</p>
+</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">HWND</span> <span class="n">CSmRecordSessionMgr</span><span class="p">::</span><span class="n">FindRecordWindow</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">HWND</span> <span class="n">hWnd</span> <span class="o">=</span> <span class="p">::</span><span class="n">FindWindowEx</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;#32770&quot;</span><span class="p">),</span> <span class="n">NULL</span><span class="p">);</span>
+    <span class="n">do</span>
+    <span class="p">{</span>
+        <span class="n">HWND</span> <span class="n">hChildWnd</span> <span class="o">=</span> <span class="p">::</span><span class="n">FindWindowEx</span><span class="p">(</span><span class="n">hWnd</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">NULL</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;0xRecordPanleID853&quot;</span><span class="p">));</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">hChildWnd</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">hWnd</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">hWnd</span> <span class="o">=</span> <span class="p">::</span><span class="n">FindWindowEx</span><span class="p">(</span><span class="n">NULL</span><span class="p">,</span> <span class="n">hWnd</span><span class="p">,</span> <span class="n">_T</span><span class="p">(</span><span class="s2">&quot;#32770&quot;</span><span class="p">),</span> <span class="n">NULL</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">hWnd</span> <span class="o">!=</span> <span class="n">NULL</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">F7112 US29571: Understand current local recording background knowledge</a><ul>
+<li><a class="reference internal" href="#task">Task</a></li>
+<li><a class="reference internal" href="#output">Output</a></li>
+<li><a class="reference internal" href="#atasctrl-call-atrecply">Atasctrl call Atrecply</a></li>
+<li><a class="reference internal" href="#key-points">Key Points</a></li>
+<li><a class="reference internal" href="#test-case">Test Case</a></li>
+<li><a class="reference internal" href="#fqa">FQA</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f7112.html"
+                        title="previous chapter">F7112 Local H.264-based Recordings and Playback</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="local_recording_introduce_I.html"
+                        title="next chapter">Local Recording Introduce I</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f7112_US29571.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="local_recording_introduce_I.html" title="Local Recording Introduce I"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="f7112.html" title="F7112 Local H.264-based Recordings and Playback"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

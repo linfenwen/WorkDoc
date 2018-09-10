@@ -1,0 +1,792 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>US30394 : Research how to generate mp4 file &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="F7112 : US31106 Provide Architecture Design For MP4 Local Recording" href="f7112_US31106.html" />
+    <link rel="prev" title="Local Recording Introduce I" href="local_recording_introduce_I.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f7112_US31106.html" title="F7112 : US31106 Provide Architecture Design For MP4 Local Recording"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="local_recording_introduce_I.html" title="Local Recording Introduce I"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="us30394-research-how-to-generate-mp4-file">
+<h1>US30394 : Research how to generate mp4 file<a class="headerlink" href="#us30394-research-how-to-generate-mp4-file" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mp4">
+<h2>MP4<a class="headerlink" href="#mp4" title="Permalink to this headline">¶</a></h2>
+<p>MP4 is a container format that can store video, audio and other data.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MP4</span> <span class="n">file</span> <span class="nb">format</span> <span class="n">was</span> <span class="n">first</span> <span class="n">released</span> <span class="ow">in</span> <span class="mi">2001</span> <span class="k">as</span> <span class="n">ISO</span><span class="o">/</span><span class="n">IEC</span> <span class="mi">14496</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2001</span><span class="p">,</span> <span class="ow">and</span> <span class="n">was</span> <span class="n">revised</span> <span class="ow">in</span> <span class="mi">2</span> <span class="n">years</span> <span class="n">later</span> <span class="k">as</span> <span class="n">ISO</span><span class="o">/</span><span class="n">IEC</span> <span class="mi">14496</span><span class="o">-</span><span class="mi">14</span><span class="p">:</span><span class="mf">2003.</span>
+<span class="n">It</span> <span class="ow">is</span> <span class="n">based</span> <span class="n">on</span> <span class="n">QuickTime</span> <span class="n">file</span> <span class="nb">format</span><span class="p">,</span> <span class="n">but</span> <span class="n">quickly</span> <span class="n">becomes</span> <span class="n">more</span> <span class="n">popular</span> <span class="n">than</span> <span class="n">QuickTime</span> <span class="nb">format</span> <span class="ow">and</span> <span class="n">others</span> <span class="n">like</span> <span class="n">AVI</span><span class="p">,</span> <span class="n">WMV</span> <span class="ow">and</span> <span class="n">MKV</span><span class="p">,</span>
+<span class="n">because</span> <span class="n">of</span> <span class="n">its</span> <span class="n">unique</span> <span class="n">features</span><span class="o">.</span> <span class="n">Currently</span><span class="p">,</span> <span class="n">MP4</span> <span class="ow">is</span> <span class="n">natively</span> <span class="n">accepted</span> <span class="n">by</span> <span class="n">computers</span><span class="p">,</span> <span class="n">tablets</span><span class="p">,</span> <span class="n">phones</span><span class="p">,</span> <span class="n">game</span> <span class="n">consoles</span><span class="p">,</span>
+<span class="n">TVs</span> <span class="ow">and</span> <span class="n">more</span> <span class="n">devices</span> <span class="n">manufactured</span> <span class="n">by</span> <span class="n">Apple</span><span class="p">,</span> <span class="n">Microsoft</span><span class="p">,</span> <span class="n">Samsung</span><span class="p">,</span> <span class="n">HTC</span><span class="p">,</span> <span class="n">Google</span><span class="p">,</span> <span class="n">Huawei</span><span class="p">,</span> <span class="n">Amazon</span><span class="p">,</span> <span class="n">Lenovo</span> <span class="ow">and</span> <span class="n">other</span> <span class="n">brands</span><span class="o">.</span>
+<span class="n">Besides</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">widely</span> <span class="n">accepted</span> <span class="n">by</span> <span class="n">various</span> <span class="n">media</span> <span class="n">players</span><span class="p">,</span> <span class="n">video</span> <span class="n">editing</span> <span class="n">software</span><span class="p">,</span> <span class="ow">and</span> <span class="n">broadly</span> <span class="n">used</span> <span class="n">over</span> <span class="n">the</span> <span class="n">web</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="_static/mp4-file-format.png"><img alt="_static/mp4-file-format.png" src="_static/mp4-file-format.png" style="width: 618.2px; height: 782.1px;" /></a>
+</div>
+<div class="section" id="what-file-formats-does-mp4-support">
+<h3>What file formats does MP4 support?<a class="headerlink" href="#what-file-formats-does-mp4-support" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Video</span> <span class="n">formats</span><span class="p">:</span> <span class="n">H</span><span class="o">.</span><span class="mi">264</span><span class="o">/</span><span class="n">MPEG</span><span class="o">-</span><span class="mi">4</span> <span class="n">AVC</span><span class="p">,</span> <span class="n">MPEG</span><span class="o">-</span><span class="mi">4</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="n">SP</span><span class="p">,</span> <span class="n">MPEG</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">MPEG</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span><span class="mi">265</span><span class="o">/</span><span class="n">HEVC</span><span class="p">,</span> <span class="n">VC</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="n">WMV</span><span class="p">,</span> <span class="n">Real</span> <span class="n">Video</span><span class="p">,</span> <span class="n">Theora</span><span class="p">,</span> <span class="n">Microsoft</span> <span class="n">MPEG4</span> <span class="n">V2</span><span class="p">,</span> <span class="n">VP8</span><span class="p">,</span> <span class="n">VP9</span><span class="p">,</span> <span class="n">MVC</span>
+
+<span class="n">Audio</span> <span class="n">formats</span><span class="p">:</span> <span class="n">MP3</span><span class="p">,</span> <span class="n">AAC</span><span class="p">,</span> <span class="n">WMA</span><span class="p">,</span> <span class="n">Opus</span><span class="p">,</span> <span class="n">AC</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">DTS</span><span class="p">,</span> <span class="n">LPCM</span><span class="p">,</span> <span class="n">ALAC</span><span class="p">,</span> <span class="n">DTS</span><span class="o">-</span><span class="n">HD</span>
+
+<span class="n">Caption</span><span class="o">/</span><span class="n">subtitle</span> <span class="n">formats</span><span class="p">:</span> <span class="n">MPEG</span><span class="o">-</span><span class="mi">4</span> <span class="n">Timed</span> <span class="n">Text</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mp4-vs-h-264">
+<h3>MP4 vs H.264<a class="headerlink" href="#mp4-vs-h-264" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MP4</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">file</span> <span class="n">container</span> <span class="nb">format</span><span class="p">,</span> <span class="k">while</span> <span class="n">H</span><span class="o">.</span><span class="mi">264</span> <span class="ow">is</span> <span class="n">actually</span> <span class="n">a</span> <span class="n">video</span> <span class="n">compression</span> <span class="n">codec</span> <span class="n">that</span> <span class="n">requires</span> <span class="n">a</span> <span class="n">video</span> <span class="n">container</span> <span class="n">to</span> <span class="n">host</span> <span class="n">the</span> <span class="n">encoded</span> <span class="n">video</span><span class="o">.</span>
+<span class="n">Normally</span><span class="p">,</span> <span class="n">H</span><span class="o">.</span><span class="mi">264</span> <span class="n">encoded</span> <span class="n">files</span> <span class="n">can</span> <span class="n">be</span> <span class="n">MP4</span> <span class="n">files</span> <span class="k">as</span> <span class="n">well</span> <span class="k">as</span> <span class="n">AVI</span> <span class="ow">or</span> <span class="n">MKV</span> <span class="n">files</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="ffmpeg">
+<h2>ffmpeg<a class="headerlink" href="#ffmpeg" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">History</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">project</span> <span class="n">was</span> <span class="n">started</span> <span class="n">by</span> <span class="n">Fabrice</span> <span class="n">Bellard</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">(</span><span class="n">using</span> <span class="n">the</span> <span class="n">pseudonym</span> <span class="s2">&quot;Gérard Lantau&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="mi">2000</span><span class="p">,</span> <span class="ow">and</span> <span class="n">was</span> <span class="n">led</span> <span class="n">by</span> <span class="n">Michael</span> <span class="n">Niedermayer</span> <span class="kn">from</span> <span class="mi">2004</span> <span class="n">until</span> <span class="mf">2015.</span>
+<span class="n">On</span> <span class="n">January</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2014</span><span class="p">,</span> <span class="n">two</span> <span class="n">Google</span> <span class="n">employees</span> <span class="n">announced</span> <span class="n">that</span> <span class="n">over</span> <span class="mi">1000</span> <span class="n">bugs</span> <span class="n">had</span> <span class="n">been</span> <span class="n">fixed</span> <span class="ow">in</span> <span class="n">FFmpeg</span> <span class="n">during</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">two</span> <span class="n">years</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Overview</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FFmpeg</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">leading</span> <span class="n">multimedia</span> <span class="n">framework</span><span class="p">,</span> <span class="n">able</span> <span class="n">to</span> <span class="n">decode</span><span class="p">,</span> <span class="n">encode</span><span class="p">,</span> <span class="n">transcode</span><span class="p">,</span> <span class="n">mux</span><span class="p">,</span> <span class="n">demux</span><span class="p">,</span> <span class="n">stream</span><span class="p">,</span> <span class="nb">filter</span>
+<span class="ow">and</span> <span class="n">play</span> <span class="n">pretty</span> <span class="n">much</span> <span class="n">anything</span> <span class="n">that</span> <span class="n">humans</span> <span class="ow">and</span> <span class="n">machines</span> <span class="n">have</span> <span class="n">created</span><span class="o">.</span> <span class="n">It</span> <span class="n">supports</span> <span class="n">the</span> <span class="n">most</span> <span class="n">obscure</span> <span class="n">ancient</span>
+<span class="n">formats</span> <span class="n">up</span> <span class="n">to</span> <span class="n">the</span> <span class="n">cutting</span> <span class="n">edge</span><span class="o">.</span> <span class="n">No</span> <span class="n">matter</span> <span class="k">if</span> <span class="n">they</span> <span class="n">were</span> <span class="n">designed</span> <span class="n">by</span> <span class="n">some</span> <span class="n">standards</span> <span class="n">committee</span><span class="p">,</span> <span class="n">the</span> <span class="n">community</span>
+<span class="ow">or</span> <span class="n">a</span> <span class="n">corporation</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">highly</span> <span class="n">portable</span><span class="p">:</span> <span class="n">FFmpeg</span> <span class="n">compiles</span><span class="p">,</span> <span class="n">runs</span><span class="p">,</span> <span class="ow">and</span> <span class="n">passes</span> <span class="n">our</span> <span class="n">testing</span> <span class="n">infrastructure</span>
+<span class="n">FATE</span> <span class="n">across</span> <span class="n">Linux</span><span class="p">,</span> <span class="n">Mac</span> <span class="n">OS</span> <span class="n">X</span><span class="p">,</span> <span class="n">Microsoft</span> <span class="n">Windows</span><span class="p">,</span> <span class="n">the</span> <span class="n">BSDs</span><span class="p">,</span> <span class="n">Solaris</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span> <span class="n">under</span> <span class="n">a</span> <span class="n">wide</span> <span class="n">variety</span> <span class="n">of</span> <span class="n">build</span>
+<span class="n">environments</span><span class="p">,</span> <span class="n">machine</span> <span class="n">architectures</span><span class="p">,</span> <span class="ow">and</span> <span class="n">configurations</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">FFmpeg License</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">FFmpeg</span> <span class="ow">is</span> <span class="n">licensed</span> <span class="n">under</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">Lesser</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="p">(</span><span class="n">LGPL</span><span class="p">)</span> <span class="n">version</span> <span class="mf">2.1</span> <span class="ow">or</span> <span class="n">later</span><span class="o">.</span> <span class="n">However</span><span class="p">,</span> <span class="n">FFmpeg</span>
+<span class="n">incorporates</span> <span class="n">several</span> <span class="n">optional</span> <span class="n">parts</span> <span class="ow">and</span> <span class="n">optimizations</span> <span class="n">that</span> <span class="n">are</span> <span class="n">covered</span> <span class="n">by</span> <span class="n">the</span> <span class="n">GNU</span> <span class="n">General</span> <span class="n">Public</span> <span class="n">License</span> <span class="p">(</span><span class="n">GPL</span><span class="p">)</span>
+<span class="n">version</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">later</span><span class="o">.</span> <span class="n">If</span> <span class="n">those</span> <span class="n">parts</span> <span class="n">get</span> <span class="n">used</span> <span class="n">the</span> <span class="n">GPL</span> <span class="n">applies</span> <span class="n">to</span> <span class="nb">all</span> <span class="n">of</span> <span class="n">FFmpeg</span><span class="o">.</span>
+
+<span class="n">Read</span> <span class="n">the</span> <span class="n">license</span> <span class="n">texts</span> <span class="n">to</span> <span class="n">learn</span> <span class="n">how</span> <span class="n">this</span> <span class="n">affects</span> <span class="n">programs</span> <span class="n">built</span> <span class="n">on</span> <span class="n">top</span> <span class="n">of</span> <span class="n">FFmpeg</span> <span class="ow">or</span> <span class="n">reusing</span> <span class="n">FFmpeg</span><span class="o">.</span>
+<span class="n">You</span> <span class="n">may</span> <span class="n">also</span> <span class="n">wish</span> <span class="n">to</span> <span class="n">have</span> <span class="n">a</span> <span class="n">look</span> <span class="n">at</span> <span class="n">the</span> <span class="n">GPL</span> <span class="n">FAQ</span><span class="o">.</span>
+
+<span class="n">Note</span> <span class="n">that</span> <span class="n">FFmpeg</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">available</span> <span class="n">under</span> <span class="nb">any</span> <span class="n">other</span> <span class="n">licensing</span> <span class="n">terms</span><span class="p">,</span> <span class="n">especially</span> <span class="ow">not</span> <span class="n">proprietary</span><span class="o">/</span><span class="n">commercial</span> <span class="n">ones</span><span class="p">,</span>
+<span class="ow">not</span> <span class="n">even</span> <span class="ow">in</span> <span class="n">exchange</span> <span class="k">for</span> <span class="n">payment</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="mp4v2">
+<h2>mp4v2<a class="headerlink" href="#mp4v2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Overview</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">The</span> <span class="n">MP4v2</span> <span class="n">library</span> <span class="n">provides</span> <span class="n">an</span> <span class="n">API</span> <span class="n">to</span> <span class="n">create</span> <span class="ow">and</span> <span class="n">modify</span> <span class="n">mp4</span> <span class="n">files</span> <span class="k">as</span> <span class="n">defined</span> <span class="n">by</span> <span class="n">ISO</span><span class="o">-</span><span class="n">IEC</span><span class="p">:</span><span class="mi">14496</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span><span class="mi">2001</span> <span class="n">MPEG</span><span class="o">-</span><span class="mi">4</span> <span class="n">Systems</span><span class="o">.</span>
+<span class="n">This</span> <span class="n">file</span> <span class="nb">format</span> <span class="ow">is</span> <span class="n">derived</span> <span class="kn">from</span> <span class="nn">Apple</span><span class="s1">&#39;s QuickTime file format that has been used as a multimedia file format in a</span>
+<span class="n">variety</span> <span class="n">of</span> <span class="n">platforms</span> <span class="ow">and</span> <span class="n">applications</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">very</span> <span class="n">powerful</span> <span class="ow">and</span> <span class="n">extensible</span> <span class="nb">format</span> <span class="n">that</span> <span class="n">can</span> <span class="n">accommodate</span> <span class="n">practically</span>
+<span class="nb">any</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">media</span><span class="o">.</span>
+
+<span class="n">MP4v2</span> <span class="n">was</span> <span class="n">originally</span> <span class="n">bundled</span> <span class="k">with</span> <span class="n">mpeg4ip</span> <span class="n">library</span><span class="p">,</span> <span class="n">but</span> <span class="n">has</span> <span class="n">been</span> <span class="n">moved</span> <span class="n">into</span> <span class="n">its</span> <span class="n">own</span> <span class="n">maintained</span> <span class="n">library</span> <span class="n">due</span> <span class="n">to</span> <span class="n">a</span>
+<span class="n">combination</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cessation</span> <span class="n">of</span> <span class="n">support</span> <span class="n">of</span> <span class="n">mpeg4ip</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">usefulness</span> <span class="n">of</span> <span class="n">this</span> <span class="n">library</span> <span class="n">on</span> <span class="n">its</span> <span class="n">own</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">License</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Mozilla</span> <span class="n">Public</span> <span class="n">License</span> <span class="n">Version</span> <span class="mf">1.1</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>APIs</dt>
+<dd><ul class="first last simple">
+<li>MP4AddAC3AudioTrack</li>
+<li>MP4AddALawAudioTrack</li>
+<li>MP4AddAmrAudioTrack</li>
+<li><strong>MP4AddAudioTrack</strong></li>
+<li>MP4AddChapter</li>
+<li>MP4AddChapterTextTrack</li>
+<li>MP4AddColr</li>
+<li>MP4AddEncAudioTrack</li>
+<li>MP4AddEncH264VideoTrack</li>
+<li>MP4AddEncVideoTrack</li>
+<li>MP4AddH263VideoTrack</li>
+<li><strong>MP4AddH264PictureParameterSet</strong></li>
+<li><strong>MP4AddH264SequenceParameterSet</strong></li>
+<li><strong>MP4AddH264VideoTrack</strong></li>
+<li>MP4AddHintTrack</li>
+<li>MP4AddHrefTrack</li>
+<li>MP4AddIPodUUID</li>
+<li>MP4AddNeroChapter</li>
+<li>MP4AddODTrack</li>
+<li>MP4AddPixelAspectRatio</li>
+<li>MP4AddRtpESConfigurationPacket</li>
+<li>MP4AddRtpHint</li>
+<li>MP4AddRtpImmediateData</li>
+<li>MP4AddRtpPacket</li>
+<li>MP4AddRtpSampleData</li>
+<li>MP4AddRtpVideoHint</li>
+<li>MP4AddSceneTrack</li>
+<li>MP4AddSubpicTrack</li>
+<li>MP4AddSubtitleTrack</li>
+<li>MP4AddSystemsTrack</li>
+<li>MP4AddTextTrack</li>
+<li>MP4AddTrack</li>
+<li>MP4AddTrackEdit</li>
+<li>MP4AddULawAudioTrack</li>
+<li>MP4AddVideoTrack</li>
+<li>MP4AppendHintTrackSdp</li>
+<li>MP4AppendSessionSdp</li>
+<li>MP4BinaryToBase16</li>
+<li>MP4BinaryToBase64</li>
+<li>MP4ChangeMovieTimeScale</li>
+<li>MP4CloneTrack</li>
+<li><strong>MP4Close</strong></li>
+<li>MP4ConvertChapters</li>
+<li>MP4ConvertFromMovieDuration</li>
+<li>MP4ConvertFromTrackDuration</li>
+<li>MP4ConvertFromTrackTimestamp</li>
+<li>MP4ConvertToTrackDuration</li>
+<li>MP4ConvertToTrackTimestamp</li>
+<li>MP4CopySample</li>
+<li>MP4CopyTrack</li>
+<li><strong>MP4Create</strong></li>
+<li><strong>MP4CreateEx</strong></li>
+<li>MP4DefaultISMACrypParams</li>
+<li>MP4DeleteChapters</li>
+<li>MP4DeleteTrack</li>
+<li>MP4DeleteTrackEdit</li>
+<li>MP4Dump</li>
+<li>MP4EncAndCloneTrack</li>
+<li>MP4EncAndCopySample</li>
+<li>MP4EncAndCopyTrack</li>
+<li>MP4FileInfo</li>
+<li>MP4FindTrackId</li>
+<li>MP4FindTrackIndex</li>
+<li>MP4Free</li>
+<li>MP4GetAmrModeSet</li>
+<li>MP4GetAudioProfileLevel</li>
+<li>MP4GetBytesProperty</li>
+<li>MP4GetChapters</li>
+<li>MP4GetDuration</li>
+<li>MP4GetFilename</li>
+<li>MP4GetFloatProperty</li>
+<li>MP4GetGraphicsProfileLevel</li>
+<li>MP4GetHintTrackReferenceTrackId</li>
+<li>MP4GetHintTrackRtpPayload</li>
+<li>MP4GetHintTrackSdp</li>
+<li>MP4GetHrefTrackBaseUrl</li>
+<li>MP4GetIntegerProperty</li>
+<li>MP4GetNumberOfTracks</li>
+<li>MP4GetODProfileLevel</li>
+<li>MP4GetRtpHintNumberOfPackets</li>
+<li>MP4GetRtpPacketBFrame</li>
+<li>MP4GetRtpPacketTransmitOffset</li>
+<li>MP4GetRtpTimestampStart</li>
+<li>MP4GetSampleDuration</li>
+<li>MP4GetSampleIdFromEditTime</li>
+<li>MP4GetSampleIdFromTime</li>
+<li>MP4GetSampleRenderingOffset</li>
+<li>MP4GetSampleSize</li>
+<li>MP4GetSampleSync</li>
+<li>MP4GetSampleTime</li>
+<li>MP4GetSceneProfileLevel</li>
+<li>MP4GetSessionSdp</li>
+<li>MP4GetStringProperty</li>
+<li>MP4GetTimeScale</li>
+<li>MP4GetTrackAudioChannels</li>
+<li>MP4GetTrackAudioMpeg4Type</li>
+<li>MP4GetTrackBitRate</li>
+<li>MP4GetTrackBytesProperty</li>
+<li>MP4GetTrackDuration</li>
+<li>MP4GetTrackDurationPerChunk</li>
+<li>MP4GetTrackESConfiguration</li>
+<li>MP4GetTrackEditDuration</li>
+<li>MP4GetTrackEditDwell</li>
+<li>MP4GetTrackEditMediaStart</li>
+<li>MP4GetTrackEditTotalDuration</li>
+<li>MP4GetTrackEsdsObjectTypeId</li>
+<li>MP4GetTrackFixedSampleDuration</li>
+<li>MP4GetTrackFloatProperty</li>
+<li>MP4GetTrackH264LengthSize</li>
+<li>MP4GetTrackH264ProfileLevel</li>
+<li>MP4GetTrackH264SeqPictHeaders</li>
+<li>MP4GetTrackIntegerProperty</li>
+<li>MP4GetTrackLanguage</li>
+<li>MP4GetTrackMaxSampleSize</li>
+<li>MP4GetTrackMediaDataName</li>
+<li>MP4GetTrackMediaDataOriginalFormat</li>
+<li>MP4GetTrackName</li>
+<li>MP4GetTrackNumberOfEdits</li>
+<li>MP4GetTrackNumberOfSamples</li>
+<li>MP4GetTrackStringProperty</li>
+<li>MP4GetTrackTimeScale</li>
+<li>MP4GetTrackType</li>
+<li>MP4GetTrackVideoFrameRate</li>
+<li>MP4GetTrackVideoHeight</li>
+<li>MP4GetTrackVideoMetadata</li>
+<li>MP4GetTrackVideoWidth</li>
+<li>MP4GetVideoProfileLevel</li>
+<li>MP4HaveAtom</li>
+<li>MP4HaveTrackAtom</li>
+<li>MP4Info</li>
+<li>MP4IsIsmaCrypMediaTrack</li>
+<li>MP4ItmfAddItem</li>
+<li>MP4ItmfGetItems</li>
+<li>MP4ItmfGetItemsByCode</li>
+<li>MP4ItmfGetItemsByMeaning</li>
+<li>MP4ItmfItemAlloc</li>
+<li>MP4ItmfItemFree</li>
+<li>MP4ItmfItemListFree</li>
+<li>MP4ItmfRemoveItem</li>
+<li>MP4ItmfSetItem</li>
+<li>MP4LogGetLevel</li>
+<li>MP4LogSetLevel</li>
+<li>MP4Make3GPCompliant</li>
+<li>MP4MakeIsmaCompliant</li>
+<li>MP4MakeIsmaSdpIod</li>
+<li>MP4Modify</li>
+<li>MP4Optimize</li>
+<li>MP4Read</li>
+<li>MP4ReadProvider</li>
+<li>MP4ReadRtpHint</li>
+<li>MP4ReadRtpPacket</li>
+<li>MP4ReadSample</li>
+<li>MP4ReadSampleFromEditTime</li>
+<li>MP4ReadSampleFromTime</li>
+<li>MP4ReferenceSample</li>
+<li>MP4SetAmrDecoderVersion</li>
+<li>MP4SetAmrModeSet</li>
+<li>MP4SetAmrVendor</li>
+<li><strong>MP4SetAudioProfileLevel</strong></li>
+<li>MP4SetBytesProperty</li>
+<li>MP4SetChapters</li>
+<li>MP4SetFloatProperty</li>
+<li>MP4SetGraphicsProfileLevel</li>
+<li>MP4SetH263Bitrates</li>
+<li>MP4SetH263DecoderVersion</li>
+<li>MP4SetH263Vendor</li>
+<li>MP4SetHintTrackRtpPayload</li>
+<li>MP4SetHintTrackSdp</li>
+<li>MP4SetIntegerProperty</li>
+<li>MP4SetLogCallback</li>
+<li>MP4SetODProfileLevel</li>
+<li>MP4SetRtpTimestampStart</li>
+<li>MP4SetSampleRenderingOffset</li>
+<li>MP4SetSceneProfileLevel</li>
+<li>MP4SetSessionSdp</li>
+<li>MP4SetStringProperty</li>
+<li>MP4SetTimeScale</li>
+<li>MP4SetTrackBytesProperty</li>
+<li>MP4SetTrackDurationPerChunk</li>
+<li>MP4SetTrackESConfiguration</li>
+<li>MP4SetTrackEditDuration</li>
+<li>MP4SetTrackEditDwell</li>
+<li>MP4SetTrackEditMediaStart</li>
+<li>MP4SetTrackFloatProperty</li>
+<li>MP4SetTrackIntegerProperty</li>
+<li>MP4SetTrackLanguage</li>
+<li>MP4SetTrackName</li>
+<li>MP4SetTrackStringProperty</li>
+<li>MP4SetTrackTimeScale</li>
+<li><strong>MP4SetVideoProfileLevel</strong></li>
+<li>MP4TagsAddArtwork</li>
+<li>MP4TagsAlloc</li>
+<li>MP4TagsFetch</li>
+<li>MP4TagsFree</li>
+<li>MP4TagsHasMetadata</li>
+<li>MP4TagsRemoveArtwork</li>
+<li>MP4TagsSetAlbum</li>
+<li>MP4TagsSetAlbumArtist</li>
+<li>MP4TagsSetArtist</li>
+<li>MP4TagsSetArtistID</li>
+<li>MP4TagsSetArtwork</li>
+<li>MP4TagsSetCategory</li>
+<li>MP4TagsSetComments</li>
+<li>MP4TagsSetCompilation</li>
+<li>MP4TagsSetComposer</li>
+<li>MP4TagsSetComposerID</li>
+<li>MP4TagsSetContentID</li>
+<li>MP4TagsSetContentRating</li>
+<li>MP4TagsSetCopyright</li>
+<li>MP4TagsSetDescription</li>
+<li>MP4TagsSetDisk</li>
+<li>MP4TagsSetEncodedBy</li>
+<li>MP4TagsSetEncodingTool</li>
+<li>MP4TagsSetGapless</li>
+<li>MP4TagsSetGenre</li>
+<li>MP4TagsSetGenreID</li>
+<li>MP4TagsSetGenreType</li>
+<li>MP4TagsSetGrouping</li>
+<li>MP4TagsSetHDVideo</li>
+<li>MP4TagsSetITunesAccount</li>
+<li>MP4TagsSetITunesAccountType</li>
+<li>MP4TagsSetITunesCountry</li>
+<li>MP4TagsSetKeywords</li>
+<li>MP4TagsSetLongDescription</li>
+<li>MP4TagsSetLyrics</li>
+<li>MP4TagsSetMediaType</li>
+<li>MP4TagsSetName</li>
+<li>MP4TagsSetPlaylistID</li>
+<li>MP4TagsSetPodcast</li>
+<li>MP4TagsSetPurchaseDate</li>
+<li>MP4TagsSetReleaseDate</li>
+<li>MP4TagsSetSortAlbum</li>
+<li>MP4TagsSetSortAlbumArtist</li>
+<li>MP4TagsSetSortArtist</li>
+<li>MP4TagsSetSortComposer</li>
+<li>MP4TagsSetSortName</li>
+<li>MP4TagsSetSortTVShow</li>
+<li>MP4TagsSetTVEpisode</li>
+<li>MP4TagsSetTVEpisodeID</li>
+<li>MP4TagsSetTVNetwork</li>
+<li>MP4TagsSetTVSeason</li>
+<li>MP4TagsSetTVShow</li>
+<li>MP4TagsSetTempo</li>
+<li>MP4TagsSetTrack</li>
+<li>MP4TagsSetXID</li>
+<li>MP4TagsStore</li>
+<li>MP4WriteRtpHint</li>
+<li><strong>MP4WriteSample</strong></li>
+<li>MP4WriteSampleDependency</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="aac">
+<h2>AAC<a class="headerlink" href="#aac" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>AAC-LD (Low Delay), defined in 2000, used for real-time conversation applications</li>
+<li>High Efficiency AAC (HE-AAC), a.k.a. aacPlus v1 or AAC+, the combination of SBR (Spectral Band Replication) and AAC LC. Used for low bitrates. Defined in 2003.</li>
+<li>HE-AAC v2, a.k.a. aacPlus v2 or eAAC+, the combination of Parametric Stereo (PS) and HE-AAC; used for even lower bitrates. Defined in 2004 and 2006.</li>
+<li>MPEG-4 Scalable To Lossless (SLS), defined in 2006, can supplement an AAC stream to provide a lossless decoding option, such as in Fraunhofer IIS&#8217;s &#8220;HD-AAC&#8221; product</li>
+</ol>
+</div>
+<div class="section" id="next-sprint">
+<h2>Next Sprint<a class="headerlink" href="#next-sprint" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>US31106</dt>
+<dd><ul class="first last simple">
+<li>Provide Architecture Design For MP4 Local Recording</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>What is MP4 Format</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.winxdvd.com/resource/mp4.htm">https://www.winxdvd.com/resource/mp4.htm</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>H264 codec to mp4 file</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/qq_29350001/article/details/73742075">https://blog.csdn.net/qq_29350001/article/details/73742075</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Use mp4v2 to generate mp4 file with H264 and AAC</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://tw.saowen.com/a/28080a7898810a93f66383fa5237a15a0bfea214682e7020894772bfc3a49781">https://tw.saowen.com/a/28080a7898810a93f66383fa5237a15a0bfea214682e7020894772bfc3a49781</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Convert videos to MP4 format using ffmpeg</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.bugcodemaster.com/article/convert-videos-mp4-format-using-ffmpeg">https://www.bugcodemaster.com/article/convert-videos-mp4-format-using-ffmpeg</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MP4 file format</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://tw.saowen.com/a/718e9163d09bc2c09ddb9ef0795e2c5c694c8f673cecb8a0e499af7dd006167f">https://tw.saowen.com/a/718e9163d09bc2c09ddb9ef0795e2c5c694c8f673cecb8a0e499af7dd006167f</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/tgww88/article/details/51434389">https://blog.csdn.net/tgww88/article/details/51434389</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/directives.html#figure">http://docutils.sourceforge.net/docs/ref/rst/directives.html#figure</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.mainconcept.com/us/getting-started/samples.html">https://www.mainconcept.com/us/getting-started/samples.html</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>How to extract H.264 video contents from a .MOV file and save it as a file with extension .264</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/20731278/how-to-extract-h264-raw-video-from-mov-using-ffmpeg">https://stackoverflow.com/questions/20731278/how-to-extract-h264-raw-video-from-mov-using-ffmpeg</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Mac config FFmpeg env</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.jianshu.com/p/627b2d462151">https://www.jianshu.com/p/627b2d462151</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>VLC</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://get.videolan.org/vlc/3.0.1/win64/vlc-3.0.1-win64.exe">https://get.videolan.org/vlc/3.0.1/win64/vlc-3.0.1-win64.exe</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extracting H.264 from an MOV video file</dt>
+<dd><ul class="first last simple">
+<li>ffmpeg -i MainconceptLogo_Flash_H264-AAC-320X240.mov -vbsf h264_mp4toannexb -vcodec copy -an 2.h264</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Extracting AAC from an MOV video file</dt>
+<dd><ul class="first last simple">
+<li>ffmpeg -i MainconceptLogo_Flash_H264-AAC-320X240.mov -vn -acodec copy 2.m4a</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How can I mux to mp4 from h264, aac using ffmpeg</dt>
+<dd><ul class="first last simple">
+<li>ffmpeg -i 2.m4a -i 2.h264 -map 0:0 -map 1:0 2.mp4</li>
+<li>-map 0:0 和 -map 1:0 中, 冒号前面的数字是文件顺序, 从0开始, 冒号后面的数字是媒体文件中channel号, 一般一个普通媒体文件是视频部分为0, 音频部分为1</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AAC file format</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/wlsfling/article/details/5876016">https://blog.csdn.net/wlsfling/article/details/5876016</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>How to create a mp4 file with mp4v2</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://swchoutech.blogspot.hk/2012/11/mp4v2-mp4.html">http://swchoutech.blogspot.hk/2012/11/mp4v2-mp4.html</a></li>
+<li><a class="reference external" href="http://www.aichengxu.com/other/9647952.htm">http://www.aichengxu.com/other/9647952.htm</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Using H264+AAC to synthesize MP4 files mp4v2</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://prog3.com/sbdm/blog/jody1989/article/details/46559499">http://prog3.com/sbdm/blog/jody1989/article/details/46559499</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Audio Video Sync Theory And Implication</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.dzsc.com/data/2017-4-20/111980.html">http://www.dzsc.com/data/2017-4-20/111980.html</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/happydeer/article/details/206765">https://blog.csdn.net/happydeer/article/details/206765</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PCM Data Format</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://blog.csdn.net/ownWell/article/details/8114121">https://blog.csdn.net/ownWell/article/details/8114121</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://blog.csdn.net/c0ffee1982/article/details/1892319">https://blog.csdn.net/c0ffee1982/article/details/1892319</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>声道数</dt>
+<dd><ul class="first last simple">
+<li>单声道: 只能使用一个喇叭发声</li>
+<li>立体声: 可以使用两个喇叭发声(一般左右声道分工), 更能感受到空间效果</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>采样位数</dt>
+<dd><ul class="first last simple">
+<li>采样值或取样值(就是将采样样本幅度量化). 它是用来衡量声音波动变化的一个参数,也可以说是声卡的分辨率.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>采样频率</dt>
+<dd><ul class="first last simple">
+<li>取样频率,指每秒钟取得声音样本的次数. 采样频率越高,声音的质量也就越好,声音的还原也就越真实,但同时它占的资源比较多.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Encoding an MP4 File</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/ff819476(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/windows/desktop/ff819476(v=vs.85).aspx</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Mux Audio and Video Into MP4</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://bitbucket.org/primosoftware/avblocks-samples/src/default/windows/cpp/samples/mux_mp4_avc_aac_file/">https://bitbucket.org/primosoftware/avblocks-samples/src/default/windows/cpp/samples/mux_mp4_avc_aac_file/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Convert H264 file to MP4 file</strong></dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://www.itxiaoji.com/content/8647">http://www.itxiaoji.com/content/8647</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>H264 Stream Analysis</strong></dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/6014904/h264-frame-viewer">https://stackoverflow.com/questions/6014904/h264-frame-viewer</a></li>
+<li><a class="reference external" href="https://sourceforge.net/projects/h264streamanalysis/?source=typ_redirect">https://sourceforge.net/projects/h264streamanalysis/?source=typ_redirect</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>H.264 NAL SPS</strong></dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/wutong_login/article/details/5818763">https://blog.csdn.net/wutong_login/article/details/5818763</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>AAC Stream Analysis</strong></dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://sourceforge.net/projects/aacstreamanalysis/">https://sourceforge.net/projects/aacstreamanalysis/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><strong>Extracting Raw AAC data from MP4 file</strong></dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/41604964/ffmpeg-how-to-convert-aac-audio-packets-to-adts-format">https://stackoverflow.com/questions/41604964/ffmpeg-how-to-convert-aac-audio-packets-to-adts-format</a></li>
+<li>ffmpeg -i input.mp4 -acodec copy -vn output.aac</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AAC ADTS(Audio Data Transport Stream) format analyze</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/tx3344/article/details/7414543">https://blog.csdn.net/tx3344/article/details/7414543</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Get the width and height of the video from H.264 NALU</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://stackoverflow.com/questions/12018535/get-the-width-height-of-the-video-from-h-264-nalu">https://stackoverflow.com/questions/12018535/get-the-width-height-of-the-video-from-h-264-nalu</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>video editor</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://osp.io/archives/4183">http://osp.io/archives/4183</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>H264 NAL</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blog.csdn.net/wudebao5220150/article/details/13810671">https://blog.csdn.net/wudebao5220150/article/details/13810671</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Big list of sample videos for testers</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://standaloneinstaller.com/blog/big-list-of-sample-videos-for-testers-124.html">http://standaloneinstaller.com/blog/big-list-of-sample-videos-for-testers-124.html</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>mpeg4ip</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.openhub.net/p/mpeg4ip">https://www.openhub.net/p/mpeg4ip</a></li>
+<li><a class="reference external" href="http://www.ce.unipr.it/didattica/siselab/Tesine/StreamingPDA/mpeg4ip.pdf">http://www.ce.unipr.it/didattica/siselab/Tesine/StreamingPDA/mpeg4ip.pdf</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Create MP4 API</dt>
+<dd><ul class="first last simple">
+<li>MP4CreateEx</li>
+<li>MP4AddH264VideoTrack</li>
+<li>MP4AddAudioTrack</li>
+<li>MP4SetVideoProfileLevel</li>
+<li>MP4SetAudioProfileLevel</li>
+<li>MP4WriteSample</li>
+<li>MP4Close</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">US30394 : Research how to generate mp4 file</a><ul>
+<li><a class="reference internal" href="#mp4">MP4</a><ul>
+<li><a class="reference internal" href="#what-file-formats-does-mp4-support">What file formats does MP4 support?</a></li>
+<li><a class="reference internal" href="#mp4-vs-h-264">MP4 vs H.264</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ffmpeg">ffmpeg</a></li>
+<li><a class="reference internal" href="#mp4v2">mp4v2</a></li>
+<li><a class="reference internal" href="#aac">AAC</a></li>
+<li><a class="reference internal" href="#next-sprint">Next Sprint</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="local_recording_introduce_I.html"
+                        title="previous chapter">Local Recording Introduce I</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f7112_US31106.html"
+                        title="next chapter">F7112 : US31106 Provide Architecture Design For MP4 Local Recording</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f7112_US30394.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f7112_US31106.html" title="F7112 : US31106 Provide Architecture Design For MP4 Local Recording"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="local_recording_introduce_I.html" title="Local Recording Introduce I"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

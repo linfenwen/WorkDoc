@@ -1,0 +1,64 @@
+Appear "Cisco WebEx Meeting has stopped working" after ending meeting
+=====================================================================
+
+What's the problem
+------------------
+
+::
+ 
+    Page:33.2.0.229 
+    Client:33.2.0.186 
+
+    Steps:
+    1.Win7 open test site(Classic View) and start a MC meeting.
+    2.Host end the meeting.
+
+    Expected Result:
+    The meeting was ended normally.
+
+    Actual Result:
+    1.Appear "Cisco WebEx Meetings has stopped working" dialog.
+    2.The landing page can't be displayed and prompt "The webpage cannot be found".
+
+
+What's the solution
+-------------------
+
+What's the root cause
+---------------------
+
+#. ptoneclk.exe
+	+ Logitech, QuickCam@Pro 9000, M/N:M/N:V-UBM46:UBM46
+	+ Issue occurs when detect USB video device
+
+Test Env
+--------
+#. OS
+	+ Win7
+
+#. Site
+	+ qat31sky.qa.webex.com
+	+ Account
+		admin/P@ss123
+		
+#. vnc
+	+ http://10.224.67.251/
+	+ passwd
+
+Others
+------
+
+#. atshell.exe
+	+ C:\Workspace\CCTG\webex-docshare-rsk\src\windows\dvshell
+	
+#. IsSaveAsPDFProcessExists
+	+ No instance of "atshell.exe" exists.
+
+Reference
+---------
+
+#. https://cdetsng.cisco.com/webui/#view=CSCvj48806
+
+#. https://blog.csdn.net/xjtuse2014/article/details/52302083
+
+

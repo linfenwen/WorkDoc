@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>F7112 : US31106 Provide Architecture Design For MP4 Local Recording &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="F7112 : Prepare WEBEXRECORDER" href="f7112_US_0.html" />
+    <link rel="prev" title="US30394 : Research how to generate mp4 file" href="f7112_US30394.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f7112_US_0.html" title="F7112 : Prepare WEBEXRECORDER"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="f7112_US30394.html" title="US30394 : Research how to generate mp4 file"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="f7112-us31106-provide-architecture-design-for-mp4-local-recording">
+<h1>F7112 : US31106 Provide Architecture Design For MP4 Local Recording<a class="headerlink" href="#f7112-us31106-provide-architecture-design-for-mp4-local-recording" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="acceptence-critaria">
+<h2>Acceptence Critaria<a class="headerlink" href="#acceptence-critaria" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Get the agreement of the whole architecture design among WME, Walker, Won, Nemo, Parker who related with this feature.&nbsp; And deliver the design before sprint demo.</li>
+<li>List all of the stories for this feature in Rally based on above agreement.</li>
+<li>Provide the estimation of the release day before sprint demo. Need get cross team&#8217;s estimation and commitment also.</li>
+</ol>
+</div>
+<div class="section" id="based-on-wme-mp4-local-recording-overview">
+<h2>Based On WME MP4 Local Recording Overview<a class="headerlink" href="#based-on-wme-mp4-local-recording-overview" title="Permalink to this headline">¶</a></h2>
+<div class="figure">
+<img alt="_static/based-wme-mp4-local-recording-4.png" src="_static/based-wme-mp4-local-recording-4.png" />
+</div>
+<div class="section" id="data-flow-solution">
+<h3>Data Flow Solution<a class="headerlink" href="#data-flow-solution" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="_static/based-wme-mp4-local-recording-data-flow.png" src="_static/based-wme-mp4-local-recording-data-flow.png" />
+</div>
+</div>
+<div class="section" id="video-bit-rate">
+<h3>Video Bit Rate<a class="headerlink" href="#video-bit-rate" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<a class="reference internal image-reference" href="_static/sdr-hdr-video-bitrate.png"><img alt="_static/sdr-hdr-video-bitrate.png" src="_static/sdr-hdr-video-bitrate.png" style="width: 534.0px; height: 427.2px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="design-fqa">
+<h2>Design FQA<a class="headerlink" href="#design-fqa" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">In-meeting case, why we suggest use a new process to do mp4 local recording work but not in the meeting process?</p>
+</li>
+<li><dl class="first docutils">
+<dt>In-meeting case, why we suggest to capture data in meeting process?</dt>
+<dd><ul class="first last simple">
+<li>VOIP data always from meeting process</li>
+<li>Performance consider</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MP4 Audio codec: OPUS or AAC?</dt>
+<dd><ul class="first last simple">
+<li>Confirmed with Keith, Audio Engine can provide PCM data</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>WME need provide audio mixing API or not?</dt>
+<dd><ul class="first last simple">
+<li>If provide, the logic will be simple in MP4 Local recording client side</li>
+<li>Else, need create several audio track and map the audio data</li>
+<li>Legacy VOIP</li>
+<li>Hybrid VOIP</li>
+<li>TSP VOIP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">How to handle resolution change?</p>
+</li>
+<li><p class="first">WME support pause or resume?</p>
+</li>
+<li><p class="first">WME provide H264 encode API?</p>
+</li>
+<li><dl class="first docutils">
+<dt>High resolution concerns?</dt>
+<dd><ul class="first last simple">
+<li>CPU usage</li>
+<li>Disk usage</li>
+<li>FPS</li>
+<li>Fixed code stream</li>
+<li>UI</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="mile-stone">
+<h2>Mile Stone<a class="headerlink" href="#mile-stone" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Create a process without UI, call WME API to retrieve H264 and AAC data, then generate a MP4 file</dt>
+<dd><ul class="first last">
+<li><p class="first">As a developer, I can call WME API to retrieve image data</p>
+</li>
+<li><p class="first">As a developer, I can call WME API to encode image raw data and output H264 data</p>
+</li>
+<li><dl class="first docutils">
+<dt>As an audio data user, I can call <strong>MP4 Creator Module</strong> to generate MP4 file</dt>
+<dd><ul class="first last simple">
+<li>Need Parker to provide <strong>MP4 Creator Module</strong></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>As a developer, I can call WME API to retrieve audio data</dt>
+<dd><ul class="first last simple">
+<li>Need WME team provide a training or document to introduce relevant API or sample code</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">As a video data user, I call call <strong>MP4 Creator Module</strong> to generate MP4 file</p>
+</li>
+<li><p class="first">As an audio data and video data user, I can call <strong>MP4 Creator Module</strong> to generate MP4 file</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Create a process with UI, which use WCL as UI Library, it&#8217;s can record a specify process.</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>As a developer, I can use WCL to complete <strong>Webex Recorder</strong> Window</dt>
+<dd><ul class="first last simple">
+<li>Need UI team provide UI design</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">As a developer, I can use WCL to complete <strong>Save Webex Recording</strong> Window</p>
+</li>
+<li><dl class="first docutils">
+<dt>As a developer, I can use <strong>WME API</strong> to retrieve <strong>Open Application Lists</strong></dt>
+<dd><ul class="first last simple">
+<li>Need WME team provide support</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">As a developer, I can use WCL to complete <strong>Webex Recorder-Open Application</strong> Window</p>
+</li>
+<li><p class="first">As a developer, I can response the command from <strong>Webex Recorder</strong> Window</p>
+</li>
+<li><dl class="first docutils">
+<dt>As a developer, I can use WCL to complete <strong>Recorder Panel</strong> Window</dt>
+<dd><ul class="first last simple">
+<li>Need UI team provide UI design</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">As a developer, I can response the command from <strong>Recorder Panel</strong> Window</p>
+</li>
+<li><p class="first">As a developer, I can use WCL to complete the <strong>Audio Setup Wizard</strong> Window</p>
+</li>
+<li><p class="first">As a developer, I can response the command from <strong>Audio Setup Wizard</strong> Window</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Create a process with UI, which use WCL as UI Library, it&#8217;s can record meeting process.</dt>
+<dd><ul class="first last simple">
+<li>As a developer, I need use feature toggle to enable or disable MP4 Local Recording</li>
+<li>As a developer, I can use WCL to create <strong>Save Recorded Meeting As</strong> Window</li>
+<li>As a developer, I need define LPC command channel message</li>
+<li>As a developer, I need define LPC data channel data format</li>
+<li>As a developer, I can call WME API to retrieve audio data</li>
+<li>As a developer, I can call WME API to retrieve video data</li>
+<li>As a developer, I can send data from Meeting process to <strong>Local Recording</strong> process</li>
+<li>As a developer, When <strong>Local Recording</strong> process receive data from <strong>Meeting Process</strong>, I can call <strong>MP4FileCreator</strong> to generate MP4 file</li>
+<li>As a developer, When the AS is sharing, I can retrieve audio and video data</li>
+<li>As a developer, When the DS is sharing, I can retrieve audio and video data</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Create a process with UI, which use WCL as UI Library, it&#8217;s can record meeting process and sync status with meeting process</dt>
+<dd><ul class="first last simple">
+<li>As a developer, when input different resolution image data, I can output the fixed size image data</li>
+<li>As an user, when I click &#8220;Recording&#8221; button on <strong>Recorder Panel</strong> window, on the meeting process&#8217;s status bar, it will show &#8220;Recording...&#8221;</li>
+<li>As an user, when I click &#8220;Pause&#8221; button on <strong>Recorder Panel</strong> window, on the meeting process&#8217;s status bar, it will show &#8220;Meeting recording is paused.&#8221;</li>
+<li>As an user, when I click &#8220;Stop&#8221; button on <strong>Recorder Panel</strong> window, on the meeting process&#8217;s status bar, it will back to normal, and the <strong>Webex Recorder</strong> process will be exited.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Legacy AS or DS MP4 Local Recording support</p>
+</li>
+<li><dl class="first docutils">
+<dt>Others</dt>
+<dd><ul class="first last simple">
+<li>TA</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="fqa">
+<h2>FQA<a class="headerlink" href="#fqa" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Audio codec type (AAC, ADTS Header)</dt>
+<dd><ul class="first last simple">
+<li>Speaker capture</li>
+<li>Microphone capture</li>
+<li>Silence package</li>
+<li>WME support mix</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Video codec type</dt>
+<dd><ul class="first last simple">
+<li>Screen capture</li>
+<li>WME support capture specify process</li>
+<li>Resolution Change</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="message">
+<h2>Message<a class="headerlink" href="#message" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="presenter">
+<h3>Presenter<a class="headerlink" href="#presenter" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>RPC::Message Windows</li>
+<li>Click <strong>Record button</strong> on <strong>Recorder Panel</strong>, then <strong>Meeting Window</strong> status bar will show <em>Recording...</em></li>
+<li>Click <strong>Pause button</strong> on <strong>Recorder Panel</strong>, then <strong>Meeting Window</strong> will status bar show <em>Meeting recording is paused.</em></li>
+<li>Click <strong>Stop button</strong> on <strong>Recorder Panel</strong>, then <strong>Meeting Window</strong> will status bar back to normal</li>
+</ol>
+</div>
+</div>
+<div class="section" id="ui">
+<h2>UI<a class="headerlink" href="#ui" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Presenter<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><div class="first figure">
+<img alt="_static/presenter-save-recorder-meeting-as.png" src="_static/presenter-save-recorder-meeting-as.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/presenter-meeting-right-top.png" src="_static/presenter-meeting-right-top.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-recorder-panel.png" src="_static/msi-recorder-panel.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/presenter-status-bar-recording.png" src="_static/presenter-status-bar-recording.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/presenter-meeting-recording-is-paused.png" src="_static/presenter-meeting-recording-is-paused.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/presenter-back-to-normal.png" src="_static/presenter-back-to-normal.png" />
+</div>
+</li>
+<li><p class="first">Meeting close, <strong>Recorder Panel</strong> window will be closed</p>
+</li>
+</ol>
+</div>
+<div class="section" id="msi-webex-recorder">
+<h3>MSI WebEx Recorder<a class="headerlink" href="#msi-webex-recorder" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder.png" src="_static/msi-webex-recorder.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-about-webex-recorder.png" src="_static/msi-about-webex-recorder.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-save-webex-recording.png" src="_static/msi-save-webex-recording.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-and-player-help.png" src="_static/msi-webex-recorder-and-player-help.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-audio-setup-wizard-1.png" src="_static/msi-webex-recorder-audio-setup-wizard-1.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-audio-setup-wizard-2.png" src="_static/msi-webex-recorder-audio-setup-wizard-2.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-audio-setup-wizard-3.png" src="_static/msi-webex-recorder-audio-setup-wizard-3.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-audio-setup-wizard-4.png" src="_static/msi-webex-recorder-audio-setup-wizard-4.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-audio-setup-wizard-5.png" src="_static/msi-webex-recorder-audio-setup-wizard-5.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-audio-setup-wizard-6.png" src="_static/msi-webex-recorder-audio-setup-wizard-6.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-open-application.png" src="_static/msi-webex-recorder-open-application.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-other-application.png" src="_static/msi-webex-recorder-other-application.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-settings.png" src="_static/msi-webex-recorder-settings.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-recorder-panel.png" src="_static/msi-recorder-panel.png" />
+</div>
+</li>
+<li><div class="first figure">
+<img alt="_static/msi-webex-recorder-2.png" src="_static/msi-webex-recorder-2.png" />
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>opus vs aac</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://opus-codec.org/comparison/">http://opus-codec.org/comparison/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>aac vs mp3</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.winxdvd.com/resource/aac-vs-mp3.htm#1">https://www.winxdvd.com/resource/aac-vs-mp3.htm#1</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Provide browser support information</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://caniuse.com/#search=opus">https://caniuse.com/#search=opus</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>LPC (Local procedure calls) Part 1 architecture</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://blogs.msdn.microsoft.com/ntdebugging/2007/07/26/lpc-local-procedure-calls-part-1-architecture/">https://blogs.msdn.microsoft.com/ntdebugging/2007/07/26/lpc-local-procedure-calls-part-1-architecture/</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">F7112 : US31106 Provide Architecture Design For MP4 Local Recording</a><ul>
+<li><a class="reference internal" href="#acceptence-critaria">Acceptence Critaria</a></li>
+<li><a class="reference internal" href="#based-on-wme-mp4-local-recording-overview">Based On WME MP4 Local Recording Overview</a><ul>
+<li><a class="reference internal" href="#data-flow-solution">Data Flow Solution</a></li>
+<li><a class="reference internal" href="#video-bit-rate">Video Bit Rate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#design-fqa">Design FQA</a></li>
+<li><a class="reference internal" href="#mile-stone">Mile Stone</a></li>
+<li><a class="reference internal" href="#fqa">FQA</a></li>
+<li><a class="reference internal" href="#message">Message</a><ul>
+<li><a class="reference internal" href="#presenter">Presenter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ui">UI</a><ul>
+<li><a class="reference internal" href="#id1">Presenter</a></li>
+<li><a class="reference internal" href="#msi-webex-recorder">MSI WebEx Recorder</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f7112_US30394.html"
+                        title="previous chapter">US30394 : Research how to generate mp4 file</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f7112_US_0.html"
+                        title="next chapter">F7112 :  Prepare WEBEXRECORDER</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f7112_US31106.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f7112_US_0.html" title="F7112 : Prepare WEBEXRECORDER"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="f7112_US30394.html" title="US30394 : Research how to generate mp4 file"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

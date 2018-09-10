@@ -1,0 +1,64 @@
+US28828 : test client standby function
+======================================
+
+Test Case:
+----------
+
+#. Win7, Chrome, Open a standby site, check if meeting process is exist or not
+#. Win7, FireFox, Open a standby site, check if meeting process is exist or not
+#. Win7, IE, Open a standby site, check if meeting process is exist or not
+#. Win8, Chrome, Open a standby site, check if meeting process is exist or not
+#. Win8, FireFox, Open a standby site, check if meeting process is exist or not
+#. Win8, IE, Open a standby site, check if meeting process is exist or not
+#. Win10, Chrome, Open a standby site, check if meeting process is exist or not
+#. Win10, FireFox, Open a standby site, check if meeting process is exist or not
+#. Win10, Edge, Open a standby site, check if meeting process is exist or not
+
+#. Win7, Chrome, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win7, FireFox, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win7, IE, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win8, Chrome, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win8, FireFox, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win8, IE, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win10, Chrome, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win10, FireFox, Open a standby site, after 10mins to check if meeting process is exist or not
+#. Win10, Edge, Open a standby site, after 10mins to check if meeting process is exist or not
+
+#. Win7, Use Chrome to open a standby site, then Use FireFox to open the same standby site, to observe meeting process
+#. Win7, Use Chrome to open a standby site, then Use IE to open the same standby site, to observe meeting process
+#. Win7, Use FireFox to open a standby site, then Use Chrome to open the same standby site, to observe meeting process
+#. Win7, Use FireFox to open a standby site, then Use IE to open the same standby site, to observe meeting process
+#. Win7, Use IE to open a standby site, then Use FireFox to open the same standby site, to observe meeting process
+#. Win7, Use IE to open a standby site, then Use Chrome to open the same standby site, to observe meeting process
+
+#. Win8, Use Chrome to open a standby site, then Use FireFox to open the same standby site, to observe meeting process
+#. Win8, Use Chrome to open a standby site, then Use IE to open the same standby site, to observe meeting process
+#. Win8, Use FireFox to open a standby site, then Use Chrome to open the same standby site, to observe meeting process
+#. Win8, Use FireFox to open a standby site, then Use IE to open the same standby site, to observe meeting process
+#. Win8, Use IE to open a standby site, then Use FireFox to open the same standby site, to observe meeting process
+#. Win8, Use IE to open a standby site, then Use Chrome to open the same standby site, to observe meeting process
+
+#. Win10, Use Chrome to open a standby site, then Use FireFox to open the same standby site, to observe meeting process
+#. Win10, Use Chrome to open a standby site, then Use Edge to open the same standby site, to observe meeting process
+#. Win10, Use FireFox to open a standby site, then Use Chrome to open the same standby site, to observe meeting process
+#. Win10, Use FireFox to open a standby site, then Use Edge to open the same standby site, to observe meeting process
+#. Win10, Use Edge to open a standby site, then Use FireFox to open the same standby site, to observe meeting process
+#. Win10, Use Edge to open a standby site, then Use Chrome to open the same standby site, to observe meeting process
+
+
+
+Test Env
+--------
+
+#. https://qat33.qa.webex.com
+
+#. https://sademo2.dmz.webex.com
+
+Reference
+---------
+
+#. https://wiki.cisco.com/display/wxclient/manual+testing+cases
+#. 
+
+
+

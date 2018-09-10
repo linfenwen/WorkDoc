@@ -19,7 +19,6 @@ participant IHybridClientSink
 participant CHybridClientMgr
 participant CHCCTelephoneService
 
-
 end box
 
 box "dtappcli"

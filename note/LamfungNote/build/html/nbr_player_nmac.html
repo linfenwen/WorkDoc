@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>NBR Player Issue &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="NBR Remove Script" href="nbr_remove_script.html" />
+    <link rel="prev" title="Audio &amp; Video relevant ticket" href="av_ticket_proposal.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="nbr_remove_script.html" title="NBR Remove Script"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="av_ticket_proposal.html" title="Audio &amp; Video relevant ticket"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="nbr-player-issue">
+<h1>NBR Player Issue<a class="headerlink" href="#nbr-player-issue" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-s-the-problem">
+<h2>What&#8217;s the problem<a class="headerlink" href="#what-s-the-problem" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>CSCve14122: NBRplayer crash sometimes when plugout then plugin USB audio device</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>CDETS Link</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cdetsng.cisco.com/webui/;jsessionid=CB23A5CC60ED36912DB8A768AC27367B.webui-sandfly#view=CSCve14122">https://cdetsng.cisco.com/webui/;jsessionid=CB23A5CC60ED36912DB8A768AC27367B.webui-sandfly#view=CSCve14122</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="how-to-reproduce">
+<h2>How to reproduce<a class="headerlink" href="#how-to-reproduce" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Open NBR player first, then plug in a USB device,  set to default device in system, open an arf file to play,  plug out/in USB device, it doesn’t crash.</li>
+<li>Open NBR player, open an arf file to play, plug in a USB device, plug out/in device, it doesn’t crash.</li>
+<li>Plug in a USB device, set to default device, open nbr player, open an arf file to play, plug out/in usb device, it will crash after 2-3 operations.</li>
+</ol>
+</div>
+<div class="section" id="what-s-the-root-cause">
+<h2>What&#8217;s the root cause<a class="headerlink" href="#what-s-the-root-cause" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Disabled create m_pMixer, then built NBR pfw ‘s, It doesn’t crash any more.</li>
+<li>Reviewed the mixer code,  find it will create volume control on default device(wave id 0),</li>
+<li>So in this case, when default change, it doesn’t release it, then it may cause system has problem on reference.</li>
+</ol>
+</div>
+<div class="section" id="what-s-the-solution">
+<h2>What&#8217;s the solution<a class="headerlink" href="#what-s-the-solution" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Nmac.dll export API to nbr player, NBR player call Nmac&#8217;s export API to control volume</li>
+</ol>
+</div>
+<div class="section" id="what-s-the-new-problem-will-be-introduced">
+<h2>What&#8217;s the new problem will be introduced<a class="headerlink" href="#what-s-the-new-problem-will-be-introduced" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>In some case, NBR player can&#8217;t adjust volume</dt>
+<dd><ul class="first last simple">
+<li>If NBR Player don&#8217;t load nmac.dll, and ARF file include SVS</li>
+<li>If NBR Player don&#8217;t load nmac.dll, and ARF file has PD session which include audio</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>The work around solution</dt>
+<dd><ul class="first last simple">
+<li>The customer can adjust volume through system Mixer</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="know-issue">
+<h2>Know issue<a class="headerlink" href="#know-issue" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>An ARF file include SVS and VOIP</dt>
+<dd><ul class="first last simple">
+<li>Plug in and Plug out</li>
+<li>SVS audio will be no voice</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="what-s-case-nmac-dll-will-be-loaded">
+<h2>What&#8217;s case nmac.dll will be loaded<a class="headerlink" href="#what-s-case-nmac-dll-will-be-loaded" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>ARF file include &#8220;APPSVR_PROTOCOLTYPE_TELEPHONY 5&#8221; session</li>
+<li>ARF file include &#8220;APPSVR_PROTOCOLTYPE_MM_AUDIO 20&#8221; session</li>
+</ol>
+</div>
+<div class="section" id="code-change">
+<h2>Code change<a class="headerlink" href="#code-change" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>cctgfork/webex-client-common</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/cctg/repos/webex-client-common/pull-requests/2/overview">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/cctg/repos/webex-client-common/pull-requests/2/overview</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>nbr_pfw_cc.h</dt>
+<dd><ul class="first last simple">
+<li>const WBXUInt32 NBR_PFW_CC_CMD_SET_VOLUME             = 8UL; //0&#8211;65535</li>
+<li>const WBXUInt32 NBR_PFW_CC_CMD_MIXER_UI_READY = 9UL; //0-UI not ready, 1- UI is ready</li>
+<li>const WBXUInt32 NBR_CC_PFW_INFO_MUTE_STATE   = 18UL; //0-unmute, 1-mute</li>
+<li>const WBXUInt32 NBR_CC_PFW_INFO_VOLUME_VALUE = 19UL; //0-65535</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/cctg/repos/webex-client-common/pull-requests/3/overview">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/cctg/repos/webex-client-common/pull-requests/3/overview</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>nbr/h/nbr_cmd_base.h</dt>
+<dd><ul class="first last simple">
+<li>const WBXUInt32 NBR2_PLAY_UI_MIXER_MUTE_NOTIFY = NBR_UI_PLAY_CMDTYPE_BASE + 23UL;</li>
+<li>const WBXUInt32 NBR2_PLAY_UI_MIXER_VOLUME_NOTIFY = NBR_UI_PLAY_CMDTYPE_BASE + 24UL;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>cctgfork/webex-player</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/cctg/repos/webex-player/pull-requests/19/overview">https://bitbucket-eng-chn-sjc1.cisco.com/bitbucket/projects/cctg/repos/webex-player/pull-requests/19/overview</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>common/pfw</dt>
+<dd><ul class="first last simple">
+<li>pfw_play_ctl.cpp</li>
+<li>pfw_play_ctl.h</li>
+<li>pfw_ui_ctl.cpp</li>
+<li>pfw_ui_ctl.h</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>windows/pfw_ui</dt>
+<dd><ul class="first last simple">
+<li>nbr_mainfrm.cpp</li>
+<li>nbr_mainfrm.h</li>
+<li>nbr_pfw.rc</li>
+<li>nbr_pfw.vcxproj</li>
+<li>nbr_playbar.cpp</li>
+<li>nbr_playbar.h</li>
+<li>nbr_playmgr.cpp</li>
+<li>nbr_playmgr.h</li>
+<li>nbr_ui_mgr.cpp</li>
+<li>nbr_uidef.h</li>
+<li>nbr_uiframe.cpp</li>
+<li>nbr_uiframe.h</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="class-diagram">
+<h2>Class Diagram<a class="headerlink" href="#class-diagram" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/nbr_player_class.svg" src="_images/nbr_player_class.svg" /></div>
+<div class="section" id="sequence-diagram">
+<h2>Sequence Diagram<a class="headerlink" href="#sequence-diagram" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">click UI mute</p>
+<blockquote>
+<div><img alt="_images/nbr_player_ui_mute_seq.svg" src="_images/nbr_player_ui_mute_seq.svg" /></div></blockquote>
+</li>
+<li><p class="first">nmac notify nbr_player mute message</p>
+<blockquote>
+<div><img alt="_images/nbr_player_notify_mute_seq.svg" src="_images/nbr_player_notify_mute_seq.svg" /></div></blockquote>
+</li>
+<li><p class="first">click UI to adjust volume</p>
+<blockquote>
+<div><img alt="_images/nbr_player_ui_volume_seq.svg" src="_images/nbr_player_ui_volume_seq.svg" /></div></blockquote>
+</li>
+<li><p class="first">nmac notify nbr_player volume message</p>
+<blockquote>
+<div><img alt="_images/nbr_player_notify_volume_seq.svg" src="_images/nbr_player_notify_volume_seq.svg" /></div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="client-log-keywords">
+<h2>Client log keywords<a class="headerlink" href="#client-log-keywords" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>[UTIL] INFO: [NBR AUDIO] CAudioCtrl::HandlePlayCmd NBR_PFW_CC_CMD_SET_VOLUME</li>
+<li>[UTIL] INFO: [NBR AUDIO] CAudioCtrl::HandlePlayCmd NBR_PFW_CC_CMD_MUTE</li>
+<li>[UTIL] INFO: [NBR AUDIO] CAudioCtrl:HandleCtlInfo, NBR_PFW_CC_INFO_GETMUTE, currentValue = 1</li>
+<li>[UTIL] INFO: [NBR AUDIO] CAudioCtrl:HandleCtlInfo, NBR_PFW_CC_INFO_GETVOLUME, currentValue = 39609</li>
+</ol>
+</div>
+<div class="section" id="test-case">
+<h2>Test case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Plugin/Plugout USB audio device</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>[Precondition]</dt>
+<dd><ul class="first last simple">
+<li>There are 2 audio devices on win7:  USB device(jabra / logitech), Realtek High Definition Audio.</li>
+<li>Set USB device as default device.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Steps]</dt>
+<dd><ul class="first last simple">
+<li>Step 1, Start to playback recording which format is .ARF .</li>
+<li>Step 2, Plug out USB audio device.</li>
+<li>Step 3, Plug in USB audio device.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Expected Result]</dt>
+<dd><ul class="first last simple">
+<li>In step 1, NBR audio will playback through USB device.</li>
+<li>In step 2, after plug out USB device, NBR audio will playback through Realtek High Definition Audio device.</li>
+<li>In step 3, after plug in USB device,  NBR audio will playback through USB device.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Test NBR Player mute button is workable or not</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>[Precondition]</dt>
+<dd><ul class="first last simple">
+<li>Prepare an ARF file which have voice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Steps]</dt>
+<dd><ul class="first last simple">
+<li>Step 1, Open the ARF file and click play</li>
+<li>Step 2, Click Mute button to mute</li>
+<li>Step 3, Click Mute button to unmute</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Expected Result]</dt>
+<dd><ul class="first last simple">
+<li>In Step 1, can hear voice</li>
+<li>In Step 2, NBR Player UI change to muted Icon, can&#8217;t hear voice and the system Mixer speaker muted too</li>
+<li>In Step 3, NBR Player UI change to unmute Icon, can hear voice and the system Mixer speaker unmute too</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Mute/Unmute system mixer speaker</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>[Precondition]</dt>
+<dd><ul class="first last simple">
+<li>Prepare an ARF file which have voice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Steps]</dt>
+<dd><ul class="first last simple">
+<li>Step 1, Open the ARF file and click play</li>
+<li>Step 2, mute system Mixer speaker</li>
+<li>Step 3, unmute system Mixer speaker</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Expected Result]</dt>
+<dd><ul class="first last simple">
+<li>In Step 1, can hear voice</li>
+<li>In Step 2, NBR Player UI change to muted Icon, can&#8217;t hear voice</li>
+<li>In Step 3, NBR Player UI change to unmute Icon, can hear voice</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Test NBR Player volume bar is workable or not</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>[Precondition]</dt>
+<dd><ul class="first last simple">
+<li>Prepare an ARF file which have voice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Steps]</dt>
+<dd><ul class="first last simple">
+<li>Step 1, Open the ARF file and click play</li>
+<li>Step 2, Click the volume bar the change the volume</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Expected Result]</dt>
+<dd><ul class="first last simple">
+<li>In Step 1, can hear voice</li>
+<li>In Step 2, NBR Player UI volume size will change, observe the volume and the system Mixer speaker volume</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Adjust system Mixer speaker volume</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>[Precondition]</dt>
+<dd><ul class="first last simple">
+<li>Prepare an ARF file which have voice</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Steps]</dt>
+<dd><ul class="first last simple">
+<li>Step 1, Open the ARF file and click play</li>
+<li>Step 2, Adjust system mixer volume speaker volume</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Expected Result]</dt>
+<dd><ul class="first last simple">
+<li>In Step 1, can hear voice</li>
+<li>In Step 2, NBR Player UI volume size will change</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Play an ARF file which is without any audio relevant session</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>[Precondition]</dt>
+<dd><ul class="first last simple">
+<li>Prepare an ARF file without any audio relevant session</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Steps]</dt>
+<dd><ul class="first last simple">
+<li>Step 1, Open the ARF file and click play</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>[Expected Result]</dt>
+<dd><ul class="first last simple">
+<li>In Step 1, can&#8217;t hear voice</li>
+<li>In Step 1, NBR Player UI: mute button and volume bar was disabled</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">APPSVR_PROTOCOLTYPE_TELEPHONY = 5</p>
+</li>
+<li><p class="first">APPSVR_PROTOCOLTYPE_DOCUMENT_SHARING = 6</p>
+</li>
+<li><p class="first">APPSVR_PROTOCOLTYPE_FILE_SHARING = 10</p>
+</li>
+<li><dl class="first docutils">
+<dt>APPSVR_PROTOCOLTYPE_MM_AUDIO = 20</dt>
+<dd><ul class="first last simple">
+<li>[Precondition]</li>
+<li>[Steps]</li>
+<li>[Expected Result]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">APPSVR_PROTOCOLTYPE_STREAM_VIDEO = 51</p>
+</li>
+</ol>
+</div>
+<div class="section" id="nbr-player-appsvr-protocoltype-component-map">
+<h2>NBR Player APPSVR_PROTOCOLTYPE &amp; Component Map<a class="headerlink" href="#nbr-player-appsvr-protocoltype-component-map" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils" id="id1">
+<caption><span class="caption-text">Protocol Type &amp; Component</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="20%" />
+<col width="20%" />
+<col width="10%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Protocol Type</th>
+<th class="head">Index</th>
+<th class="head">Component</th>
+<th class="head">Comments</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>APPSVR_PROTOCOLTYPE_CHAT 1</td>
+<td>CHATINDEX 0</td>
+<td>nbrchat.dll</td>
+<td>chat</td>
+</tr>
+<tr class="row-odd"><td>APPSVR_PROTOCOLTYPE_WEBTOUR 3</td>
+<td>QAINDEX 1</td>
+<td>nbrqa.dll</td>
+<td>qa</td>
+</tr>
+<tr class="row-even"><td>APPSVR_PROTOCOLTYPE_MM_VIDEO 21</td>
+<td>VIDEOINDEX 2</td>
+<td>nmvc.dll</td>
+<td>video</td>
+</tr>
+<tr class="row-odd"><td>APPSVR_PROTOCOLTYPE_NOTETAKER 16</td>
+<td>NOTEINDEX 3</td>
+<td>nbrnote.dll</td>
+<td>notes</td>
+</tr>
+<tr class="row-even"><td>APPSVR_PROTOCOLTYPE_INTERACTIVE_FORM 8</td>
+<td>POLLINDEX 4</td>
+<td>nbrpoll.dll</td>
+<td>polling</td>
+</tr>
+<tr class="row-odd"><td>APPSVR_PROTOCOLTYPE_FILE_SHARING 10</td>
+<td>FILEINDEX 5</td>
+<td>nbrft.dll</td>
+<td>file t</td>
+</tr>
+<tr class="row-even"><td>APPSVR_PROTOCOLTYPE_APPLICATION_SHARING 4</td>
+<td>ASINDEX 9</td>
+<td>nbras.dll</td>
+<td>as</td>
+</tr>
+<tr class="row-odd"><td>APPSVR_PROTOCOLTYPE_DOCUMENT_SHARING 6</td>
+<td>PDINDEX 8</td>
+<td>nbrpd.dll</td>
+<td>pd</td>
+</tr>
+<tr class="row-even"><td>APPSVR_PROTOCOLTYPE_TELEPHONY 5</td>
+<td>VOIPINDEX 10</td>
+<td>nmac.dll</td>
+<td>voip</td>
+</tr>
+<tr class="row-odd"><td>APPSVR_PROTOCOLTYPE_MM_AUDIO 20</td>
+<td>VOIPINDEX 10</td>
+<td>nmac.dll</td>
+<td>voip</td>
+</tr>
+<tr class="row-even"><td>APPSVR_PROTOCOLTYPE_STREAM_VIDEO 51</td>
+<td>STREAMINDEX 11</td>
+<td>nmfs.dll</td>
+<td>SVS</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">NBR Player Issue</a><ul>
+<li><a class="reference internal" href="#what-s-the-problem">What&#8217;s the problem</a></li>
+<li><a class="reference internal" href="#how-to-reproduce">How to reproduce</a></li>
+<li><a class="reference internal" href="#what-s-the-root-cause">What&#8217;s the root cause</a></li>
+<li><a class="reference internal" href="#what-s-the-solution">What&#8217;s the solution</a></li>
+<li><a class="reference internal" href="#what-s-the-new-problem-will-be-introduced">What&#8217;s the new problem will be introduced</a></li>
+<li><a class="reference internal" href="#know-issue">Know issue</a></li>
+<li><a class="reference internal" href="#what-s-case-nmac-dll-will-be-loaded">What&#8217;s case nmac.dll will be loaded</a></li>
+<li><a class="reference internal" href="#code-change">Code change</a></li>
+<li><a class="reference internal" href="#class-diagram">Class Diagram</a></li>
+<li><a class="reference internal" href="#sequence-diagram">Sequence Diagram</a></li>
+<li><a class="reference internal" href="#client-log-keywords">Client log keywords</a></li>
+<li><a class="reference internal" href="#test-case">Test case</a></li>
+<li><a class="reference internal" href="#nbr-player-appsvr-protocoltype-component-map">NBR Player APPSVR_PROTOCOLTYPE &amp; Component Map</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="av_ticket_proposal.html"
+                        title="previous chapter">Audio &amp; Video relevant ticket</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="nbr_remove_script.html"
+                        title="next chapter">NBR Remove Script</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/nbr_player_nmac.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="nbr_remove_script.html" title="NBR Remove Script"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="av_ticket_proposal.html" title="Audio &amp; Video relevant ticket"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

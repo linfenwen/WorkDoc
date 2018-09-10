@@ -1,0 +1,403 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>F7112 Local H.264-based Recordings and Playback &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="next" title="F7112 US29571: Understand current local recording background knowledge" href="f7112_US29571.html" />
+    <link rel="prev" title="cscvi43565 Meeting Crash" href="f6630_cscvi43565.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="f7112_US29571.html" title="F7112 US29571: Understand current local recording background knowledge"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="f6630_cscvi43565.html" title="cscvi43565 Meeting Crash"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="f7112-local-h-264-based-recordings-and-playback">
+<h1>F7112 Local H.264-based Recordings and Playback<a class="headerlink" href="#f7112-local-h-264-based-recordings-and-playback" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>2018.03.21, Hold F7112 first meeting</dt>
+<dd><ul class="first last">
+<li><p class="first">Learn Local Recording current status</p>
+</li>
+<li><p class="first">Learn Local Recording history</p>
+</li>
+<li><dl class="first docutils">
+<dt>Meeting Recording</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://alpha.webex.com/alpha/lsr.php?RCID=803c4018d4eb492899ed55925b1b649d">https://alpha.webex.com/alpha/lsr.php?RCID=803c4018d4eb492899ed55925b1b649d</a></li>
+<li>Recording password: xUTqwJW4</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Meeting Minutes</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Background from Walker</dt>
+<dd><ul class="first last simple">
+<li>Current WRF file maybe include two type data: DLC and H264</li>
+<li>Current WRF Editor can&#8217;t edit when the WRF file include DLC and H264 data</li>
+<li>Many customer complain WRF Editor can&#8217;t edit WRF file</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Parker said:</dt>
+<dd><ol class="first last arabic">
+<li><dl class="first docutils">
+<dt>Local Recording had two ways</dt>
+<dd><ul class="first last simple">
+<li>Online Local Recording: WRF file generate by meeting process</li>
+<li>Offline Local Recording: WRF file generate by AtAuthor process</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Data handle</dt>
+<dd><ul class="first last simple">
+<li>Local Recording call AS component to capture meeting window</li>
+<li>AS component support two different encode logic: DLC and H264</li>
+<li>When AS component capture image data it will notify Local Recording through the callback interface, then Local Recording will use WRF data format to record</li>
+<li>Local Recording call AudioCC component to capture audio</li>
+<li>When AudioCC component capture audio data it will notify Local Recording through the callback interface, then Local Recording will use WRF data format to record</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Playback</dt>
+<dd><ul class="first last simple">
+<li>Local Recording Player parse WRF file</li>
+<li>Local Recording Player pass PCM data to AudioCC component base on timestamp, then AudioCC play the audio data</li>
+<li>Local Recording Player pass DLC or H264 data to AS component base on timestamp, then AS play the video data</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Others</dt>
+<dd><ul class="first last simple">
+<li>WOT.h defined WRF header format, key frame format</li>
+<li>Every 1 minute will generate one key frame</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Titus said:</dt>
+<dd><ol class="first last arabic simple">
+<li>He had dumped image data from AS component through hard code AS code</li>
+<li>AS component not just capture meeting process&#8217;s window, it also capture cursor</li>
+<li>He had also given some suggestion from AS side</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>US29571: Understand current local recording background knowledge</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Task</dt>
+<dd><ul class="first last simple">
+<li>Provide support from AS side</li>
+<li>Provide support from AtAuthor side</li>
+<li>How current AtAuthor work</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Output</dt>
+<dd><ul class="first last simple">
+<li>Document current local recording work&#8217;s logic</li>
+<li>Define what will do in the next sprint</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+<div class="section" id="plan">
+<h2>Plan<a class="headerlink" href="#plan" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="parker">
+<h2>Parker<a class="headerlink" href="#parker" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>AtAuthor.exe</li>
+<li>Local Recording call AS</li>
+<li>Local Recording call Audio</li>
+<li>Every one munite will create one key frame</li>
+<li>WRF Header</li>
+<li>WOT.h, Key Frame Format</li>
+<li>PlayBack can play WRF file</li>
+<li>According Timestamp, as and audio</li>
+</ol>
+<div class="section" id="online-recording">
+<h3>Online Recording<a class="headerlink" href="#online-recording" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Just Recording meeting window</li>
+<li>Customer select file format</li>
+<li>audiocc</li>
+<li>ARF:</li>
+</ol>
+</div>
+<div class="section" id="capture">
+<h3>Capture<a class="headerlink" href="#capture" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>AS</li>
+<li>WME, HFPS</li>
+</ol>
+</div>
+<div class="section" id="q-a">
+<h3>Q &amp; A<a class="headerlink" href="#q-a" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>How to record video</li>
+<li>How to record chat</li>
+<li>How AtAuthor.exe comunicate with meeting process?</li>
+<li>Offline switch to Online</li>
+<li>AS H264 data, just picture</li>
+<li>DLC or H264, dump H264 data, mp4 or not</li>
+<li>If use AS, need consider DLC or H264</li>
+<li>If use other method to capture picture, need consider cursor</li>
+</ol>
+</div>
+</div>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="daily-works">
+<h2>Daily Works<a class="headerlink" href="#daily-works" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">&#64;2018-03-16 received wiki link in Reference</p>
+</li>
+<li><dl class="first docutils">
+<dt>&#64;2018-03-26 Test current WRF logic</dt>
+<dd><ul class="first last simple">
+<li>Meeting Process will show record status in the status bar</li>
+<li>Meeting Process will show record status in the meeting title</li>
+<li>Local Recording Status will sync up with all the attendee</li>
+<li>Even meeting without any voice, WRF will record voice by capture system sound</li>
+<li>Debug how atauthor retrieve audio data</li>
+<li>Record PC Audio</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/PDINFO/F7112%3ALocal+H.264-based+Recordings+and+Playback">https://wiki.cisco.com/display/PDINFO/F7112%3ALocal+H.264-based+Recordings+and+Playback</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://wiki.cisco.com/display/PDINFO/09-F7112%3ALocal+H.264-based+Recordings+and+Playback">https://wiki.cisco.com/display/PDINFO/09-F7112%3ALocal+H.264-based+Recordings+and+Playback</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Like a Native English Speaker</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=9b7lFcGbxK0">https://www.youtube.com/watch?v=9b7lFcGbxK0</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PCM to ACC</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://blog.csdn.net/leixiaohua1020/article/details/25430449">http://blog.csdn.net/leixiaohua1020/article/details/25430449</a></li>
+<li><a class="reference external" href="https://github.com/leixiaohua1020/simplest_ffmpeg_audio_encoder">https://github.com/leixiaohua1020/simplest_ffmpeg_audio_encoder</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>PCM(Pulse Code Modulation) File Format Introduce</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://blog.csdn.net/ce123_zhouwei/article/details/9359389">http://blog.csdn.net/ce123_zhouwei/article/details/9359389</a></li>
+<li><a class="reference external" href="https://github.com/leixiaohua1020/simplest_ffmpeg_audio_encoder">https://github.com/leixiaohua1020/simplest_ffmpeg_audio_encoder</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AAC(Advanced Audio Coding) Audio File Format</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://blog.csdn.net/wlsfling/article/details/5876016">http://blog.csdn.net/wlsfling/article/details/5876016</a></li>
+<li>ADIF: Audio Data Interchange Format</li>
+<li>ADTS: Audio Data Transport Stream</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>MP4</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://bytescout.com/blog/2014/09/mp4-file-format.html">https://bytescout.com/blog/2014/09/mp4-file-format.html</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>AppShare Document 2014</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cisco.box.com/s/pe91of1i8d0vzcok7ns0assz5nb88ii1">https://cisco.box.com/s/pe91of1i8d0vzcok7ns0assz5nb88ii1</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Others</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://blog.csdn.net/dancing_night/article/details/46698853">http://blog.csdn.net/dancing_night/article/details/46698853</a></li>
+<li><a class="reference external" href="http://www.cucer.cn/2016/03/10/ffmpeg-screen-capture.html">http://www.cucer.cn/2016/03/10/ffmpeg-screen-capture.html</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first"><a class="reference external" href="http://blog.sina.com.cn/s/blog_56e19aa70101cc3o.html">http://blog.sina.com.cn/s/blog_56e19aa70101cc3o.html</a></p>
+</li>
+<li><p class="first"><a class="reference external" href="https://blog.csdn.net/liulina603/article/details/24637039">https://blog.csdn.net/liulina603/article/details/24637039</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>mp4v2</dt>
+<dd><ul class="first last simple">
+<li>H264 codec to MP4 file</li>
+<li><a class="reference external" href="https://blog.csdn.net/qq_29350001/article/details/73742075">https://blog.csdn.net/qq_29350001/article/details/73742075</a></li>
+<li><a class="reference external" href="http://mp4v2.googlecode.com/svn/trunk/">http://mp4v2.googlecode.com/svn/trunk/</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/">https://blog.csdn.net/</a><a href="#id1"><span class="problematic" id="id2">firehood_</span></a>/article/details/8813587</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">F7112 Local H.264-based Recordings and Playback</a><ul>
+<li><a class="reference internal" href="#plan">Plan</a></li>
+<li><a class="reference internal" href="#parker">Parker</a><ul>
+<li><a class="reference internal" href="#online-recording">Online Recording</a></li>
+<li><a class="reference internal" href="#capture">Capture</a></li>
+<li><a class="reference internal" href="#q-a">Q &amp; A</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#daily-works">Daily Works</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="f6630_cscvi43565.html"
+                        title="previous chapter">cscvi43565 Meeting Crash</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="f7112_US29571.html"
+                        title="next chapter">F7112 US29571: Understand current local recording background knowledge</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/f7112.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="f7112_US29571.html" title="F7112 US29571: Understand current local recording background knowledge"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="f6630_cscvi43565.html" title="cscvi43565 Meeting Crash"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

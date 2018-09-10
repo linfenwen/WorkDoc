@@ -1,0 +1,77 @@
+CSCvm03626: cannot pop up update plugin dialog after end meeting
+================================================================
+
+What's the problem
+------------------
+
+::
+ 
+	Test site:
+	ha3web.qa.webex.com/nick32ep - 32.15.10
+	ha3web.qa.webex.com/nick32sp - 32.15.20
+	nick/pass
+
+	precondition:
+	UAC on
+
+	Steps:
+	1. start mc on 32.15.10 site with activex (old ieatgpc.dll) or install mc msi.
+	2. start mc on 32.15.20 site with activex (new ieatgpc.dll)
+	3.end meeting
+
+	Expected Result:
+	pop up update plugin dialog after end meeting
+
+	Actual Result:
+	cannot pop up
+
+
+What's the solution
+-------------------
+
+#. For MC
+	+ 2018.04.07, first commit
+		- f7df03dbe8ac6994f99bce13ab3309d1eb9b98a9
+	+ Atmgr.cpp
+		- ProcessEndMeeting
+	+ AtmgrMeetingMgr.cpp
+		- CAtmgrMeetingMgr::OnClose
+		- ProcessEndMeeting
+
+#. For EC
+	+ 2018.04.10, first commit
+		- ec3b502978576d328f1c2fceacfb6e67432f9783
+	+ AtMgrContainer.cpp
+	+ CAtMgrContainerWnd::OnDestroy
+		- ProcessEndMeeting
+
+What's the root cause
+---------------------
+
+#. Introduce time, 2017.06.21
+	+ 449653e751d98bc02cf5d7a14092b479a440128d
+	+ AtmgrUtilImpl.cpp
+
+#. This is a legacy issue for ie plugin upgrade feature
+
+#. At 2018.04.07 had fixed this issue
+	+ f7df03dbe8ac6994f99bce13ab3309d1eb9b98a9
+	+ move the iecheckupdate to OnClose, as the original place will not works
+
+Test Env
+--------
+
+#. Site
+	+ ha3web.qa.webex.com/nick32ep
+	+ ha3web.qa.webex.com/nick32sp
+	+ Account
+		nick/pass
+
+
+Reference
+---------
+
+#. https://cdetsng.cisco.com/webui/#view=CSCvm03626
+
+
+

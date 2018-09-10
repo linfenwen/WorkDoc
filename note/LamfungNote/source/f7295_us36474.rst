@@ -1,0 +1,111 @@
+US36474 Sign Service Error Code Unify
+=====================================
+
+Webex Error Code
+~~~~~~~~~~~~~~~~
+
+#. https://wiki.cisco.com/display/wxclient/Webex+Error+Code 
+
+Rally
+~~~~~
+
+#. https://rally1.rallydev.com/#/60282351184d/detail/userstory/240695177852?fdp=true 
+
+How message compiler work
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	.. image:: _static/ms_message_compiler.png
+	
+	
+WebEx Env
+~~~~~~~~~
+
+#. WebexCI
+	+ https://webexci.cisco.com/
+
+#. Jira
+	+ https://jira-eng-gpk2.cisco.com/jira/secure/RapidBoard.jspa?rapidView=1420&projectKey=WEBEX	
+
+#. Jira WiKi
+	+ https://wiki.cisco.com/display/webexchina/jira+FAQ+for+Webex+Bugs+Tracking
+	
+#. Edit start meeting method
+	+ Webex Administration
+		- Common Site Settings => Primary client download method
+		- Enable URL protocol
+	
+Test Case
+~~~~~~~~~
+
+#. URL Protocol
+	+ "C:\\ProgramData\\WebEx\\webex.exe" "wbx:DocShow:W1dlYkV4XQ0KRW5hYmxlTXVsdGlDbGllbnRWZXJzaW9uPXRydWUNCkdwY01vdmluZ0luU3ViZGlyPVdhbnRhDQpHcGNTaXRlRG9tYWluPWdvLndlYmV4LmNvbQ0KY2xpZW50U3RhbmRieT0xDQp1cmxyb290PWh0dHBzOi8vYWthbWFpY2RuLndlYmV4LmNvbS9jbGllbnQvV0JYY2xpZW50LTMzLjMuNS00L3dlYmV4L3NlbGYNCnRyYWNraW5nU2Vzc2lvbklEPUU2RjA1RTdGRUI3NzQ2NzJBOEYzRTcxMkNBRjJFRDVFDQpwcm9kdWN0bmFtZT1tYw0KQ2xpZW50QnVpbGRWZXJzaW9uPU16TXVNeTQxTGpRPQ0KZ3BjZGVjdmVyPTI3LCAxNywgMjAxNywgMzE3DQpncGNleHR2ZXI9MTAwMzMsIDMsIDIwMTgsIDYxNA0KR3BjRG93bmxvYWRPbmx5PTENCmxvY2Fscm9vdHNlY3Rpb252ZXI9V2ViRXhcVDMzX1VNQw0K"
+	+ T2
+		- "C:\\Users\\lawen\\AppData\\Local\\WebEx\\webex.exe" "wbx:test"
+		- "C:\\Users\\lawen\\AppData\\Local\\WebEx\\webex.exe" "wbx:,go,102578488825919747,491443592,MC,1-1-0,SDJTSwAAAAcc_OYH2TmU_knNXQ6uAWFyhjOzLsyOVJIxkeSSeySlkw2_webex.exe"
+	
+FQA
+~~~
+
+#. Where is the mc.exe
+	+ Win10
+	+ C:\\Program Files (x86)\\Windows Kits\\8.1\\bin\\x64\\mc.exe
+	
+#. To compile the message text file, use the following command:
+	+ mc -U provider.mc
+
+#. To compile the resources that the message compiler generated, use the following command:
+	+ rc provider.rc
+
+Reference
+~~~~~~~~~
+
+#. Reporting Events
+	+ https://docs.microsoft.com/en-us/windows/desktop/EventLog/reporting-an-event 
+	
+#. Message Compiler
+	+ https://docs.microsoft.com/en-us/windows/desktop/wes/message-compiler--mc-exe-
+	
+#. How to use Message Compiler (MC.exe)
+	+ https://blog.csdn.net/seastars_sh/article/details/8228646
+
+#. Configure the message compiler (mc.exe) as a custom compiler
+	+ https://stackoverflow.com/questions/3026855/configure-the-message-compiler-mc-exe-as-a-custom-compiler-step-in-vc-2010/4937022#4937022
+	
+#. Language Identifiers
+	+ https://docs.microsoft.com/en-us/windows/desktop/Intl/language-identifier-constants-and-strings
+	
+#. Windows Event Viewer
+	+ https://www.howtogeek.com/123646/htg-explains-what-the-windows-event-viewer-is-and-how-you-can-use-it/ 
+	
+#. Windows Event Log
+	+ https://docs.microsoft.com/en-us/windows/desktop/WES/windows-event-log
+	
+#. SCF
+	+ https://sqbu-github.cisco.com/WebExSquared/spark-client-framework
+	
+#. Launching applications using custom browser protocols
+	+ https://support.shotgunsoftware.com/hc/en-us/articles/219031308-Launching-applications-using-custom-browser-protocols
+	+ https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/platform-apis/aa767914(v=vs.85)
+	
+#. How to verify the digital signature of a file
+	+ https://blogs.msdn.microsoft.com/winsdk/2013/08/07/using-winverifytrust-api-to-verify-the-embedded-signature-of-a-file-or-fall-back-to-catalog-signature-verification/
+	+ https://social.technet.microsoft.com/Forums/en-US/cf474fc3-c081-4e30-80c0-edae3f675378/howto-verify-the-digital-signature-of-a-file?forum=windowsdevelopment
+	+ https://www.winehq.org/pipermail/wine-patches/2008-December/066559.html
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+

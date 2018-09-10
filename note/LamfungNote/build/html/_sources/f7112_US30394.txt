@@ -1,0 +1,489 @@
+
+US30394 : Research how to generate mp4 file
+===========================================
+
+MP4
+---
+
+MP4 is a container format that can store video, audio and other data.
+
+::
+ 
+    MP4 file format was first released in 2001 as ISO/IEC 14496-1:2001, and was revised in 2 years later as ISO/IEC 14496-14:2003. 
+    It is based on QuickTime file format, but quickly becomes more popular than QuickTime format and others like AVI, WMV and MKV, 
+    because of its unique features. Currently, MP4 is natively accepted by computers, tablets, phones, game consoles, 
+    TVs and more devices manufactured by Apple, Microsoft, Samsung, HTC, Google, Huawei, Amazon, Lenovo and other brands. 
+    Besides, it is widely accepted by various media players, video editing software, and broadly used over the web. 
+
+.. figure:: _static/mp4-file-format.png
+	:height: 1422px
+	:width: 1124px
+	:scale: 55 %
+
+What file formats does MP4 support?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+::
+ 
+    Video formats: H.264/MPEG-4 AVC, MPEG-4(A)SP, MPEG-1, MPEG-2, H.265/HEVC, VC-1/WMV, Real Video, Theora, Microsoft MPEG4 V2, VP8, VP9, MVC
+
+    Audio formats: MP3, AAC, WMA, Opus, AC-3, DTS, LPCM, ALAC, DTS-HD
+
+    Caption/subtitle formats: MPEG-4 Timed Text
+
+MP4 vs H.264
+~~~~~~~~~~~~
+
+::
+ 
+    MP4 is a file container format, while H.264 is actually a video compression codec that requires a video container to host the encoded video. 
+    Normally, H.264 encoded files can be MP4 files as well as AVI or MKV files.
+
+ffmpeg
+------
+
+#. History
+
+    ::
+ 
+     The project was started by Fabrice Bellard[7] (using the pseudonym "Gérard Lantau") in 2000, and was led by Michael Niedermayer from 2004 until 2015.
+     On January 10, 2014, two Google employees announced that over 1000 bugs had been fixed in FFmpeg during the previous two years
+
+
+#. Overview
+
+    ::
+
+         FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter 
+         and play pretty much anything that humans and machines have created. It supports the most obscure ancient 
+         formats up to the cutting edge. No matter if they were designed by some standards committee, the community 
+         or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure 
+         FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build 
+         environments, machine architectures, and configurations. 
+
+
+#. FFmpeg License
+
+    ::
+
+        FFmpeg is licensed under the GNU Lesser General Public License (LGPL) version 2.1 or later. However, FFmpeg 
+        incorporates several optional parts and optimizations that are covered by the GNU General Public License (GPL) 
+        version 2 or later. If those parts get used the GPL applies to all of FFmpeg.
+
+        Read the license texts to learn how this affects programs built on top of FFmpeg or reusing FFmpeg. 
+        You may also wish to have a look at the GPL FAQ.
+
+        Note that FFmpeg is not available under any other licensing terms, especially not proprietary/commercial ones, 
+        not even in exchange for payment. 
+
+
+mp4v2
+-----
+
+#. Overview
+
+    ::
+ 
+        The MP4v2 library provides an API to create and modify mp4 files as defined by ISO-IEC:14496-1:2001 MPEG-4 Systems.
+        This file format is derived from Apple's QuickTime file format that has been used as a multimedia file format in a 
+        variety of platforms and applications. It is a very powerful and extensible format that can accommodate practically
+        any type of media.
+
+        MP4v2 was originally bundled with mpeg4ip library, but has been moved into its own maintained library due to a 
+        combination of the cessation of support of mpeg4ip and the usefulness of this library on its own.
+
+#. License
+
+	::
+	 
+	 Mozilla Public License Version 1.1
+
+
+#. APIs
+	+ MP4AddAC3AudioTrack
+	+ MP4AddALawAudioTrack
+	+ MP4AddAmrAudioTrack
+	+ **MP4AddAudioTrack**
+	+ MP4AddChapter
+	+ MP4AddChapterTextTrack
+	+ MP4AddColr
+	+ MP4AddEncAudioTrack
+	+ MP4AddEncH264VideoTrack
+	+ MP4AddEncVideoTrack
+	+ MP4AddH263VideoTrack
+	+ **MP4AddH264PictureParameterSet**
+	+ **MP4AddH264SequenceParameterSet**
+	+ **MP4AddH264VideoTrack**
+	+ MP4AddHintTrack
+	+ MP4AddHrefTrack
+	+ MP4AddIPodUUID
+	+ MP4AddNeroChapter
+	+ MP4AddODTrack
+	+ MP4AddPixelAspectRatio
+	+ MP4AddRtpESConfigurationPacket
+	+ MP4AddRtpHint
+	+ MP4AddRtpImmediateData
+	+ MP4AddRtpPacket
+	+ MP4AddRtpSampleData
+	+ MP4AddRtpVideoHint
+	+ MP4AddSceneTrack
+	+ MP4AddSubpicTrack
+	+ MP4AddSubtitleTrack
+	+ MP4AddSystemsTrack
+	+ MP4AddTextTrack
+	+ MP4AddTrack
+	+ MP4AddTrackEdit
+	+ MP4AddULawAudioTrack
+	+ MP4AddVideoTrack
+	+ MP4AppendHintTrackSdp
+	+ MP4AppendSessionSdp
+	+ MP4BinaryToBase16
+	+ MP4BinaryToBase64
+	+ MP4ChangeMovieTimeScale
+	+ MP4CloneTrack
+	+ **MP4Close**
+	+ MP4ConvertChapters
+	+ MP4ConvertFromMovieDuration
+	+ MP4ConvertFromTrackDuration
+	+ MP4ConvertFromTrackTimestamp
+	+ MP4ConvertToTrackDuration
+	+ MP4ConvertToTrackTimestamp
+	+ MP4CopySample
+	+ MP4CopyTrack
+	+ **MP4Create**
+	+ **MP4CreateEx**
+	+ MP4DefaultISMACrypParams
+	+ MP4DeleteChapters
+	+ MP4DeleteTrack
+	+ MP4DeleteTrackEdit
+	+ MP4Dump
+	+ MP4EncAndCloneTrack
+	+ MP4EncAndCopySample
+	+ MP4EncAndCopyTrack
+	+ MP4FileInfo
+	+ MP4FindTrackId
+	+ MP4FindTrackIndex
+	+ MP4Free
+	+ MP4GetAmrModeSet
+	+ MP4GetAudioProfileLevel
+	+ MP4GetBytesProperty
+	+ MP4GetChapters
+	+ MP4GetDuration
+	+ MP4GetFilename
+	+ MP4GetFloatProperty
+	+ MP4GetGraphicsProfileLevel
+	+ MP4GetHintTrackReferenceTrackId
+	+ MP4GetHintTrackRtpPayload
+	+ MP4GetHintTrackSdp
+	+ MP4GetHrefTrackBaseUrl
+	+ MP4GetIntegerProperty
+	+ MP4GetNumberOfTracks
+	+ MP4GetODProfileLevel
+	+ MP4GetRtpHintNumberOfPackets
+	+ MP4GetRtpPacketBFrame
+	+ MP4GetRtpPacketTransmitOffset
+	+ MP4GetRtpTimestampStart
+	+ MP4GetSampleDuration
+	+ MP4GetSampleIdFromEditTime
+	+ MP4GetSampleIdFromTime
+	+ MP4GetSampleRenderingOffset
+	+ MP4GetSampleSize
+	+ MP4GetSampleSync
+	+ MP4GetSampleTime
+	+ MP4GetSceneProfileLevel
+	+ MP4GetSessionSdp
+	+ MP4GetStringProperty
+	+ MP4GetTimeScale
+	+ MP4GetTrackAudioChannels
+	+ MP4GetTrackAudioMpeg4Type
+	+ MP4GetTrackBitRate
+	+ MP4GetTrackBytesProperty
+	+ MP4GetTrackDuration
+	+ MP4GetTrackDurationPerChunk
+	+ MP4GetTrackESConfiguration
+	+ MP4GetTrackEditDuration
+	+ MP4GetTrackEditDwell
+	+ MP4GetTrackEditMediaStart
+	+ MP4GetTrackEditTotalDuration
+	+ MP4GetTrackEsdsObjectTypeId
+	+ MP4GetTrackFixedSampleDuration
+	+ MP4GetTrackFloatProperty
+	+ MP4GetTrackH264LengthSize
+	+ MP4GetTrackH264ProfileLevel
+	+ MP4GetTrackH264SeqPictHeaders
+	+ MP4GetTrackIntegerProperty
+	+ MP4GetTrackLanguage
+	+ MP4GetTrackMaxSampleSize
+	+ MP4GetTrackMediaDataName
+	+ MP4GetTrackMediaDataOriginalFormat
+	+ MP4GetTrackName
+	+ MP4GetTrackNumberOfEdits
+	+ MP4GetTrackNumberOfSamples
+	+ MP4GetTrackStringProperty
+	+ MP4GetTrackTimeScale
+	+ MP4GetTrackType
+	+ MP4GetTrackVideoFrameRate
+	+ MP4GetTrackVideoHeight
+	+ MP4GetTrackVideoMetadata
+	+ MP4GetTrackVideoWidth
+	+ MP4GetVideoProfileLevel
+	+ MP4HaveAtom
+	+ MP4HaveTrackAtom
+	+ MP4Info
+	+ MP4IsIsmaCrypMediaTrack
+	+ MP4ItmfAddItem
+	+ MP4ItmfGetItems
+	+ MP4ItmfGetItemsByCode
+	+ MP4ItmfGetItemsByMeaning
+	+ MP4ItmfItemAlloc
+	+ MP4ItmfItemFree
+	+ MP4ItmfItemListFree
+	+ MP4ItmfRemoveItem
+	+ MP4ItmfSetItem
+	+ MP4LogGetLevel
+	+ MP4LogSetLevel
+	+ MP4Make3GPCompliant
+	+ MP4MakeIsmaCompliant
+	+ MP4MakeIsmaSdpIod
+	+ MP4Modify
+	+ MP4Optimize
+	+ MP4Read
+	+ MP4ReadProvider
+	+ MP4ReadRtpHint
+	+ MP4ReadRtpPacket
+	+ MP4ReadSample
+	+ MP4ReadSampleFromEditTime
+	+ MP4ReadSampleFromTime
+	+ MP4ReferenceSample
+	+ MP4SetAmrDecoderVersion
+	+ MP4SetAmrModeSet
+	+ MP4SetAmrVendor
+	+ **MP4SetAudioProfileLevel**
+	+ MP4SetBytesProperty
+	+ MP4SetChapters
+	+ MP4SetFloatProperty
+	+ MP4SetGraphicsProfileLevel
+	+ MP4SetH263Bitrates
+	+ MP4SetH263DecoderVersion
+	+ MP4SetH263Vendor
+	+ MP4SetHintTrackRtpPayload
+	+ MP4SetHintTrackSdp
+	+ MP4SetIntegerProperty
+	+ MP4SetLogCallback
+	+ MP4SetODProfileLevel
+	+ MP4SetRtpTimestampStart
+	+ MP4SetSampleRenderingOffset
+	+ MP4SetSceneProfileLevel
+	+ MP4SetSessionSdp
+	+ MP4SetStringProperty
+	+ MP4SetTimeScale
+	+ MP4SetTrackBytesProperty
+	+ MP4SetTrackDurationPerChunk
+	+ MP4SetTrackESConfiguration
+	+ MP4SetTrackEditDuration
+	+ MP4SetTrackEditDwell
+	+ MP4SetTrackEditMediaStart
+	+ MP4SetTrackFloatProperty
+	+ MP4SetTrackIntegerProperty
+	+ MP4SetTrackLanguage
+	+ MP4SetTrackName
+	+ MP4SetTrackStringProperty
+	+ MP4SetTrackTimeScale
+	+ **MP4SetVideoProfileLevel**
+	+ MP4TagsAddArtwork
+	+ MP4TagsAlloc
+	+ MP4TagsFetch
+	+ MP4TagsFree
+	+ MP4TagsHasMetadata
+	+ MP4TagsRemoveArtwork
+	+ MP4TagsSetAlbum
+	+ MP4TagsSetAlbumArtist
+	+ MP4TagsSetArtist
+	+ MP4TagsSetArtistID
+	+ MP4TagsSetArtwork
+	+ MP4TagsSetCategory
+	+ MP4TagsSetComments
+	+ MP4TagsSetCompilation
+	+ MP4TagsSetComposer
+	+ MP4TagsSetComposerID
+	+ MP4TagsSetContentID
+	+ MP4TagsSetContentRating
+	+ MP4TagsSetCopyright
+	+ MP4TagsSetDescription
+	+ MP4TagsSetDisk
+	+ MP4TagsSetEncodedBy
+	+ MP4TagsSetEncodingTool
+	+ MP4TagsSetGapless
+	+ MP4TagsSetGenre
+	+ MP4TagsSetGenreID
+	+ MP4TagsSetGenreType
+	+ MP4TagsSetGrouping
+	+ MP4TagsSetHDVideo
+	+ MP4TagsSetITunesAccount
+	+ MP4TagsSetITunesAccountType
+	+ MP4TagsSetITunesCountry
+	+ MP4TagsSetKeywords
+	+ MP4TagsSetLongDescription
+	+ MP4TagsSetLyrics
+	+ MP4TagsSetMediaType
+	+ MP4TagsSetName
+	+ MP4TagsSetPlaylistID
+	+ MP4TagsSetPodcast
+	+ MP4TagsSetPurchaseDate
+	+ MP4TagsSetReleaseDate
+	+ MP4TagsSetSortAlbum
+	+ MP4TagsSetSortAlbumArtist
+	+ MP4TagsSetSortArtist
+	+ MP4TagsSetSortComposer
+	+ MP4TagsSetSortName
+	+ MP4TagsSetSortTVShow
+	+ MP4TagsSetTVEpisode
+	+ MP4TagsSetTVEpisodeID
+	+ MP4TagsSetTVNetwork
+	+ MP4TagsSetTVSeason
+	+ MP4TagsSetTVShow
+	+ MP4TagsSetTempo
+	+ MP4TagsSetTrack
+	+ MP4TagsSetXID
+	+ MP4TagsStore
+	+ MP4WriteRtpHint
+	+ **MP4WriteSample**
+	+ MP4WriteSampleDependency
+	
+
+AAC
+---
+
+#. AAC-LD (Low Delay), defined in 2000, used for real-time conversation applications
+#. High Efficiency AAC (HE-AAC), a.k.a. aacPlus v1 or AAC+, the combination of SBR (Spectral Band Replication) and AAC LC. Used for low bitrates. Defined in 2003.
+#. HE-AAC v2, a.k.a. aacPlus v2 or eAAC+, the combination of Parametric Stereo (PS) and HE-AAC; used for even lower bitrates. Defined in 2004 and 2006.
+#. MPEG-4 Scalable To Lossless (SLS), defined in 2006, can supplement an AAC stream to provide a lossless decoding option, such as in Fraunhofer IIS's "HD-AAC" product
+
+Next Sprint
+-----------
+
+#. US31106
+	+ Provide Architecture Design For MP4 Local Recording 
+
+
+Reference
+---------
+
+#. What is MP4 Format
+	+ https://www.winxdvd.com/resource/mp4.htm
+
+#. H264 codec to mp4 file
+	+ https://blog.csdn.net/qq_29350001/article/details/73742075
+
+#. Use mp4v2 to generate mp4 file with H264 and AAC
+	+ https://tw.saowen.com/a/28080a7898810a93f66383fa5237a15a0bfea214682e7020894772bfc3a49781
+	
+#. Convert videos to MP4 format using ffmpeg
+	+ https://www.bugcodemaster.com/article/convert-videos-mp4-format-using-ffmpeg
+
+#. MP4 file format
+	+ https://tw.saowen.com/a/718e9163d09bc2c09ddb9ef0795e2c5c694c8f673cecb8a0e499af7dd006167f
+	+ https://blog.csdn.net/tgww88/article/details/51434389
+	
+#. http://docutils.sourceforge.net/docs/ref/rst/directives.html#figure
+
+#. https://www.mainconcept.com/us/getting-started/samples.html
+
+#. How to extract H.264 video contents from a .MOV file and save it as a file with extension .264
+	+ https://stackoverflow.com/questions/20731278/how-to-extract-h264-raw-video-from-mov-using-ffmpeg
+	
+#. Mac config FFmpeg env
+	+ https://www.jianshu.com/p/627b2d462151
+	
+#. VLC
+	+ https://get.videolan.org/vlc/3.0.1/win64/vlc-3.0.1-win64.exe
+
+#. Extracting H.264 from an MOV video file
+	+ ffmpeg -i MainconceptLogo_Flash_H264-AAC-320X240.mov -vbsf h264_mp4toannexb -vcodec copy -an 2.h264
+	
+#. Extracting AAC from an MOV video file
+	+ ffmpeg -i MainconceptLogo_Flash_H264-AAC-320X240.mov -vn -acodec copy 2.m4a
+	
+#. How can I mux to mp4 from h264, aac using ffmpeg
+	+ ffmpeg -i 2.m4a -i 2.h264 -map 0:0 -map 1:0 2.mp4
+	+ -map 0:0 和 -map 1:0 中, 冒号前面的数字是文件顺序, 从0开始, 冒号后面的数字是媒体文件中channel号, 一般一个普通媒体文件是视频部分为0, 音频部分为1
+	
+#. AAC file format
+	+ https://blog.csdn.net/wlsfling/article/details/5876016
+	
+#. How to create a mp4 file with mp4v2
+	+ http://swchoutech.blogspot.hk/2012/11/mp4v2-mp4.html
+	+ http://www.aichengxu.com/other/9647952.htm
+	
+#. Using H264+AAC to synthesize MP4 files mp4v2
+	+ http://prog3.com/sbdm/blog/jody1989/article/details/46559499
+
+#. Audio Video Sync Theory And Implication
+	+ http://www.dzsc.com/data/2017-4-20/111980.html
+	+ https://blog.csdn.net/happydeer/article/details/206765
+	
+#. PCM Data Format
+	+ https://blog.csdn.net/ownWell/article/details/8114121
+	+ https://blog.csdn.net/c0ffee1982/article/details/1892319
+	+ 声道数
+		- 单声道: 只能使用一个喇叭发声
+		- 立体声: 可以使用两个喇叭发声(一般左右声道分工), 更能感受到空间效果
+	+ 采样位数
+		- 采样值或取样值(就是将采样样本幅度量化). 它是用来衡量声音波动变化的一个参数,也可以说是声卡的分辨率.
+	+ 采样频率
+		- 取样频率,指每秒钟取得声音样本的次数. 采样频率越高,声音的质量也就越好,声音的还原也就越真实,但同时它占的资源比较多.
+		
+#. Encoding an MP4 File
+	+ https://msdn.microsoft.com/en-us/library/windows/desktop/ff819476(v=vs.85).aspx
+	
+#. Mux Audio and Video Into MP4
+	+ https://bitbucket.org/primosoftware/avblocks-samples/src/default/windows/cpp/samples/mux_mp4_avc_aac_file/
+	
+#. **Convert H264 file to MP4 file**
+	+ http://www.itxiaoji.com/content/8647
+	
+#. **H264 Stream Analysis**
+	+ https://stackoverflow.com/questions/6014904/h264-frame-viewer
+	+ https://sourceforge.net/projects/h264streamanalysis/?source=typ_redirect
+	
+#. **H.264 NAL SPS**
+	+ https://blog.csdn.net/wutong_login/article/details/5818763
+	
+#. **AAC Stream Analysis**
+	+ https://sourceforge.net/projects/aacstreamanalysis/
+	
+#. **Extracting Raw AAC data from MP4 file**
+	+ https://stackoverflow.com/questions/41604964/ffmpeg-how-to-convert-aac-audio-packets-to-adts-format
+	+ ffmpeg -i input.mp4 -acodec copy -vn output.aac
+	
+#. AAC ADTS(Audio Data Transport Stream) format analyze
+	+ https://blog.csdn.net/tx3344/article/details/7414543
+	
+
+#. Get the width and height of the video from H.264 NALU
+	+ https://stackoverflow.com/questions/12018535/get-the-width-height-of-the-video-from-h-264-nalu
+	
+#. video editor
+	+ http://osp.io/archives/4183
+	
+#. H264 NAL
+	+ https://blog.csdn.net/wudebao5220150/article/details/13810671
+	
+#. Big list of sample videos for testers
+	+ http://standaloneinstaller.com/blog/big-list-of-sample-videos-for-testers-124.html
+	
+#. mpeg4ip
+	+ https://www.openhub.net/p/mpeg4ip
+	+ http://www.ce.unipr.it/didattica/siselab/Tesine/StreamingPDA/mpeg4ip.pdf
+	
+#. Create MP4 API
+    + MP4CreateEx
+    + MP4AddH264VideoTrack
+    + MP4AddAudioTrack
+    + MP4SetVideoProfileLevel
+    + MP4SetAudioProfileLevel
+    + MP4WriteSample
+    + MP4Close
+    
+	
+	
+	

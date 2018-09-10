@@ -1,0 +1,37 @@
+@startuml
+
+participant CNBRPlayBar
+participant CWbxBmpButton
+participant CNBRPlayMgr
+participant CNBRMainFrame
+participant CNBRUIMgr
+
+box "CNBRPfwUICtl" #LightBlue
+	participant INBRCommand
+	participant CNBRPfwUICtl
+end box
+
+== User click mute button ==
+
+[-> CNBRPlayBar : OnCommand
+note over CNBRPlayBar : NBRUI_MUTE
+CNBRPlayBar -> CWbxBmpButton : GetChecked
+CNBRPlayBar -> CNBRPlayBar : MuteVolume
+CNBRPlayBar -> CNBRPlayMgr : UICommand
+note over CNBRPlayBar, CNBRPlayMgr : NBRUI_MUTE
+
+CNBRPlayMgr -> CNBRMainFrame : ToUICmd
+note over CNBRPlayMgr, CNBRMainFrame : UICMD_MUTE
+
+CNBRMainFrame -> CNBRUIMgr : ToPFWCmd
+note over CNBRMainFrame, CNBRUIMgr : NBR_PLAY_CMDID_MUTE
+
+CNBRUIMgr -> INBRCommand : OnHandleCommand
+INBRCommand --> CNBRPfwUICtl : OnHandleCommand
+CNBRPfwUICtl -> CNBRPfwPlayCtl : OnHandlePlayCmd
+note over CNBRPfwUICtl, CNBRPfwPlayCtl : NBR_PLAY_CMDID_MUTE
+
+CNBRPfwPlayCtl -> CNBRPfwPlayCtl : SetMute
+CNBRPfwPlayCtl -> INBRPlayCCCtl : HandlePlayCmd
+
+@enduml

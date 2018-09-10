@@ -1,0 +1,29 @@
+@startuml
+
+box "CNBRPfwPlayCtl" #LightBlue
+	participant INBRPlayCCSink
+	participant CNBRPfwPlayCtl
+end box
+
+participant CNBRPfwUICtl
+
+box "CNBRUIMgr" #LightBlue
+	participant INBRCommand
+	participant CNBRUIMgr
+end box
+
+== nmac notify nbr_pfw volume message ==
+
+[-> INBRPlayCCSink : NotifyInfo
+INBRPlayCCSink --> CNBRPfwPlayCtl : NotifyInfo
+CNBRPfwPlayCtl -> CNBRPfwUICtl : OnMixerVolumeNotify
+note over CNBRPfwPlayCtl , CNBRPfwUICtl :NBR_CC_PFW_INFO_VOLUME_VALUE
+CNBRPfwUICtl -> INBRCommand : OnHandleCommand
+note over CNBRPfwUICtl , INBRCommand : NBR2_PLAY_UI_MIXER_VOLUME_NOTIFY
+INBRCommand  --> CNBRUIMgr : OnHandleCommand
+note over INBRCommand , CNBRUIMgr : NBR2_PLAY_UI_MIXER_VOLUME_NOTIFY
+CNBRUIMgr -> CNBRPlayMgr : HandleMixerVolumeNotify
+CNBRPlayMgr -> CNBRPlayBar : SetVolumPos
+CNBRPlayBar -> CWbxTrackBar: SetPos
+
+@enduml

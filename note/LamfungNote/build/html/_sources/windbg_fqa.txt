@@ -34,6 +34,12 @@ Frequent used command
 	+ *.exr -1*
 #. View OS version from dump file
 	+ vertarget
+#. View Critical sestion
+	+ RtlEnterCriticalSection
+	+ 02 0042efe8 7054edf9 70620e28 0042f024 0042f008 ntdll_77940000!RtlEnterCriticalSection+0x150 (FPO: [Non-Fpo])
+	+ !cs 70620e28
+#. !uniqstack 
+	+  It enumerates all the thread call stacks and eliminates duplicates, so that you can understand at a glance what these hundreds of threads are doing.
 
 Handle
 ------
@@ -46,6 +52,16 @@ Handle
 	+ Displays all the semaphores handle
 #. !handle 0 f file
 	+ Displays all the file's handle
+#. !handle 0 f event
+#. !handle 0 f section
+#. !handle 0 f directory
+#. !handle 0 f mutant
+#. !handle 0 f windowstation
+#. !handle 0 f key
+#. !handle 0 f desktop
+#. !handle 0 f iocompletion
+#. !handle 0 f timer
+#. !handle 0 f tpworkerfactory
 
 Thread
 ------
@@ -59,6 +75,8 @@ Thread
 	+ Show current thread time info
 #. !runaway 7
 	+ Show all the threads of current process time info with 3 format
+#. dt nt!_TEB @$teb
+	+ Display the complete TEB structure
 
 Frame
 -----
@@ -112,6 +130,9 @@ Load Library failure
 #. Compiler can have some configuration to enble what should be filled for the uninitialized memory block and end of function(blank area, after retun..). 
    For example, Microsoft VC complier can fill 0xCC if enable /GZ. 0xCC is actually a opcode of __asm int 3
 #. http://stackoverflow.com/questions/3306235/what-is-the-break-instruction-exception-in-windbg
+#. RtlEnterCriticalSection
+	+ http://stackoverflow.com/questions/26573238/windbg-how-to-read-the-locks-output
+
 
 Reference
 ---------
@@ -128,7 +149,12 @@ Reference
 	+ https://blogs.msdn.microsoft.com/msdnforum/2010/03/14/how-do-i-switch-to-32bit-mode-when-i-use-windbg-to-debug-a-dump-of-a-32bit-application-running-on-an-x64-machine/
 #. kernel32!UnhandledExceptionFilter
 	+ www.debuginfo.com/articles/easywindbg2.html
-
+#. Deep Dive into Process Environment Block with Windbg
+	+ http://garage4hackers.com/showthread.php?t=1902
+#. Why don’t critical sections work cross process?
+	+ https://blogs.msdn.microsoft.com/larryosterman/2005/08/24/why-dont-critical-sections-work-cross-process/
+#. Obscure WinDbg Commands
+	+ http://blogs.microsoft.co.il/sasha/2013/08/12/obscure-windbg-commands-part-1/
 
 
 

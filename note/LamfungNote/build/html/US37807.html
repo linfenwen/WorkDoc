@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>US37807 : TFS Integration test &#8212; reST 1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/mydoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="top" title="reST 1 documentation" href="index.html" />
+    <link rel="prev" title="GPC Key point Summary" href="gpc_keypoint_summary.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="gpc_keypoint_summary.html" title="GPC Key point Summary"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="us37807-tfs-integration-test">
+<h1>US37807 : TFS Integration test<a class="headerlink" href="#us37807-tfs-integration-test" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>OS Type</dt>
+<dd><ul class="first last simple">
+<li>Win7</li>
+<li>Win8</li>
+<li>Win10</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Browser Type</dt>
+<dd><ul class="first last simple">
+<li>IE</li>
+<li>FireFox</li>
+<li>Chrome</li>
+<li>Edge</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">TFS Type</p>
+<blockquote>
+<div><ul>
+<li><dl class="first docutils">
+<dt>IsDocShowCommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterDochShow</li>
+<li>DocShow:</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsShotNameCommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterShortFileName</li>
+<li>&#8220;<a href="#id1"><span class="problematic" id="id2">webex_</span></a>&#8220;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsNewCommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterNew</li>
+<li>get meeting info ,****,***,*****_webexe.exe</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>IsWebEx11CommandParameterFormat</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterWebEx11</li>
+<li>&#8220;__&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Old Parameter</dt>
+<dd><ul class="first last simple">
+<li>ParseCommandParameterOld</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>Service Type</dt>
+<dd><ul class="first last simple">
+<li>mc</li>
+<li>ec</li>
+<li>tc</li>
+<li>sc</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Parameter Length</p>
+</li>
+</ol>
+</div>
+<div class="section" id="issues">
+<h2>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>webex.exe exit without any prompt</dt>
+<dd><ul class="first last">
+<li><p class="first">PE parameter is : &#8220;Hello&#8221;</p>
+</li>
+<li><p class="first">CEmbeddedTFSTest_IsFromEmbeddedTFSTestWithErrorSuffix_Test::TestBody(void)</p>
+</li>
+<li><dl class="first docutils">
+<dt>First time introduce</dt>
+<dd><ul class="first last simple">
+<li>2017.4.14, 15cb3fbffe6538d051bad21cc0d7193f171ccd36</li>
+<li>start working on webex.exe (tfs)</li>
+<li>ParameterUtilImpl.cpp</li>
+<li>CParameterUtilImpl::ParseCommandParameterOld</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>What&#8217;s the reason</dt>
+<dd><ul class="first simple">
+<li>_tcstok_s</li>
+<li>TCHAR* p = NULL</li>
+<li>tstring strData = p</li>
+</ul>
+<div class="last highlight-default"><div class="highlight"><pre><span></span><span class="mi">000</span><span class="n">C07D9</span>  <span class="n">movzx</span>       <span class="n">ecx</span><span class="p">,</span><span class="n">word</span> <span class="n">ptr</span> <span class="p">[</span><span class="n">eax</span><span class="p">]</span>
+<span class="n">First</span><span class="o">-</span><span class="n">chance</span> <span class="n">exception</span> <span class="n">at</span> <span class="mh">0x000C07D9</span> <span class="ow">in</span> <span class="n">CiscoWebExStart_test</span><span class="o">.</span><span class="n">exe</span><span class="p">:</span> <span class="mh">0xC0000005</span><span class="p">:</span> <span class="n">Access</span> <span class="n">violation</span> <span class="n">reading</span> <span class="n">location</span> <span class="mh">0x00000000</span><span class="o">.</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>webex.exe can&#8217;t launch meeting when the process name is not equal &#8220;webex.exe&#8221;</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Input check</dt>
+<dd><ul class="first last simple">
+<li>PE file has customer data</li>
+<li>The process name must be &#8220;webex.exe&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">preJME&gt;&gt;run failed, unknown sources. exeName=123.exe</p>
+</li>
+<li><p class="first">After running Embedded TFS, the Embedded TFS file will be deleted.</p>
+</li>
+<li><dl class="first docutils">
+<dt>2018.08.29</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>IE tips</dt>
+<dd><ul class="first last simple">
+<li>Your PC doesn&#8217;t trust this website&#8217;s security certificate.</li>
+<li>Error Code: DLG_FLAGS_INVALID_CA</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Chrome</dt>
+<dd><ul class="first last simple">
+<li>WebEx_mc_f7295_qa.webex.com_pzxM1NgV7r</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Edge</dt>
+<dd><ul class="first last simple">
+<li>IE run TFS</li>
+<li>Edge can use URL Protocol to start meeting</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Firefox</dt>
+<dd><ul class="first last simple">
+<li>WebEx_mc_f7295_qa.webex.com_S7f7CeWIdn</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="test-env">
+<h2>Test Env<a class="headerlink" href="#test-env" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Site</dt>
+<dd><ul class="first last">
+<li><p class="first"><a class="reference external" href="http://f7295.qa.webex.com/">http://f7295.qa.webex.com/</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>Account</dt>
+<dd><p class="first last"><a class="reference external" href="mailto:admin/P&#37;&#52;&#48;ss1234">admin/P<span>&#64;</span>ss1234</a></p>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://rally1.rallydev.com/#/60282351184d/dashboard">https://rally1.rallydev.com/#/60282351184d/dashboard</a>?qdp=%2Fdetail%2Fuserstory%2F248373654272</p>
+</li>
+<li><p class="first"><a class="reference external" href="http://www.masmforum.com/board/index.php?PHPSESSID=8d46cd4ecb1688be429ab49694ec53e6&amp;topic=13852.5;wap2">http://www.masmforum.com/board/index.php?PHPSESSID=8d46cd4ecb1688be429ab49694ec53e6&amp;topic=13852.5;wap2</a></p>
+</li>
+<li><dl class="first docutils">
+<dt>MOV搬移指令</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://slvs.tc.edu.tw/~baochyi/teacher/assembly/c0402.htm">http://slvs.tc.edu.tw/~baochyi/teacher/assembly/c0402.htm</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Enable/Disable UAC</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10">https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">US37807 : TFS Integration test</a><ul>
+<li><a class="reference internal" href="#test-case">Test Case</a></li>
+<li><a class="reference internal" href="#issues">Issues</a></li>
+<li><a class="reference internal" href="#test-env">Test Env</a></li>
+<li><a class="reference internal" href="#reference">Reference</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gpc_keypoint_summary.html"
+                        title="previous chapter">GPC Key point Summary</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/US37807.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="gpc_keypoint_summary.html" title="GPC Key point Summary"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">reST 1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2014, Lamfung Wen.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.8.
+    </div>
+  </body>
+</html>

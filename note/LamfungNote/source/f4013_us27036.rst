@@ -1,0 +1,155 @@
+US27036: upgrade/downgrade for webACD/Jabber/PT
+================================================
+
+Test Env
+--------
+
+#. Test Site
+	+ https://f4013.qa.webex.com/
+	+ https://m1eweb2.qa.webex.com/f4013
+	+ account : admin / P@ss1234
+	+ 2018.01.29 "Cisco WebEx had a problem processing your request"
+	
+#. https://wiki.cisco.com/display/PDINFO/Test+Matrix+and+Summary
+
+WebACD Win10
+------------
+
+SC
+~~
+
+#. WebACD 32.9.1.2, download from cisco.webex.com => SC => Support => Downloads
+	+ https://m1eweb2.qa.webex.com/f4013
+		- Program Files (x86)\\WebEx\\WebACD
+		- msvcp120.dll, Cisco WebEx LLC
+		- msvcr120.dll, Cisco WebEx LLC
+	+ cisco.webex.com
+		- cec
+		- Your account doesn't have **WebACD privilege**
+
+MC
+~~
+
+#. WebACD 32.9.1.2, download from cisco.webex.com => SC => Support => Downloads
+	+ https://m1eweb2.qa.webex.com/f4013, 32.11.0.f4013.413
+		- AppData\\Local\\WebEx\\WebEx\\T32_UMC
+		- msvcr120.dll, Cisco WebEx LLC
+		- msvcp120.dll, Cisco WebEx LLC
+		- msvcr100.dll, Cisco WebEx LLC
+		
+
+#. 32.12.0.f4013.71 => 32.10.3.4
+	+ https://m1eweb2.qa.webex.com/f4013, 32.12.0.f4013.71
+		- C:\\Users\\lawen\\AppData\\Local\\WebEx\\WebEx\\T32_UMC
+		- msvcr120.dll, Microsoft Corporation
+		- msvcp120.dll, Microsoft Corporation
+		- msvcr100.dll, Microsoft Corporation
+	+ https://cisco.webex.com, 32.10.3.4
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC
+		- msvcr120.dll, Cisco WebEx LLC
+		- msvcp120.dll, Cisco WebEx LLC
+		- msvcr100.dll, Cisco WebEx LLC
+
+Jabber Win10
+------------
+
+MC
+~~~
+
+#. 32.9.1.2 => 32.11.0.f4013.382
+	+ https://cisco.webex.com
+		- C:\\Users\\lawen\\AppData\\Local\\Cisco\\WebEx\\cisco.webex.com\\T32L
+	+ https://m1eweb2.qa.webex.com
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC
+		- F4013 Crash
+		:: 
+		 
+		 CAssignAlternateHost::AdviseReLoginFromAssignAlternateHostEvent
+		 Exception Time: 01/31/2018 02:28:04 UTC
+		 Exception Client: MeetingID = 85457468440710517, SessionID = 92481301, LangID = 0, PID = 8860, BuildNum = 32.11.0.f4013.382
+		 Exception Code: C0000005 [ACCESS_VIOLATION], Caused by Read from location 00022098
+		 Exception Address: 59BF4F24 [0001:003A3F24]
+		 Exception Module: C:\ProgramData\WebEx\WebEx\T32_UMC\webexmgr.dll [version: 3211.0.1801.2400]
+
+
+#. 32.11.0.f4013.413 => 32.9.1.2
+	+ https://m1eweb2.qa.webex.com/f4013
+		- C:\\ProgramData\\WebEx\\WebEx\\T32_UMC
+	+ https://cisco.webex.com
+		- C:\\Users\\lawen\\AppData\\Local\\Cisco\\WebEx\\cisco.webex.com\\T32L
+
+TC
+~~~
+
+#. Jabber 11.9.1 Build 55716 can't start TC meeting 
+
+PT Win8.0
+---------
+
+MC
+~~~
+
+#. 32.11.0.f4013.345 => 32.9.1.2
+	+ https://m1eweb2.qa.webex.com/f4013, 32.11.0.f4013.345
+		- ProgramData\\WebEx\\WebEx\\T32_UMC
+	+ https://cisco.webex.com, 32.9.1.2
+		- ProgramData\\WebEx\\WebEx\\T32_UMC_01
+	
+#. 32.9.1.2 => 32.11.0.f4013.345
+	+ https://cisco.webex.com
+		- ProgramData\\WebEx\\WebEx\\T32_UMC
+	+ https://m1eweb2.qa.webex.com/f4013
+		- ProgramData\\WebEx\\WebEx\\T32_UMC_01
+		- msvcp120.dll, sha256, Name of signer: Not available
+		- msvcr120.dll, sha256, Name of signer: Not available
+
+TC
+~~~
+
+#. 32.11.0.f4013.345 => 32.9.1.2
+	+ https://m1eweb2.qa.webex.com/f4013
+		- ProgramData\\WebEx\\WebEx\\T32_TC
+		- msvcp120.dll, sha256, Name of signer: Not available
+		- msvcr120.dll, sha256, Name of signer: Not available
+	+ https://cisco.webex.com
+		- ProgramData\\WebEx\\WebEx\\T32_TC
+		
+#. 32.9.1.2 => 32.11.0.f4013.345
+	+ https://cisco.webex.com
+		- ProgramData\\WebEx\\WebEx\\T32_TC
+	+ https://m1eweb2.qa.webex.com/f4013
+		- ProgramData\\WebEx\\WebEx\\T32_TC
+		- msvcp120.dll, sha256, Name of signer: Not available
+		- msvcr120.dll, sha256, Name of signer: Not available
+
+Issue
+-----
+
+#. sha256, Name of signer: Not available
+#. PT 32.11.0.25, can't support ec
+#. 32.11.0.f4013.382 mc meeting crash when start meeting, **32.11.0.f4013.413** can't reproduce
+#. Jabber 11.9.1 can't start ec meeting
+#. Jabber 11.9.1 Build 55716 can't start TC meeting
+#. cisco.webex.com, Your account doesn't have WebACD privilege
+#. WebACD can't download from m1eweb2.qa.webex.com, it tips **Http/1.1 Service Unavailable**
+#. WebACD (32.9.1.2), mc meeting, folder, **msvcr120.dll**, **msvcp120.dll**, **msvcr100.dll**
+
+#. MC crash, https://m1eweb2.qa.webex.com/f4013, 32.12.0.f4013.63, 32.12.0.f4013.67
+	+ Seems caused by CI Env, need confirm in the next build
+	+ 32.12.0.f4013.71 can't reproduce
+
+::
+ 
+ Exception Time: 02/07/2018 09:04:51 UTC
+ Exception Client: MeetingID = 86180344400711083, SessionID = 92482490, LangID = 0, PID = 12196, BuildNum = 32.12.0.f4013.54
+ Exception Code: C0000005 [ACCESS_VIOLATION], Caused by Read from location 00000001
+ Exception Address: 6A71F82F [0001:001AE82F]
+ Exception Module: C:\Users\lawen\AppData\Local\WebEx\WebEx\T32_UMC\webexmgr.dll [version: 3211.0.1801.2800]
+ Image Base: 6A570000  Image Size: 006CE000  Checksum: 006C03E4
+ Time Stamp: 5A714614 [01/31/2018 04:29:08 UTC]
+
+
+
+
+
+
