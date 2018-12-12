@@ -4,6 +4,82 @@ US37807 : TFS Integration test
 Test Case
 ---------
 
+#. Run directly
+	+ Download **webex.exe** one time, then **Run**
+	
+		 .. csv-table:: Download **webex.exe** one time, then **Run**
+			:stub-columns: 1
+			:header: , "IE", "FireFox", "Chrome", "Edge"
+   
+			"Win7", pass, pass, pass, 
+			"Win8", pass, pass, pass, 
+			"Win10", pass, pass, pass, pass 
+	
+	+ Download **webex.exe** three times, then **Run**
+	
+		.. csv-table:: Download **webex.exe** three times, then **Run**
+		   :stub-columns: 1
+		   :header: , "IE", "FireFox", "Chrome", "Edge"
+   
+		   "Win7", pass, pass, pass, 
+		   "Win8", pass, pass, pass, 
+		   "Win10", pass, pass, pass, pass
+	
+	
+#. Run as administrator
+	+ Download **webex.exe** one time, then **Run**
+	
+		 .. csv-table:: Download **webex.exe** one time, then **Run**
+			:stub-columns: 1
+			:header: , "IE", "FireFox", "Chrome", "Edge"
+   
+			"Win7", pass, pass, pass, 
+			"Win8", pass, pass, pass, 
+			"Win10", pass, pass, pass, pass 
+	
+	+ Download **webex.exe** three times, then **Run**
+	
+		.. csv-table:: Download **webex.exe** three times, then **Run**
+		   :stub-columns: 1
+		   :header: , "IE", "FireFox", "Chrome", "Edge"
+   
+		   "Win7", pass, pass, pass, 
+		   "Win8", pass, pass, pass, 
+		   "Win10", pass, pass, pass, pass
+
+
+#. Download **webex.exe** one time, then **Run**
+
+	.. csv-table:: Download **webex.exe** one time, then **Run**
+	   :stub-columns: 1
+	   :header: , "IE", "FireFox", "Chrome", "Edge"
+   
+	   "Win7", pass, pass, pass, 
+	   "Win8", pass, pass, pass, 
+	   "Win10", pass, pass, pass, pass 
+
+#. Download **webex.exe** three times, then **Run**
+
+	.. csv-table:: Download **webex.exe** three times, then **Run**
+	   :stub-columns: 1
+	   :header: , "IE", "FireFox", "Chrome", "Edge"
+   
+	   "Win7", pass, pass, pass, 
+	   "Win8", pass, pass, pass, 
+	   "Win10", pass, pass, pass, pass
+
+#. Download **webex.exe** , then copy to other directory and **Run**
+
+	.. csv-table:: Download **webex.exe** , then **Run**
+	   :stub-columns: 1
+	   :header: , "IE", "FireFox", "Chrome", "Edge"
+   
+	   "Win7", pass, pass, pass, 
+	   "Win8", pass, pass, pass, 
+	   "Win10", pass, pass, pass, pass
+
+#. After run **webex.exe**, then check **Edge** **URL Protocol** can work or not
+
 #. OS Type
 	+ Win7
 	+ Win8
@@ -33,7 +109,8 @@ Test Case
 		- ParseCommandParameterOld
 
 #. Service Type
-	+ mc
+	+ Currently page just support **mc**
+	+ **mc**
 	+ ec
 	+ tc
 	+ sc
@@ -103,9 +180,16 @@ Reference
 #. http://www.masmforum.com/board/index.php?PHPSESSID=8d46cd4ecb1688be429ab49694ec53e6&topic=13852.5;wap2 
 
 #. MOV搬移指令
-	- http://slvs.tc.edu.tw/~baochyi/teacher/assembly/c0402.htm
+	+ http://slvs.tc.edu.tw/~baochyi/teacher/assembly/c0402.htm
 
 #. Enable/Disable UAC
-	- https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10
+	+ https://articulate.com/support/article/how-to-turn-user-account-control-on-or-off-in-windows-10
 
+#. Encoding Signed Data
+	+ https://docs.microsoft.com/en-us/windows/desktop/seccrypto/encoding-signed-data
+	
+#. PKCS#7
+	+ http://www.ietf.org/rfc/rfc2315
+	+ https://docs.microsoft.com/en-us/windows/desktop/seccertenroll/pkcs--7-attributes
+	+ https://blog.csdn.net/vocanicy/article/details/2449666
 

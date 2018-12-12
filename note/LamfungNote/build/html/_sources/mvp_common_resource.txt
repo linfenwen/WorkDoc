@@ -79,6 +79,9 @@ Windows Topic
 #. mock objects
 	+ http://clean-cpp.org/mock-objects/
 	
+#. IE Protect Mode
+	+ https://blogs.msdn.microsoft.com/ieinternals/2009/11/30/understanding-the-protected-mode-elevation-dialog/
+	
 Common Topic
 ------------
 
@@ -153,8 +156,76 @@ Common Topic
 #. Inversion of control
 	+ https://en.wikipedia.org/wiki/Inversion_of_control
 	
+#. Software People Inspiring
+	+ http://www.codemanship.co.uk/parlezuml/blog/?postid=934 
+	
+#. Add coroutine task type
+	+ http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1056r0.html
+
+Design Priciple
+---------------	
+
 #. SOLID principle
 	+ https://medium.com/@linfengwen
+
+#. SLAP
+	+ https://www.slideshare.net/skarpushin/solid-ood-dry
+
+#. SOLID principle (plus DRY, YAGNI, KISS and other YAA)
+	+ https://siderite.blogspot.com/2017/02/solid-principles-plus-dry-yagni-kiss-final.html
+
+#. SOLID and DRY
+	+ https://www.codeproject.com/Articles/36712/SOLID-and-DRY
+	
+#. DI vs DIP vs IoC
+	+ http://lotabout.me/2018/Dependency-Inversion-Principle/
+	+ http://www.tutorialsteacher.com/ioc/introduction
+	+ https://coolshell.cn/articles/9949.html
+	
+#. Design Principle vs Design Pattern
+	+ http://www.tutorialsteacher.com/articles/difference-between-design-principle-and-design-pattern
+	
+#. Service Locator Pattern
+	+ http://gameprogrammingpatterns.com/service-locator.html
+
+#. People Projects And Patterns
+	+ http://wiki.c2.com/
+	
+#. The original of typename
+	+ http://feihu.me/blog/2014/the-origin-and-usage-of-typename/
+	
+#. Object Oriented Design
+	+ https://www.geeksforgeeks.org/null-object-design-pattern/
+	+ https://www.tutorialspoint.com/design_pattern/null_object_pattern.htm
+	+ https://sourcemaking.com/design_patterns/null_object
+	+ https://www.oodesign.com/
+		- Singleton
+		- Factory
+		- Factory Method
+		- ...
+
+#. MVC
+	+ http://www.moock.org/lectures/mvc/
+
+#. List many design principle
+	+ https://www.ithome.com.tw/voice/97462
+	+ Like Simple code
+    	- Passes all the tests.
+		- Expresses every idea that we need to express.
+		- Says everything OnceAndOnlyOnce.
+		- Has no superfluous parts. 
+
+Log system
+----------
+
+#. Understand Log Theory
+	+ http://feihu.me/blog/2014/insight-into-log/
+
+Digital Signature vs Digital Certification
+------------------------------------------
+
+#. Windows View Local Installed Certification
+	+ certmgr.msc
 
 Open Source
 -----------

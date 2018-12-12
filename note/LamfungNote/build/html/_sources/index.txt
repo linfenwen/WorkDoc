@@ -79,6 +79,8 @@ Contents:
    gpc_keypoint_summary.rst
    US37807.rst
    f2017_test_chrome_firefox.rst
+   f7295_us39093.rst
+   magicboat_ta.rst
    
    
 Indices and tables
