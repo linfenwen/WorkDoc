@@ -161,6 +161,9 @@ Common Topic
 	
 #. Add coroutine task type
 	+ http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1056r0.html
+	
+#. BFCP
+	+ https://tools.ietf.org/html/rfc4582
 
 Design Priciple
 ---------------	

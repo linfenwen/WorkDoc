@@ -4,6 +4,10 @@ WEBEX-9417: As a developer, I want to Qlik report for F7295
 Recording
 ---------
 
+#. How to use Qlik to create a telemetry report
+	+ https://alpha.webex.com/alpha/lsr.php?RCID=994917d155e8481eb825de1694bd5f10
+	+ vWTYVM9A
+
 #. Data Process Framework training by Jeffrey on 3/8/2018 recording 
 	+ https://go.webex.com/go/ldr.php?RCID=37181711525e79cf6f4864388404099b
 	
@@ -49,6 +53,12 @@ Reference
 	
 #. Qlik Metrics Aggregation App
 	+ https://wiki.cisco.com/x/-U-lCw
+	
+#. How to use Qlik to create a telemetry report
+	+ https://wiki.cisco.com/x/D4tBCw	
+	
+#. Line Chat
+	+ https://help.qlik.com/en-US/search/?q=Line+Chat	
 	
 #. WME Example
 	+ https://wiki.cisco.com/x/7ha2Bw
