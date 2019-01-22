@@ -81,6 +81,7 @@ Contents:
    f2017_test_chrome_firefox.rst
    f7295_us39093.rst
    magicboat_ta.rst
+   webex_9417_qlik.rst
    
    
 Indices and tables

@@ -1,0 +1,978 @@
+US39093 : Prepare for Graduation
+================================
+
+New TA for F7295
+----------------
+
+#. Project
+	+ Train_Windows_client
+
+#. Component
+	+ train_winclient
+	
+#. Version
+	+ 33.6.0
+
+#. Branch
+	+ f7295
+
+#. Build Number
+	+ 566
+
+#. Module
+	+ GPC-Download
+
+#. Environment
+	+ Download_TA_Env
+
+#. Mail To
+	+ lawen@cisco.com
+
+
+Different Release UT Compare
+-----------------------------
+
+#. 33.6.0
+	+ https://ta.qa.webex.com/tasche/reports/viewGenericReport.action?projectCode=EC_Train_Client.33.6.0-webex-windows-plugin-UT&buildNumber=5195
+		- 1040
+		- 31
+#. 33.5.0
+	+ https://ta.qa.webex.com/tasche/reports/viewGenericReport.action?projectCode=EC_Train_Client.33.5.0-webex-windows-plugin-UT
+		- 1040
+		- 15
+		
+#. f7295
+	+ https://ta.qa.webex.com/tasche/reports/viewGenericReport.action?projectCode=EC_Train_Client.33.6.0.f7295-webex-windows-plugin-UT&buildNumber=5172
+		- 1057
+		- 34
+
+Sign Service Telemetry
+----------------------
+
+#. Every 5s, **sign service** will send the telemetry data to the server
+
+#. Telemetry Site
+	+ https://clhf1clw001.qa.webex.com/?dc=hflab&component=meeting
+	+ account / password
+		- webexeng / webexeng
+
+#. Sign Service log and Telemetry log in server
+	+ /opt/apache-tomcat_1/logs
+		- signservice.log
+		- telemetry.log
+		
+	+ logstash will commit telemetry data to kibana
+		- service logstash start
+
+#. Query keywords
+	+ metrics-clap_rphf1-meeting-*
+		- host:jhm1tds101
+		- type:tdssvr
+		- telemetry.log
+	+ kibana
+		- https://10.225.17.135/meeting/app/kibana#/discover?_g=()&_a=(columns:!(_source),index:'meeting-*',interval:auto,query:(match_all:()),sort:!('@timestamp',desc))	
+
+	+ metric data
+		::
+		 
+		 host:jhm1tds101.qa.webex.com path:/opt/apache-tomcat_1/logs/telemetry.log 
+		 component:meeting @timestamp:October 11th 2018, 15:22:26.475 @version:1 
+		 kafka_meta:
+		 {
+		 	"topic":"hfqa1_logstash_meeting_hdfs",
+		 	"consumer_group":"clap_rphf1",
+		 	"partition":0,
+		 	"offset":152667,
+		 	"key":null,
+		 	"timestamp":1539242546480
+		 } 
+		 eventtype:metrics 
+		 metrics.requests:0 
+		 metrics.failed:0 
+		 metrics.success:0 
+		 metrics.timestamp:2018-10-11 07:22:26.232 
+		 type:tdssvr 
+		 _id:LsDaX2rsxeRcw5T8L7G8ICsA== 
+		 _type:tdssvr 
+		 _index:metrics-clap_rphf1-meeting-2018.10.11 _score: -
+		 
+
+#. What is Telemetry Data for this new feature?
+	::
+	 
+	 {
+	  	"timestamp" : " ",
+	  	"requests" : " ",
+	  	"success" : " ",
+	  	"failed" : " "
+	 }
+
+
+#. What kind of usage, quality or diagnostic graph will come with this feature?
+	+ 
+
+
+Failed case
+-----------
+
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| Test Suit                         | Test Case                                                                | f7295-5172 | 33.6.0-5195 |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+|                       CCWSAppTest | RunWithMeetingParameter_TooLongFileName_ReturnFalse,0s,Failed >>>        |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_NormalFileName_ReturnTrue,0.015s,Failed >>>      |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_NormalFileName1_ReturnTrue,0s,Failed >>>         |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_NormalFileName_Duplicate_ReturnTrue,0s,Failed>>> |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_ShortFileName_ReturnTrue,0s,Failed >>>           |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_ShortFileName1_ReturnTrue,0s,Failed >>>          |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_ShortFileName2_ReturnTrue,0s,Failed >>>          |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_ShortFileName3_ReturnTrue,0s,Failed >>>          |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_ShortFileName4_ReturnTrue,0s,Failed >>>          |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | RunWithMeetingParameter_ShortFileName5_ReturnTrue,0s,Failed >>>          |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | ProcessUrlProtocol_TooLong_ReturnTRUE,0s,Failed >>>                      |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | ProcessUrlProtocol_OK_ReturnTRUE,0s,Failed >>>                           |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | ProcessUrlProtocol_OK1_ReturnTRUE,0.016s,Failed >>>                      |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | ProcessUrlProtocol_DocShow_ReturnTRUE,0s,Failed >>>                      |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CNotifyWndTest                    | preJME_HandlePluginNotifyMSG,0.078s,Failed                               |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CFrameworkTest                    | preJME_BasicTest_Run_emptyUrl,0.156s,Failed >>>                          |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | preJME_BasicTest_RunTFS_ec,0.219s,Failed >>>                             |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | preJME_BasicTest_RunTFS_tc,0.218s,Failed >>>                             |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | preJME_BasicTest_RunTFS_sc,0.219s,Failed >>>                             |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| JmeOnDemmandDownloadAdaptorTest   | doDownloadFile,2.356s,Failed >>>                                         |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| JmeStandbyControllerTest          | CheckAtmgrStandby_FALSE2,0.031s,Failed >>>                               |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CJmeSiteInfoManagerTest           | TestLoadSiteConfig,0s,FailedATGpcExtension_Test >>>                      |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| ATGpcExtension_Test               | GetDefInstallDir_Flag1,0s,Failed >>>                                     |            | n           |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | GetDefInstallDir_Flag2,0s,Failed >>>                                     |            | n           |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CJmeUpdateMgr_LocalFileHelperTest | doInstallFile_checkInstallItemHash_ReturnFalse_FALSE,0s,Failed >>>       |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | doInstallFile_CheckWebExFileDigitalSignature_Failed_FALSE,0s,Failed >>>  |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CEntrypointTest                   | preJME_Run_With_DocShow_download_failed,0.234s,Failed >>>                |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | preJME_Run_With_DocShow,0.234s,Failed >>>                                |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CJmeWorkflowInBrowserTest         | PrepareForAtInstFiles_atinst_return_True,2.293s,Failed >>>               |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CJmeClientVersionManagerTest      | ScanExistFolder,0s,Failed >>>                                            |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | FindWorkingFolder,0.016s,Failed >>>                                      |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| MeetingLauncher_Test              | GetLauncherForIE,0s,Failed >>>                                           |            | n           |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+| CJmeJoinMeetingInfoTest           | IsHighPrivilege,2.277s,Failed >>>                                        |            |             |  |  |
++                                   +--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   | IsMediumPrivilege,2.278s,Failed >>>                                      |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+|                                   |                                                                          |            |             |  |  |
++-----------------------------------+--------------------------------------------------------------------------+------------+-------------+--+--+
+
+
+CCWSAppTest
+~~~~~~~~~~~
+
+#. RunWithMeetingParameter_TooLongFileName_ReturnFalse	0s	Failed >>> 
+#. RunWithMeetingParameter_NormalFileName_ReturnTrue	0.015s	Failed >>>
+#. RunWithMeetingParameter_NormalFileName1_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_NormalFileName_Duplicate_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_ShortFileName_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_ShortFileName1_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_ShortFileName2_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_ShortFileName3_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_ShortFileName4_ReturnTrue	0s	Failed >>>
+#. RunWithMeetingParameter_ShortFileName5_ReturnTrue	0s	Failed >>>
+#. ProcessUrlProtocol_TooLong_ReturnTRUE	0s	Failed >>>
+#. ProcessUrlProtocol_OK_ReturnTRUE	0s	Failed >>>
+#. ProcessUrlProtocol_OK1_ReturnTRUE	0.016s	Failed >>>
+#. ProcessUrlProtocol_DocShow_ReturnTRUE	0s	Failed >>>
+
+CNotifyWndTest
+~~~~~~~~~~~~~~
+
+#. preJME_HandlePluginNotifyMSG	0.078s	Failed 
+
+CFrameworkTest
+~~~~~~~~~~~~~~
+
+#. preJME_BasicTest_Run_emptyUrl	0.156s	Failed 
+#. preJME_BasicTest_RunTFS_ec	0.219s	Failed >>>
+#. preJME_BasicTest_RunTFS_tc	0.218s	Failed >>>
+#. preJME_BasicTest_RunTFS_sc	0.219s	Failed >>>
+
+JmeOnDemmandDownloadAdaptorTest
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. doDownloadFile	2.356s	Failed >>>
+
+JmeStandbyControllerTest
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. CheckAtmgrStandby_FALSE2	0.031s	Failed 
+
+CJmeSiteInfoManagerTest
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. TestLoadSiteConfig	0s	Failed
+
+ATGpcExtension_Test
+~~~~~~~~~~~~~~~~~~~
+
+#. GetDefInstallDir_Flag1	0s	Failed >>>
+#. GetDefInstallDir_Flag2	0s	Failed >>>
+
+CJmeUpdateMgr_LocalFileHelperTest
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. doInstallFile_checkInstallItemHash_ReturnFalse_FALSE	0s	Failed >>>
+#. **doInstallFile_CheckWebExFileDigitalSignature_Failed_FALSE**	0s	Failed >>>
+
+CEntrypointTest
+~~~~~~~~~~~~~~~
+
+#. preJME_Run_With_DocShow_download_failed	0.234s	Failed >>>
+#. preJME_Run_With_DocShow	0.234s	Failed >>>
+
+CJmeWorkflowInBrowserTest
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. PrepareForAtInstFiles_atinst_return_True	2.293s	Failed >>>
+
+CJmeClientVersionManagerTest
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. ScanExistFolder	0s	Failed >>>
+#. **FindWorkingFolder**	0.016s	Failed >>>
+
+MeetingLauncher_Test
+~~~~~~~~~~~~~~~~~~~~
+
+#. GetLauncherForIE	0s	Failed >>>
+
+CJmeJoinMeetingInfoTest
+~~~~~~~~~~~~~~~~~~~~~~~
+
+#. **IsHighPrivilege**	2.277s	Failed >>>
+#. **IsMediumPrivilege**	2.278s	Failed >>>
+
+
+
+
+Dependencies
+------------
+
+#. Sign Server
+	+ atboot.inc
+		- add a new item
+
+#. MJS
+	+ read the new added config item from atboot.rnc
+	+ if hadn't found the item, means F7295 hadn't ready
+
+#. J2EE Page
+	+ J2EE post build
+		- Soft Link
+		- Mount Point
+	+ Feature Toggle
+		- Coding in DBPatch
+		- Deploy with J2EE
+
+#. Add Feature Toggle 
+	+ Super Admin
+	+ Nemo own this
+		- fight fang
+
+#. Deploy time
+	+ MJS
+		- 10+ Days
+	+ J2EE Page
+		- 1 or 2 Months
+
+Data Collect
+------------
+
+#. UT
+	+ webex-windows-plugin
+		- http://tascher.eng.webex.com/tascher/featureReport
+	+ webex-sign-service
+		- http://tanfs.eng.webex.com/TestData/CodeCoverage/reportdata/webex-sign-service/
+	+ webex-sign-service-tools
+		- http://tanfs.eng.webex.com/TestData/CodeCoverage/reportdata/webex-sign-service-tools/1.0.0/149/UT/
+
+#. TA
+	+ http://ta.webex.com.cn/tasche/reports/viewGenericReport.action?projectCode=Client-TA-Download-Feature-Test&buildNumber=33.6.0-568
+	
+#. Test Case
+
+#. F7295-TFS Dynamic Sign-AWG Review
+	+ Document
+		- https://cisco.box.com/s/x0ys1uqpf0ou4lg3439xztel6w5ffbpl
+	+ Wiki
+		- https://wiki.cisco.com/display/CSGMSO/TFS+Dynamic+Sign+Service+MOP
+		- https://wiki.cisco.com/display/CSGPMO/F7295+JMS+-+TFS+dynamic+sign
+
+JME Telemetry
+-------------
+
+#. IJmeTeleMetricMgr
+	+ CJmeTeleMetricMgrImpl
+
+#. GetTelemetrtyInfo_FromGPC
+	+ GpcTeleMetryInfo
+	
+#. GetTelemetryInfo
+	+ GetTelemetrtyInfo_FromGPC
+		- GpcTeleMetryInfo
+	+ GetTelemetrytyInfo_FromDocShow
+		- Site/TeleMetryInfo
+
+#. GPC_JMTLOG
+	+ GPC_JMTLOG("gpc#JMT1000#Java")
+	+ Send Telemetry Data To Server
+	+ JMTLOG_GETLOGDATA_JSON
+		- Generate Telemetry Json Format Data
+
+#. JmtLogDefines.h
+	+ Define Telemetry Keyword
+
+#. WriteEntrypointImpl::WriteJmtLog_1000
+	+ gpc#JMT1000#%s browserType
+	
+#. Signed TFS Telemetry Client Item
+	+ gpc#JMT1002#signedTFS
+
+Q&A
+---
+
+#. How to match Desktop app version to a specify component build version
+	+ View the site
+		- Webex Meetings 
+		- Downloads
+		- Web app version
+	
+	+ https://cctg-cirepo.cisco.com/cirepo/Train_Client/
+		- Locate to the object feature
+		- Find the feature package
+		- https://cctg-cirepo.cisco.com/cirepo/Train_Client/33.6.0.f7295/webex-client-packaging-33.6.0.566/bin/package.xml
+	
+#. Feature toggle vs Atboot.inc
+	+ toggle is control to enable/disable feature 
+	+ atboot.inc is for client backward compatible
+	+ So, I agree move the toggle into superadmin. 
+	+ The toggle should be OFF by default, and can control by cluster?
+
+#. Deploy Type
+	+ Pool
+	+ Cluster
+	+ DC
+	+ Global
+	+ F7295
+		- **DC Level**, confirmed with Nemo Zhu 
+		- **Sign Service** has it's own package
+		- https://cctg-cirepo.cisco.com/cirepo/webex_artifacts/server/webex-sign-service/1.0.0/webex-sign-service-1.0.0.94/
+		
+	+ MJS
+		- Pool Level
+
+#. Do we need skip any Special Clusters?
+	+ Federal: Clusters IM/IN
+	+ FedRAMP Clusters F/AF
+	+ China : Clusters IC/IV, IK/IL
+	+ WebEx11: Clusters AW/ET, BI/CU
+	+ MMN J2EE (PHP): Clusters BT8/BT9, IW/IX
+	+ RE: Feature Toggle for Sign Server
+		- From Fight Fang, mail
+		  :: 
+		   
+		   I think the important reason is Fedramp and China DC don’t support it, 
+		   because web application current don’t have ability to control it.
+
+#. SVAT (Site Verification Test Automation)
+	+ Confirmed with Fish Liu and Haoming
+		- Current SVAT just support Firefox(48 before or later) NPAPI and Extension solution 
+	+ Confirmed with Silver, needn't add new case for F7295
+	
+#. MCT
+	+ Confirmed with Calvin Yan, needn't enhancement for F7295
+	+ mct.webex.com
+	+ After go to BTS or Prod, need open a case to mailto:csg-soc@cisco.com, to do health check
+
+#. Sign Service Dir
+	+ /opt/apache-tomcat_1/logs
+	+ signservice.log
+	+ telemetry.log
+	+ Meeting Record
+		- https://go.webex.com/go-sc/lsr.php?RCID=7c52721a54544d71aa76544b83b6ffde
+		- bUDnvfc5
+
+#. How to verify feature toggle enable or not
+	+ SQL Query
+	::
+	 
+	 select * FROM WBXSITECONFIG WHERE ITEMNAME='EnableDynamicTFSSign' and siteid =883747;
+	 itemvalue =0 disable
+
+	+ From Page : __bootstrapData.render.enableSigntfs
+	
+	.. figure:: _static/f7295_page_feature_toggle.png
+	
+#. How to check if MJS package support signed TFS from page
+	+ getsignfile
+	
+	.. figure:: _static/f7295_page_mjs_support_signedtfs.png
+
+
+#. F7295 PMR Issue
+	+ When start meeting, it tips meeting ended
+	+ Reset User PMR Config
+		- Site admin ->edit user-> uncheck Personal Room  and check again
+
+Sign Service Package
+--------------------
+
+#. cirepo link
+	+ https://cctg-cirepo.cisco.com/cirepo/webex_artifacts/server/webex-sign-service/1.0.0/webex-sign-service-1.0.0.94/
+	+ https://cctg-cirepo.cisco.com/cirepo/webex_artifacts/server/webex-sign-service/1.0.0/
+	
+#. How to check if **Sign Service** is available or not?
+	+ http://10.252.53.218:8081/signservice/ping
+		- If available will return **OKOKOK**
+		
+#. Sign Service Pack to RPM script
+	+ \build\linux\rpmgen
+	+ build will call rpmgen
+
+#. EC for Sign Service
+	+ http://cctg-ec2.cisco.com/commander/jobDetails.php?jobId=ee583d7d-e681-11e8-95aa-005056af0148
+
+CMC Config
+----------
+
+#. For more detail info need contract Bevis Duan
+	+ He had given us a training
+
+#. certificateType: Hard Code 
+	+ default pem
+	+ If need change, ScottX
+
+#. url
+	+ pass to SignTool
+	+ Basic needn't change
+
+#. description
+	+ Needn't change
+
+#. **RemoteStorageForSign**
+	+ like destination in sign.properties
+	+ Shared Storage Dir, Sign Service use save the webex.exe file , MJS use to access the webex.exe file 	
+	+ 10.224.17.251:/data/signservice, when the IP change need sync up
+	+ current format
+		- {10.224.17.251:/data/signservice, /cluster1/signfiles}|{10.224.17.251:/data/signservice, /cluster2/signfiles}
+
+Application
+~~~~~~~~~~~
+
+#. Config File
+	+ CMC will use, just copy for Sign Service
+	+ Sign Service will use this config file
+	+ Sign Tool will use this config item, **sign.properties** (in sign service repo)
+		- url
+		- description
+		- certificateType
+		- ph , current useless
+		- source, current useless
+		- **certName, pass to KMS to get certificate**
+		- destination, (JMS, SignService, SignTool will use to access or retrieve webex.exe), don't change
+	+ /opt/webex/conf/webapps
+
+#. Package Installation Management
+	+ **WBXtomcat**
+
+#. Script Definition
+	+ Pre Install Action
+		- Before Install, We will uninstall first
+
+#. signservice
+	+ sh shell
+	+ Process Management
+	+ Us this script to start or stop sign service
+	+ the code in sign service repo
+
+These items just copy from other service
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+#. Tomcat will use this items	
+	+ server.xml
+	+ web.xml
+	+ catalina.policy
+	+ context.xml
+	+ catalina.properties
+	+ webexapp.sh
+
+#. 20_signservice
+
+#. healthcheck.sh
+
+#. java_signservice.conf
+	+ seems JMX 
+
+#. apptokenconfig.xml
+	+ 
+
+Tomcat
+~~~~~~
+
+#. We just depend on Tomcat, for more detail info need contract Tomcat relevant owner 
+
+#. Just Copy from Other Service
+
+
+GCLog
+~~~~~
+
+#. Enable
+
+#. NumberOfGCLogFiles
+
+#. GCLogFileSize
+
+
+Box Type
+~~~~~~~~
+
+#. like server project name
+
+#. Nemo know this
+
+#. Seems Watson xu config
+
+External Resource
+~~~~~~~~~~~~~~~~~
+
+#. Other guys help us config
+
+#. SIS
+
+
+Actions Definition
+~~~~~~~~~~~~~~~~~~
+
+Template Macro
+~~~~~~~~~~~~~~
+
+Advanced Options
+~~~~~~~~~~~~~~~~
+
+
+KMS
+---
+
+#. Key Name, hard code or config
+
+#. Need send a request
+	+ Nemo Zhu
+	+ Sign Service , Build Key are the same
+
+#. Register Key Name
+	+ https://wiki.cisco.com/x/Lm6VCQ
+	
+#. Sign Service
+	+ Build already had included KMS jar package
+	+ CMC
+		- Two Configures
+	+ From Ren Bo
+		- Account Provisioning + Certificate Importing
+	+ KM Account
+	+ From Bao jie
+		- After SingService deplyed in BTS/PRDO, ask tool team to provide the KM account info
+		- Bo Ren help to request account accesses grant to infosecurity team
+		- Service ower verify function or features
+
+OCP vs VMWare
+-------------
+
+#. allocation
+
+#. host
+
+#. https://wiki.cisco.com/display/HFWEB/How+to+build+OCP+VM+servers+per+CMC-In+Progress
+	
+MAV(Metrics and Visualization)
+------------------------------
+
+#. cpu
+#. memory
+#. connect count or http
+#. max process
+#. sign service metric
+	+ request
+	+ success
+	+ failed
+	+ error code
+#. xnodemanager
+
+	
+Document For F7295
+------------------
+	
+#. F7295 Graduation link
+	+ https://wiki.cisco.com/display/CSGPMO/Feature+Graduation+-F7295
+	
+#. MOP For F7295
+	+ https://wiki.cisco.com/display/HFWEB/Mop+For+F7295
+	+ https://wiki.cisco.com/display/CSGMSO/TFS+Dynamic+Sign+Service+MOP
+	
+#. Design Document For F7295
+	+ https://cisco.app.box.com/s/x0ys1uqpf0ou4lg3439xztel6w5ffbpl	
+	+ https://wiki.cisco.com/display/CSGPMO/F7295+JMS+-+TFS+dynamic+sign
+		- CMC templete (Jie Bao, Bevis Duan, Hurst Li)
+		- MAV ( Angela Shao,Calvin Yan)
+		- Telemetry (use logstash, logstash deploy contact Jie Bao, QA Lab Telemetry Report contact Danny Yuan)
+		- Live Keep (CMC deploy)
+		- Private key import to KMS (Bo Ren)
+		- QA Env Site Deploy(Watson Xu), ATS Env Deploy (Bin Yang)
+		- J2ee CMC script update (Lyn Chen)
+	
+#. F7295 Sign Service Server
+	+ https://wiki.cisco.com/display/MSUS/F7295+TFS+Sign+Service+Dashboard
+		- BTS Pool
+		- Production Pool	
+	
+J2EE Package Support TFS dynamic sign
+-------------------------------------
+
+#. atboot.inc
+	+ EnableDynamicTFSSign = 1
+	+ Package Location
+		- https://cctg-cirepo.cisco.com/cirepo/Train_Client/38.11.0.f7295/webex-client-packaging-38.11.0.54/client/webex/atboot.inc
+	
+When Run **webex.exe** will pop up “Windows protected your PC”
+--------------------------------------------------------------
+
+#. Link
+	+ https://stackoverflow.com/questions/39833000/avoid-windows-protected-your-pc-message-for-a-authenticode-cert-signed-install
+	::
+	 
+	 This is the Windows Smartscreen filter. 
+	 It will stop reporting your certificate once it has been downloaded a number of times from different IP addresses.
+	 The only way around this is an EV certificate which requires a hardware dongle.
+
+
+Meeting With Zhenyu Wang about MJS MOP
+--------------------------------------
+
+#. Meeting Agenda
+	+ MJS CMC Config
+	+ How to verify Feature Toggle is enable or not
+	+ F7295 MJS IP
+		- 10.224.43.95
+		- wbxroot/ wbx@AaR00t
+		
+
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=f935c6be1aa34d559b5cca80fbd94a5b
+	+ JnCmqTV7
+	
+Meeting With Evan Xie Review MOP(1)
+-----------------------------------
+
+#. Meeting Agenda
+	+ Review F7295 MOP
+	
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=4ed84dafc96b47fd90c16195ee561651
+	+ rDJH2a5M	
+
+Meeting With Evan Xie Review MOP(2)
+-----------------------------------
+
+#. Meeting Agenda
+	+ Review F7295 MOP
+	
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=795797be629b4d86bcf37170372b66c6
+	+ ZrN578J2
+	
+#. MOP Invitee List
+	+ Evan Xie
+	+ Gordon Lee
+	+ MSO
+		- Sean Cao
+		- Aier Huang
+		- Catherine Zhang
+		- Jeven Zhou
+	+ Allison Guo
+	+ Provisioning Team
+		- Betty Yang
+		- Joy Wang
+		- Jane Jiang
+	+ Zhenyu Wang
+	+ Nemo Zhu
+	+ Walker Lan
+	+ Zina Zhou
+	+ Bo Ren
+	+ Deployment
+		- hurst Li
+		- Awin li
+	
+Meeting with Zhenyu Wang about J2EE CMC
+---------------------------------------
+
+#. Meeting Agenda
+	+ Add three items for F7295 mount
+
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=a3b2a92439a845b09aab845182dff97b
+	+ 2kJXXR6A
+	
+	
+Meeting with Zhenyu, Yong Zhang to refine mount
+-----------------------------------------------
+
+#. Meeting Agenda
+	+ Refine J2EE Mount
+	+ Refine MJS Mount
+	+ Refine SignService Mount
+
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=b6453d9174d241668f3d02e095ea2227
+	+ TraMPh3d
+	
+Meeting with Calvin to discuss MAV
+----------------------------------
+
+#. Meeting Agenda
+	+ Where is the signservice data
+
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=d10165adf4244bfabfc2756779bf7267	
+	+ FmT3pZUJ
+
+Meeting with Calvin, Allison to discuss MAV
+-------------------------------------------
+
+#. Recording
+	- https://cisco.webex.com/cisco-sc/lsr.php?RCID=3ac26b3d72d241ebb54c52921c2f8aac
+	- wPVKMzT6
+	
+#. action
+	- mavclient 3.0.0.0_0018
+	- webdomain flag for sign service, feature enable check from db by cluster level
+	- telemetry add error code description
+	- add track ID in the next version
+	- chang send telemetry data strategy in the next version (one request one log)
+	
+#. F7295 MAV Data
+	+ https://mav.webex.com/account/ccatg/checks/96127
+	+ https://10.252.223.73:43191/module/httptrap/4c7dacc4-7481-4679-87c9-959312da2b18/mys3cr3t
+
+
+Meeting with Yang Chen and Nick Zhong
+-------------------------------------
+
+#. Agenda
+	+ Discuss how to fill in mop release request
+
+#. Action
+	+ Push MJS and J2EE Eng owner to create release request
+		- MJS release request
+		- J2EE release request
+		- New Sign Service release request	
+
+	+ New service signsiervice need to review with Gordon team to prepare the release in RMP
+
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=fd8760a99aa244008d728fe7153aaf54
+	+ eDFizAc5
+	
+#. MOP Release Process
+	+ https://wiki.cisco.com/display/HFWEB/MOP+Release+Process
+
+
+Meeting with Evan Xie
+---------------------
+
+#. Agenda
+	+ How to add a new component in RMP
+	
+#. Recording
+	+ https://go.webex.com/go-sc/lsr.php?RCID=ea998cd982254633bbcc950ca9391d4e
+	+ 3zM6pYjW
+
+
+MJS call Sign Service : HTTP => HTTPS
+-------------------------------------
+
+#. modify MJS CMC config
+
+#. modify MJS CMC shell script
+
+#. modify VIP config
+
+#. certificate import in loadbalance
+
+#. verify
+	+ telnet signservice-hm.qa.webex.com 443
+	
+Test Servers
+------------
+
+#. VIP: 10.224.45.21, signservice-hm.qa.webex.om
+	+ jhm1tds101
+		- 10.224.43.143
+	+ jhm1tds102
+		- 10.224.43.160
+
+#. VIP: 10.224.45.22, signservice-hm-ocp.qa.webex.om
+	+ jhm1ds201tds001
+		- 10.224.100.20
+	+ jhm1ds201tds002
+		- 10.224.100.15
+
+#. NA, NA
+	+ jhm1tds001
+		- 10.224.43.138
+
+Action
+------
+
+#. need discuss with cloud service team
+	- if production with deploy APPD or New Relic
+	- current plan New Relic transfer to APPD
+	- APPD or New Relic need consider performance issue 
+	
+#. JVM thread jitter is a little big
+	
+MOP Request
+-----------
+
+#. Push MJS and J2EE Eng owner to create release request
+	+ MJS release request
+	+ J2EE release request
+	+ New Sign Service release request	
+
+#. New service signsiervice need to review with Gordon team to prepare the release in RMP
+	
+Reference
+---------
+
+#. Feature Toggle build fail yesterday
+	+ Coding just check in master @2018.11.6 10:35
+
+#. F7295 Super Admin
+	+ hmsuper.qa.webex.com
+	+ admin/pass
+
+#. TA link
+	+ http://tascher.eng.webex.com/runnernew
+	
+#. reStructuredtext table
+	+ http://www.tablesgenerator.com/text_tables#
+	
+#. Windows protected your PC
+	+ https://www.tekrevue.com/tip/windows-protected-your-pc-disable-smartscreen/
+	
+#. MOP
+	+ https://wiki.cisco.com/display/HFWEB/MOP+Release+Process
+	
+#. RMP Quick Start Guide
+	+ https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/Wbff004195634_4e1f_9ead_05d22055408f/page/RMP%20Help%20Quick%20Start%20Guide%2C%20what%20engineering%20and%20release%20information%20can%20I%20find%20in%20RMP
+
+#. Release full Workflow control model
+	+ https://wiki.cisco.com/display/RMP/Release%20full%20Workflow%20control%20model
+
+#. Release Management Portal Project
+	+ https://wiki.cisco.com/display/RMP/RBAC+design
+
+#. TFS sign server security check
+	+ https://wiki.cisco.com/display/CSGPMO/Sign+Server+CSDL+Compliance
+	
+#. Super Admin
+	+ https://hasuper.qa.webex.com/
+	+ nick/nickpass
+	+ Enable Feature Toggle For F7295
+		- Tools => Batch Enable Tool
+	
+#. Qlik
+	+ https://qlkbts.webex.com/
+	+ https://wiki.cisco.com/pages/viewpage.action?pageId=188844815
+	+ Request Qlik Account
+		- rachel zheng
+		- https://remedy-atlantic.cloudapps.cisco.com/incidents
+		
+#. CMC
+	+ https://csgcmc.qa.webex.com/#
+	
+#. vimdiff usage
+	+ https://www.ibm.com/developerworks/cn/linux/l-vimdiff/index.html
+	
+#. Client Package
+	+ Need build manually
+	+ https://cctg-ec2.cisco.com/commander/link/projectDetails/projects/Train_Client?tabGroup=schedulesHeader&s=Projects
+	
+#. Avoid “Windows protected your PC” message for a authenticode cert signed install4j installer
+	+ https://stackoverflow.com/questions/39833000/avoid-windows-protected-your-pc-message-for-a-authenticode-cert-signed-install
+
+#. MAV
+	+ http://mav.webex.com/	
+	+ Calvin Yan
+	
+#. JIRA Training
+	+ Recording
+		- https://alpha.webex.com/alpha/lsr.php?RCID=9a4af72c78f44b2b93095d7a0a34b014
+		- 2jE2FuwS
+
+#. logstash cmc
+	+ My Components
+		- 5.6.2
+		- 1812
+
+#. maven config
+	+ https://wiki.cisco.com/display/CSGPMO/Local+Build+config+to+access+keymgmt
+	+ https://wiki.cisco.com/display/WEBEXCI/Nexus+OSS+3
+
+#. CMC From rmc to download package
+	+ http://rmc.webex.com/
+		
+#. Weekly Update
+	+ MAV, had discussed with Alison, Calvin
+		- mavclient
+		- connectd data is ok
+		- mav view array is not friendly
+		- errorcode will use telemetry
+		- next version, will change mav logic
+		- Scope don't clear, Report 
+	+ CATO
+		- xalan
+		- logstash
+	+ Performance test
+		- current hadn't complete
+		- kibana and mav site can't receive data
+	+ MOP
+		- basically complete
+		- had review with Evan Xie and Allison
+		- The challenge
+	+ Test Env & CMC
+		- not stable
+	

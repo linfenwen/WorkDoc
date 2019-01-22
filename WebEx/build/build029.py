@@ -38,6 +38,7 @@ def executeCmd(command, args=None) :
 def git(args) :
 	try:
 		out = executeCmd('git', args)
+		#print("git", out)
 		return out
 	except Exception, e:
 		print("git Exception", e)
@@ -61,6 +62,7 @@ def GetUnCommitedFiles(strFiles) :
 			#print(0, file)
 			if len(file) > 3 :
 				f1 = file[3:]
+				#print(0.1, f1)
 			
 			#print(len(f1), f1)
 			# Remove Double Quotation
@@ -81,7 +83,7 @@ def GetUnCommitedFiles(strFiles) :
 				print(f2)
 				retFileList.append(f2)
 		
-		#print("GetUnCommitedFiles", retFileList)
+		print("GetUnCommitedFiles", retFileList)
 		return retFileList
 	except Exception, e:
 		print("GetUnCommitedFiles Exception", e)
@@ -105,7 +107,7 @@ def GenerateSvg(strUml) :
 		if None == out :
 			return None
 		
-		#print('GenerateSvg',retSvg, type(retSvg))
+		print('GenerateSvg',retSvg, type(retSvg))
 		return retSvg
 	except Exception, e:
 		print("GenerateSvg Exception", e)
@@ -131,6 +133,8 @@ def BuildSvgs(strFileList) :
 			print('BuildSvgs None == strFileList')
 			return True
 		
+		#print("11111")
+		#print(strFileList)
 		nCount = 0
 		strDestFolder = '%s' %("/Users/lamfungwen/WorkDoc/note/LamfungNote/source/_static")
 		for file in strFileList :
@@ -160,7 +164,7 @@ def BuildDocument() :
 			return None
 		
 		os.chdir(curWorkDir)
-		#print(os.getcwd())
+		print(os.getcwd())
 		return True
 	except Exception, e:
 		print("BuildDocument Exception", e)
@@ -170,6 +174,7 @@ def BuildDocument() :
 
 if __name__ == '__main__' :
 	try:
+		#print("test 111")
 		args = sys.argv[1:]
 		ret = git(args)
 		
