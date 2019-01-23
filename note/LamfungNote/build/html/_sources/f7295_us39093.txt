@@ -874,6 +874,18 @@ MOP Request
 
 #. New service signsiervice need to review with Gordon team to prepare the release in RMP
 	
+	
+Logstash
+--------
+
+#. server config location
+	+ /etc/logstash/conf.d
+	+ vi logstash_central.conf
+	+ *_logstash_%(component)_hdfs
+	+ logstash_app.conf
+		- type: tdssvr
+		- component: meeting
+	
 Reference
 ---------
 
