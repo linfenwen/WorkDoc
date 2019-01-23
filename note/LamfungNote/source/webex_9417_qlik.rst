@@ -60,6 +60,9 @@ Reference
 #. Line Chat
 	+ https://help.qlik.com/en-US/search/?q=Line+Chat	
 	
+#. Qlik Help
+	+ https://help.qlik.com/zh-CN/sense/November2018/Subsystems/Hub/Content/Sense_Hub/Dimensions/dimensions.htm
+	
 #. WME Example
 	+ https://wiki.cisco.com/x/7ha2Bw
 
