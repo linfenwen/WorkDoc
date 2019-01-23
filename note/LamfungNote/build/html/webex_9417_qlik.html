@@ -79,6 +79,61 @@
 </li>
 </ol>
 </div>
+<div class="section" id="table">
+<h2>Table<a class="headerlink" href="#table" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>signservice_forgrad</li>
+<li>signserviceaggr_forgrad</li>
+<li>ATS Script</li>
+</ol>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span>create external table telemetry.tdssvr_signservice_ats_dap_json (
+path string,
+`@timestamp` string,
+component string,
+`@version` string,
+host string,
+eventtype string,
+message struct&lt;requests:int, failed:int, success:int, timestamp:string&gt;,
+type string
+)
+PARTITIONED BY (day string)
+ROW FORMAT SERDE &#39;org.openx.data.jsonserde.JsonSerDe&#39;
+WITH SERDEPROPERTIES (&quot;ignore.malformed.json&quot; = &quot;true&quot;)
+stored as
+INPUTFORMAT&#39;com.hadoop.mapred.DeprecatedLzoTextInputFormat&#39;
+
+OUTPUTFORMAT&#39;org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat&#39;
+
+location &#39;/kafka/logstash_meeting_hdfs/tdssvr/others-others/&#39;;
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple">
+<li>BTS Script</li>
+</ol>
+<div class="highlight-default"><div class="highlight"><pre><span></span>create external table telemetry.signservice_forgrad(
+path string,
+`@timestamp` string,
+component string,
+`@version` string,
+host string,
+eventtype string,
+message struct&lt;requests:int, failed:int, success:int, timestamp:string&gt;,
+type string
+)
+PARTITIONED BY (day string)
+ROW FORMAT SERDE &#39;org.apache.hive.hcatalog.data.JsonSerDe&#39;
+WITH SERDEPROPERTIES (&quot;ignore.malformed.json&quot; = &quot;true&quot;)
+stored as
+INPUTFORMAT&#39;com.hadoop.mapred.DeprecatedLzoTextInputFormat&#39;
+
+OUTPUTFORMAT&#39;org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat&#39;
+
+location &#39;/kafka/logstash_meeting_hdfs/tdssvr-forgrad/others-others/&#39;;
+</pre></div>
+</div>
+</div>
 <div class="section" id="resource">
 <h2>Resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -244,6 +299,7 @@
   <ul>
 <li><a class="reference internal" href="#">WEBEX-9417: As a developer, I want to Qlik report for F7295</a><ul>
 <li><a class="reference internal" href="#recording">Recording</a></li>
+<li><a class="reference internal" href="#table">Table</a></li>
 <li><a class="reference internal" href="#resource">Resource</a></li>
 <li><a class="reference internal" href="#reference">Reference</a></li>
 </ul>

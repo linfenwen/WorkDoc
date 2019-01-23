@@ -14,6 +14,61 @@ Recording
 #. Data Process Framework training by Jeffrey on 3/21/2018
 	+ https://go.webex.com/go/ldr.php?RCID=26b9e76b2745b7795bef39d555db02b4
 
+Table
+-----
+
+#. signservice_forgrad
+
+#. signserviceaggr_forgrad
+
+#. ATS Script
+ 
+ ::
+ 
+    create external table telemetry.tdssvr_signservice_ats_dap_json (
+    path string,
+    `@timestamp` string,
+    component string,
+    `@version` string,
+    host string,
+    eventtype string,
+    message struct<requests:int, failed:int, success:int, timestamp:string>,
+    type string
+    )
+    PARTITIONED BY (day string)
+    ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
+    WITH SERDEPROPERTIES ("ignore.malformed.json" = "true")
+    stored as
+    INPUTFORMAT'com.hadoop.mapred.DeprecatedLzoTextInputFormat'
+    
+    OUTPUTFORMAT'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+    
+    location '/kafka/logstash_meeting_hdfs/tdssvr/others-others/';
+
+#. BTS Script
+ 
+::
+ 
+    create external table telemetry.signservice_forgrad(
+    path string,
+    `@timestamp` string,
+    component string,
+    `@version` string,
+    host string,
+    eventtype string,
+    message struct<requests:int, failed:int, success:int, timestamp:string>,
+    type string
+    )
+    PARTITIONED BY (day string)
+    ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+    WITH SERDEPROPERTIES ("ignore.malformed.json" = "true")
+    stored as
+    INPUTFORMAT'com.hadoop.mapred.DeprecatedLzoTextInputFormat'
+
+    OUTPUTFORMAT'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+
+    location '/kafka/logstash_meeting_hdfs/tdssvr-forgrad/others-others/';
+
 Resource
 --------
 
