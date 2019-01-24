@@ -69,6 +69,37 @@ Table
 
     location '/kafka/logstash_meeting_hdfs/tdssvr-forgrad/others-others/';
 
+
+Example
+-------
+
+#. CMP Job Exploration
+	+ Eureka_SessUserJoin_Meeting_Hive
+	+ https://oneportal.webex.com/oneportal/?entry-point=clops#/job/jobExcution
+
+#. count(hour) and the date is 2019.1.12
+	::
+	 
+	 select count(*) from mjs_join where year(`date`) = 2019 and month(`date`) = 1 and day(`date`)=12 group by hour(rcvtime);
+
+#. query from 2018-06-01 to 2019-01-03 and join way is 5 
+	::
+	 
+	 select `date` as date1, count(*) as cnt  from mjs_join where unix_timestamp(`date`,'yyyy-MM-dd') between unix_timestamp('2018-06-01','yyyy-MM-dd') and unix_timestamp('2019-01-23','yyyy-MM-dd') and joinway = 5 group by `date` order by date1;
+
+CMP job
+-------
+
+#. In lab environment: 
+	+ your job must Template on: agg_1telemetry_base_job
+
+#. BTS:
+	+ template on: agg_1telemetry_base_job_bts1
+
+#. PROD
+	+ template on: agg_1telemetry_base_job
+
+
 Resource
 --------
 
@@ -95,6 +126,8 @@ Resource
 	+ QA
 		- https://oneportal.webex.com
 
+#. Hue demo online
+	+ http://demo.gethue.com/hue/editor/?type=hive
 
 
 Reference
@@ -117,6 +150,13 @@ Reference
 	
 #. Qlik Help
 	+ https://help.qlik.com/zh-CN/sense/November2018/Subsystems/Hub/Content/Sense_Hub/Dimensions/dimensions.htm
+	
+#. Hive Help
+	+ https://support.treasuredata.com/hc/en-us/articles/360001457347-Hive-Query-Language
+	+ https://cwiki.apache.org/confluence/display/Hive/LanguageManual
+	
+#. Hive Tutorial
+	+ https://cwiki.apache.org/confluence/display/Hive/Tutorial
 	
 #. WME Example
 	+ https://wiki.cisco.com/x/7ha2Bw
