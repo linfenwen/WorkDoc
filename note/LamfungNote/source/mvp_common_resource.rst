@@ -165,6 +165,12 @@ Common Topic
 #. BFCP
 	+ https://tools.ietf.org/html/rfc4582
 
+Java
+----
+
+#. 8 Graphs to understand Java
+	+ http://www.importnew.com/11725.html
+
 Design Priciple
 ---------------	
 

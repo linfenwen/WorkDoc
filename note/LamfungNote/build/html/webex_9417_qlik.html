@@ -77,6 +77,15 @@
 </dd>
 </dl>
 </li>
+<li><dl class="first docutils">
+<dt>20190109</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://cisco.webex.com/cisco/lsr.php?RCID=608a616ec4bf48dea41da16a8baaa2aa">https://cisco.webex.com/cisco/lsr.php?RCID=608a616ec4bf48dea41da16a8baaa2aa</a></li>
+<li>Recording password: 9xSY2RG2</li>
+</ul>
+</dd>
+</dl>
+</li>
 </ol>
 </div>
 <div class="section" id="table">
@@ -157,6 +166,14 @@ location &#39;/kafka/logstash_meeting_hdfs/tdssvr-forgrad/others-others/&#39;;
 <li><dl class="first docutils">
 <dt>query from 2018-06-01 to 2019-01-03 and join way is 5</dt>
 <dd><div class="first last highlight-default"><div class="highlight"><pre><span></span>select `date` as date1, count(*) as cnt  from mjs_join where unix_timestamp(`date`,&#39;yyyy-MM-dd&#39;) between unix_timestamp(&#39;2018-06-01&#39;,&#39;yyyy-MM-dd&#39;) and unix_timestamp(&#39;2019-01-23&#39;,&#39;yyyy-MM-dd&#39;) and joinway = 5 group by `date` order by date1;
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>List confcount, date and sitename, the date is from 2019-01-01 to 2019-01-20</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span>select count(distinct confid) as confCount, `date`, sitename from mjs_join where unix_timestamp(`date`,&#39;yyyy-MM-dd&#39;) between unix_timestamp(&#39;2019-01-01&#39;,&#39;yyyy-MM-dd&#39;) and unix_timestamp(&#39;2019-01-20&#39;,&#39;yyyy-MM-dd&#39;) group by `date` , sitename;
 </pre></div>
 </div>
 </dd>
@@ -355,6 +372,14 @@ location &#39;/kafka/logstash_meeting_hdfs/tdssvr-forgrad/others-others/&#39;;
 <dt>WME Example</dt>
 <dd><ul class="first last simple">
 <li><a class="reference external" href="https://wiki.cisco.com/x/7ha2Bw">https://wiki.cisco.com/x/7ha2Bw</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>如何设定y轴的起始位置从自定义的开始？而不是默认的0开始</dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="https://github.com/apache/incubator-echarts/issues/6525">https://github.com/apache/incubator-echarts/issues/6525</a></li>
 </ul>
 </dd>
 </dl>
