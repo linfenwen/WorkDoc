@@ -171,6 +171,9 @@ Reference
 #. WME Example
 	+ https://wiki.cisco.com/x/7ha2Bw
 
+#. Qlik 集合表达式 ( {$<Year={2009}>} )
+	+ https://help.qlik.com/zh-CN/qlikview/November2017/Subsystems/Client/Content/ChartFunctions/SetAnalysis/set-analysis-expressions.htm
+
 #. 如何设定y轴的起始位置从自定义的开始？而不是默认的0开始
 	+ https://github.com/apache/incubator-echarts/issues/6525
 
