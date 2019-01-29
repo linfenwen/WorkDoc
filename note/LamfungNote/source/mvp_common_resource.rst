@@ -170,6 +170,15 @@ Java
 
 #. 8 Graphs to understand Java
 	+ http://www.importnew.com/11725.html
+	
+#. Java 8 User Guide
+	+ http://www.cnblogs.com/ios9/p/7518519.html#_label1
+
+#. Java.io.File
+	+ http://developer.classpath.org/doc/java/io/File-source.html
+
+#. Java System Properties
+	+ https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
 
 Design Priciple
 ---------------	
