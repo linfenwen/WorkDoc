@@ -179,6 +179,10 @@ Java
 
 #. Java System Properties
 	+ https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html
+	
+#. System.out.println
+	+ https://my.oschina.net/zjllovecode/blog/1538380
+	+ https://javapapers.com/core-java/system-out-println/
 
 Design Priciple
 ---------------	
