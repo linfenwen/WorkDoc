@@ -183,6 +183,9 @@ Java
 #. System.out.println
 	+ https://my.oschina.net/zjllovecode/blog/1538380
 	+ https://javapapers.com/core-java/system-out-println/
+	
+#. Java.lang source code
+	+ http://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/lang
 
 Design Priciple
 ---------------	
