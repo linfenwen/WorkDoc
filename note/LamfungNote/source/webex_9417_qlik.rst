@@ -139,6 +139,10 @@ Resource
 #. Hue demo online
 	+ http://demo.gethue.com/hue/editor/?type=hive
 
+#.Kibana
+	+ BTS
+		- logs.webex.com
+		- type: tdssvr
 
 Reference
 ---------

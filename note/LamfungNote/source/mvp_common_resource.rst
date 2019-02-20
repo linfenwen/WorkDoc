@@ -190,6 +190,18 @@ Java
 #. Java Example
 	+ https://github.com/eugenp/tutorials/tree/master/core-java-io
 
+#. Java World
+	+ https://www.javaworld.com/article/2077496/testing-debugging/java-tip-130--do-you-know-your-data-size-.html
+
+#. C like sizeof
+	+ https://dzone.com/articles/how-to-write-a-c-like-sizeof-function-in-java
+
+#. Java Performance
+	+ http://java-performance.info/overview-of-memory-saving-techniques-java/
+	
+#. Java Unit Test
+	+ https://zeroturnaround.com/rebellabs/how-to-mock-up-your-unit-test-environment-to-create-alternate-realities/
+
 Design Priciple
 ---------------	
 
