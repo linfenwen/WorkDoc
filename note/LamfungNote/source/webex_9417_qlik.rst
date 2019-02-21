@@ -139,10 +139,14 @@ Resource
 #. Hue demo online
 	+ http://demo.gethue.com/hue/editor/?type=hive
 
-#.Kibana
+#. Kibana
 	+ BTS
 		- logs.webex.com
 		- type: tdssvr
+		
+#. AppToken Knowledge Sharing From Bo Ren
+	+ https://go.webex.com/go-sc/lsr.php?RCID=39e43f2aa9e1453fbcdfe3e64dec6a80
+	+ SfhUtrH3
 
 Reference
 ---------
