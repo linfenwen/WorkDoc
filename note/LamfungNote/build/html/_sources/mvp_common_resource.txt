@@ -202,6 +202,9 @@ Java
 #. Java Unit Test
 	+ https://zeroturnaround.com/rebellabs/how-to-mock-up-your-unit-test-environment-to-create-alternate-realities/
 
+#. Java Test
+	+ http://www.pskills.org/corejava.jsp
+
 Design Priciple
 ---------------	
 
