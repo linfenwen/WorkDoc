@@ -204,6 +204,16 @@ Java
 
 #. Java Test
 	+ http://www.pskills.org/corejava.jsp
+	
+#. SpringFramework ClassPathXmlApplicationContext
+	+ IOException parsing XML
+	+ http://www.voidcn.com/article/p-uqvudlxb-bqu.html
+	
+#. What is Spring Framework
+	+ https://www.edureka.co/blog/what-is-spring-framework/
+
+#. Java Thread
+	+ http://wiki.jikexueyuan.com/project/java-concurrent/creating-and-starting-java-threads.html
 
 Design Priciple
 ---------------	

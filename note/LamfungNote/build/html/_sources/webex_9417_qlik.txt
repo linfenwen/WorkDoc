@@ -110,6 +110,13 @@ CMP job
 	+ template on: agg_1telemetry_base_job
 
 
+FQA
+---
+
+#. How to view MJS version
+	+ http://gpstest-bt2.webex.com/WBXmjsasset/js/common/version
+	+ https://train.qa.webex.com/WBXmjsasset/js/common/version
+
 Resource
 --------
 
