@@ -212,6 +212,12 @@ Java
 #. What is Spring Framework
 	+ https://www.edureka.co/blog/what-is-spring-framework/
 
+#. Java mock introduction
+	+ https://dzone.com/refcardz/mockito?chapter=1 
+	
+#. Java online regular
+	+ http://www.regexplanet.com/advanced/java/index.html
+
 #. Java Thread
 	+ http://wiki.jikexueyuan.com/project/java-concurrent/creating-and-starting-java-threads.html
 
