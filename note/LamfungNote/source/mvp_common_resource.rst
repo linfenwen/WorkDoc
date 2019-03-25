@@ -164,6 +164,9 @@ Common Topic
 	
 #. BFCP
 	+ https://tools.ietf.org/html/rfc4582
+	
+#. Gmock Enhancements: Mocking Global Functions and Methods with more than 10 Arguments
+	+ https://www.apriorit.com/dev-blog/468-gmock-enchancements
 
 Java
 ----
@@ -217,6 +220,15 @@ Java
 	
 #. Java online regular
 	+ http://www.regexplanet.com/advanced/java/index.html
+	
+#. Java mock static method, mock new object
+	+ https://www.ibm.com/developerworks/cn/java/j-lo-powermock/index.html
+	+ https://stackoverflow.com/questions/10327612/mock-static-methods-from-multiple-class-using-powermock
+	+ https://automationrhapsody.com/mock-new-object-creation-powermock/
+	+ https://examples.javacodegeeks.com/core-java/mockito/mockito-mock-static-method-example/
+	+ https://examples.javacodegeeks.com/core-java/mockito/powermock-mockito-integration-example/
+	+ https://www.jianshu.com/p/776871af8f82
+	+ https://blog.csdn.net/Extra_warrior/article/details/53895524
 
 #. Java Thread
 	+ http://wiki.jikexueyuan.com/project/java-concurrent/creating-and-starting-java-threads.html
