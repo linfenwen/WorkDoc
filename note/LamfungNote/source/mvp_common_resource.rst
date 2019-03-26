@@ -167,6 +167,12 @@ Common Topic
 	
 #. Gmock Enhancements: Mocking Global Functions and Methods with more than 10 Arguments
 	+ https://www.apriorit.com/dev-blog/468-gmock-enchancements
+	
+#. C function UT
+	+ https://accu.org/index.php/journals/2062
+	
+#. Google Mock进阶篇
+	+ http://www.voidcn.com/article/p-hzghngiz-he.html
 
 Java
 ----
