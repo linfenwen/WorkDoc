@@ -173,6 +173,10 @@ Common Topic
 	
 #. Google Mock进阶篇
 	+ http://www.voidcn.com/article/p-hzghngiz-he.html
+	+ https://onedrive.live.com/redir?resid=4C6FDC828365B80E%2128191&authkey=%21AtpjZailG7DIcVg&page=View&wd=target%28Design%20notes.one%7Ce625ee03-bb70-3e4d-b6a2-6eea23277768%2FCan%28if%20can%2C%20how%5C%29%20we%20mock%20non-%7Cdd2d9216-c645-bc4d-a0a5-549489f62b0e%2F%29
+
+#. Unit Test Framework
+	+ http://www.throwtheswitch.org/comparison-of-unit-test-frameworks
 
 Java
 ----
