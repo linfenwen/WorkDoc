@@ -180,6 +180,9 @@ Common Topic
 	
 #. How to fake a singleton in C
 	+ https://helpercode.com/2015/09/16/how-to-fake-a-singleton-in-c/
+	
+#. http://blog.guorongfei.com/2016/08/22/cpp-unit-test-catch/
+	+ http://blog.guorongfei.com/2016/08/22/cpp-unit-test-catch/
 
 Java
 ----
