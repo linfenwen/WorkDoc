@@ -177,6 +177,9 @@ Common Topic
 
 #. Unit Test Framework
 	+ http://www.throwtheswitch.org/comparison-of-unit-test-frameworks
+	
+#. How to fake a singleton in C
+	+ https://helpercode.com/2015/09/16/how-to-fake-a-singleton-in-c/
 
 Java
 ----
