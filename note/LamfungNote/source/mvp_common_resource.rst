@@ -183,6 +183,9 @@ Common Topic
 	
 #. http://blog.guorongfei.com/2016/08/22/cpp-unit-test-catch/
 	+ http://blog.guorongfei.com/2016/08/22/cpp-unit-test-catch/
+	
+#. Mockcpp
+	+ https://bitbucket.org/godsme/mockcpp/src/06ad37ddc45cbbc5d5e42db925f72ebf9faaa0d4/src/?at=default	
 
 Java
 ----
