@@ -187,6 +187,15 @@ Common Topic
 #. Mockcpp
 	+ https://bitbucket.org/godsme/mockcpp/src/06ad37ddc45cbbc5d5e42db925f72ebf9faaa0d4/src/?at=default	
 
+#. Override, Overload, Overwrite
+	+ https://wuciawe.github.io/object%20oriented/2014/08/29/override-overload-overwrite.html
+
+#. C++ Memory access
+	+ http://www.c-jump.com/bcc/c155c/MemAccess/MemAccess.html
+
+#. Memory Region Attributes
+	+ https://sourceware.org/gdb/onlinedocs/gdb/Memory-Region-Attributes.html
+
 Java
 ----
 
