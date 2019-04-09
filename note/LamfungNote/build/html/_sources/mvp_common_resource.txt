@@ -81,6 +81,9 @@ Windows Topic
 	
 #. IE Protect Mode
 	+ https://blogs.msdn.microsoft.com/ieinternals/2009/11/30/understanding-the-protected-mode-elevation-dialog/
+
+#. Count Code Line
+	+ http://cloc.sourceforge.net/
 	
 Common Topic
 ------------

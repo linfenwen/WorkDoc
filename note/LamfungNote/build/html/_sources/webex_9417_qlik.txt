@@ -95,7 +95,12 @@ Example
 	::
 	 
 	 select count(distinct confid) as confCount, `date`, sitename from mjs_join where unix_timestamp(`date`,'yyyy-MM-dd') between unix_timestamp('2019-01-01','yyyy-MM-dd') and unix_timestamp('2019-01-20','yyyy-MM-dd') group by `date` , sitename;
+
+#. Multi Order
+	::
 	 
+	 select * from signserviceaggr_forgrad where year(ymd) = 2019 and month(ymd) >= 3 order by month(ymd), day(ymd);
+ 
 
 CMP job
 -------

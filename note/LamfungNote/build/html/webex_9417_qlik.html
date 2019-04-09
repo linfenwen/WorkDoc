@@ -179,6 +179,14 @@ location &#39;/kafka/logstash_meeting_hdfs/tdssvr-forgrad/others-others/&#39;;
 </dd>
 </dl>
 </li>
+<li><dl class="first docutils">
+<dt>Multi Order</dt>
+<dd><div class="first last highlight-default"><div class="highlight"><pre><span></span><span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">signserviceaggr_forgrad</span> <span class="n">where</span> <span class="n">year</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2019</span> <span class="ow">and</span> <span class="n">month</span><span class="p">(</span><span class="n">ymd</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="n">order</span> <span class="n">by</span> <span class="n">month</span><span class="p">(</span><span class="n">ymd</span><span class="p">),</span> <span class="n">day</span><span class="p">(</span><span class="n">ymd</span><span class="p">);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
 </ol>
 </div>
 <div class="section" id="cmp-job">
