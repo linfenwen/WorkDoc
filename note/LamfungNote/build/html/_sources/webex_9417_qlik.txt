@@ -155,10 +155,23 @@ Resource
 	+ BTS
 		- logs.webex.com
 		- type: tdssvr
+		- BTS-SJ
+		- Meeting
+		- type:tdssvr AND message:"sign request"
+	+ PROD
+		- logs.webex.com
+		- type: tdssvr
+		- Production-SJC
+		- Meeting
+		- type:tdssvr AND message:"sign request"
 		
 #. AppToken Knowledge Sharing From Bo Ren
 	+ https://go.webex.com/go-sc/lsr.php?RCID=39e43f2aa9e1453fbcdfe3e64dec6a80
 	+ SfhUtrH3
+
+#. Sign Service Server
+	+ account, password: wbxroot , wbx@AaR00t
+	+ 10.224.43.138, 10.224.43.143, 10.224.43.160
 
 Reference
 ---------
