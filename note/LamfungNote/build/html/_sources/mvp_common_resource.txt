@@ -264,6 +264,9 @@ Java
 #. Java Thread
 	+ http://wiki.jikexueyuan.com/project/java-concurrent/creating-and-starting-java-threads.html
 
+#. Modern CPP
+	+ http://www.modernescpp.com/index.php/c-is-still-lazy
+
 Design Priciple
 ---------------	
 
