@@ -267,6 +267,9 @@ Java
 #. Modern CPP
 	+ http://www.modernescpp.com/index.php/c-is-still-lazy
 
+#. Web Based Code Browser
+	+ https://code.woboq.org/qt5/include/c++/8.2.1/backward/auto_ptr.h.html#std::auto_ptr
+
 Design Priciple
 ---------------	
 
