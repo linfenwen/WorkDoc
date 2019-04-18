@@ -323,6 +323,7 @@ Design Priciple
 		- Says everything OnceAndOnlyOnce.
 		- Has no superfluous parts. 
 
+
 Log system
 ----------
 

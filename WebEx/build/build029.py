@@ -53,7 +53,7 @@ def GetUnCommitedFiles(strFiles) :
 			print("GetUnCommitedFiles strFiles is None")
 			return None
 		
-		strBaseDir = '/Users/lamfungwen/WorkDoc/'
+		strBaseDir = '/Users/lawen/WorkDoc/'
 		retFileList = []
 		#print(strFiles)
 		fileList = strFiles.split('\n')
@@ -136,7 +136,7 @@ def BuildSvgs(strFileList) :
 		#print("11111")
 		#print(strFileList)
 		nCount = 0
-		strDestFolder = '%s' %("/Users/lamfungwen/WorkDoc/note/LamfungNote/source/_static")
+		strDestFolder = '%s' %("/Users/lawen/WorkDoc/note/LamfungNote/source/_static")
 		for file in strFileList :
 			strSvg = GenerateSvg(file)
 			print(strSvg, file)
@@ -154,7 +154,7 @@ def BuildDocument() :
 	curWorkDir = os.getcwd()
 	try:
 		#print(curWorkDir)
-		newWorkDir = "/Users/lamfungwen/WorkDoc/note/LamfungNote"
+		newWorkDir = "/Users/lawen/WorkDoc/note/LamfungNote"
 		os.chdir(newWorkDir)
 		#print(os.getcwd())
 		ret = executeCmd('make html')
