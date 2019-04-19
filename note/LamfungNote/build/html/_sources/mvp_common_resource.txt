@@ -199,6 +199,9 @@ Common Topic
 #. Memory Region Attributes
 	+ https://sourceware.org/gdb/onlinedocs/gdb/Memory-Region-Attributes.html
 
+#. c++ blogs
+	+ https://shaharmike.com/cpp/shared-ptr/
+
 Java
 ----
 
@@ -468,7 +471,7 @@ Study Track
 #. Code Quality
 	+ Optimizing CPP
 		- P125/P165
-		- file:///Users/lamfungwen/Downloads/optimizing_cpp.pdf
+		- file:///Users/lawen/Downloads/optimizing_cpp.pdf
 	+ Tips for Optimizing C/C++ Code
 		- P0/P4
 		- http://people.cs.clemson.edu/~dhouse/courses/405/papers/optimize.pdf
