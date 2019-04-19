@@ -202,6 +202,9 @@ Common Topic
 #. c++ blogs
 	+ https://shaharmike.com/cpp/shared-ptr/
 
+#. C++ Performance Benchmark
+	+ http://blog.davidecoppola.com/2014/05/cpp-benchmarks-vector-vs-list-vs-deque/
+
 Java
 ----
 
