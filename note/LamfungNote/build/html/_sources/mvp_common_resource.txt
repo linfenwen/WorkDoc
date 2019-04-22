@@ -208,6 +208,12 @@ Common Topic
 #. Architecture Style
 	+ https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658117(v=pandp.10)
 
+#. Intel Threading Building Blocks Documentation 
+	+ https://software.intel.com/en-us/tbb-documentation
+
+#. Architecture Style And Design 
+	+ https://www.tutorialspoint.com/software_architecture_design/introduction.htm
+
 Java
 ----
 
