@@ -205,6 +205,9 @@ Common Topic
 #. C++ Performance Benchmark
 	+ http://blog.davidecoppola.com/2014/05/cpp-benchmarks-vector-vs-list-vs-deque/
 
+#. Architecture Style
+	+ https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658117(v=pandp.10)
+
 Java
 ----
 
