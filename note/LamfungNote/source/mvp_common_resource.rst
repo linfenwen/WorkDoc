@@ -338,6 +338,9 @@ Design Priciple
 		- Says everything OnceAndOnlyOnce.
 		- Has no superfluous parts. 
 
+#. MVC, MVP, MVVM
+	+ https://draveness.me/mvx
+
 
 Log system
 ----------
