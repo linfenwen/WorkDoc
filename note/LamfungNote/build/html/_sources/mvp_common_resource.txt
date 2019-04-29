@@ -341,6 +341,9 @@ Design Priciple
 #. MVC, MVP, MVVM
 	+ https://draveness.me/mvx
 
+#. Machine Learning and Deep Learning
+	+ https://yq.aliyun.com/articles/212563?spm=a2c4e.11153940.blogcont212311.12.4f8937eeMBlPk7
+
 
 Log system
 ----------
