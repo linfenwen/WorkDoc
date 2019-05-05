@@ -344,6 +344,8 @@ Design Priciple
 #. Machine Learning and Deep Learning
 	+ https://yq.aliyun.com/articles/212563?spm=a2c4e.11153940.blogcont212311.12.4f8937eeMBlPk7
 
+#. C++11 Features
+	+ https://www.kancloud.cn/wangshubo1989/new-characteristics/99705
 
 Log system
 ----------
