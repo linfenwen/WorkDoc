@@ -347,6 +347,9 @@ Design Priciple
 #. C++11 Features
 	+ https://www.kancloud.cn/wangshubo1989/new-characteristics/99705
 
+#. C++11 vs C++17 Performance
+	https://www.bfilipek.com/2018/11/parallel-alg-perf.html
+
 Log system
 ----------
 
