@@ -285,6 +285,12 @@ Java
 #. Web Based Code Browser
 	+ https://code.woboq.org/qt5/include/c++/8.2.1/backward/auto_ptr.h.html#std::auto_ptr
 
+Big Data, Data Analyze
+----------------------
+
+#. HQL
+	+ https://www.oreilly.com/library/view/programming-hive/9781449326944/ch04.html
+
 Design Priciple
 ---------------	
 

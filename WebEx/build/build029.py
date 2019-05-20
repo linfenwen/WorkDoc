@@ -72,15 +72,19 @@ def GetUnCommitedFiles(strFiles) :
 					f1 = f1[1:nLen-1]
 					#print(1,f1)
 			
-			# Remove ../
+			#print("Remove ../")
 			nLen2 = f1.rfind('../')
-			if nLen2 > 0 :
+			if nLen2 >= 0 :
+				#print(0.1, f1)
 				f1 = f1[nLen2+3:]
-				#print(2, f1)
+				#print(0.2, f1)
 			
+			#print("Filter uml and dot file")
 			if (f1.rfind('.uml') >= 0 ) or (f1.rfind('.dot') >= 0):
 				f2 = strBaseDir + f1
-				print(f2)
+				#print(0, strBaseDir)
+				#print(1, f1)
+				#print(f2)
 				retFileList.append(f2)
 		
 		print("GetUnCommitedFiles", retFileList)

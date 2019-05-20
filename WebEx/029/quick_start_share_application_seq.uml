@@ -1,6 +1,6 @@
 @startuml
 
-box "WebExMgr"
+box "WebExMgr2"
 participant "CTCQuickStartDialog"
 participant "CTCQuickStartSessionMgr"
 participant "CTCUIMgr"
@@ -10,7 +10,7 @@ participant "CTCBOSessionMgr"
 participant "CTCAppShareSessionMgr"
 end box
 
-box "ServiceMgr"
+box "ServiceMgr2"
 participant "CSmAppShareSessionMgr"
 end box
 
