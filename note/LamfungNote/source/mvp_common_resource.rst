@@ -390,6 +390,9 @@ Open Source
 	+ http://www.sonarqube.org/
 	+ http://docs.codehaus.org/display/SONAR/Documentation
 
+#. Top 11 Open Source Test Automation Framework
+	+ https://www.joecolantonio.com/automation-testing-framework/
+
 Technical Blog
 --------------
 
