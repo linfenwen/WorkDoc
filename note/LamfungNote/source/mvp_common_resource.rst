@@ -290,6 +290,9 @@ Big Data, Data Analyze
 
 #. HQL
 	+ https://www.oreilly.com/library/view/programming-hive/9781449326944/ch04.html
+	
+#. HIVE Language Manual
+	+ https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL 
 
 Design Priciple
 ---------------	
