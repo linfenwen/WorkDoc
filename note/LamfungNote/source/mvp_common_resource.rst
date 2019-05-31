@@ -293,6 +293,18 @@ Big Data, Data Analyze
 	
 #. HIVE Language Manual
 	+ https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL 
+	
+#. Hive Developer Guide
+	+ https://cwiki.apache.org/confluence/display/Hive/DeveloperGuide
+	
+#. SQL and Performance Tuning Tips
+	+ https://support.treasuredata.com/hc/en-us/articles/360001451248-Hive-Presto-Standard-SQL-Tips
+
+#. Big Data Programmers
+	+ https://bigdataprogrammers.com/remove-header-of-csv-file-in-hive/
+
+#. What Is Kafka
+	+ https://dzone.com/articles/what-is-kafka
 
 Design Priciple
 ---------------	
