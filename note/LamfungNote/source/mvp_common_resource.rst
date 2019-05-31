@@ -285,6 +285,9 @@ Java
 #. Web Based Code Browser
 	+ https://code.woboq.org/qt5/include/c++/8.2.1/backward/auto_ptr.h.html#std::auto_ptr
 
+#. How annotation works on Java
+	+ https://dzone.com/articles/how-annotations-work-java
+
 Big Data, Data Analyze
 ----------------------
 
