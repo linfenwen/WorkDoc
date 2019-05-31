@@ -305,6 +305,9 @@ Big Data, Data Analyze
 
 #. What Is Kafka
 	+ https://dzone.com/articles/what-is-kafka
+	
+#. Kafka Architecture
+	+ http://cloudurable.com/blog/kafka-architecture/index.html
 
 Design Priciple
 ---------------	
