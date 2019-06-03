@@ -287,6 +287,7 @@ Java
 
 #. How annotation works on Java
 	+ https://dzone.com/articles/how-annotations-work-java
+	
 
 Big Data, Data Analyze
 ----------------------
@@ -311,6 +312,9 @@ Big Data, Data Analyze
 	
 #. Kafka Architecture
 	+ http://cloudurable.com/blog/kafka-architecture/index.html
+
+#. Data Visualization
+	+ http://www.ruanyifeng.com/blog/2014/11/basic-charts.html
 
 Design Priciple
 ---------------	
