@@ -316,6 +316,9 @@ Big Data, Data Analyze
 #. Data Visualization
 	+ http://www.ruanyifeng.com/blog/2014/11/basic-charts.html
 
+#. Hadoop
+	+ http://tw.gitbook.net/hadoop/index.html
+
 Design Priciple
 ---------------	
 
