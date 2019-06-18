@@ -319,6 +319,9 @@ Big Data, Data Analyze
 #. Hadoop
 	+ http://tw.gitbook.net/hadoop/index.html
 
+#. Sqoop
+	+ https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html
+
 Design Priciple
 ---------------	
 
