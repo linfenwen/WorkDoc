@@ -322,6 +322,28 @@ Big Data, Data Analyze
 #. Sqoop
 	+ https://sqoop.apache.org/docs/1.4.6/SqoopUserGuide.html
 
+
+#. Hive 编程指南
+	+ https://www.linuxidc.com/Linux/2015-01/111837.htm
+	+ https://www.jianshu.com/p/81918f2ddba5
+
+Web Browser
+-----------
+
+#. Trident, Gecko, WebKit, Presto
+	+ http://tools.yesky.com/19/34456519.shtml
+	
+#. User Agent
+	+ https://webaim.org/blog/user-agent-string-history/
+	+ https://tool.lu/useragent/
+	+ Browser
+	+ Browser Version
+	+ System Platform
+	+ Browser Kernel
+	
+#. 基于WEB浏览器的设备指纹
+	+ https://ixyzero.com/blog/archives/4329.html
+
 Design Priciple
 ---------------	
 
