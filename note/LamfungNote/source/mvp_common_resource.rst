@@ -327,6 +327,16 @@ Big Data, Data Analyze
 	+ https://www.linuxidc.com/Linux/2015-01/111837.htm
 	+ https://www.jianshu.com/p/81918f2ddba5
 
+#. Flume and Logstash
+	+ https://www.jianshu.com/p/0b6cbb5ea97a
+	
+#. REGEXP_EXTRACT
+	+ https://help.aliyun.com/knowledge_detail/62546.html
+	+ http://www.voidcn.com/article/p-pbjmwlpi-dr.html
+
+#. Qlik vs Kibana
+	+ https://comparisons.financesonline.com/kibana-vs-qlikview
+
 Web Browser
 -----------
 
@@ -335,7 +345,9 @@ Web Browser
 	
 #. User Agent
 	+ https://webaim.org/blog/user-agent-string-history/
+	+ https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/User-Agent/Firefox
 	+ https://tool.lu/useragent/
+	+ https://blog.csdn.net/Time888/article/details/72822729
 	+ Browser
 	+ Browser Version
 	+ System Platform
@@ -347,6 +359,25 @@ Web Browser
 #. Regular Expression Online
 	+ https://regex101.com/r/cO8lqs/12
 		
+
+#. Browser User Agent History
+	+ https://www.zhihu.com/question/19553117
+
+#. Browser Release Version History
+	+ Firefox : https://www.mozilla.org/en-US/firefox/releases/
+	+ Chrome : https://en.wikipedia.org/wiki/Google_Chrome_version_history
+	+ Edge : https://en.wikipedia.org/wiki/Microsoft_Edge
+
+#. Browser Kernel
+	+ History
+		- https://www.cnblogs.com/baihuitestsoftware/articles/6689012.html
+		- https://thinking80s.iteye.com/blog/682456
+	+ Trident (IE)
+	+ Gecko
+	+ WebKit
+	+ KHTML
+	+ Presto
+	+ Blink
 
 Design Priciple
 ---------------	
