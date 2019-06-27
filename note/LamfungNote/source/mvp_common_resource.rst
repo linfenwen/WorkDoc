@@ -344,6 +344,8 @@ SQL
 #. SQL Execute Order
 	+ https://www.periscopedata.com/blog/sql-query-order-of-operations
 	+ https://www.jianshu.com/p/bb19b6b0fdc3
+	
+#. https://www.sqlshack.com/case-statement-in-sql/
 
 Web Browser
 -----------
