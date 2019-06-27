@@ -337,6 +337,14 @@ Big Data, Data Analyze
 #. Qlik vs Kibana
 	+ https://comparisons.financesonline.com/kibana-vs-qlikview
 
+
+SQL
+---
+
+#. SQL Execute Order
+	+ https://www.periscopedata.com/blog/sql-query-order-of-operations
+	+ https://www.jianshu.com/p/bb19b6b0fdc3
+
 Web Browser
 -----------
 
@@ -352,6 +360,10 @@ Web Browser
 	+ Browser Version
 	+ System Platform
 	+ Browser Kernel
+
+#. User Agent Example, List 2000000 user agents
+	+ https://developers.whatismybrowser.com/useragents/explore/software_name/internet-explorer/
+
 	
 #. 基于WEB浏览器的设备指纹
 	+ https://ixyzero.com/blog/archives/4329.html
