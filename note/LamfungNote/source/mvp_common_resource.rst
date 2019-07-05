@@ -372,6 +372,7 @@ Web Browser
 	
 #. Regular Expression Online
 	+ https://regex101.com/r/cO8lqs/12
+	+ https://www.regexbuddy.com/test.html	
 		
 
 #. Browser User Agent History
