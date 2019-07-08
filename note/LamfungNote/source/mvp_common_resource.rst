@@ -374,6 +374,9 @@ Web Browser
 	+ https://regex101.com/r/cO8lqs/12
 	+ https://www.regexbuddy.com/test.html	
 		
+#. Improve Regular Performance
+	+ https://www.jianshu.com/p/bbf3c382fd30
+
 
 #. Browser User Agent History
 	+ https://www.zhihu.com/question/19553117
