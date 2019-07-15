@@ -366,6 +366,8 @@ Web Browser
 #. User Agent Example, List 2000000 user agents
 	+ https://developers.whatismybrowser.com/useragents/explore/software_name/internet-explorer/
 
+#. User Agent explain
+	+ https://user-agents.net/string/mozilla-5-0-cvmanaged-windows-nt-6-1-win64-x64-applewebkit-537-36-khtml-like-gecko-chrome-66-0-3359-139-safari-537-36
 	
 #. 基于WEB浏览器的设备指纹
 	+ https://ixyzero.com/blog/archives/4329.html
