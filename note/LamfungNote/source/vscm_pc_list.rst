@@ -1,6 +1,8 @@
 VSCM PC Lists
 =============
 
+#. https://10.224.214.37/vsphere-client/
+	+ replace vsphere-client
 
 #. https://10.224.214.36:9443/vsphere-client/
 
@@ -25,6 +27,7 @@ Win8.1
 	+ DNS Name: EngPri_w10_A
 	+ 10.224.202.52
 	+ User Name and PW: .\lawen | Linfeng1984
+	
 Others
 ------
 
