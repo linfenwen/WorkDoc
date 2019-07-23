@@ -337,6 +337,8 @@ Big Data, Data Analyze
 #. Qlik vs Kibana
 	+ https://comparisons.financesonline.com/kibana-vs-qlikview
 
+#. Big data Tools
+	+ https://yao2san.com/article/1955
 
 SQL
 ---
