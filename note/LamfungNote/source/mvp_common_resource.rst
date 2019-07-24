@@ -358,6 +358,14 @@ Web Browser
 #. Polular Browser List
 	+ https://user-agents.net/browsers
 	+ https://udger.com/resources/ua-list
+
+#. User Agent Statics
+	+ http://www.mapfrappe.com/stats/agent_201906.html
+	+ http://www.abhidhamonline.org/.stats/agent_201907.html
+	+ http://clevelandhardfacing.com/webalizer/usage_201907.html
+	
+#. Ionic Framework
+	+ https://ionicframework.com/docs/intro
 	
 #. User Agent
 	+ https://webaim.org/blog/user-agent-string-history/
