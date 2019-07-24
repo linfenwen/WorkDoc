@@ -368,6 +368,9 @@ Web Browser
 	+ System Platform
 	+ Browser Kernel
 
+#. LieBao Browser User Agent
+	+ https://developers.whatismybrowser.com/useragents/explore/software_name/lb-browser/
+
 #. User Agent Example, List 2000000 user agents
 	+ https://developers.whatismybrowser.com/useragents/explore/software_name/internet-explorer/
 
