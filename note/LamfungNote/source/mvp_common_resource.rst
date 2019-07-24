@@ -357,6 +357,7 @@ Web Browser
 	
 #. Polular Browser List
 	+ https://user-agents.net/browsers
+	+ https://udger.com/resources/ua-list
 	
 #. User Agent
 	+ https://webaim.org/blog/user-agent-string-history/
@@ -370,6 +371,7 @@ Web Browser
 
 #. LieBao Browser User Agent
 	+ https://developers.whatismybrowser.com/useragents/explore/software_name/lb-browser/
+
 
 #. User Agent Example, List 2000000 user agents
 	+ https://developers.whatismybrowser.com/useragents/explore/software_name/internet-explorer/
