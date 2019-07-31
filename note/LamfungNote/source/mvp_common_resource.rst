@@ -349,6 +349,19 @@ SQL
 	
 #. https://www.sqlshack.com/case-statement-in-sql/
 
+Regex
+------
+
+#. Regex Substitution
+	+ https://www.rexegg.com/regex-trick-conditional-replacement.html
+
+#. Regular Expression Online
+	+ https://regex101.com/r/cO8lqs/12
+	+ https://www.regexbuddy.com/test.html	
+		
+#. Improve Regular Performance
+	+ https://www.jianshu.com/p/bbf3c382fd30
+
 Web Browser
 -----------
 
@@ -389,14 +402,6 @@ Web Browser
 	
 #. 基于WEB浏览器的设备指纹
 	+ https://ixyzero.com/blog/archives/4329.html
-	
-#. Regular Expression Online
-	+ https://regex101.com/r/cO8lqs/12
-	+ https://www.regexbuddy.com/test.html	
-		
-#. Improve Regular Performance
-	+ https://www.jianshu.com/p/bbf3c382fd30
-
 
 #. Browser User Agent History
 	+ https://www.zhihu.com/question/19553117
