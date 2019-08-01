@@ -214,6 +214,9 @@ Common Topic
 #. Architecture Style And Design 
 	+ https://www.tutorialspoint.com/software_architecture_design/introduction.htm
 
+#. C++11 RValue, LValue
+	+ https://blog.csdn.net/xiaolewennofollow/article/details/52559306
+
 Java
 ----
 
