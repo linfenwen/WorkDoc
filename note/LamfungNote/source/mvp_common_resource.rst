@@ -220,6 +220,9 @@ Common Topic
 #. C++ Tutorial multi-threaded programming II native thread for Win32
 	+ https://www.bogotobogo.com/cplusplus/multithreaded2B.php
 
+#. STL interview questions
+	+ https://thispointer.com/c-how-to-find-duplicates-in-a-vector/
+
 Java
 ----
 
