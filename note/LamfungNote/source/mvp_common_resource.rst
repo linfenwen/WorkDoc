@@ -217,6 +217,9 @@ Common Topic
 #. C++11 RValue, LValue
 	+ https://blog.csdn.net/xiaolewennofollow/article/details/52559306
 
+#. C++ Tutorial multi-threaded programming II native thread for Win32
+	+ https://www.bogotobogo.com/cplusplus/multithreaded2B.php
+
 Java
 ----
 
